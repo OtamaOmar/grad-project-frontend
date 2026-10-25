@@ -1,0 +1,132 @@
+{
+  "eyebrow": ["حوكمة النظام والقياس"],
+  "description": "سجل تدقيق للقراءة فقط يضم عمليات الدخول وتعديلات البيانات المرجعية والاستيراد وتشغيلات التنبؤ وقرارات الطرح.",
+  "ledger": "السجل سليم · {{value}} قيدًا",
+  "export": "تصدير CSV",
+  "exportFiltered": "تصدير النتائج المصفاة CSV",
+  "notice": {
+    "title": "سجل تدقيق للإضافة فقط",
+    "body": "يسجل الخادم الأحداث ولا يمكن تعديلها أو حذفها من هذه الصفحة. تُخزَّن عناوين IP مُقنَّعة."
+  },
+  "stats": {
+    "events": "الأحداث (آخر {{days}} يومًا)",
+    "today": "+{{value}} اليوم",
+    "eventsHint": "مسجلة خلال آخر {{days}} يومًا",
+    "actors": "المستخدمون النشطون",
+    "actorsHint": "{{value}} مستخدمين معروفين في السجل",
+    "attention": "التحذيرات والأخطاء",
+    "attentionHint": "{{warnings}} تحذيرات · {{errors}} أخطاء · {{failed}} محاولات دخول فاشلة",
+    "last": "آخر حدث"
+  },
+  "readOnly": "سجل للقراءة فقط",
+  "filters": {
+    "search": "ابحث في الملخص أو الكيان أو المستخدم أو رقم الطلب…",
+    "actor": "المنفّذ",
+    "allActors": "كل المنفّذين",
+    "category": "الفئة",
+    "allCategories": "كل الفئات",
+    "action": "الإجراء",
+    "allActions": "كل الإجراءات",
+    "severity": "الخطورة",
+    "allSeverities": "كل درجات الخطورة",
+    "outcome": "النتيجة",
+    "allOutcomes": "كل النتائج",
+    "from": "من تاريخ",
+    "to": "إلى تاريخ"
+  },
+  "tableCaption": "أحداث التدقيق",
+  "columns": {
+    "when": "متى",
+    "who": "من",
+    "action": "الإجراء",
+    "verification": "النتيجة"
+  },
+  "anonymous": "مجهول",
+  "anonymousAttempt": "مجهول (حاول {{username}})",
+  "attempted": "حاول: {{username}}",
+  "severity": {
+    "info": "معلومة",
+    "warning": "تحذير",
+    "error": "خطأ"
+  },
+  "outcome": {
+    "success": "نجاح",
+    "failure": "فشل"
+  },
+  "category": {
+    "auth": "تسجيل الدخول",
+    "user_management": "إدارة المستخدمين",
+    "catalog": "الفهرس",
+    "import": "الاستيراد",
+    "forecast": "التنبؤ",
+    "offering": "قرار الطرح",
+    "data_quality": "جودة البيانات",
+    "system": "النظام"
+  },
+  "entityType": {
+    "app_user": "مستخدم",
+    "credit_limit": "حد الساعات",
+    "bylaw": "لائحة",
+    "course": "مقرر",
+    "plan_template": "قالب خطة",
+    "import_batch": "دفعة استيراد",
+    "forecast_run": "تشغيل تنبؤ",
+    "offering_decision": "قرار طرح",
+    "data_gap": "فجوة بيانات",
+    "audit_event": "سجل التدقيق"
+  },
+  "actions": {
+    "auth": {
+      "login": "تسجيل دخول",
+      "login_failed": "فشل تسجيل الدخول",
+      "logout": "تسجيل خروج"
+    },
+    "user": {
+      "created": "إنشاء مستخدم",
+      "updated": "تحديث مستخدم",
+      "deactivated": "تعطيل مستخدم"
+    },
+    "credit_limit": { "updated": "تحديث حد الساعات" },
+    "bylaw": { "updated": "تحديث اللائحة" },
+    "course": { "updated": "تحديث مقرر" },
+    "study_plan": { "updated": "تحديث خطة دراسية" },
+    "import": {
+      "started": "بدء الاستيراد",
+      "completed": "اكتمال الاستيراد",
+      "failed": "فشل الاستيراد",
+      "issue_reviewed": "مراجعة مشكلة استيراد"
+    },
+    "forecast_run": {
+      "started": "بدء تشغيل التنبؤ",
+      "completed": "اكتمال تشغيل التنبؤ",
+      "failed": "فشل تشغيل التنبؤ"
+    },
+    "offering_decision": { "saved": "حفظ قرار الطرح" },
+    "data_gap": {
+      "created": "تسجيل فجوة بيانات",
+      "updated": "تحديث فجوة بيانات",
+      "resolved": "حل فجوة بيانات"
+    },
+    "audit": { "exported": "تصدير سجل التدقيق" }
+  },
+  "drawer": {
+    "title": "الحدث",
+    "occurredAt": "وقت الحدث",
+    "actor": "المنفّذ",
+    "role": "الدور",
+    "username": "اسم المستخدم",
+    "entity": "الكيان",
+    "entityType": "نوع الكيان",
+    "ipAddress": "عنوان IP",
+    "requestId": "رقم الطلب",
+    "details": "التفاصيل المسجلة",
+    "noDetails": "لم تُسجل تفاصيل إضافية.",
+    "related": "أحداث مرتبطة (نفس الكيان)",
+    "noRelated": "لا توجد أحداث أخرى على هذا الكيان."
+  },
+  "toast": {
+    "exported": "تم تصدير {{value}} حدثًا بصيغة CSV."
+  },
+  "policyTitle": "كيف تقرأ هذا السجل",
+  "policyBody": "يوضح كل حدث من نفّذ الإجراء وما الذي تغيّر وعلى أي سجل. استخدم لوحة الشرح لتتبع تغيير القاعدة إلى مصدرها في اللائحة. لا توجد عمليات كتابة هنا."
+}

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+import { PageLoader } from "@/components/common/PageLoader";
 import { RouteErrorBoundary } from "@/components/common/RouteErrorBoundary";
 import { ROLES } from "@/config/roles";
 import { PublicLayout } from "@/layouts/PublicLayout";
@@ -30,6 +31,8 @@ export const router = createBrowserRouter([
   {
     element: <RootLayout />,
     errorElement: <RouteErrorBoundary />,
+    // Shown while the first lazy page downloads on a cold load.
+    hydrateFallbackElement: <PageLoader fullScreen />,
     children: [
       {
         element: <PublicLayout />,

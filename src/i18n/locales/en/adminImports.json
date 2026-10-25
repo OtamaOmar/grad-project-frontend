@@ -1,0 +1,216 @@
+{
+  "eyebrow": ["Ingestion invariants", "Import batches"],
+  "description": "Schema and rule validation for files from the bylaw documents, the CS department and the registrar. Every row is accepted, flagged or rejected; nothing is guessed.",
+  "auditSnapshots": "Audit snapshots",
+  "uploadAction": "Upload file",
+  "termLabel": "{{type}} {{year}}",
+  "termTypes": {
+    "fall": "Fall",
+    "spring": "Spring",
+    "summer": "Summer"
+  },
+  "bylaw": {
+    "old_cs": "Old bylaw (2019)",
+    "bylaw_2025": "2025 bylaw"
+  },
+  "units": {
+    "bytes": "{{value}} B",
+    "kb": "{{value}} KB",
+    "mb": "{{value}} MB",
+    "ms": "{{value}} ms"
+  },
+  "kinds": {
+    "bylaw_tables": "Bylaw tables",
+    "course_table": "Course table",
+    "study_plan_workbook": "Study plan workbook",
+    "student_roster": "Student roster",
+    "registration_export": "Registration export"
+  },
+  "sources": {
+    "bylaw_document": "Bylaw document",
+    "cs_department": "CS department",
+    "registrar": "Registrar"
+  },
+  "status": {
+    "validating": "Validating",
+    "completed": "Completed",
+    "failed": "Failed"
+  },
+  "outcomes": {
+    "accepted": "Accepted",
+    "inserted": "Inserted",
+    "flagged": "Flagged",
+    "rejected": "Rejected"
+  },
+  "checkStatus": {
+    "passed": "Passed",
+    "flagged": "Flagged",
+    "failed": "Failed",
+    "pending": "Pending"
+  },
+  "checks": {
+    "schema_columns": "Header matches the expected columns",
+    "bylaw_code_known": "Bylaw code is known",
+    "grade_band_coverage": "Grade bands cover 0–100%",
+    "credit_limit_priority_unique": "Credit-limit rows are unambiguous",
+    "source_reference_present": "Source reference present",
+    "course_code_unique": "Course codes are unique",
+    "credits_non_negative": "Credits are not negative",
+    "component_hours_present": "Component hours are stated",
+    "same_bylaw_requisites": "Requisites stay within one bylaw",
+    "course_code_known": "Course code exists",
+    "plan_grid_aligned": "Plan grid is aligned",
+    "elective_pool_consistent": "Elective pools are consistent",
+    "university_id_unique": "University IDs are unique",
+    "program_track_match": "Program and track match",
+    "placement_present": "Plan placement present",
+    "student_known": "Student exists",
+    "course_known": "Course exists",
+    "attempt_unique": "One row per attempt",
+    "percentage_in_range": "Percentage within 0–100",
+    "pass_test_inputs_present": "Pass-test inputs present",
+    "label_matches_pass_test": "Grade label matches the pass test",
+    "attempt_state_derived": "Attempt state can be derived"
+  },
+  "banner": {
+    "session": "Ingestion session:",
+    "cutoff": "Information cutoff: {{term}}",
+    "source": "Source: {{source}}",
+    "finished": "{{name}} · completed {{date}}",
+    "started": "{{name}} · started {{date}}",
+    "latency": "Processing latency",
+    "passRate": "Deterministic pass"
+  },
+  "validating": {
+    "title": "Validation in progress",
+    "body": "Checking {{rows}} rows against {{checks}} rules. This page refreshes on its own."
+  },
+  "failed": {
+    "title": "This batch was rejected",
+    "body": "No rows were loaded. Fix the file and upload it again."
+  },
+  "outcome": {
+    "passStatus": "Pass status",
+    "accepted": "Accepted records",
+    "compliant": "Compliant",
+    "acceptedShare": "{{share}} of rows",
+    "acceptedFooter": "Inserted without findings",
+    "ofTotal": "{{value}} / {{total}}",
+    "discrepancyStatus": "Discrepancy status",
+    "flagged": "Flagged records",
+    "attention": "Attention",
+    "flaggedShare": "{{share}} flagged",
+    "flaggedFooter": "Inserted with a warning",
+    "pendingReview": "{{count}} pending review",
+    "fatalStatus": "Fatal constraint status",
+    "rejected": "Rejected records",
+    "quarantined": "Quarantined",
+    "rejectedShare": "{{share}} rejected",
+    "rejectedFooter": "Not inserted",
+    "errors_one": "{{value}} error",
+    "errors_other": "{{value}} errors"
+  },
+  "issues": {
+    "title": "Validation report",
+    "subtitle": "Load-report rows for batch {{code}}",
+    "shown": "{{shown}} of {{total}} rows shown",
+    "search": "Filter by record, code or message…",
+    "severityFilter": "Severity",
+    "reviewFilter": "Review status",
+    "tabs": {
+      "all": "All",
+      "error": "Errors",
+      "warning": "Warnings",
+      "info": "Info"
+    },
+    "review": {
+      "all": "Any review status",
+      "open": "Needs review",
+      "acknowledged": "Reviewed"
+    },
+    "columns": {
+      "row": "Row",
+      "entity": "Source record",
+      "status": "Status",
+      "diagnostics": "Validation diagnostics",
+      "action": "Action"
+    },
+    "raw": "Value:",
+    "gapLink": "Data gap {{code}}",
+    "noted": "Noted only",
+    "reviewed": "Reviewed",
+    "reopen": "Reopen review of row {{row}}",
+    "markReviewed": "Mark reviewed",
+    "toastReviewed": "Row {{row}} marked as reviewed.",
+    "toastReopened": "Row {{row}} needs review again.",
+    "emptyValidating": "Rows appear here once validation finishes.",
+    "emptyClean": "No findings: every row passed all checks."
+  },
+  "checksCard": {
+    "title": "Invariants enforced",
+    "passed": "{{passed}} of {{total}} passed",
+    "withIssues": "{{status}} · {{count}}",
+    "footer": "Checks run on {{code}}"
+  },
+  "reviewCard": {
+    "title": "Review queue",
+    "open": "{{count}} open",
+    "body": "Rejected rows never reach the planning tables; flagged rows are loaded but wait for an admin to review them. Totals across completed batches:",
+    "rejectedHere": "{{count}} rejected in this batch",
+    "showRejected": "Show errors"
+  },
+  "feedsCard": {
+    "title": "Source feeds",
+    "batches": "{{count}} batches",
+    "lastImport": "Last upload {{date}}",
+    "never": "Never"
+  },
+  "history": {
+    "title": "Import history",
+    "subtitle": "Every uploaded file, newest first. Select one to inspect it.",
+    "search": "Search file, batch code or uploader…",
+    "kind": "Import type",
+    "allKinds": "All import types",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "viewing": "Viewing",
+    "inserted": "{{count}} inserted",
+    "empty": "No files uploaded yet.",
+    "columns": {
+      "batch": "Batch",
+      "kind": "Type & source",
+      "rows": "Rows",
+      "issues": "Findings",
+      "uploaded": "Uploaded",
+      "status": "Status"
+    },
+    "errors_one": "{{value}} error",
+    "errors_other": "{{value}} errors",
+    "warnings_one": "{{value}} warning",
+    "warnings_other": "{{value}} warnings"
+  },
+  "empty": {
+    "title": "No imports yet",
+    "body": "Upload a bylaw table, course table, study plan, roster or registration export to start."
+  },
+  "upload": {
+    "title": "Upload a file for validation",
+    "description": "The file is checked row by row. Rows that fail a rule are rejected or flagged, never corrected.",
+    "kind": "Import type",
+    "file": "File",
+    "fileHint": "A .csv or .xlsx file.",
+    "choose": "Choose a .csv or .xlsx file",
+    "unsupported": "Upload a .csv or .xlsx file.",
+    "bylaw": "Bylaw",
+    "bylawHint": "Which bylaw this catalog file belongs to.",
+    "noBylaw": "Not bylaw-specific",
+    "term": "Information cutoff term",
+    "termHint": "The last term whose results the export includes.",
+    "chooseTerm": "Choose a term",
+    "termRequired": "Registration exports need an information cutoff term.",
+    "notes": "Notes",
+    "optionsError": "Could not load bylaws and terms. Close and try again.",
+    "submit": "Upload and validate",
+    "success": "{{file}} was uploaded and is being validated."
+  }
+}

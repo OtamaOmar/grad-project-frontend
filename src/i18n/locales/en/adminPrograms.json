@@ -1,0 +1,147 @@
+{
+  "eyebrow": ["Curricular registry", "Degree definitions"],
+  "description": "Canonical degree programs, specialization tracks, and the bylaw charters that govern degree completion across cohorts.",
+  "ch": "CH",
+  "bylaw": {
+    "long": {
+      "old_cs": "Old bylaw (2019)",
+      "bylaw_2025": "2025 framework"
+    },
+    "charter": {
+      "old_cs": "Old bylaw (2019 framework)",
+      "bylaw_2025": "2025 modern framework"
+    }
+  },
+  "bylawStatus": {
+    "draft": "Draft",
+    "active": "Active",
+    "retired": "Retired"
+  },
+  "degree": {
+    "bsc": "B.Sc."
+  },
+  "trackStatus": {
+    "active": "Active",
+    "planned": "Planned",
+    "inactive": "Inactive"
+  },
+  "category": {
+    "university_requirements": "University general requirements",
+    "faculty_core": "Faculty core requirements",
+    "track_mandatory": "Track specialization mandatories",
+    "electives": "Free & track electives"
+  },
+  "stats": {
+    "degrees": "Canonical degrees",
+    "degreesHint_one": "{{value}} program row",
+    "degreesHint_other": "{{value}} program rows",
+    "degreesBadge": "Degree charters",
+    "tracks": "Active specializations",
+    "tracksHint": "{{planned}} planned · {{inactive}} inactive",
+    "tracksBadge_one": "{{value}} track",
+    "tracksBadge_other": "{{value}} tracks",
+    "frameworks": "Governing frameworks",
+    "frameworksBadge": "Bylaw charters"
+  },
+  "directive": {
+    "title": "Statutory rule: curricular independence",
+    "badge": "Bylaw separation",
+    "body": "Tracks under different bylaws keep independent prerequisite trees and degree clearance rules. Course substitutions never propagate across bylaw boundaries."
+  },
+  "filters": {
+    "search": "Filter program name or code…",
+    "bylaw": "Bylaw framework",
+    "allBylaws": "All bylaw frameworks"
+  },
+  "catalog": {
+    "title": "Track master catalog",
+    "badge_one": "{{value}} program",
+    "badge_other": "{{value}} programs",
+    "subtitle": "Programs grouped by governing bylaw, each with its specialization tracks.",
+    "emptyTitle": "No programs",
+    "emptyBody": "Create a program under a bylaw to start registering tracks.",
+    "footerNote": "Graduation credits come from each program's bylaw.",
+    "footerCount": "{{tracks}} tracks across {{programs}} program rows",
+    "groupMeta_one": "{{credits}} CH to graduate · {{programs}} program",
+    "groupMeta_other": "{{credits}} CH to graduate · {{programs}} programs"
+  },
+  "program": {
+    "withoutTrack_one": "{{value}} student without a track",
+    "withoutTrack_other": "{{value}} students without a track",
+    "tracksCaption": "Tracks of {{name}}",
+    "noTracks": "No tracks registered for this program yet.",
+    "trackCount_one": "{{value}} track ({{active}} active)",
+    "trackCount_other": "{{value}} tracks ({{active}} active)",
+    "studentCount_one": "{{value}} student",
+    "studentCount_other": "{{value}} students"
+  },
+  "columns": {
+    "track": "Specialization track",
+    "code": "Code",
+    "totalCredits": "Total credits",
+    "status": "Charter status",
+    "students": "Students",
+    "plans": "Plans / pools",
+    "plansTitle": "{{plans}} plan templates, {{pools}} elective pools",
+    "actions": "Actions"
+  },
+  "actions": {
+    "newProgram": "New program",
+    "registerTrack": "Register new track",
+    "edit": "Edit",
+    "editProgram": "Edit program {{name}}",
+    "addTrack": "Add track",
+    "editTrack": "Edit track {{name}}"
+  },
+  "charters": {
+    "title": "Charter architecture comparison",
+    "subtitle": "Credit requirements per bylaw; differences are against the previous charter.",
+    "total": "{{value}} CH total",
+    "credits": "{{value}} CH",
+    "diff": "{{value}} CH",
+    "effective": "From cohort {{cohort}}",
+    "unverified": "Split not verified against the bylaw text",
+    "noBreakdown": "No credit breakdown is stored for this bylaw.",
+    "appliesTo": "Applies to: {{tracks}}",
+    "noTracks": "no tracks yet",
+    "separator": ", ",
+    "phaseOut": "Phase-out: cohort {{cohort}}",
+    "current": "Current standard",
+    "empty": "No bylaws defined"
+  },
+  "form": {
+    "bylaw": "Bylaw",
+    "sourceReference": "Source reference",
+    "sourceReferenceHint": "Where this comes from, e.g. 2025 bylaw, Art. 4.",
+    "save": "Save changes"
+  },
+  "programForm": {
+    "createTitle": "New degree program",
+    "createDescription": "A program belongs to exactly one bylaw. The same degree under two bylaws is two rows.",
+    "editTitle": "Edit program",
+    "bylawImmutable": "The bylaw cannot change after creation.",
+    "code": "Program code",
+    "codeHint": "Unique within the bylaw, e.g. CS.",
+    "name": "Program name",
+    "create": "Create program"
+  },
+  "trackForm": {
+    "createTitle": "Register new track",
+    "createDescription": "New tracks start as planned until they are opened to students.",
+    "editTitle": "Edit track",
+    "program": "Program",
+    "name": "Track name",
+    "code": "Track code",
+    "codeHint": "Lower-case, unique within the program, e.g. big_data.",
+    "description": "Description",
+    "descriptionHint": "Optional, one line shown under the track name.",
+    "status": "Status",
+    "create": "Register track"
+  },
+  "toast": {
+    "programCreated": "Program {{name}} was created.",
+    "programUpdated": "Program {{name}} was updated.",
+    "trackCreated": "Track {{name}} was registered.",
+    "trackUpdated": "Track {{name}} was updated."
+  }
+}

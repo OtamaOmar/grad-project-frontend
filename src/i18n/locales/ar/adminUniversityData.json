@@ -1,0 +1,239 @@
+{
+  "eyebrow": ["سجل البيانات المرجعية", "إدارة بيانات الجامعة"],
+  "description": "إدارة استيراد البيانات المرجعية من المسجل المركزي ونظام معلومات الطلاب. راجع سجلات الاستيعاب وتحقق من قوائم الهويات الأساسية.",
+  "actions": {
+    "auditLog": "سجل تدقيق الإصدارات",
+    "ingest": "بدء استيعاب لقطة"
+  },
+  "stats": {
+    "year": "العام الأكاديمي النشط",
+    "yearValue": "العام {{years}}",
+    "yearHint": "فصل التخطيط: {{term}} ({{status}})",
+    "faculty": "قائمة هيئة التدريس الموثقة",
+    "facultyHint": "{{total}} صفًا في القائمة الحالية",
+    "active": "نشط",
+    "flagged": "{{value}} مُعلَّم",
+    "records": "سجلات الطلاب المستوعبة",
+    "parsed": "سجل",
+    "recordsHint": "{{students}} طالبًا مختلفًا",
+    "lock": "حالة البيانات والقفل",
+    "lockedHint": "مقفلة ضد {{scope}} منذ {{date}}",
+    "unlockedHint": "مفتوحة للقطات الجديدة"
+  },
+  "lockState": {
+    "open": "مفتوحة",
+    "pre_forecast_freeze": "تجميد ما قبل التنبؤ",
+    "frozen": "مجمدة"
+  },
+  "lockScope": {
+    "unverified_writes": "الكتابات غير الموثقة",
+    "all_writes": "كل الكتابات"
+  },
+  "term": {
+    "label": "{{type}} {{year}}",
+    "fallback": "الفصل رقم {{id}}",
+    "type": { "fall": "خريف", "spring": "ربيع", "summer": "صيف" },
+    "status": {
+      "draft": "مسودة",
+      "upcoming": "قادم",
+      "active": "نشط",
+      "closed": "مغلق"
+    }
+  },
+  "tabs": {
+    "label": "أقسام بيانات الجامعة",
+    "faculty": "قائمة هيئة التدريس",
+    "registrations": "استيراد التسجيلات",
+    "snapshots": "سجل تدقيق الإصدارات"
+  },
+  "filters": {
+    "search": {
+      "faculty": "ابحث برمز الموظف أو الاسم…",
+      "registrations": "ابحث برقم الطالب أو رمز المقرر…",
+      "snapshots": "ابحث بالإصدار أو اسم الملف…"
+    },
+    "status": "الحالة",
+    "allStatuses": "كل الحالات",
+    "department": "القسم",
+    "allDepartments": "كل الأقسام",
+    "flag": "علامة التحقق",
+    "allFlags": "كل علامات التحقق",
+    "flagged": "السجلات",
+    "allRecords": "كل السجلات",
+    "flaggedOnly": "المُعلَّمة فقط",
+    "acceptedOnly": "المقبولة فقط",
+    "kind": "نوع اللقطة",
+    "allKinds": "كل الأنواع"
+  },
+  "snapshot": {
+    "source": "المصدر: {{source}}",
+    "file": "الملف:",
+    "timestamp": "التوقيت:",
+    "accepted": "مقبول",
+    "flagged": "مُعلَّم",
+    "none": "لم تُستوعب أي لقطة بعد."
+  },
+  "source": {
+    "hr_academic_affairs": "الموارد البشرية المركزية والشؤون الأكاديمية",
+    "registrar_sis": "لقطة قائمة نظام المسجل"
+  },
+  "kind": {
+    "faculty_roster": "قائمة هيئة التدريس",
+    "registration": "استيراد التسجيلات"
+  },
+  "department": {
+    "computer_science": "علوم الحاسب",
+    "ai_data": "الذكاء الاصطناعي والبيانات",
+    "basic_sciences": "العلوم الأساسية",
+    "humanities": "العلوم الإنسانية"
+  },
+  "rank": {
+    "full_professor": "أستاذ",
+    "associate_professor": "أستاذ مشارك",
+    "assistant_professor": "أستاذ مساعد",
+    "lecturer": "مدرس",
+    "assistant_lecturer": "مدرس مساعد",
+    "teaching_assistant": "معيد"
+  },
+  "facultyStatus": {
+    "verified_active": "موثق ونشط",
+    "quota_flag": "علامة حصة",
+    "missing_rank": "الدرجة غير موجودة",
+    "inactive": "غير نشط"
+  },
+  "flagReason": {
+    "dual_department_quota": "تعيين مزدوج في قسمين يحتاج إلى تأكيد حصة مجلس الجامعة.",
+    "rank_not_in_hr": "الدرجة العلمية غير موجودة في ملف الموارد البشرية.",
+    "appointment_ended": "انتهى التعيين؛ لا ينبغي أن يدرّس هذا الحساب في هذا الفصل."
+  },
+  "appointment": {
+    "primary_appointment": "تعيين أساسي",
+    "tenure_track": "مسار التثبيت",
+    "ta_pool": "مجموعة المعيدين المتفرغين",
+    "none": "لا توجد ملاحظة"
+  },
+  "faculty": {
+    "title": "استيراد قائمة هيئة التدريس",
+    "split": "{{primary}} ({{primaryShare}}) / {{secondary}} ({{secondaryShare}})",
+    "noFlag": "— لا شيء ({{note}})",
+    "inspect": "فحص",
+    "resolve": "معالجة",
+    "inspectLabel": "فحص {{name}}",
+    "resolveLabel": "معالجة علامة {{name}}",
+    "note": "لا يمكن تعديل حصص التعيين المزدوج هنا؛ قدّم طلب موافقة إلى الشؤون الأكاديمية.",
+    "columns": {
+      "id": "رقم عضو هيئة التدريس",
+      "name": "الاسم",
+      "department": "القسم",
+      "rank": "الدرجة العلمية",
+      "status": "الحالة",
+      "flag": "سبب العلامة",
+      "action": "الإجراء"
+    }
+  },
+  "facultyDetail": {
+    "title": "سجل عضو هيئة التدريس",
+    "resolveHint": "عالج ذلك في المصدر (الموارد البشرية / الشؤون الأكاديمية)، ثم استوعب لقطة قائمة جديدة.",
+    "primaryShare": "الحصة الأساسية",
+    "secondary": "القسم الثانوي",
+    "appointment": "التعيين",
+    "account": "الحساب المرتبط",
+    "noAccount": "لا يوجد حساب في النظام مرتبط بهذا الصف.",
+    "snapshot": "لقطة المصدر"
+  },
+  "program": {
+    "CS": "علوم الحاسب",
+    "AI": "الذكاء الاصطناعي",
+    "BMD": "المعلوماتية الطبية الحيوية",
+    "CSEC": "الأمن السيبراني"
+  },
+  "fileStatus": {
+    "passed": "ناجح",
+    "failed": "راسب",
+    "withdrawn": "منسحب",
+    "incomplete": "غير مكتمل",
+    "in_progress": "قيد الدراسة"
+  },
+  "attemptState": {
+    "passed": "ناجح",
+    "failed": "راسب",
+    "withdrawn": "منسحب",
+    "unresolved": "غير محسوم",
+    "in_progress": "قيد الدراسة"
+  },
+  "validationFlag": {
+    "consistent": "متسق",
+    "label_mismatch": "الملف يقول ناجح والنتيجة المخزنة لا",
+    "unresolved_result": "النتيجة لم تُحسم بعد",
+    "prerequisite_not_met": "المتطلب السابق لم يُستوفَ وقتها"
+  },
+  "flagExplain": {
+    "label_mismatch": "ملف المسجل يقول «{{file}}» لكن المحاولة المخزنة «{{stored}}». تعامل فحوص الأهلية المقرر على أنه غير مجتاز حتى يصحح المسجل المصدر.",
+    "unresolved_result": "الملف يذكر «{{file}}» ولا توجد نتيجة نهائية مخزنة بعد. تُحتسب المحاولة غير محسومة.",
+    "prerequisite_not_met": "لم تُجتز أي مجموعة متطلبات في فصل سابق. الناقص: {{codes}}."
+  },
+  "registrations": {
+    "title": "استيراد التسجيلات",
+    "credits": "{{value}} ساعة",
+    "missing": "الناقص: {{codes}}",
+    "mismatch": "الملف: {{file}} · المخزن: {{stored}} ({{letter}})",
+    "audit": "سجل التدقيق",
+    "compare": "مقارنة السجلات",
+    "auditLabel": "سجل التدقيق لـ {{id}}، {{course}}",
+    "compareLabel": "مقارنة سجلات {{id}}، {{course}}",
+    "hash": "بصمة اللقطة:",
+    "columns": {
+      "student": "رقم الطالب",
+      "cohort": "سنة الدفعة",
+      "program": "البرنامج المعلن",
+      "credits": "الساعات المكتسبة",
+      "course": "سجل المقرر",
+      "flag": "علامة التحقق",
+      "action": "تفاصيل التدقيق"
+    }
+  },
+  "registrationDetail": {
+    "title": "سجل التدقيق",
+    "compareTitle": "مقارنة السجلات",
+    "student": "الطالب",
+    "discrepancy": "تفاصيل التعارض",
+    "fileSays": "ملف المسجل",
+    "stored": "النتيجة المخزنة",
+    "attempts_zero": "لا محاولات لهذا المقرر",
+    "attempts_one": "محاولة واحدة لهذا المقرر",
+    "attempts_two": "محاولتان لهذا المقرر",
+    "attempts_few": "{{value}} محاولات لهذا المقرر",
+    "attempts_many": "{{value}} محاولة لهذا المقرر",
+    "attempts_other": "{{value}} محاولة لهذا المقرر"
+  },
+  "snapshots": {
+    "title": "سجل تدقيق الإصدارات",
+    "subtitle": "كل لقطة مستوعبة. يصبح الإصدار الجديد هو الحالي لنوعه، وتحتفظ الإصدارات الأقدم بأعدادها المجمدة.",
+    "current": "الحالي",
+    "pending": "جارٍ العد…",
+    "columns": {
+      "version": "الإصدار",
+      "kind": "النوع",
+      "file": "الملف والمصدر",
+      "imported": "تاريخ الاستيراد",
+      "counts": "مقبول / مُعلَّم",
+      "hash": "البصمة"
+    }
+  },
+  "snapshotForm": {
+    "title": "بدء استيعاب لقطة",
+    "description": "سجّل ملف تصدير جديدًا من المسجل أو الموارد البشرية. يصبح الإصدار الحالي لنوعه.",
+    "lockNote": "البيانات مقفلة ضد الكتابات غير الموثقة. تُسجَّل اللقطات الجديدة ويُتحقق منها قبل استخدامها.",
+    "kind": "نوع اللقطة",
+    "version": "تسمية الإصدار",
+    "versionHint": "فريدة لكل نوع، مثل AY2027_SPRING. تُحفظ بأحرف كبيرة.",
+    "file": "اسم الملف",
+    "fileHint": "ملف التصدير كما ورد من النظام المصدر.",
+    "submit": "استيعاب اللقطة"
+  },
+  "toast": {
+    "snapshotCreated": "أصبحت اللقطة {{label}} هي الحالية."
+  },
+  "policyTitle": "سياسة المزامنة الإدارية",
+  "policyBody": "يجب إجراء تغييرات درجات الطلاب أو حصص هيئة التدريس في نظام المسجل المركزي. تحتفظ هذه البوابة بلقطات ثابتة لضمان سلامة تدقيق التنبؤات، ولا يُسمح بتعديل الدرجات محليًا أو تجاوزها."
+}

@@ -1,0 +1,149 @@
+{
+  "eyebrow": ["Reference data", "Gap register"],
+  "description": "Catalog ambiguities and unconfirmed rules awaiting an official department or bylaw decision.",
+  "unresolved_one": "{{value}} unresolved gap",
+  "unresolved_other": "{{value}} unresolved gaps",
+  "lastUpdated": "Last updated {{date}}",
+  "record": "Record gap",
+  "policyTitle": "Zero-synthesis directive",
+  "policyBody": "The system never guesses or defaults a missing value. A gap stays open until a confirmed decision is recorded; the actual fix is a data change in the owning table.",
+  "stats": {
+    "open": "Open gaps",
+    "openHint": "{{total}} recorded in total",
+    "high": "High severity",
+    "highHint": "{{medium}} medium, {{low}} low still open",
+    "cohorts": "Affected cohorts",
+    "cohortsHint": "Bylaws with at least one open gap",
+    "linked": "Linked import issues",
+    "linkedHint": "Load-report rows on open gaps · {{resolved}} gaps resolved"
+  },
+  "register": "Gap register",
+  "registerBadge": "Audit trail",
+  "empty": "No data gaps recorded yet.",
+  "failClosed": "No fallback values are synthesized. Rules with open gaps fail closed.",
+  "openDetail": "Open {{code}}",
+  "filters": {
+    "search": "Search gaps by code, description or source…",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "category": "Category",
+    "allCategories": "All categories",
+    "severity": "Severity",
+    "allSeverities": "All severities"
+  },
+  "columns": {
+    "gap": "Gap",
+    "affects": "Affects",
+    "severity": "Severity",
+    "issues": "Import issues",
+    "updated": "Updated",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "status": {
+    "open": "Open",
+    "resolved": "Resolved"
+  },
+  "severity": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "issueSeverity": {
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "scope": {
+    "old_cs": "Old bylaw (2019)",
+    "bylaw_2025": "2025 bylaw"
+  },
+  "scopeShort": {
+    "old_cs": "2019",
+    "bylaw_2025": "2025"
+  },
+  "categories": {
+    "class_size": "Official class size",
+    "course_components": "Course components",
+    "credit_cap": "Credit caps",
+    "enrollment": "Enrollment records",
+    "equivalence": "Equivalence mappings",
+    "registration_cap": "Registration caps",
+    "retake_policy": "Retake policy",
+    "standing": "Standing criteria",
+    "study_plan": "Study plans"
+  },
+  "entities": {
+    "bylaw": "Bylaw",
+    "standing_band": "Standing band",
+    "credit_limit": "Credit limit",
+    "grade_scale": "Grade scale",
+    "grade_scale_entry": "Grade scale entry",
+    "course": "Course",
+    "course_component": "Course component",
+    "requisite": "Requisite",
+    "course_equivalence": "Course equivalence",
+    "plan_template": "Plan template",
+    "plan_slot": "Plan slot",
+    "elective_pool": "Elective pool",
+    "elective_pool_course": "Elective pool course",
+    "academic_term": "Academic term",
+    "enrollment": "Enrollment"
+  },
+  "protocol": {
+    "title": "Resolution protocol",
+    "subtitle": "Resolving a gap needs a confirmed decision from the bylaw document or the department, recorded in the gap's notes.",
+    "noFallbacks": {
+      "title": "No heuristic fallbacks",
+      "body": "If a class size, credit cap or prerequisite is not stated by the bylaw, the system does not substitute historical medians or estimates."
+    },
+    "failClosed": {
+      "title": "Fail-closed protection",
+      "body": "Students whose progress depends on an open rule are shown as unresolved cases instead of being given a guessed answer."
+    }
+  },
+  "byCategory": {
+    "title": "Gaps by category",
+    "subtitle": "Open and resolved gaps per category",
+    "counts": "{{open}} open · {{resolved}} resolved"
+  },
+  "detail": {
+    "title": "Data gap",
+    "entity": "Affected table",
+    "source": "Source reference",
+    "created": "Recorded",
+    "updated": "Last updated",
+    "linkedIssues": "Linked import issues",
+    "noIssuesTitle": "No linked import issues",
+    "noIssuesBody": "No load-report row points at this gap.",
+    "issueRow": "Row {{row}}",
+    "decisionTitle": "Decision",
+    "notes": "Confirmed decision / notes",
+    "notesHint": "Required to resolve: cite the decision and where it was confirmed.",
+    "notesRequired": "Record the confirmed decision before resolving.",
+    "save": "Save changes",
+    "resolve": "Mark resolved",
+    "reopen": "Reopen gap"
+  },
+  "form": {
+    "createTitle": "Record a data gap",
+    "createDescription": "Describe the missing or ambiguous rule. Do not enter a guessed value.",
+    "category": "Category",
+    "entity": "Affected table",
+    "description": "Description",
+    "descriptionHint": "What is missing or ambiguous, and who it affects.",
+    "severity": "Severity",
+    "sourceReference": "Source reference",
+    "sourceReferenceHint": "E.g. 2025 bylaw, Art. 10.",
+    "bylawScope": "Affected bylaws",
+    "notes": "Notes",
+    "notesHint": "Optional context for whoever resolves it.",
+    "create": "Record gap"
+  },
+  "toast": {
+    "created": "{{code}} was recorded.",
+    "updated": "{{code}} was updated.",
+    "resolved": "{{code}} was resolved.",
+    "reopened": "{{code}} was reopened."
+  }
+}
