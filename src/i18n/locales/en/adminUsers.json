@@ -1,0 +1,69 @@
+{
+  "eyebrow": ["Identity & governance registry", "Access policy"],
+  "description": "Manage system access roles, departmental identities, and account status. Passwords are never displayed.",
+  "export": "Export roster",
+  "provision": "Provision identity",
+  "stats": {
+    "totalActive": "Total active users",
+    "totalActiveHint": "{{total}} accounts in total",
+    "students": "Students",
+    "studentsHint": "{{count}} on the 2025 bylaw",
+    "advisors": "Faculty & advisors",
+    "advisorsHint": "Advisory scope: both bylaws",
+    "coordinators": "Decision coordinators",
+    "coordinatorsHint": "{{count}} admins"
+  },
+  "filters": {
+    "search": "Search by name, username or ID…",
+    "role": "Role",
+    "allRoles": "All roles",
+    "status": "Status",
+    "allStatuses": "All statuses"
+  },
+  "columns": {
+    "user": "User & identifier",
+    "role": "System role",
+    "scope": "Bylaw affiliation",
+    "status": "Account status",
+    "lastLogin": "Last sign-in",
+    "actions": "Actions"
+  },
+  "scope": {
+    "old_cs": "Old bylaw (2019)",
+    "bylaw_2025": "2025 bylaw",
+    "both": "Both bylaws",
+    "systemwide": "Systemwide"
+  },
+  "never": "Never",
+  "rowActions": {
+    "edit": "Edit details",
+    "deactivate": "Deactivate",
+    "activate": "Reactivate"
+  },
+  "form": {
+    "createTitle": "Provision staff identity",
+    "createDescription": "Students create their own accounts with their university ID. Use this for staff only.",
+    "editTitle": "Edit user",
+    "fullName": "Full name",
+    "username": "Username",
+    "usernameHint": "Lower-case, used to sign in.",
+    "role": "Role",
+    "staffCode": "Staff code",
+    "staffCodeHint": "Optional, e.g. FAC-104.",
+    "create": "Provision",
+    "save": "Save changes"
+  },
+  "confirm": {
+    "deactivateTitle": "Deactivate {{name}}?",
+    "deactivateBody": "They will not be able to sign in or approve decisions until reactivated.",
+    "deactivate": "Deactivate"
+  },
+  "toast": {
+    "created": "{{name}} was provisioned.",
+    "updated": "{{name}} was updated.",
+    "deactivated": "{{name}} was deactivated.",
+    "activated": "{{name}} was reactivated."
+  },
+  "policyTitle": "Departmental separation of concerns",
+  "policyBody": "Administrative accounts operate on reference data (bylaws, grade bounds, course catalog). Offering decisions remain with coordinator identities."
+}

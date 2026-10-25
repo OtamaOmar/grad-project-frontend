@@ -32,7 +32,7 @@ export function DataTable({
   };
 
   return (
-    <div className={cn("overflow-x-auto", className)}>
+    <div className={cn("relative overflow-x-auto", className)}>
       <table className="w-full border-collapse text-body-md" style={{ minWidth }}>
         {caption && <caption className="sr-only">{caption}</caption>}
         <thead>
