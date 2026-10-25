@@ -3,9 +3,9 @@ import { Link, useNavigate, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Alert, Button, Field, Input } from "@/components/ui";
 import { env } from "@/config/env";
-import { ROLE_HOME } from "@/config/roles";
 import { useAuth } from "@/hooks/useAuth";
 import { PATHS } from "@/routes/paths";
+import { postLoginPath } from "./redirect";
 
 const DEMO_USERNAMES = ["admin", "coordinator", "student", "advisor"];
 
@@ -38,10 +38,7 @@ export function LoginForm() {
     setSubmitting(true);
     try {
       const user = await signIn({ username: values.username.trim(), password: values.password });
-      const redirect = searchParams.get("redirect");
-      // Only follow same-app paths, never an absolute URL (open-redirect guard).
-      const safe = redirect?.startsWith("/") && !redirect.startsWith("//") ? redirect : null;
-      navigate(safe ?? ROLE_HOME[user.role], { replace: true });
+      navigate(postLoginPath(searchParams, user.role), { replace: true });
     } catch (error) {
       setFormError(error.status === 401 ? t("invalidCredentials") : error.message);
       setSubmitting(false);

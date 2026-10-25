@@ -1,6 +1,6 @@
-import { Navigate, Outlet, useLocation } from "react-router";
+import { Navigate, Outlet, useLocation, useSearchParams } from "react-router";
 import { PageLoader } from "@/components/common/PageLoader";
-import { ROLE_HOME } from "@/config/roles";
+import { postLoginPath } from "@/features/auth/redirect";
 import { useAuth } from "@/hooks/useAuth";
 import { AppLayout } from "@/layouts/AppLayout";
 import ForbiddenPage from "@/pages/errors/ForbiddenPage";
@@ -19,12 +19,18 @@ export function RequireAuth() {
   return <Outlet />;
 }
 
-/** Signed-out only (login, sign up, password reset): a signed-in user goes to their home. */
+/**
+ * Signed-out only (login, sign up, password reset). A signed-in user goes to ?redirect=
+ * or their home — the same target LoginForm uses, so the two never race.
+ */
 export function GuestOnly() {
   const { status, user } = useAuth();
+  const [searchParams] = useSearchParams();
 
   if (status === "loading") return <PageLoader fullScreen />;
-  if (status === "authenticated") return <Navigate to={ROLE_HOME[user.role]} replace />;
+  if (status === "authenticated") {
+    return <Navigate to={postLoginPath(searchParams, user.role)} replace />;
+  }
   return <Outlet />;
 }
 
