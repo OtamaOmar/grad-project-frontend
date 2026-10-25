@@ -1,4 +1,4 @@
-import { ApiError } from "@/services/ApiError";
+import { mockError } from "./errors";
 
 /**
  * In-browser mock API. Each file in ./handlers exports an array of
@@ -33,10 +33,6 @@ const delay = () =>
   new Promise((resolve) =>
     setTimeout(resolve, LATENCY_MS.min + Math.random() * (LATENCY_MS.max - LATENCY_MS.min)),
   );
-
-export function mockError(status, code, message, details) {
-  return new ApiError({ status, code, message, details });
-}
 
 export async function handleMockRequest(method, path, { query = {}, body } = {}) {
   await delay();
