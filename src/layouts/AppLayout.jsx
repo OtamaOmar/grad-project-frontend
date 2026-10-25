@@ -12,8 +12,9 @@ import { TopBar } from "./shell/TopBar";
  * Signed-in shell from the designs:
  *   sticky header (brand row + role tabs) │ page │ Explain panel (xl+, drawer below xl)
  * Below lg the tabs move into a start-side drawer.
+ * Renders the matched child route, or `children` when given (e.g. a 403 page).
  */
-export function AppLayout({ role, user, onSignOut, showExplain = true }) {
+export function AppLayout({ role, user, onSignOut, showExplain = true, children }) {
   const { t } = useTranslation(["shell", "explain"]);
   const items = NAVIGATION[role] ?? [];
   const headerRef = useRef(null);
@@ -68,9 +69,7 @@ export function AppLayout({ role, user, onSignOut, showExplain = true }) {
           tabIndex={-1}
           className="min-w-0 flex-1 px-4 py-6 focus:outline-none sm:px-6 lg:py-8"
         >
-          <div className="mx-auto max-w-[90rem]">
-            <Outlet />
-          </div>
+          <div className="mx-auto max-w-[90rem]">{children ?? <Outlet />}</div>
         </main>
 
         {showExplain && (
