@@ -1,0 +1,25 @@
+{
+  "title": "Explain",
+  "tag": {
+    "admin": "Invariants only",
+    "coordinator": "Cognitive audit",
+    "student": "Rules engine",
+    "advisor": "Rules engine"
+  },
+  "subtitle": "Stored rules & forecast rationale",
+  "scopeTitle": "Reasoning scope",
+  "scope": {
+    "admin": "Explains active curriculum rules, prerequisite validations, credit thresholds, and data integrity invariants without generating prescriptive academic decisions or student-level advice.",
+    "coordinator": "Explains stored rules and why a forecast number is what it is. It never decides whether to open a course or section.",
+    "student": "Explains curriculum prerequisites and offering logic from stored bylaw rules.",
+    "advisor": "Explains curriculum prerequisites and offering logic from stored bylaw rules."
+  },
+  "placeholder": "Ask about a stored rule",
+  "send": "Send question",
+  "thinking": "Writing explanation…",
+  "disclaimer": "Informational rationale only. Does not mandate any decision.",
+  "refused": "Could not answer",
+  "tooLong": "Questions are limited to {{max}} characters.",
+  "you": "You",
+  "assistant": "Explain"
+}
