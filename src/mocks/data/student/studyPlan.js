@@ -120,3 +120,11 @@ export function courseArea(course) {
   if (TRAINING_PROJECT_IDS.has(course.id)) return "training_project";
   return PREFIX_AREA[course.code.split(" ")[0]] ?? "general";
 }
+
+/** The student's plan slots in study order (bylaw-level stand-in for their plan_template). */
+export const planSlotsFor = (bylawId) =>
+  studyPlanSlots.filter((slot) => slot.bylaw_id === Number(bylawId));
+
+/** Ordinal of a (study_year, term_type) pair: year 1 fall = 0, year 1 spring = 1, … */
+export const planOrdinal = (studyYear, termType) =>
+  (studyYear - 1) * 2 + (termType === "spring" ? 1 : 0);
