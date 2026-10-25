@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+/* Theme tokens and dark mode are defined in feature/shared-ui-system. */
+@custom-variant dark (&:where(.dark, .dark *));
