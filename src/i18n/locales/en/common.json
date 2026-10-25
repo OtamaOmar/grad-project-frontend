@@ -42,7 +42,8 @@
     "noResults": "No results match your filters.",
     "error": "Something went wrong.",
     "saved": "Saved",
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "required": "This field is required."
   },
   "status": {
     "active": "Active",
