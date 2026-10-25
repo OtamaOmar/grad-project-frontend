@@ -1,0 +1,216 @@
+{
+  "eyebrow": ["Curriculum registry", "Course management"],
+  "description": "Canonical course catalog definitions and relational prerequisite trees across academic bylaws.",
+  "define": "Define course record",
+  "freeze": {
+    "enforced": "Catalog freeze enforced since {{date}}",
+    "open": "Catalog open for edits"
+  },
+  "bylaw": {
+    "short": { "old_cs": "Old", "bylaw_2025": "2025" },
+    "long": { "old_cs": "Old framework", "bylaw_2025": "2025 reform" }
+  },
+  "stats": {
+    "total": "Catalog courses",
+    "totalHint": "{{count}} active",
+    "withoutComponents": "Without weekly hours",
+    "withoutComponentsHint": "No lecture, tutorial or lab rows stored",
+    "requisiteRules": "Requisite rules",
+    "openGaps": "Open catalog gaps",
+    "openGapsHint": "Course, component and requisite data gaps",
+    "needsReview": "Review"
+  },
+  "directive": {
+    "title": "Bylaw separation directive",
+    "badge": "Schema constraint",
+    "body": "Course codes shared across transition cohorts are kept as distinct rows per bylaw, so prerequisites never cross between frameworks.",
+    "notice": "Old and 2025 courses stay in separate rows."
+  },
+  "filters": {
+    "search": "Search by code (e.g. CSCI 207) or title…",
+    "bylaw": "Bylaw",
+    "allBylaws": "All bylaws",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "components": "Components",
+    "allComponents": "All components",
+    "component": {
+      "lecture": "Has lecture",
+      "tutorial": "Has tutorial",
+      "lab": "Has lab",
+      "none": "No weekly hours"
+    }
+  },
+  "catalog": {
+    "title": "Course catalog",
+    "badge": "Master list",
+    "displaying_one": "Displaying {{value}} definition",
+    "displaying_other": "Displaying {{value}} definitions",
+    "reload": "Reload catalog",
+    "synced": "Catalog rows synchronized with {{reference}}"
+  },
+  "columns": {
+    "code": "Code",
+    "bylaw": "Bylaw",
+    "credits": "Credits",
+    "components": "Components",
+    "title": "Title",
+    "department": "Department",
+    "requisites": "Req. / Req. by",
+    "requisitesTitle": "Requires {{requires}} rules, required by {{requiredBy}}",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "components": {
+    "none": "No weekly hours",
+    "type": { "lecture": "Lecture", "tutorial": "Tutorial", "lab": "Lab" },
+    "typeLower": { "lecture": "lecture", "tutorial": "tutorial", "lab": "lab" }
+  },
+  "labKind": {
+    "computing": "Computing lab",
+    "physics_circuits": "Physics / circuits lab"
+  },
+  "department": {
+    "computer_science": "Computer Science",
+    "basic_sciences": "Basic Sciences",
+    "electrical_engineering": "Electrical Engineering",
+    "humanities": "Humanities",
+    "ai_data": "AI & Data",
+    "unknown": "Not mapped"
+  },
+  "flags": {
+    "counts_toward_degree": "Counts toward degree",
+    "counts_in_gpa": "Counts in GPA",
+    "counts_toward_registration_cap": "Counts toward credit cap",
+    "unstated": "Not stated",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "standing": {
+    "freshman": "Freshman standing",
+    "sophomore": "Sophomore standing",
+    "junior": "Junior standing",
+    "senior": "Senior standing",
+    "minCredits_one": "≥ {{value}} earned credit",
+    "minCredits_other": "≥ {{value}} earned credits"
+  },
+  "requisiteType": {
+    "course": "Course",
+    "standing": "Standing",
+    "placement": "Placement"
+  },
+  "requisiteTypeLong": {
+    "course": "Course (prerequisite)",
+    "standing": "Standing milestone",
+    "placement": "Placement"
+  },
+  "requisites": {
+    "title": "Stored prerequisite rules",
+    "badge": "Deterministic DAG edges",
+    "subtitle": "Same group = all required (AND); different groups = alternatives (OR).",
+    "append": "Append rule edge",
+    "empty": "No requisite rules for this filter.",
+    "unresolved": "Unresolved target",
+    "remove": "Remove {{name}} from {{course}}",
+    "columns": {
+      "course": "Course code",
+      "required": "Required course / condition",
+      "type": "Type",
+      "group": "Group",
+      "enforcement": "Enforced state"
+    },
+    "enforcement": { "hard": "Hard invariant" }
+  },
+  "rowActions": {
+    "label": "Actions for {{code}}",
+    "view": "View details",
+    "edit": "Edit course",
+    "addRequisite": "Add requisite",
+    "deactivate": "Deactivate",
+    "activate": "Reactivate"
+  },
+  "detail": {
+    "title": "Course details",
+    "edit": "Edit course",
+    "addRequisite": "Add requisite",
+    "updated": "Last updated",
+    "components": "Weekly components",
+    "totalHours_one": "{{value}} contact hour / week",
+    "totalHours_other": "{{value}} contact hours / week",
+    "hoursPerWeek_one": "{{value}} h / week",
+    "hoursPerWeek_other": "{{value}} h / week",
+    "noComponents": "No weekly components are stored for this course yet.",
+    "requisites": "Requisite groups",
+    "groupsExplain": "Every item inside a group is required (AND). Meeting any one group is enough (OR).",
+    "group": "Group {{number}}",
+    "groupShort": "group {{number}}",
+    "and": "AND",
+    "or": "OR",
+    "noRequisites": "No requisites",
+    "noRequisitesBody": "Students can register without prior courses or standing.",
+    "removeRequisite": "Remove requisite {{name}}",
+    "requiredBy": "Required by",
+    "requiredByNone": "No course lists this one as a requisite."
+  },
+  "form": {
+    "createTitle": "Define course record",
+    "createDescription": "A course belongs to exactly one bylaw. Shared codes get one row per bylaw.",
+    "editTitle": "Edit course",
+    "bylaw": "Bylaw",
+    "bylawImmutable": "The bylaw cannot change after creation.",
+    "code": "Course code",
+    "codeHint": "Unique within the bylaw, e.g. CSCI 207.",
+    "title": "Title",
+    "credits": "Credit hours",
+    "creditsInvalid": "Enter a whole number of 0 or more.",
+    "sourceReference": "Source reference",
+    "sourceReferenceHint": "Where this comes from, e.g. 2025 bylaw course table.",
+    "flags": "Counting rules",
+    "components": "Weekly components",
+    "componentsHint": "Tick each component the course has and enter its weekly contact hours.",
+    "weeklyHours": "Hours / week",
+    "weeklyHoursFor": "{{type}} hours per week",
+    "hoursInvalid": "Enter a whole number above 0.",
+    "labKind": "Lab kind",
+    "labKindUnstated": "Lab kind not stated",
+    "isActive": "Active in the catalog",
+    "create": "Create course",
+    "save": "Save changes"
+  },
+  "requisiteForm": {
+    "title": "Append rule edge",
+    "description": "Add a requisite to a course. The requirement must be in the same bylaw.",
+    "descriptionFor": "Add a requisite to {{code}}.",
+    "course": "Course",
+    "chooseCourse": "Choose a course…",
+    "type": "Requisite type",
+    "target": {
+      "course": "Required course",
+      "standing": "Required standing"
+    },
+    "chooseTarget": "Choose…",
+    "sameBylaw": "Only items from the course's bylaw are listed.",
+    "group": "Group",
+    "groupHint": "Same group = AND. A new group adds an alternative path (OR).",
+    "existingGroup_one": "Group {{number}} ({{count}} item, AND)",
+    "existingGroup_other": "Group {{number}} ({{count}} items, AND)",
+    "newGroup": "New group {{number}} (OR)",
+    "firstGroup": "Group 1",
+    "submit": "Append rule"
+  },
+  "confirm": {
+    "removeTitle": "Remove {{name}}?",
+    "removeBody": "{{code}} will no longer require it. Forecasts and eligibility checks use the change immediately.",
+    "remove": "Remove requisite"
+  },
+  "toast": {
+    "created": "{{code}} was added to the catalog.",
+    "updated": "{{code}} was updated.",
+    "activated": "{{code}} was reactivated.",
+    "deactivated": "{{code}} was deactivated.",
+    "requisiteAdded": "Requisite added to {{code}}.",
+    "requisiteRemoved": "Requisite removed from {{code}}."
+  },
+  "policyTitle": "Role boundaries enforced",
+  "policyBody": "Reference data administrators manage catalog metadata only. Faculty workload and section scheduling happen in downstream operational modules."
+}

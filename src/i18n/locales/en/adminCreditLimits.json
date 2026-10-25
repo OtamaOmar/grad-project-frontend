@@ -1,0 +1,159 @@
+{
+  "eyebrow": ["Academic charter specifications", "Curriculum policy engine"],
+  "description": "Stored term credit maximums and minimums, with the CGPA bands they apply to, for each bylaw. Rules are evaluated in priority order; individual student limits are not edited here.",
+  "addRule": "Add rule",
+  "protocol": {
+    "title": "Registry invariant protocol",
+    "badge": "Statutory lock",
+    "before": "Credit rules are bound to the bylaw of each cohort. Values marked",
+    "after": "were never stated by the source article; they stay empty and are never filled with an assumed number."
+  },
+  "stats": {
+    "stated": "Stated rules",
+    "statedHint": "of {{total}} rules carry a stated value",
+    "bylaws": "Governing bylaws",
+    "bylawsHint": "Each keeps its own priority order",
+    "highest": "Highest credit cap",
+    "highestHint": "Largest stated maximum across bylaws",
+    "unstated": "Unstated bands",
+    "unstatedValue_one": "{{value}} band",
+    "unstatedValue_other": "{{value}} bands",
+    "actionRequired": "Action required: confirm with the source",
+    "noGaps": "Every rule has a stated value"
+  },
+  "gapAlert": {
+    "title": "Open data gap on credit limits",
+    "open": "Open data gaps"
+  },
+  "gap": {
+    "notStated": "Not stated",
+    "link": "Gap #{{id}}"
+  },
+  "scopeLabel": "Bylaw",
+  "legend": "Rule categories",
+  "tableCaption": "Credit-limit rules of the {{bylaw}}, in priority order",
+  "bylawNames": {
+    "old_cs": "Old bylaw",
+    "bylaw_2025": "2025 bylaw"
+  },
+  "columns": {
+    "priority": "Priority",
+    "who": "Who / term",
+    "cgpa": "CGPA band",
+    "maxCredits": "Maximum",
+    "minCredits": "Minimum",
+    "status": "Category / source",
+    "actions": "Actions"
+  },
+  "populations": {
+    "default": "All students",
+    "past_first_year": "Past the first year",
+    "first_semester": "First semester",
+    "graduating": "Graduating students",
+    "credits_remaining_below_minimum": "Remaining credits below the minimum"
+  },
+  "terms": {
+    "fall_spring": "Fall / spring",
+    "summer": "Summer"
+  },
+  "cgpa": {
+    "label": "CGPA",
+    "any": "Any CGPA",
+    "minInclusive": "{{value}} included",
+    "minExclusive": "{{value}} excluded",
+    "maxInclusive": "{{value}} included",
+    "maxExclusive": "{{value}} excluded"
+  },
+  "categories": {
+    "standard": "Standard limit",
+    "honor": "Honor ceiling",
+    "remedial": "Remedial cap",
+    "population": "Population rule",
+    "minimum_load": "Minimum load",
+    "unknown": "Pending source"
+  },
+  "floorWaived": "Floor waived",
+  "units": {
+    "creditsShort": "{{value}} CH"
+  },
+  "rowActions": {
+    "edit": "Edit rule",
+    "delete": "Delete rule",
+    "moveUp": "Move priority {{priority}} up",
+    "moveDown": "Move priority {{priority}} down"
+  },
+  "empty": {
+    "title": "No rules for this bylaw",
+    "body": "Add the credit-limit rules from the bylaw article, in the order they are evaluated.",
+    "noBylaws": "No bylaws are stored yet"
+  },
+  "footer": {
+    "order": "Lowest priority number wins among the rules that match a student.",
+    "rows": "Rows displayed: {{shown}} of {{total}}"
+  },
+  "chart": {
+    "eyebrow": "{{bylaw}} · fall/spring and summer",
+    "title": "Credit ceilings by standing",
+    "caption": "Maximum credits per rule, in priority order",
+    "priority": "P{{value}}",
+    "empty": "This bylaw has no maximum-credit rules.",
+    "note": "Bars show the stated maximum of each rule. A dashed bar is a band whose maximum the bylaw does not state; the forecast counts those students as having no known cap."
+  },
+  "authority": {
+    "eyebrow": "Role delegation guardrails",
+    "title": "Administrative authority boundaries",
+    "scopeTitle": "Department administrator scope",
+    "scopeBody": "Maintains the stored bylaw limits, their CGPA bands and evaluation order, with the source article for each rule.",
+    "prohibitedTitle": "Prohibited operations",
+    "prohibitedBody": "Changing an individual student's limit, granting exceptions, or filling an unstated value with an assumed number.",
+    "footer": "Reference data only",
+    "link": "View bylaws"
+  },
+  "form": {
+    "createTitle": "Add credit-limit rule",
+    "editTitle": "Edit priority {{priority}} · {{bylaw}}",
+    "description": "Copy the rule exactly as the bylaw article states it. Leave a value empty when the article does not state it.",
+    "bylaw": "Bylaw",
+    "priority": "Priority",
+    "priorityHint": "Must be unique within the bylaw. Lower is evaluated first.",
+    "termType": "Term type",
+    "population": "Applies to",
+    "cgpaBand": "CGPA band",
+    "minCgpa": "Lower CGPA bound",
+    "maxCgpa": "Upper CGPA bound",
+    "emptyNoBound": "Empty means no bound.",
+    "inclusive": "Bound is inclusive (equality matches)",
+    "maxCredits": "Maximum credits",
+    "maxCreditsHint": "Empty means the source does not state it. Never enter 0 for an unknown value.",
+    "minCredits": "Minimum credits",
+    "minCreditsHint": "Empty means this rule sets no floor.",
+    "unstatedNote": "With no maximum and no minimum, this rule is stored as \"not stated\" and flagged as a data gap.",
+    "floorWaivedNote": "With no minimum, this rule waives the fixed floor for students with fewer credits remaining.",
+    "sourceReference": "Source reference",
+    "sourceReferencePlaceholder": "e.g. 2025 bylaw, Art. 10",
+    "create": "Add rule",
+    "save": "Save changes"
+  },
+  "fieldErrors": {
+    "required": "This field is required.",
+    "invalid": "This value is not valid.",
+    "not_found": "This bylaw no longer exists.",
+    "taken": "Another rule of this bylaw already has this priority.",
+    "must_be_positive": "Enter a whole number of 1 or more.",
+    "must_be_zero_or_more": "Enter a whole number of zero or more.",
+    "between_0_and_4": "Enter a CGPA between 0 and 4.",
+    "must_exceed_min_cgpa": "The upper bound must be greater than the lower bound.",
+    "must_not_exceed_max_credits": "The minimum cannot exceed the maximum."
+  },
+  "toast": {
+    "created": "Rule {{priority}} was added to the {{bylaw}}.",
+    "updated": "Rule {{priority}} of the {{bylaw}} was updated.",
+    "deleted": "Rule {{priority}} was deleted.",
+    "reordered": "Priority {{from}} moved to {{to}}."
+  },
+  "confirm": {
+    "deleteTitle": "Delete rule {{priority}} of the {{bylaw}}?",
+    "deleteBody": "The remaining rules keep their priority numbers. Students matched by this rule fall through to the next matching rule.",
+    "delete": "Delete rule"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "eyebrow": ["Audit subsystem", "Reference state"],
+  "description": "Reference data integrity, catalog synchronizations, and data completeness audit.",
+  "syncState": "Last catalog sync {{date}}",
+  "listSeparator": ", ",
+  "bylaw": {
+    "old_cs": "Old bylaw",
+    "bylaw_2025": "2025 bylaw"
+  },
+  "stats": {
+    "users": "Users",
+    "usersHint": "Active across 4 roles: {{students}} students, {{advisors}} advisors, {{coordinators}} coordinators, {{admins}} admins",
+    "courses": "Courses",
+    "coursesPerBylaw": "{{bylaw}}: {{count}} active",
+    "openGaps": "Open gaps",
+    "highSeverity": "{{count}} high severity",
+    "openGapsHint": "Missing or ambiguous rules awaiting a confirmed decision",
+    "lastImport": "Last import",
+    "noImport": "None yet"
+  },
+  "gaps": {
+    "title": "Open gaps by category",
+    "subtitle": "Distribution of {{total}} open data gaps",
+    "total": "{{total}} total",
+    "count_one": "{{value}} gap",
+    "count_other": "{{value}} gaps",
+    "emptyTitle": "No open gaps",
+    "emptyBody": "Every recorded gap has a confirmed decision.",
+    "more_one": "View {{value}} more category",
+    "more_other": "View {{value}} more categories"
+  },
+  "policy": "Invariant policy: administrative modules do not formulate enrollment decisions, capacity overrides, or heuristics for open items.",
+  "status": {
+    "title": "Reference data status",
+    "subtitle": "Master tables, their source authority and validation state",
+    "auditLedger": "Audit ledger",
+    "noImport": "Maintained in the app",
+    "footer_one": "Displaying {{value}} master data domain",
+    "footer_other": "Displaying {{value}} master data domains",
+    "columns": {
+      "domain": "Domain",
+      "items": "Managed items",
+      "authority": "Source authority",
+      "state": "Validation state"
+    }
+  },
+  "domains": {
+    "bylaws": "Degree bylaws",
+    "grade_scales": "Grade scales",
+    "credit_limits": "Credit ceilings",
+    "courses": "Course catalog",
+    "study_plans": "Study plans",
+    "terms": "Term calendar"
+  },
+  "authority": {
+    "bylaw_document": "Bylaw document",
+    "cs_department": "CS department",
+    "registrar": "Registrar"
+  },
+  "items": {
+    "bylaws": "{{active}} active of {{total}} ({{codes}})",
+    "gradeScales": "{{total}} scales, {{verified}} verified against the PDF",
+    "creditLimits": "{{total}} credit-limit rows ({{split}})",
+    "courses": "{{active}} active of {{total}} ({{split}})",
+    "studyPlans": "{{templates}} plan templates ({{split}})",
+    "terms": "{{open}} open of {{total}} terms"
+  },
+  "state": {
+    "validated": "Validated",
+    "unverified": "Unverified",
+    "published": "Published",
+    "open_gaps_one": "{{value}} open gap",
+    "open_gaps_other": "{{value}} open gaps"
+  }
+}

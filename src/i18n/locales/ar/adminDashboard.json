@@ -1,0 +1,91 @@
+{
+  "eyebrow": ["نظام التدقيق", "حالة البيانات المرجعية"],
+  "description": "سلامة البيانات المرجعية ومزامنة الكتالوج وتدقيق اكتمال البيانات.",
+  "syncState": "آخر مزامنة للكتالوج {{date}}",
+  "listSeparator": "، ",
+  "bylaw": {
+    "old_cs": "اللائحة القديمة",
+    "bylaw_2025": "لائحة 2025"
+  },
+  "stats": {
+    "users": "المستخدمون",
+    "usersHint": "نشطون عبر 4 أدوار: {{students}} طالب، {{advisors}} مرشد، {{coordinators}} منسق، {{admins}} مسؤول",
+    "courses": "المقررات",
+    "coursesPerBylaw": "{{bylaw}}: {{count}} نشط",
+    "openGaps": "الفجوات المفتوحة",
+    "highSeverity": "{{count}} عالية الخطورة",
+    "openGapsHint": "قواعد ناقصة أو غامضة بانتظار قرار مؤكد",
+    "lastImport": "آخر استيراد",
+    "noImport": "لا يوجد بعد"
+  },
+  "gaps": {
+    "title": "الفجوات المفتوحة حسب الفئة",
+    "subtitle": "توزيع {{total}} من فجوات البيانات المفتوحة",
+    "total": "الإجمالي {{total}}",
+    "count_zero": "لا فجوات",
+    "count_one": "فجوة واحدة",
+    "count_two": "فجوتان",
+    "count_few": "{{value}} فجوات",
+    "count_many": "{{value}} فجوة",
+    "count_other": "{{value}} فجوة",
+    "emptyTitle": "لا توجد فجوات مفتوحة",
+    "emptyBody": "لكل فجوة مسجلة قرار مؤكد.",
+    "more_zero": "لا توجد فئات أخرى",
+    "more_one": "عرض فئة أخرى",
+    "more_two": "عرض فئتين أخريين",
+    "more_few": "عرض {{value}} فئات أخرى",
+    "more_many": "عرض {{value}} فئة أخرى",
+    "more_other": "عرض {{value}} فئة أخرى"
+  },
+  "policy": "سياسة الثوابت: لا تُصدر الوحدات الإدارية قرارات تسجيل أو تجاوزات للسعة أو تقديرات اجتهادية للبنود المفتوحة.",
+  "status": {
+    "title": "حالة البيانات المرجعية",
+    "subtitle": "الجداول الرئيسية وجهة اعتمادها وحالة التحقق منها",
+    "auditLedger": "سجل التدقيق",
+    "noImport": "تُدار داخل النظام",
+    "footer_zero": "لا توجد مجالات بيانات",
+    "footer_one": "عرض مجال بيانات رئيسي واحد",
+    "footer_two": "عرض مجالين للبيانات الرئيسية",
+    "footer_few": "عرض {{value}} مجالات للبيانات الرئيسية",
+    "footer_many": "عرض {{value}} مجالًا للبيانات الرئيسية",
+    "footer_other": "عرض {{value}} مجال للبيانات الرئيسية",
+    "columns": {
+      "domain": "المجال",
+      "items": "العناصر المُدارة",
+      "authority": "جهة الاعتماد",
+      "state": "حالة التحقق"
+    }
+  },
+  "domains": {
+    "bylaws": "اللوائح الدراسية",
+    "grade_scales": "سلالم التقديرات",
+    "credit_limits": "حدود الساعات المعتمدة",
+    "courses": "كتالوج المقررات",
+    "study_plans": "الخطط الدراسية",
+    "terms": "تقويم الفصول"
+  },
+  "authority": {
+    "bylaw_document": "وثيقة اللائحة",
+    "cs_department": "قسم علوم الحاسب",
+    "registrar": "شؤون التسجيل"
+  },
+  "items": {
+    "bylaws": "{{active}} نشطة من {{total}} ({{codes}})",
+    "gradeScales": "{{total}} سلالم، {{verified}} منها مطابقة لملف PDF",
+    "creditLimits": "{{total}} صفوف لحدود الساعات ({{split}})",
+    "courses": "{{active}} نشط من {{total}} ({{split}})",
+    "studyPlans": "{{templates}} قوالب خطط ({{split}})",
+    "terms": "{{open}} مفتوحة من {{total}} فصول"
+  },
+  "state": {
+    "validated": "تم التحقق",
+    "unverified": "غير محقق",
+    "published": "منشور",
+    "open_gaps_zero": "لا فجوات مفتوحة",
+    "open_gaps_one": "فجوة مفتوحة واحدة",
+    "open_gaps_two": "فجوتان مفتوحتان",
+    "open_gaps_few": "{{value}} فجوات مفتوحة",
+    "open_gaps_many": "{{value}} فجوة مفتوحة",
+    "open_gaps_other": "{{value}} فجوة مفتوحة"
+  }
+}

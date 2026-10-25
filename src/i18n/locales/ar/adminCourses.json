@@ -1,0 +1,236 @@
+{
+  "eyebrow": ["سجل المناهج", "إدارة المقررات"],
+  "description": "تعريفات كتالوج المقررات المعتمدة وأشجار المتطلبات السابقة عبر اللوائح الأكاديمية.",
+  "define": "تعريف سجل مقرر",
+  "freeze": {
+    "enforced": "تجميد الكتالوج مطبّق منذ {{date}}",
+    "open": "الكتالوج مفتوح للتعديل"
+  },
+  "bylaw": {
+    "short": { "old_cs": "القديمة", "bylaw_2025": "2025" },
+    "long": { "old_cs": "اللائحة القديمة", "bylaw_2025": "لائحة 2025" }
+  },
+  "stats": {
+    "total": "مقررات الكتالوج",
+    "totalHint": "{{count}} نشطة",
+    "withoutComponents": "بلا ساعات أسبوعية",
+    "withoutComponentsHint": "لا توجد صفوف محاضرة أو تمارين أو معمل",
+    "requisiteRules": "قواعد المتطلبات",
+    "openGaps": "فجوات الكتالوج المفتوحة",
+    "openGapsHint": "فجوات بيانات المقررات والمكونات والمتطلبات",
+    "needsReview": "مراجعة"
+  },
+  "directive": {
+    "title": "توجيه فصل اللوائح",
+    "badge": "قيد في المخطط",
+    "body": "رموز المقررات المشتركة بين دفعات الانتقال تُحفظ صفوفًا مستقلة لكل لائحة، فلا تنتقل المتطلبات السابقة بين الإطارين.",
+    "notice": "مقررات اللائحة القديمة ولائحة 2025 تبقى في صفوف منفصلة."
+  },
+  "filters": {
+    "search": "ابحث بالرمز (مثل CSCI 207) أو العنوان…",
+    "bylaw": "اللائحة",
+    "allBylaws": "كل اللوائح",
+    "status": "الحالة",
+    "allStatuses": "كل الحالات",
+    "components": "المكونات",
+    "allComponents": "كل المكونات",
+    "component": {
+      "lecture": "به محاضرة",
+      "tutorial": "به تمارين",
+      "lab": "به معمل",
+      "none": "بلا ساعات أسبوعية"
+    }
+  },
+  "catalog": {
+    "title": "كتالوج المقررات",
+    "badge": "القائمة الرئيسية",
+    "displaying_zero": "لا توجد تعريفات",
+    "displaying_one": "تعريف واحد معروض",
+    "displaying_two": "تعريفان معروضان",
+    "displaying_few": "{{value}} تعريفات معروضة",
+    "displaying_many": "{{value}} تعريفًا معروضًا",
+    "displaying_other": "{{value}} تعريف معروض",
+    "reload": "إعادة تحميل الكتالوج",
+    "synced": "صفوف الكتالوج متزامنة مع {{reference}}"
+  },
+  "columns": {
+    "code": "الرمز",
+    "bylaw": "اللائحة",
+    "credits": "الساعات المعتمدة",
+    "components": "المكونات",
+    "title": "العنوان",
+    "department": "القسم",
+    "requisites": "يتطلب / مطلوب لـ",
+    "requisitesTitle": "يتطلب {{requires}} قاعدة، ومطلوب لـ {{requiredBy}}",
+    "status": "الحالة",
+    "actions": "الإجراءات"
+  },
+  "components": {
+    "none": "بلا ساعات أسبوعية",
+    "type": { "lecture": "محاضرة", "tutorial": "تمارين", "lab": "معمل" },
+    "typeLower": { "lecture": "محاضرة", "tutorial": "تمارين", "lab": "معمل" }
+  },
+  "labKind": {
+    "computing": "معمل حاسبات",
+    "physics_circuits": "معمل فيزياء / دوائر"
+  },
+  "department": {
+    "computer_science": "علوم الحاسب",
+    "basic_sciences": "العلوم الأساسية",
+    "electrical_engineering": "الهندسة الكهربائية",
+    "humanities": "العلوم الإنسانية",
+    "ai_data": "الذكاء الاصطناعي والبيانات",
+    "unknown": "غير محدد"
+  },
+  "flags": {
+    "counts_toward_degree": "يُحتسب في الدرجة العلمية",
+    "counts_in_gpa": "يُحتسب في المعدل",
+    "counts_toward_registration_cap": "يُحتسب في حد الساعات",
+    "unstated": "غير مذكور",
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "standing": {
+    "freshman": "مستوى السنة الأولى",
+    "sophomore": "مستوى السنة الثانية",
+    "junior": "مستوى السنة الثالثة",
+    "senior": "مستوى السنة الرابعة",
+    "minCredits_zero": "≥ {{value}} ساعة مكتسبة",
+    "minCredits_one": "≥ ساعة مكتسبة واحدة",
+    "minCredits_two": "≥ ساعتين مكتسبتين",
+    "minCredits_few": "≥ {{value}} ساعات مكتسبة",
+    "minCredits_many": "≥ {{value}} ساعة مكتسبة",
+    "minCredits_other": "≥ {{value}} ساعة مكتسبة"
+  },
+  "requisiteType": {
+    "course": "مقرر",
+    "standing": "مستوى",
+    "placement": "تحديد مستوى"
+  },
+  "requisiteTypeLong": {
+    "course": "مقرر (متطلب سابق)",
+    "standing": "مرحلة المستوى الدراسي",
+    "placement": "اختبار تحديد مستوى"
+  },
+  "requisites": {
+    "title": "قواعد المتطلبات المخزنة",
+    "badge": "حواف مخطط حتمية",
+    "subtitle": "المجموعة نفسها = كلها مطلوبة (و)؛ المجموعات المختلفة = بدائل (أو).",
+    "append": "إضافة حافة قاعدة",
+    "empty": "لا توجد قواعد متطلبات لهذا الفلتر.",
+    "unresolved": "هدف غير محدد",
+    "remove": "إزالة {{name}} من {{course}}",
+    "columns": {
+      "course": "رمز المقرر",
+      "required": "المقرر أو الشرط المطلوب",
+      "type": "النوع",
+      "group": "المجموعة",
+      "enforcement": "حالة التطبيق"
+    },
+    "enforcement": { "hard": "قيد إلزامي" }
+  },
+  "rowActions": {
+    "label": "إجراءات {{code}}",
+    "view": "عرض التفاصيل",
+    "edit": "تعديل المقرر",
+    "addRequisite": "إضافة متطلب",
+    "deactivate": "إيقاف",
+    "activate": "إعادة التفعيل"
+  },
+  "detail": {
+    "title": "تفاصيل المقرر",
+    "edit": "تعديل المقرر",
+    "addRequisite": "إضافة متطلب",
+    "updated": "آخر تحديث",
+    "components": "المكونات الأسبوعية",
+    "totalHours_zero": "{{value}} ساعة اتصال / أسبوع",
+    "totalHours_one": "ساعة اتصال واحدة / أسبوع",
+    "totalHours_two": "ساعتا اتصال / أسبوع",
+    "totalHours_few": "{{value}} ساعات اتصال / أسبوع",
+    "totalHours_many": "{{value}} ساعة اتصال / أسبوع",
+    "totalHours_other": "{{value}} ساعة اتصال / أسبوع",
+    "hoursPerWeek_zero": "{{value}} س / أسبوع",
+    "hoursPerWeek_one": "{{value}} س / أسبوع",
+    "hoursPerWeek_two": "{{value}} س / أسبوع",
+    "hoursPerWeek_few": "{{value}} س / أسبوع",
+    "hoursPerWeek_many": "{{value}} س / أسبوع",
+    "hoursPerWeek_other": "{{value}} س / أسبوع",
+    "noComponents": "لم تُخزَّن مكونات أسبوعية لهذا المقرر بعد.",
+    "requisites": "مجموعات المتطلبات",
+    "groupsExplain": "كل عنصر داخل المجموعة مطلوب (و). ويكفي استيفاء أي مجموعة واحدة (أو).",
+    "group": "المجموعة {{number}}",
+    "groupShort": "المجموعة {{number}}",
+    "and": "و",
+    "or": "أو",
+    "noRequisites": "لا توجد متطلبات",
+    "noRequisitesBody": "يمكن للطلاب التسجيل دون مقررات أو مستوى سابق.",
+    "removeRequisite": "إزالة المتطلب {{name}}",
+    "requiredBy": "مطلوب لـ",
+    "requiredByNone": "لا يوجد مقرر يتطلب هذا المقرر."
+  },
+  "form": {
+    "createTitle": "تعريف سجل مقرر",
+    "createDescription": "ينتمي المقرر إلى لائحة واحدة فقط. الرموز المشتركة لها صف لكل لائحة.",
+    "editTitle": "تعديل المقرر",
+    "bylaw": "اللائحة",
+    "bylawImmutable": "لا يمكن تغيير اللائحة بعد الإنشاء.",
+    "code": "رمز المقرر",
+    "codeHint": "فريد داخل اللائحة، مثل CSCI 207.",
+    "title": "العنوان",
+    "credits": "الساعات المعتمدة",
+    "creditsInvalid": "أدخل عددًا صحيحًا يساوي 0 أو أكثر.",
+    "sourceReference": "المرجع",
+    "sourceReferenceHint": "مصدر البيان، مثل جدول مقررات لائحة 2025.",
+    "flags": "قواعد الاحتساب",
+    "components": "المكونات الأسبوعية",
+    "componentsHint": "حدد كل مكون في المقرر وأدخل ساعات الاتصال الأسبوعية له.",
+    "weeklyHours": "ساعات / أسبوع",
+    "weeklyHoursFor": "ساعات {{type}} في الأسبوع",
+    "hoursInvalid": "أدخل عددًا صحيحًا أكبر من 0.",
+    "labKind": "نوع المعمل",
+    "labKindUnstated": "نوع المعمل غير مذكور",
+    "isActive": "نشط في الكتالوج",
+    "create": "إنشاء المقرر",
+    "save": "حفظ التغييرات"
+  },
+  "requisiteForm": {
+    "title": "إضافة حافة قاعدة",
+    "description": "أضف متطلبًا إلى مقرر. يجب أن يكون المتطلب في اللائحة نفسها.",
+    "descriptionFor": "أضف متطلبًا إلى {{code}}.",
+    "course": "المقرر",
+    "chooseCourse": "اختر مقررًا…",
+    "type": "نوع المتطلب",
+    "target": {
+      "course": "المقرر المطلوب",
+      "standing": "المستوى المطلوب"
+    },
+    "chooseTarget": "اختر…",
+    "sameBylaw": "تظهر فقط عناصر لائحة المقرر.",
+    "group": "المجموعة",
+    "groupHint": "المجموعة نفسها = و. المجموعة الجديدة تضيف مسارًا بديلًا (أو).",
+    "existingGroup_zero": "المجموعة {{number}} ({{count}} عنصر، و)",
+    "existingGroup_one": "المجموعة {{number}} (عنصر واحد، و)",
+    "existingGroup_two": "المجموعة {{number}} (عنصران، و)",
+    "existingGroup_few": "المجموعة {{number}} ({{count}} عناصر، و)",
+    "existingGroup_many": "المجموعة {{number}} ({{count}} عنصرًا، و)",
+    "existingGroup_other": "المجموعة {{number}} ({{count}} عنصر، و)",
+    "newGroup": "مجموعة جديدة {{number}} (أو)",
+    "firstGroup": "المجموعة 1",
+    "submit": "إضافة القاعدة"
+  },
+  "confirm": {
+    "removeTitle": "إزالة {{name}}؟",
+    "removeBody": "لن يتطلبه {{code}} بعد الآن. تستخدم التنبؤات وفحوص الأهلية التغيير فورًا.",
+    "remove": "إزالة المتطلب"
+  },
+  "toast": {
+    "created": "أُضيف {{code}} إلى الكتالوج.",
+    "updated": "تم تحديث {{code}}.",
+    "activated": "أُعيد تفعيل {{code}}.",
+    "deactivated": "تم إيقاف {{code}}.",
+    "requisiteAdded": "أُضيف متطلب إلى {{code}}.",
+    "requisiteRemoved": "أُزيل متطلب من {{code}}."
+  },
+  "policyTitle": "حدود الأدوار مطبّقة",
+  "policyBody": "يدير مسؤولو البيانات المرجعية بيانات الكتالوج فقط. يتم توزيع أعباء هيئة التدريس وجدولة الشعب في الوحدات التشغيلية اللاحقة."
+}

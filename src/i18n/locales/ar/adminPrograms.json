@@ -1,0 +1,175 @@
+{
+  "eyebrow": ["السجل الأكاديمي", "تعريفات الدرجات العلمية"],
+  "description": "البرامج الأكاديمية المعتمدة ومسارات التخصص ومواثيق اللوائح التي تحكم استيفاء متطلبات التخرج عبر الدفعات.",
+  "ch": "س.م",
+  "bylaw": {
+    "long": {
+      "old_cs": "اللائحة القديمة (2019)",
+      "bylaw_2025": "إطار 2025"
+    },
+    "charter": {
+      "old_cs": "اللائحة القديمة (إطار 2019)",
+      "bylaw_2025": "الإطار الحديث 2025"
+    }
+  },
+  "bylawStatus": {
+    "draft": "مسودة",
+    "active": "نشطة",
+    "retired": "متقاعدة"
+  },
+  "degree": {
+    "bsc": "بكالوريوس"
+  },
+  "trackStatus": {
+    "active": "نشط",
+    "planned": "مخطط",
+    "inactive": "غير نشط"
+  },
+  "category": {
+    "university_requirements": "متطلبات الجامعة العامة",
+    "faculty_core": "متطلبات الكلية الأساسية",
+    "track_mandatory": "إجباريات مسار التخصص",
+    "electives": "الاختيارات الحرة واختيارات المسار"
+  },
+  "stats": {
+    "degrees": "الدرجات العلمية المعتمدة",
+    "degreesHint_zero": "لا توجد صفوف برامج",
+    "degreesHint_one": "صف برنامج واحد",
+    "degreesHint_two": "صفا برنامج",
+    "degreesHint_few": "{{value}} صفوف برامج",
+    "degreesHint_many": "{{value}} صف برنامج",
+    "degreesHint_other": "{{value}} صف برنامج",
+    "degreesBadge": "مواثيق الدرجات",
+    "tracks": "التخصصات النشطة",
+    "tracksHint": "{{planned}} مخطط · {{inactive}} غير نشط",
+    "tracksBadge_zero": "لا مسارات",
+    "tracksBadge_one": "مسار واحد",
+    "tracksBadge_two": "مساران",
+    "tracksBadge_few": "{{value}} مسارات",
+    "tracksBadge_many": "{{value}} مسارًا",
+    "tracksBadge_other": "{{value}} مسار",
+    "frameworks": "الأطر الحاكمة",
+    "frameworksBadge": "مواثيق اللوائح"
+  },
+  "directive": {
+    "title": "قاعدة نظامية: الاستقلال المنهجي",
+    "badge": "فصل اللوائح",
+    "body": "تحتفظ المسارات التابعة للوائح مختلفة بأشجار متطلبات وقواعد تخرج مستقلة. ولا تنتقل معادلات المقررات أبدًا عبر حدود اللوائح."
+  },
+  "filters": {
+    "search": "ابحث باسم البرنامج أو رمزه…",
+    "bylaw": "إطار اللائحة",
+    "allBylaws": "كل أطر اللوائح"
+  },
+  "catalog": {
+    "title": "الكتالوج الرئيسي للمسارات",
+    "badge_zero": "لا برامج",
+    "badge_one": "برنامج واحد",
+    "badge_two": "برنامجان",
+    "badge_few": "{{value}} برامج",
+    "badge_many": "{{value}} برنامجًا",
+    "badge_other": "{{value}} برنامج",
+    "subtitle": "البرامج مجمّعة حسب اللائحة الحاكمة، ولكل منها مسارات التخصص الخاصة به.",
+    "emptyTitle": "لا توجد برامج",
+    "emptyBody": "أنشئ برنامجًا تحت لائحة لبدء تسجيل المسارات.",
+    "footerNote": "ساعات التخرج مأخوذة من لائحة كل برنامج.",
+    "footerCount": "{{tracks}} مسارات عبر {{programs}} صفوف برامج",
+    "groupMeta_zero": "{{credits}} س.م للتخرج · لا برامج",
+    "groupMeta_one": "{{credits}} س.م للتخرج · برنامج واحد",
+    "groupMeta_two": "{{credits}} س.م للتخرج · برنامجان",
+    "groupMeta_few": "{{credits}} س.م للتخرج · {{programs}} برامج",
+    "groupMeta_many": "{{credits}} س.م للتخرج · {{programs}} برنامجًا",
+    "groupMeta_other": "{{credits}} س.م للتخرج · {{programs}} برنامج"
+  },
+  "program": {
+    "withoutTrack_zero": "لا طلاب بلا مسار",
+    "withoutTrack_one": "طالب واحد بلا مسار",
+    "withoutTrack_two": "طالبان بلا مسار",
+    "withoutTrack_few": "{{value}} طلاب بلا مسار",
+    "withoutTrack_many": "{{value}} طالبًا بلا مسار",
+    "withoutTrack_other": "{{value}} طالب بلا مسار",
+    "tracksCaption": "مسارات {{name}}",
+    "noTracks": "لم تُسجَّل مسارات لهذا البرنامج بعد.",
+    "trackCount_zero": "لا مسارات",
+    "trackCount_one": "مسار واحد ({{active}} نشط)",
+    "trackCount_two": "مساران ({{active}} نشط)",
+    "trackCount_few": "{{value}} مسارات ({{active}} نشطة)",
+    "trackCount_many": "{{value}} مسارًا ({{active}} نشطًا)",
+    "trackCount_other": "{{value}} مسار ({{active}} نشط)",
+    "studentCount_zero": "لا طلاب",
+    "studentCount_one": "طالب واحد",
+    "studentCount_two": "طالبان",
+    "studentCount_few": "{{value}} طلاب",
+    "studentCount_many": "{{value}} طالبًا",
+    "studentCount_other": "{{value}} طالب"
+  },
+  "columns": {
+    "track": "مسار التخصص",
+    "code": "الرمز",
+    "totalCredits": "إجمالي الساعات",
+    "status": "حالة الميثاق",
+    "students": "الطلاب",
+    "plans": "الخطط / المجمعات",
+    "plansTitle": "{{plans}} قوالب خطط، {{pools}} مجمعات اختيارية",
+    "actions": "الإجراءات"
+  },
+  "actions": {
+    "newProgram": "برنامج جديد",
+    "registerTrack": "تسجيل مسار جديد",
+    "edit": "تعديل",
+    "editProgram": "تعديل البرنامج {{name}}",
+    "addTrack": "إضافة مسار",
+    "editTrack": "تعديل المسار {{name}}"
+  },
+  "charters": {
+    "title": "مقارنة بنية المواثيق",
+    "subtitle": "متطلبات الساعات لكل لائحة؛ الفروق محسوبة مقارنةً بالميثاق السابق.",
+    "total": "الإجمالي {{value}} س.م",
+    "credits": "{{value}} س.م",
+    "diff": "{{value}} س.م",
+    "effective": "من دفعة {{cohort}}",
+    "unverified": "التوزيع غير مُتحقَّق منه مقابل نص اللائحة",
+    "noBreakdown": "لا يوجد توزيع ساعات مخزَّن لهذه اللائحة.",
+    "appliesTo": "ينطبق على: {{tracks}}",
+    "noTracks": "لا مسارات بعد",
+    "separator": "، ",
+    "phaseOut": "الإلغاء التدريجي: دفعة {{cohort}}",
+    "current": "المعيار الحالي",
+    "empty": "لا توجد لوائح معرّفة"
+  },
+  "form": {
+    "bylaw": "اللائحة",
+    "sourceReference": "المرجع",
+    "sourceReferenceHint": "مصدر البيان، مثل لائحة 2025، المادة 4.",
+    "save": "حفظ التغييرات"
+  },
+  "programForm": {
+    "createTitle": "برنامج أكاديمي جديد",
+    "createDescription": "ينتمي البرنامج إلى لائحة واحدة فقط. الدرجة نفسها تحت لائحتين تمثل صفين.",
+    "editTitle": "تعديل البرنامج",
+    "bylawImmutable": "لا يمكن تغيير اللائحة بعد الإنشاء.",
+    "code": "رمز البرنامج",
+    "codeHint": "فريد داخل اللائحة، مثل CS.",
+    "name": "اسم البرنامج",
+    "create": "إنشاء البرنامج"
+  },
+  "trackForm": {
+    "createTitle": "تسجيل مسار جديد",
+    "createDescription": "تبدأ المسارات الجديدة بحالة مخطط حتى تُفتح للطلاب.",
+    "editTitle": "تعديل المسار",
+    "program": "البرنامج",
+    "name": "اسم المسار",
+    "code": "رمز المسار",
+    "codeHint": "بأحرف صغيرة وفريد داخل البرنامج، مثل big_data.",
+    "description": "الوصف",
+    "descriptionHint": "اختياري، سطر واحد يظهر تحت اسم المسار.",
+    "status": "الحالة",
+    "create": "تسجيل المسار"
+  },
+  "toast": {
+    "programCreated": "تم إنشاء البرنامج {{name}}.",
+    "programUpdated": "تم تحديث البرنامج {{name}}.",
+    "trackCreated": "تم تسجيل المسار {{name}}.",
+    "trackUpdated": "تم تحديث المسار {{name}}."
+  }
+}

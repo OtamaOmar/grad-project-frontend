@@ -32,7 +32,7 @@ export function PageHeader({ eyebrow = [], title, description, actions, meta, cl
         )}
         {meta && <div className="mt-3 flex flex-wrap items-center gap-2">{meta}</div>}
       </div>
-      {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
+      {actions && <div className="flex flex-wrap items-center gap-2 md:shrink-0">{actions}</div>}
     </header>
   );
 }
