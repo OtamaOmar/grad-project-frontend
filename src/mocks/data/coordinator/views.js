@@ -146,3 +146,47 @@ export function headcountByBylaw(rows) {
     };
   });
 }
+
+const COMPONENT_TYPES = ["lecture", "tutorial", "lab"];
+
+/**
+ * Section calculation for one offering_forecast row (proposal view): one entry per
+ * component type with the class size stored on the row and the implied count.
+ * A missing component keeps class_size and implied_sections null ("No component").
+ * Old-bylaw courses have no component rows, so every entry is null and the headcount stays.
+ */
+export function toSectionRow(row) {
+  const course = courseRef(row.course_id);
+  const components = componentsFor(row.course_id);
+  const decision = decisionFor(row.academic_term_id, row.course_id);
+  return {
+    offering_forecast_id: row.id,
+    forecast_run_id: row.forecast_run_id,
+    academic_term_id: row.academic_term_id,
+    course_id: row.course_id,
+    course_code: course.code,
+    course_title: course.title,
+    bylaw_code: course.bylaw_code,
+    method: row.method,
+    predicted_headcount: row.predicted_headcount,
+    is_incomplete: row.is_incomplete,
+    // Derived: true when the course has no course_component rows (old bylaw today).
+    has_components: components.length > 0,
+    components: COMPONENT_TYPES.map((type) => {
+      const component = components.find((c) => c.component_type === type) ?? null;
+      const classSize = row[`${type}_class_size`];
+      return {
+        component_type: type,
+        exists: Boolean(component),
+        lab_kind: component?.lab_kind ?? null,
+        weekly_contact_hours: component?.weekly_contact_hours ?? null,
+        class_size: classSize,
+        implied_sections: row[`implied_${type}_sections`],
+        // Display formula only; the stored implied count is the source of truth.
+        formula: classSize ? `ceil(${row.predicted_headcount} / ${classSize})` : null,
+        open: decision ? decision[`${type}_open`] : null,
+      };
+    }),
+    decision_status: isDecided(decision) ? "decided" : "pending",
+  };
+}

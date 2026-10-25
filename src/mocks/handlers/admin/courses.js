@@ -268,6 +268,7 @@ export default [
       validateCourseFields(body);
       if (body.components !== undefined) validateComponents(body.components);
       const code = normalizeCode(body.code);
+      if (!code) throw validationError("Code is required.", { code: "required" });
       assertUniqueCode(body.bylaw_id, code);
 
       const course = {
