@@ -1,0 +1,58 @@
+{
+  "public": {
+    "landing": "مرحبًا",
+    "login": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "forgotPassword": "نسيت كلمة المرور",
+    "resetPassword": "إعادة تعيين كلمة المرور"
+  },
+  "shared": {
+    "notifications": "الإشعارات",
+    "help": "المساعدة",
+    "profile": "الملف الشخصي"
+  },
+  "admin": {
+    "dashboard": "لوحة تحكم المسؤول",
+    "users": "إدارة المستخدمين",
+    "universityData": "إدارة بيانات الجامعة",
+    "courses": "إدارة المقررات",
+    "programs": "إدارة البرامج والمسارات",
+    "studyPlans": "إدارة الخطط الدراسية",
+    "bylaws": "إدارة اللوائح",
+    "creditLimits": "إدارة حدود الساعات المعتمدة",
+    "gradeScales": "إدارة سلالم التقديرات",
+    "terms": "إدارة الفصول الدراسية",
+    "imports": "استيراد البيانات والتحقق منها",
+    "dataGaps": "فجوات البيانات",
+    "audit": "سجلات النظام"
+  },
+  "coordinator": {
+    "dashboard": "لوحة تحكم المنسق",
+    "forecastRuns": "تشغيلات التنبؤ",
+    "forecastRunDetails": "تفاصيل تشغيل التنبؤ",
+    "courseForecasts": "تنبؤات المقررات",
+    "courseForecastDetails": "تفاصيل تنبؤ المقرر",
+    "sections": "حساب الشُعب",
+    "decisions": "قرار الطرح",
+    "decisionHistory": "سجل قرارات الطرح",
+    "rules": "مرجع اللوائح والقواعد",
+    "studyPlans": "الخطة الدراسية الأساسية",
+    "dataGaps": "الحالات غير المحسومة",
+    "explain": "تفسير الذكاء الاصطناعي"
+  },
+  "student": {
+    "dashboard": "لوحة تحكم الطالب",
+    "academicData": "بياناتي الأكاديمية",
+    "expectedOfferings": "المقررات المتوقع طرحها",
+    "offeringDetails": "تفاصيل طرح المقرر",
+    "myCourses": "مقرراتي المرتبطة بالطرح"
+  },
+  "advisor": {
+    "dashboard": "لوحة تحكم المرشد",
+    "students": "الطلاب",
+    "studentOverview": "النظرة الأكاديمية للطالب",
+    "studentCourses": "مقررات الطالب المرتبطة بالطرح",
+    "offerings": "معلومات طرح المقررات",
+    "offeringForecast": "تفاصيل تنبؤ الطرح"
+  }
+}

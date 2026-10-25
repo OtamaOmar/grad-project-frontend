@@ -7,6 +7,7 @@ The application provides interfaces for:
 * Students
 * Advisors
 * Coordinators
+* Admins (reference data; mock data only until the API contract adds an admin role)
 
 It supports academic planning, course offerings, recommendations, notifications, and related university workflows.
 
@@ -17,6 +18,8 @@ It supports academic planning, course offerings, recommendations, notifications,
 * **JavaScript**
 * **Tailwind CSS v4**
 * **React Router**
+* **TanStack Query** (server state)
+* **i18next** (English / Arabic, RTL)
 * **ESLint**
 * **Prettier**
 
@@ -24,47 +27,85 @@ It supports academic planning, course offerings, recommendations, notifications,
 
 ```text
 grad-project-frontend/
+├── Grad_Designs/               # UI designs per role (screen.png + code.html, light & dark)
+├── docs/                       # API contract, DB design, forecast I/O, project plan
 ├── src/
 │   ├── assets/                 # Static assets
 │   ├── components/
-│   │   ├── common/             # Shared application components
-│   │   └── ui/                 # Reusable UI components
-│   ├── features/               # Feature-specific modules
-│   ├── hooks/                  # Custom React hooks
-│   ├── layouts/                # Application layouts
-│   ├── pages/                  # Application pages
-│   ├── routes/                 # React Router configuration
-│   ├── services/               # API and external service communication
-│   ├── utils/                  # Shared utilities
-│   ├── App.jsx
+│   │   ├── common/             # App-level pieces (page placeholder, loaders, error boundary)
+│   │   └── ui/                 # Reusable design-system components (Button, Card, Table…)
+│   ├── config/                 # env, roles, per-role navigation
+│   ├── features/               # Feature modules (logic + feature components), e.g. auth, admin/users
+│   ├── hooks/                  # Shared hooks (useTheme, useLanguage, useDocumentTitle)
+│   ├── i18n/
+│   │   ├── index.js            # i18next setup, auto-loads every locale file
+│   │   └── locales/{en,ar}/    # One JSON per namespace; same file name in both languages
+│   ├── layouts/                # RootLayout, PublicLayout, AppLayout (role shell)
+│   ├── mocks/
+│   │   ├── server.js           # In-browser mock API used when VITE_USE_MOCKS=true
+│   │   ├── data/               # Mock fixtures
+│   │   └── handlers/           # { method, path, handler } per resource, auto-registered
+│   ├── pages/                  # One file per routed screen
+│   │   ├── public/             # Landing, login, sign up, password reset
+│   │   ├── shared/             # Notifications, help, profile (any signed-in role)
+│   │   ├── admin/ coordinator/ student/ advisor/
+│   │   └── errors/             # 404, 403
+│   ├── routes/
+│   │   ├── paths.js            # Every URL in the app — import from here
+│   │   ├── router.jsx          # Route tree
+│   │   └── <role>Routes.js     # Lazy-loaded routes per role
+│   ├── services/
+│   │   ├── http.js             # The only place that talks to the network (or mocks)
+│   │   ├── ApiError.js         # Error type every failed call throws
+│   │   ├── queryClient.js      # TanStack Query defaults
+│   │   └── api/                # One module per backend resource
+│   ├── utils/                  # Formatting (numbers/dates per locale), cn()
+│   ├── App.jsx                 # Providers + router
 │   ├── main.jsx
-│   └── index.css
-│
-├── .env.example
-├── .prettierignore
-├── .prettierrc
-├── eslint.config.js
-├── index.html
-├── package.json
-├── package-lock.json
-├── vite.config.js
-└── README.md
+│   └── index.css               # Tailwind + design tokens (light/dark)
+└── …config files
 ```
+
+### Routing
+
+| Area | Base path | Owner |
+|---|---|---|
+| Public | `/`, `/login`, `/signup`, `/forgot-password`, `/reset-password` | Hamza |
+| Shared | `/notifications`, `/help`, `/profile` | Hamza |
+| Student | `/student/*` | Hamza |
+| Coordinator | `/coordinator/*` | Abdelrahman |
+| Advisor | `/advisor/*` | Abdelrahman |
+| Admin | `/admin/*` | Omar |
+
+All paths live in `src/routes/paths.js`. Every page starts as a placeholder that names its owner,
+branch, and design folder; replace the file's contents with the real page.
+
+### How a page gets data
+
+```text
+Page → feature hook (TanStack Query) → services/api/<resource>.js → services/http.js
+                                                                     ├─ VITE_USE_MOCKS=true  → src/mocks
+                                                                     └─ VITE_USE_MOCKS=false → Node API
+```
+
+Pages never call `fetch` directly. Switching from mocks to the real backend is an `.env` change.
+
+### Language and theme
+
+* Every user-facing string goes through `t()` with a key in `src/i18n/locales/en/*.json` **and**
+  the same key in `ar/*.json`.
+* Arabic switches the document to `dir="rtl"`. Use logical Tailwind classes (`ms-*`, `me-*`,
+  `ps-*`, `pe-*`, `start-*`, `end-*`, `text-start`) instead of `ml/mr/pl/pr/left/right`.
+* Colors come from design tokens (`bg-surface`, `text-on-surface`, `bg-primary`…), never raw hex,
+  so light and dark mode both work.
 
 ## Setup
 
 Clone the repository and run:
 
 ```bash
-cd ~/github/grad/grad-project-frontend && \
-npm install && \
-npm install react-router-dom && \
-npm install tailwindcss @tailwindcss/vite && \
-npm install -D eslint prettier && \
-mkdir -p src/{assets,components/common,components/ui,features,hooks,layouts,pages,routes,services,utils} && \
-printf '%s\n' 'node_modules' 'dist' 'coverage' > .prettierignore && \
-printf '%s\n' '{' '  "semi": true,' '  "singleQuote": false,' '  "trailingComma": "all",' '  "printWidth": 100' '}' > .prettierrc && \
-printf '%s\n' 'VITE_API_URL=http://localhost:8000' > .env.example
+npm install
+cp .env.example .env
 ```
 
 ## Environment Variables
@@ -74,7 +115,8 @@ Create a local `.env` file based on `.env.example`.
 Example:
 
 ```env
-VITE_API_URL=http://localhost:8000
+VITE_API_URL=http://localhost:3000/api
+VITE_USE_MOCKS=true
 ```
 
 > **Note:** Vite exposes variables prefixed with `VITE_` to the client. Never store secrets or private credentials in `VITE_*` environment variables.
