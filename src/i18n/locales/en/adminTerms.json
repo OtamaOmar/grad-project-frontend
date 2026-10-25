@@ -1,0 +1,144 @@
+{
+  "eyebrow": ["Institutional governance", "Registrar registry"],
+  "description": "Calendar terms and their order within each academic year. Enrollments, forecasts and decisions reference terms, so terms are never deleted.",
+  "cycle": "Academic cycle",
+  "allYears": "All academic years",
+  "ayOption": "AY {{label}} ({{value}} terms)",
+  "newTerm": "New term",
+  "termLabel": "{{type}} {{year}}",
+  "termType": {
+    "fall": "Fall",
+    "spring": "Spring",
+    "summer": "Summer"
+  },
+  "status": {
+    "draft": "Draft",
+    "upcoming": "Upcoming",
+    "active": "Active",
+    "closed": "Closed"
+  },
+  "registration": {
+    "locked": "Locked",
+    "open": "Open"
+  },
+  "weeks": "{{value}} weeks",
+  "noDates": "Dates not set",
+  "stats": {
+    "total": "Total defined terms",
+    "current": "Current term",
+    "next": "Next term",
+    "registrationOpen": "Registration open",
+    "noneActive": "No active term",
+    "noneUpcoming": "None scheduled",
+    "ay": "AY {{label}}",
+    "startsOn": "Starts {{date}}",
+    "allLocked": "Registration is locked for every term"
+  },
+  "list": {
+    "title": "Academic term sequence",
+    "badge": "Strict ordering",
+    "order": "Newest first · fall 1, spring 2, summer 3",
+    "footer": "Terms cannot be deleted. Year and type are fixed once a term is referenced.",
+    "count": "{{value}} terms"
+  },
+  "filters": {
+    "status": "Status",
+    "allStatuses": "All",
+    "type": "Term type",
+    "allTypes": "All term types"
+  },
+  "columns": {
+    "year": "Academic year",
+    "term": "Term",
+    "order": "Order",
+    "status": "Status",
+    "dates": "Dates",
+    "registration": "Registration",
+    "usage": "Referenced by",
+    "actions": "Actions"
+  },
+  "usage": {
+    "inUse": "In use",
+    "none": "Not referenced",
+    "counts": "{{enrollments}} enrollments · {{forecasts}} forecasts · {{decisions}} decisions",
+    "title": "Downstream references",
+    "enrollments": "Enrollments",
+    "forecasts": "Forecast runs",
+    "decisions": "Offering decisions"
+  },
+  "rowActions": {
+    "label": "Actions for {{term}}",
+    "edit": "Edit term",
+    "lock": "Lock registration",
+    "unlock": "Unlock registration"
+  },
+  "timeline": {
+    "eyebrow": "Progression topology",
+    "title": "AY {{label}} chronological span",
+    "titleNone": "Chronological span",
+    "badge": "Academic year scope",
+    "label": "Term dates across the academic year",
+    "noDates": "No term in this academic year has start and end dates yet.",
+    "noSpan": "dates not set",
+    "empty": "No terms in this academic year."
+  },
+  "rules": {
+    "title": "Academic calendar rules",
+    "body": "Terms are reference records for enrollments, forecasts and offering decisions. The API enforces these rules.",
+    "noDelete": {
+      "title": "No deletion",
+      "body": "Terms are never deleted; other records point at them."
+    },
+    "unique": {
+      "title": "One term per year and type",
+      "body": "A year can have only one fall, one spring and one summer term."
+    },
+    "oneActive": {
+      "title": "One active term",
+      "body": "Close the current active term before activating another."
+    },
+    "closedLocked": {
+      "title": "Closed terms stay locked",
+      "body": "A closed term must keep registration locked."
+    },
+    "referenced": {
+      "title": "Referenced terms keep their identity",
+      "body": "Once used, a term's year and type cannot be changed."
+    }
+  },
+  "form": {
+    "createTitle": "New academic term",
+    "createDescription": "New terms start as drafts unless you choose another status.",
+    "editTitle": "Edit {{term}}",
+    "year": "Calendar year",
+    "yearHint": "Belongs to academic year {{label}}.",
+    "type": "Term type",
+    "status": "Status",
+    "statusHint": "Only one term can be active at a time.",
+    "startsOn": "Starts on",
+    "endsOn": "Ends on",
+    "registrationLocked": "Registration locked",
+    "registrationLockedHint": "Locked terms accept no new registrations.",
+    "closedLocked": "Closed terms always keep registration locked.",
+    "identityFixed": "This term is referenced by {{enrollments}} enrollments, {{forecasts}} forecast runs and {{decisions}} decisions, so its year and type cannot change.",
+    "create": "Create term",
+    "save": "Save changes",
+    "errors": {
+      "between_1990_and_2100": "Enter a year between 1990 and 2100.",
+      "invalid": "This value is not allowed.",
+      "invalid_date": "Enter a valid date.",
+      "must_be_after_starts_on": "The end date must be after the start date.",
+      "closed_term_must_be_locked": "A closed term must keep registration locked.",
+      "taken": "This term already exists for that year.",
+      "active_term_exists": "Another term is already active. Close it first.",
+      "required": "This field is required.",
+      "term_in_use": "This term is referenced by {{enrollments}} enrollments, {{forecasts}} forecast runs and {{decisions}} decisions; its year and type are fixed."
+    }
+  },
+  "toast": {
+    "created": "{{term}} was created.",
+    "updated": "{{term}} was updated.",
+    "locked": "Registration for {{term}} is locked.",
+    "unlocked": "Registration for {{term}} is open."
+  }
+}

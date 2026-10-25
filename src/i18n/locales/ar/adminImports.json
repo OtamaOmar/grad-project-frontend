@@ -1,0 +1,228 @@
+{
+  "eyebrow": ["ثوابت الاستيراد", "دفعات الاستيراد"],
+  "description": "التحقق من البنية والقواعد للملفات الواردة من وثائق اللوائح وقسم علوم الحاسب وشؤون التسجيل. كل صف إما مقبول أو مُعلَّم أو مرفوض، ولا يُخمَّن شيء.",
+  "auditSnapshots": "لقطات التدقيق",
+  "uploadAction": "رفع ملف",
+  "termLabel": "{{type}} {{year}}",
+  "termTypes": {
+    "fall": "الخريف",
+    "spring": "الربيع",
+    "summer": "الصيف"
+  },
+  "bylaw": {
+    "old_cs": "اللائحة القديمة (2019)",
+    "bylaw_2025": "لائحة 2025"
+  },
+  "units": {
+    "bytes": "{{value}} بايت",
+    "kb": "{{value}} ك.ب",
+    "mb": "{{value}} م.ب",
+    "ms": "{{value}} م.ث"
+  },
+  "kinds": {
+    "bylaw_tables": "جداول اللائحة",
+    "course_table": "جدول المقررات",
+    "study_plan_workbook": "ملف الخطط الدراسية",
+    "student_roster": "قائمة الطلاب",
+    "registration_export": "تصدير التسجيل"
+  },
+  "sources": {
+    "bylaw_document": "وثيقة اللائحة",
+    "cs_department": "قسم علوم الحاسب",
+    "registrar": "شؤون التسجيل"
+  },
+  "status": {
+    "validating": "جارٍ التحقق",
+    "completed": "مكتمل",
+    "failed": "فشل"
+  },
+  "outcomes": {
+    "accepted": "مقبول",
+    "inserted": "مُدرج",
+    "flagged": "مُعلَّم",
+    "rejected": "مرفوض"
+  },
+  "checkStatus": {
+    "passed": "ناجح",
+    "flagged": "مُعلَّم",
+    "failed": "فاشل",
+    "pending": "قيد الانتظار"
+  },
+  "checks": {
+    "schema_columns": "الترويسة تطابق الأعمدة المتوقعة",
+    "bylaw_code_known": "رمز اللائحة معروف",
+    "grade_band_coverage": "شرائح التقديرات تغطي 0–100٪",
+    "credit_limit_priority_unique": "صفوف حدود الساعات غير متعارضة",
+    "source_reference_present": "المرجع موجود",
+    "course_code_unique": "رموز المقررات غير مكررة",
+    "credits_non_negative": "الساعات ليست سالبة",
+    "component_hours_present": "ساعات مكونات المقرر محددة",
+    "same_bylaw_requisites": "المتطلبات ضمن اللائحة نفسها",
+    "course_code_known": "رمز المقرر موجود",
+    "plan_grid_aligned": "شبكة الخطة متسقة",
+    "elective_pool_consistent": "مجموعات الاختياري متسقة",
+    "university_id_unique": "الأرقام الجامعية غير مكررة",
+    "program_track_match": "البرنامج والمسار متطابقان",
+    "placement_present": "موضع الخطة محدد",
+    "student_known": "الطالب موجود",
+    "course_known": "المقرر موجود",
+    "attempt_unique": "صف واحد لكل محاولة",
+    "percentage_in_range": "النسبة بين 0 و100",
+    "pass_test_inputs_present": "مدخلات اختبار النجاح موجودة",
+    "label_matches_pass_test": "التقدير يطابق اختبار النجاح",
+    "attempt_state_derived": "يمكن استنتاج حالة المحاولة"
+  },
+  "banner": {
+    "session": "جلسة الاستيراد:",
+    "cutoff": "حد المعلومات: {{term}}",
+    "source": "المصدر: {{source}}",
+    "finished": "{{name}} · اكتمل {{date}}",
+    "started": "{{name}} · بدأ {{date}}",
+    "latency": "زمن المعالجة",
+    "passRate": "نسبة النجاح الحتمية"
+  },
+  "validating": {
+    "title": "التحقق جارٍ",
+    "body": "يجري فحص {{rows}} صف وفق {{checks}} قواعد. تتحدث هذه الصفحة تلقائيًا."
+  },
+  "failed": {
+    "title": "تم رفض هذه الدفعة",
+    "body": "لم يُحمَّل أي صف. أصلح الملف وارفعه مرة أخرى."
+  },
+  "outcome": {
+    "passStatus": "حالة القبول",
+    "accepted": "السجلات المقبولة",
+    "compliant": "مطابق",
+    "acceptedShare": "{{share}} من الصفوف",
+    "acceptedFooter": "أُدرجت دون ملاحظات",
+    "ofTotal": "{{value}} / {{total}}",
+    "discrepancyStatus": "حالة التعارض",
+    "flagged": "السجلات المُعلَّمة",
+    "attention": "تنبيه",
+    "flaggedShare": "{{share}} مُعلَّمة",
+    "flaggedFooter": "أُدرجت مع تحذير",
+    "pendingReview": "{{count}} بانتظار المراجعة",
+    "fatalStatus": "حالة القيود الحرجة",
+    "rejected": "السجلات المرفوضة",
+    "quarantined": "معزولة",
+    "rejectedShare": "{{share}} مرفوضة",
+    "rejectedFooter": "لم تُدرج",
+    "errors_zero": "لا خطأ",
+    "errors_one": "خطأ واحد",
+    "errors_two": "خطآن",
+    "errors_few": "{{value}} أخطاء",
+    "errors_many": "{{value}} خطأ",
+    "errors_other": "{{value}} خطأ"
+  },
+  "issues": {
+    "title": "تقرير التحقق",
+    "subtitle": "صفوف تقرير التحميل للدفعة {{code}}",
+    "shown": "عرض {{shown}} من {{total}} صفوف",
+    "search": "صفِّ حسب السجل أو الرمز أو الرسالة…",
+    "severityFilter": "الخطورة",
+    "reviewFilter": "حالة المراجعة",
+    "tabs": {
+      "all": "الكل",
+      "error": "الأخطاء",
+      "warning": "التحذيرات",
+      "info": "معلومات"
+    },
+    "review": {
+      "all": "أي حالة مراجعة",
+      "open": "بحاجة إلى مراجعة",
+      "acknowledged": "تمت مراجعتها"
+    },
+    "columns": {
+      "row": "الصف",
+      "entity": "السجل المصدر",
+      "status": "الحالة",
+      "diagnostics": "تشخيص التحقق",
+      "action": "الإجراء"
+    },
+    "raw": "القيمة:",
+    "gapLink": "فجوة البيانات {{code}}",
+    "noted": "للعلم فقط",
+    "reviewed": "تمت المراجعة",
+    "reopen": "إعادة فتح مراجعة الصف {{row}}",
+    "markReviewed": "تحديد كمُراجَع",
+    "toastReviewed": "تم تحديد الصف {{row}} كمُراجَع.",
+    "toastReopened": "الصف {{row}} بحاجة إلى مراجعة مجددًا.",
+    "emptyValidating": "تظهر الصفوف هنا بعد انتهاء التحقق.",
+    "emptyClean": "لا ملاحظات: اجتاز كل صف جميع الفحوص."
+  },
+  "checksCard": {
+    "title": "الثوابت المطبقة",
+    "passed": "نجح {{passed}} من {{total}}",
+    "withIssues": "{{status}} · {{count}}",
+    "footer": "الفحوص المنفذة على {{code}}"
+  },
+  "reviewCard": {
+    "title": "قائمة المراجعة",
+    "open": "{{count}} مفتوحة",
+    "body": "الصفوف المرفوضة لا تصل أبدًا إلى جداول التخطيط؛ والصفوف المُعلَّمة تُحمَّل لكنها تنتظر مراجعة المسؤول. الإجماليات عبر الدفعات المكتملة:",
+    "rejectedHere": "{{count}} مرفوضة في هذه الدفعة",
+    "showRejected": "عرض الأخطاء"
+  },
+  "feedsCard": {
+    "title": "مصادر البيانات",
+    "batches": "{{count}} دفعات",
+    "lastImport": "آخر رفع {{date}}",
+    "never": "لم يُرفع"
+  },
+  "history": {
+    "title": "سجل الاستيراد",
+    "subtitle": "كل الملفات المرفوعة، الأحدث أولًا. اختر ملفًا لفحصه.",
+    "search": "ابحث بالملف أو رمز الدفعة أو الرافع…",
+    "kind": "نوع الاستيراد",
+    "allKinds": "كل أنواع الاستيراد",
+    "status": "الحالة",
+    "allStatuses": "كل الحالات",
+    "viewing": "معروضة",
+    "inserted": "{{count}} مُدرجة",
+    "empty": "لم تُرفع أي ملفات بعد.",
+    "columns": {
+      "batch": "الدفعة",
+      "kind": "النوع والمصدر",
+      "rows": "الصفوف",
+      "issues": "الملاحظات",
+      "uploaded": "الرفع",
+      "status": "الحالة"
+    },
+    "errors_zero": "لا خطأ",
+    "errors_one": "خطأ واحد",
+    "errors_two": "خطآن",
+    "errors_few": "{{value}} أخطاء",
+    "errors_many": "{{value}} خطأ",
+    "errors_other": "{{value}} خطأ",
+    "warnings_zero": "لا تحذير",
+    "warnings_one": "تحذير واحد",
+    "warnings_two": "تحذيران",
+    "warnings_few": "{{value}} تحذيرات",
+    "warnings_many": "{{value}} تحذير",
+    "warnings_other": "{{value}} تحذير"
+  },
+  "empty": {
+    "title": "لا توجد عمليات استيراد بعد",
+    "body": "ارفع جدول لائحة أو جدول مقررات أو خطة دراسية أو قائمة طلاب أو تصدير تسجيل للبدء."
+  },
+  "upload": {
+    "title": "رفع ملف للتحقق",
+    "description": "يُفحص الملف صفًا صفًا. الصفوف التي تخالف قاعدة تُرفض أو تُعلَّم، ولا تُصحَّح أبدًا.",
+    "kind": "نوع الاستيراد",
+    "file": "الملف",
+    "fileHint": "ملف ‎.csv أو ‎.xlsx.",
+    "choose": "اختر ملف ‎.csv أو ‎.xlsx",
+    "unsupported": "ارفع ملف ‎.csv أو ‎.xlsx.",
+    "bylaw": "اللائحة",
+    "bylawHint": "اللائحة التي يتبع لها ملف الكتالوج.",
+    "noBylaw": "غير مرتبط بلائحة",
+    "term": "فصل حد المعلومات",
+    "termHint": "آخر فصل تتضمن النتائج المصدَّرة نتائجه.",
+    "chooseTerm": "اختر فصلًا",
+    "termRequired": "يتطلب تصدير التسجيل تحديد فصل حد المعلومات.",
+    "notes": "ملاحظات",
+    "optionsError": "تعذر تحميل اللوائح والفصول. أغلق النافذة وحاول مجددًا.",
+    "submit": "رفع وتحقق",
+    "success": "تم رفع {{file}} ويجري التحقق منه."
+  }
+}

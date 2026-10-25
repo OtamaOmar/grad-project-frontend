@@ -1,0 +1,235 @@
+{
+  "eyebrow": ["Reference data registry", "University data management"],
+  "description": "Manage reference data imports from the Central Registrar and SIS. Inspect ingestion logs and verify the baseline identity rosters.",
+  "actions": {
+    "auditLog": "Version audit log",
+    "ingest": "Initiate snapshot ingestion"
+  },
+  "stats": {
+    "year": "Active academic year",
+    "yearValue": "AY {{years}}",
+    "yearHint": "Planning term: {{term}} ({{status}})",
+    "faculty": "Faculty verified roster",
+    "facultyHint": "{{total}} rows in the current roster",
+    "active": "Active",
+    "flagged": "{{value}} flagged",
+    "records": "Student records ingested",
+    "parsed": "Parsed",
+    "recordsHint": "{{students}} distinct students",
+    "lock": "Data state & lock",
+    "lockedHint": "Locked against {{scope}} since {{date}}",
+    "unlockedHint": "Open for new snapshots"
+  },
+  "lockState": {
+    "open": "Open",
+    "pre_forecast_freeze": "Pre-forecast freeze",
+    "frozen": "Frozen"
+  },
+  "lockScope": {
+    "unverified_writes": "unverified writes",
+    "all_writes": "all writes"
+  },
+  "term": {
+    "label": "{{type}} {{year}}",
+    "fallback": "Term #{{id}}",
+    "type": { "fall": "Fall", "spring": "Spring", "summer": "Summer" },
+    "status": {
+      "draft": "draft",
+      "upcoming": "upcoming",
+      "active": "active",
+      "closed": "closed"
+    }
+  },
+  "tabs": {
+    "label": "University data sections",
+    "faculty": "Faculty roster",
+    "registrations": "Registration import",
+    "snapshots": "Version audit log"
+  },
+  "filters": {
+    "search": {
+      "faculty": "Search by staff code or name…",
+      "registrations": "Search by student ID or course code…",
+      "snapshots": "Search by version or file name…"
+    },
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "department": "Department",
+    "allDepartments": "All departments",
+    "flag": "Validation flag",
+    "allFlags": "All validation flags",
+    "flagged": "Records",
+    "allRecords": "All records",
+    "flaggedOnly": "Flagged only",
+    "acceptedOnly": "Accepted only",
+    "kind": "Snapshot kind",
+    "allKinds": "All kinds"
+  },
+  "snapshot": {
+    "source": "Source: {{source}}",
+    "file": "File:",
+    "timestamp": "Timestamp:",
+    "accepted": "accepted",
+    "flagged": "flagged",
+    "none": "No snapshot has been ingested yet."
+  },
+  "source": {
+    "hr_academic_affairs": "Central HR & Academic Affairs",
+    "registrar_sis": "Registrar SIS roster snapshot"
+  },
+  "kind": {
+    "faculty_roster": "Faculty roster",
+    "registration": "Registration import"
+  },
+  "department": {
+    "computer_science": "Computer Science",
+    "ai_data": "AI & Data",
+    "basic_sciences": "Basic Sciences",
+    "humanities": "Humanities"
+  },
+  "rank": {
+    "full_professor": "Full Professor",
+    "associate_professor": "Associate Professor",
+    "assistant_professor": "Assistant Professor",
+    "lecturer": "Lecturer",
+    "assistant_lecturer": "Assistant Lecturer",
+    "teaching_assistant": "Teaching Assistant"
+  },
+  "facultyStatus": {
+    "verified_active": "Verified active",
+    "quota_flag": "Quota flag",
+    "missing_rank": "Missing rank",
+    "inactive": "Inactive"
+  },
+  "flagReason": {
+    "dual_department_quota": "Dual department assignment needs senate quota confirmation.",
+    "rank_not_in_hr": "Academic rank is missing from the HR export.",
+    "appointment_ended": "Appointment ended; the account should not teach this term."
+  },
+  "appointment": {
+    "primary_appointment": "Primary appointment",
+    "tenure_track": "Tenure track",
+    "ta_pool": "Full-time TA pool",
+    "none": "No note"
+  },
+  "faculty": {
+    "title": "Faculty roster import",
+    "split": "{{primary}} ({{primaryShare}}) / {{secondary}} ({{secondaryShare}})",
+    "noFlag": "— None ({{note}})",
+    "inspect": "Inspect",
+    "resolve": "Resolve",
+    "inspectLabel": "Inspect {{name}}",
+    "resolveLabel": "Resolve flag for {{name}}",
+    "note": "Dual-assignment quota adjustments cannot be edited here; submit an approval ticket to Academic Affairs.",
+    "columns": {
+      "id": "Faculty ID",
+      "name": "Name",
+      "department": "Department",
+      "rank": "Academic rank",
+      "status": "Status",
+      "flag": "Flag reason",
+      "action": "Action"
+    }
+  },
+  "facultyDetail": {
+    "title": "Faculty record",
+    "resolveHint": "Resolve this at the source (HR / Academic Affairs), then ingest a new roster snapshot.",
+    "primaryShare": "Primary share",
+    "secondary": "Secondary department",
+    "appointment": "Appointment",
+    "account": "Linked account",
+    "noAccount": "No system account is linked to this roster row.",
+    "snapshot": "Source snapshot"
+  },
+  "program": {
+    "CS": "Computer Science",
+    "AI": "Artificial Intelligence",
+    "BMD": "Biomedical Informatics",
+    "CSEC": "Cybersecurity"
+  },
+  "fileStatus": {
+    "passed": "Passed",
+    "failed": "Failed",
+    "withdrawn": "Withdrawn",
+    "incomplete": "Incomplete",
+    "in_progress": "In progress"
+  },
+  "attemptState": {
+    "passed": "Passed",
+    "failed": "Failed",
+    "withdrawn": "Withdrawn",
+    "unresolved": "Unresolved",
+    "in_progress": "In progress"
+  },
+  "validationFlag": {
+    "consistent": "Consistent",
+    "label_mismatch": "Label says passed, stored result does not",
+    "unresolved_result": "Result not resolved yet",
+    "prerequisite_not_met": "Prerequisite not met at the time"
+  },
+  "flagExplain": {
+    "label_mismatch": "The registrar file says “{{file}}”, but the stored attempt is “{{stored}}”. Dependent eligibility checks treat the course as not passed until the registrar fixes the source.",
+    "unresolved_result": "The file reports “{{file}}” and no final result is stored yet. The attempt counts as unresolved.",
+    "prerequisite_not_met": "No requisite group was passed in an earlier term. Missing: {{codes}}."
+  },
+  "registrations": {
+    "title": "Registration import",
+    "credits": "{{value}} Cr.",
+    "missing": "Missing: {{codes}}",
+    "mismatch": "File: {{file}} · stored: {{stored}} ({{letter}})",
+    "audit": "Audit trail",
+    "compare": "Compare records",
+    "auditLabel": "Audit trail for {{id}}, {{course}}",
+    "compareLabel": "Compare records for {{id}}, {{course}}",
+    "hash": "Snapshot hash:",
+    "columns": {
+      "student": "Student ID",
+      "cohort": "Cohort year",
+      "program": "Declared program",
+      "credits": "Earned credits",
+      "course": "Course record",
+      "flag": "Validation flag",
+      "action": "Audit detail"
+    }
+  },
+  "registrationDetail": {
+    "title": "Audit trail",
+    "compareTitle": "Compare records",
+    "student": "Student",
+    "discrepancy": "Discrepancy detail",
+    "fileSays": "Registrar file",
+    "stored": "Stored result",
+    "attempts_one": "{{value}} attempt of this course",
+    "attempts_other": "{{value}} attempts of this course"
+  },
+  "snapshots": {
+    "title": "Version audit log",
+    "subtitle": "Every ingested snapshot. A new version becomes current for its kind; older versions keep their frozen counts.",
+    "current": "Current",
+    "pending": "Counting…",
+    "columns": {
+      "version": "Version",
+      "kind": "Kind",
+      "file": "File & source",
+      "imported": "Imported",
+      "counts": "Accepted / flagged",
+      "hash": "Hash"
+    }
+  },
+  "snapshotForm": {
+    "title": "Initiate snapshot ingestion",
+    "description": "Record a new export from the registrar or HR. It becomes the current version for its kind.",
+    "lockNote": "Data is locked against unverified writes. New snapshots are still recorded and validated before use.",
+    "kind": "Snapshot kind",
+    "version": "Version label",
+    "versionHint": "Unique per kind, e.g. AY2027_SPRING. Stored in upper case.",
+    "file": "File name",
+    "fileHint": "The exported file as received from the source system.",
+    "submit": "Ingest snapshot"
+  },
+  "toast": {
+    "snapshotCreated": "Snapshot {{label}} is now current."
+  },
+  "policyTitle": "Administrative synchronization policy",
+  "policyBody": "Changes to student grades or faculty quotas must be made at the Central SIS Registrar. This portal keeps immutable snapshots for forecast audit integrity; local grade edits and overrides are not allowed."
+}

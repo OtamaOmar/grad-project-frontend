@@ -1,0 +1,181 @@
+{
+  "eyebrow": ["Academic catalog", "Study plan templates"],
+  "description": "Official study-plan sheets and their term-by-term slots. Each slot is one course or one elective pool, taken from the workbook.",
+  "bylawTemplates": "{{bylaw}}: {{value}} templates",
+  "bylawBlocked": "{{bylaw}}: blocked",
+  "notice": {
+    "title": "Templates follow the official workbook",
+    "badge": "Fixed rule",
+    "body": "Slots are entered from the source sheets only. Regions that could not be read are left empty and recorded as data gaps; no filler or predicted slots are added.",
+    "pill": "Empty cells were not guessed."
+  },
+  "stats": {
+    "templates": "Plan templates",
+    "templatesHint": "{{complete}} complete · {{gaps}} with data gaps",
+    "slots": "Plan slots",
+    "slotsHint": "{{value}} elective pools defined",
+    "courses": "Distinct courses",
+    "coursesHint": "Fixed slots plus elective pool members",
+    "approximate": "Approximate cells",
+    "approximateHint": "{{value}} unreadable regions left empty"
+  },
+  "blocked": {
+    "title": "{{bylaw}} templates are blocked",
+    "reason": {
+      "nile_ask_3": "The term-by-term study plans for this bylaw have not been received from Nile University (request 3). No templates exist, and none will be inferred until the official sheets arrive.",
+      "default": "No templates exist for this bylaw yet. None will be inferred."
+    }
+  },
+  "bylaw": {
+    "old_cs": "Old bylaw (2019)",
+    "bylaw_2025": "2025 bylaw"
+  },
+  "tracks": {
+    "media": "Media",
+    "big_data": "Big Data",
+    "general": "General Computer Science"
+  },
+  "englishPath": {
+    "intensive": "Intensive English",
+    "english_1": "English 1"
+  },
+  "mathPath": {
+    "precalculus": "Precalculus",
+    "calculus_1": "Calculus I"
+  },
+  "termType": {
+    "fall": "Fall",
+    "spring": "Spring"
+  },
+  "status": {
+    "complete": "Complete",
+    "has_gaps": "Has gaps ({{value}})",
+    "has_gaps_short": "Has data gaps"
+  },
+  "list": {
+    "title": "Registered study plan templates",
+    "badge": "CS department",
+    "emptyTitle": "No templates",
+    "emptyBlocked": "This bylaw has no templates: its study plans have not been received."
+  },
+  "filters": {
+    "search": "Search by sheet or track…",
+    "bylaw": "Bylaw",
+    "allBylaws": "All bylaws",
+    "track": "Track",
+    "allTracks": "All tracks",
+    "english": "English path",
+    "allEnglish": "All English paths",
+    "math": "Math path",
+    "allMath": "All math paths",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "focus": "Slots column term"
+  },
+  "columns": {
+    "sheet": "Sheet",
+    "track": "Track",
+    "english": "English",
+    "math": "Math",
+    "slots": "Slots",
+    "credits": "Credits",
+    "bylaw": "Bylaw",
+    "status": "Status"
+  },
+  "focusLabel": "Year {{year}} {{term}}",
+  "focusSlots": "{{value}} in {{focus}}",
+  "totalSlots": "{{value}} slots in total",
+  "credits": "{{value}} credits",
+  "creditsShort": "{{value}} CH",
+  "creditsUnknown": "CH varies",
+  "creditsUnknownSlots": "{{value}} slots with varying credits",
+  "detail": {
+    "title": "Term sequencing matrix",
+    "subtitle": "Slot definition for",
+    "slotsLoaded": "{{value}} slots loaded",
+    "creditsTotal": "{{value}} credit hours total",
+    "addSlot": "Add slot",
+    "creditsUnknown": "{{value}} elective slots have members with different credits, so they are not counted in the totals.",
+    "gapTitle": "Data gap #{{id}}: region not guessed",
+    "gapSource": "Source: {{source}}",
+    "source": "Source: {{source}}"
+  },
+  "yearN": "Year {{n}}",
+  "yearCredits": "{{value}} credit hours",
+  "yearCreditsPartial": "{{value}} credit hours (readable terms only)",
+  "yearNotGuessed": "Credits unknown: not guessed",
+  "termTitle": "Year {{year}} · {{term}}",
+  "slotsCount": "{{value}} slots",
+  "slotN": "Slot #{{n}}",
+  "addSlotTo": "Add a slot to {{term}}",
+  "addVerifiedSlot": "Add a slot from a verified source",
+  "termEmpty": "No slots in this term.",
+  "notGuessed": "Not guessed",
+  "notGuessedTitle": "Sheet region unreadable",
+  "notGuessedGap": "Recorded as data gap #{{id}}: {{description}}",
+  "notGuessedGapId": "Recorded as data gap #{{id}}.",
+  "notGuessedBody": "No slots were guessed for this term.",
+  "slotKind": {
+    "course": "Course",
+    "elective_pool": "Elective pool"
+  },
+  "pool": {
+    "choose": "choose {{value}}",
+    "chooseFrom": "Choose {{value}} of {{total}} courses"
+  },
+  "prereq": "Prereq",
+  "prereqNone": "None",
+  "or": "or",
+  "placement": "Placement {{code}}",
+  "standing": {
+    "freshman": "Freshman standing",
+    "sophomore": "Sophomore standing",
+    "junior": "Junior standing",
+    "senior": "Senior standing"
+  },
+  "slotActions": {
+    "label": "Actions for {{name}}",
+    "edit": "Edit slot",
+    "remove": "Remove slot"
+  },
+  "form": {
+    "createTitle": "Add plan slot",
+    "editTitle": "Edit plan slot",
+    "description": "Template {{sheet}}. Enter only what the source sheet shows.",
+    "year": "Study year",
+    "term": "Term",
+    "position": "Position",
+    "kind": "Slot holds",
+    "kindHint": "A slot is exactly one course or one elective pool, never both.",
+    "course": "Course",
+    "pickCourse": "Choose a course…",
+    "pool": "Elective pool",
+    "pickPool": "Choose an elective pool…",
+    "sourceReference": "Source reference",
+    "sourceReferenceHint": "Sheet and cell, e.g. Math_ENGL1_Media, year 2 fall, row 3.",
+    "create": "Add slot",
+    "save": "Save changes",
+    "errors": {
+      "taken": "That position in this term is already filled. Choose another position.",
+      "must_be_positive": "Position must be a whole number of 1 or more.",
+      "between_1_and_6": "Study year must be between 1 and 6.",
+      "invalid": "This value is not allowed.",
+      "course_xor_pool": "Choose exactly one course or one elective pool.",
+      "not_found": "This item no longer exists.",
+      "bylaw_mismatch": "It belongs to a different bylaw than this template.",
+      "required": "This field is required."
+    }
+  },
+  "confirm": {
+    "removeTitle": "Remove {{name}} from the plan?",
+    "removeBody": "Year {{year}} {{term}}, position {{position}} will be emptied. Forecasts that use this template will no longer count it.",
+    "remove": "Remove slot"
+  },
+  "toast": {
+    "created": "{{name}} was added to the plan.",
+    "updated": "{{name}} slot was updated.",
+    "removed": "{{name}} was removed from the plan."
+  },
+  "policyTitle": "Administrative role boundary",
+  "policyBody": "Templates are baseline reference data for demand forecasts. Section opening and timetable decisions stay with coordinators."
+}

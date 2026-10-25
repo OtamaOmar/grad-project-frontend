@@ -1,0 +1,184 @@
+{
+  "eyebrow": ["الحوكمة الأكاديمية النظامية", "الأطر التنظيمية"],
+  "description": "اللوائح الأكاديمية المعتمدة التي تحكم درجات النجاح وحدود الساعات وشروط التخرج.",
+  "scope": "النطاق: مرجع السجل فقط",
+  "newBylaw": "لائحة جديدة",
+  "isolation": {
+    "title": "معيار فصل اللوائح",
+    "badge": "فصل صارم مُطبَّق",
+    "body": "تُحفظ اللائحة القديمة ولائحة ٢٠٢٥ منفصلتين تمامًا. يرتبط كل طالب بلائحة دفعته، ولا تُدمج القواعد أو تُحوَّل أو يُربط بينها عبر اللوائح أبدًا.",
+    "noMerge": "الدمج بين اللوائح معطّل",
+    "counts": "عدد اللوائح: {{total}} · النشطة: {{active}}"
+  },
+  "listTitle": "اللوائح المخزنة",
+  "filters": {
+    "status": "التصفية حسب الحالة",
+    "all": "الكل"
+  },
+  "status": {
+    "active": "نشطة",
+    "draft": "مسودة",
+    "retired": "متقاعدة"
+  },
+  "empty": {
+    "title": "لا توجد لوائح مطابقة",
+    "body": "غيّر تصفية الحالة، أو أضف لائحة من ملف PDF الخاص بها."
+  },
+  "toast": {
+    "created": "تم إنشاء {{name}}.",
+    "updated": "تم تحديث {{name}}.",
+    "deleted": "تم حذف {{name}}.",
+    "retired": "تم إيقاف العمل بـ {{name}}."
+  },
+  "units": {
+    "creditsShort": "{{value}} ساعة",
+    "creditHours": "ساعات معتمدة"
+  },
+  "cohorts": {
+    "onward": "دفعة {{from}} وما بعدها",
+    "range": "الدفعات {{from}} – {{to}}"
+  },
+  "card": {
+    "governedCohorts": "الدفعات الخاضعة",
+    "passMark": "درجة النجاح",
+    "passGrade": "(التقدير {{letter}} · {{points}} نقطة)",
+    "passMarkHint": "أدنى نسبة مئوية للنجاح في المقرر",
+    "finalExamFloor": "حد الامتحان النهائي",
+    "ofFinalExam": "من الامتحان النهائي",
+    "finalExamNotStated": "غير منصوص عليه في هذه اللائحة",
+    "finalExamHint": "مطلوب إضافةً إلى درجة النجاح",
+    "graduationCredits": "ساعات التخرج",
+    "trainingNotStated": "ساعات التدريب في المعدل: غير منصوص عليها",
+    "trainingExcluded": "ساعات تدريب خارج المعدل: {{value}}",
+    "creditCap": "الحد الأقصى للفصل",
+    "defaultTermMax": "الحد الافتراضي للفصل",
+    "highestTermMax": "أعلى حد للفصل",
+    "summerCap": "الصيفي {{value}} ساعة",
+    "minLoad": "الحد الأدنى {{value}} ساعة",
+    "ruleCount": "القواعد: {{value}}",
+    "unstatedRows": "شرائح غير منصوص عليها: {{value}}",
+    "updated": "آخر تحديث {{date}}",
+    "counts": {
+      "students": "الطلاب: {{value}}",
+      "programs": "البرامج: {{value}}",
+      "tracks": "المسارات: {{value}}",
+      "courses": "المقررات: {{value}}",
+      "letters": "التقديرات: {{value}}"
+    },
+    "details": "البرامج والمستويات",
+    "editLabel": "تعديل {{name}}",
+    "deleteLabel": "حذف {{name}}"
+  },
+  "detail": {
+    "title": "تفاصيل اللائحة",
+    "overview": "نظرة عامة",
+    "notStated": "غير منصوص عليه",
+    "trainingExcluded": "التدريب خارج المعدل",
+    "updated": "آخر تحديث",
+    "students": "الطلاب المرتبطون",
+    "source": "المصدر",
+    "programs": "البرامج والمسارات",
+    "noPrograms": "لا توجد برامج مخزنة لهذه اللائحة.",
+    "noTracks": "لا توجد مسارات مخزنة.",
+    "standingBands": "شرائح المستوى الدراسي",
+    "noBands": "لا توجد شرائح مستوى مخزنة لهذه اللائحة.",
+    "level": "المستوى",
+    "creditsPassed": "الساعات المجتازة",
+    "bandFrom": "{{min}} فأكثر",
+    "bandRange": "من {{min}} إلى أقل من {{max}}",
+    "bandRule": "الحد الأدنى مشمول والحد الأعلى غير مشمول. يبقى الرقم الناقص فارغًا حتى ينص عليه المصدر.",
+    "edit": "تعديل اللائحة"
+  },
+  "levels": {
+    "freshman": "مستجد",
+    "sophomore": "المستوى الثاني",
+    "junior": "المستوى الثالث",
+    "senior": "المستوى الرابع"
+  },
+  "compare": {
+    "title": "المقارنة التنظيمية بين اللوائح",
+    "subtitle": "مقارنة جنبًا إلى جنب للمعايير المخزنة لكل لائحة مستقلة.",
+    "matrix": "مصفوفة اللوائح",
+    "dimension": "البُعد",
+    "isolation": "حالة الفصل",
+    "rows": {
+      "passGrade": "تقدير النجاح ونقاط الجودة",
+      "finalExam": "حد الامتحان النهائي",
+      "graduation": "إجمالي ساعات الدرجة",
+      "training": "ساعات التدريب خارج المعدل",
+      "termCap": "حد ساعات الخريف/الربيع",
+      "summerCap": "حد ساعات الصيفي",
+      "minLoad": "الحد الأدنى للعبء الفصلي",
+      "programs": "البرامج والمسارات",
+      "standing": "شرائح المستوى"
+    },
+    "passGradeValue": "التقدير {{letter}} ({{pct}}، {{points}} نقطة)",
+    "creditHours": "{{value}} ساعة معتمدة",
+    "defaultCap": "{{value}} (افتراضي)",
+    "highestCap": "{{value}} (أعلى شريحة)",
+    "programsValue": "{{programs}} · {{tracks}}",
+    "bandsValue": "الشرائح: {{value}}",
+    "isolationTags": {
+      "independentScale": "سلم مستقل",
+      "separatePassRule": "قاعدة نجاح منفصلة",
+      "nonTransferable": "مناهج غير قابلة للنقل",
+      "separateGpa": "منطق معدل منفصل",
+      "distinctLoadRules": "قواعد عبء مستقلة",
+      "segregatedPrograms": "برامج منفصلة",
+      "separateStanding": "قواعد مستوى منفصلة"
+    },
+    "crossMerge": "إمكانية الدمج بين اللوائح",
+    "mergeProhibited": "محظور (فصل صارم بين اللوائح)",
+    "mergeAllowed": "مسموح",
+    "footnote": "القيم مأخوذة من صفوف اللوائح المخزنة. عبارة \"غير منصوص عليه\" تعني أن المادة المصدر لا تذكر رقمًا، ولا تُعامل أبدًا كصفر."
+  },
+  "form": {
+    "createTitle": "لائحة جديدة",
+    "editTitle": "تعديل {{name}}",
+    "description": "أدخل الأرقام كما وردت تمامًا في ملف اللائحة. اترك القيم الاختيارية فارغة إذا لم تنص عليها اللائحة.",
+    "code": "الرمز",
+    "codeHint": "حروف إنجليزية صغيرة وأرقام وشرطة سفلية، مثل bylaw_2025.",
+    "status": "الحالة",
+    "name": "الاسم",
+    "descriptionField": "ملاحظة النطاق",
+    "graduationCredits": "ساعات التخرج",
+    "trainingCredits": "ساعات التدريب خارج المعدل",
+    "optionalNullHint": "اتركه فارغًا إذا لم تنص عليه اللائحة.",
+    "passPercentage": "نسبة النجاح",
+    "finalExamMin": "الحد الأدنى للامتحان النهائي ٪",
+    "effectiveFromCohort": "سارية من دفعة",
+    "effectiveFromCohortHint": "أول سنة التحاق ترتبط بهذه اللائحة.",
+    "sourceReference": "مرجع المصدر",
+    "sourceReferencePlaceholder": "مثال: لائحة ٢٠٢٥، المادة ١٣",
+    "create": "إنشاء اللائحة",
+    "save": "حفظ التغييرات"
+  },
+  "fieldErrors": {
+    "required": "هذا الحقل مطلوب.",
+    "invalid": "هذه القيمة غير صالحة.",
+    "invalid_code": "استخدم من ٢ إلى ٣٢ حرفًا إنجليزيًا صغيرًا أو رقمًا أو شرطة سفلية.",
+    "taken": "هذا الرمز مستخدم في لائحة أخرى.",
+    "must_be_positive": "أدخل عددًا صحيحًا أكبر من الصفر.",
+    "must_be_zero_or_more": "أدخل عددًا صحيحًا يساوي الصفر أو أكبر.",
+    "between_0_and_100": "أدخل قيمة بين ٠ و١٠٠.",
+    "between_1990_and_2100": "أدخل سنة بين ١٩٩٠ و٢١٠٠."
+  },
+  "delete": {
+    "title": "حذف {{name}}؟",
+    "body": "سيؤدي هذا إلى حذف اللائحة نهائيًا. لا يمكن حذف إلا اللوائح التي لا ترتبط بها مقررات أو برامج أو قواعد أو طلاب.",
+    "confirm": "حذف اللائحة",
+    "retireInstead": "إيقاف العمل بها بدلًا من ذلك",
+    "inUseTitle": "هذه اللائحة ما زالت مستخدمة",
+    "inUseBody": "ما زالت سجلات أخرى تشير إليها، لذا لا يمكن حذفها. أوقف العمل بها للحفاظ على السجل التاريخي."
+  },
+  "related": {
+    "course_count": "المقررات",
+    "program_count": "البرامج",
+    "track_count": "المسارات",
+    "credit_limit_count": "حدود الساعات",
+    "grade_letter_count": "التقديرات",
+    "standing_band_count": "شرائح المستوى",
+    "plan_template_count": "الخطط الدراسية",
+    "student_count": "الطلاب"
+  }
+}

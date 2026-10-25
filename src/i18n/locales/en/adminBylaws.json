@@ -1,0 +1,193 @@
+{
+  "eyebrow": ["Statutory academic governance", "Regulatory frameworks"],
+  "description": "Authoritative academic bylaws governing pass marks, credit ceilings, and graduation rules.",
+  "scope": "Scope: registry reference only",
+  "newBylaw": "New bylaw",
+  "isolation": {
+    "title": "Bylaw isolation standard",
+    "badge": "Strict segregation enforced",
+    "body": "The old and 2025 frameworks are kept fully separate. Every student is bound to the bylaw of their cohort; rules are never merged, converted, or bridged across bylaws.",
+    "noMerge": "Cross-bylaw merge disabled",
+    "counts": "{{total}} bylaws · {{active}} active"
+  },
+  "listTitle": "Stored bylaws",
+  "filters": {
+    "status": "Filter by status",
+    "all": "All"
+  },
+  "status": {
+    "active": "Active",
+    "draft": "Draft",
+    "retired": "Retired"
+  },
+  "empty": {
+    "title": "No bylaws match",
+    "body": "Change the status filter, or add a bylaw from its source PDF."
+  },
+  "toast": {
+    "created": "{{name}} was created.",
+    "updated": "{{name}} was updated.",
+    "deleted": "{{name}} was deleted.",
+    "retired": "{{name}} was retired."
+  },
+  "units": {
+    "creditsShort": "{{value}} CH",
+    "creditHours": "Credit hours"
+  },
+  "cohorts": {
+    "onward": "Cohort {{from}} onward",
+    "range": "Cohorts {{from}} – {{to}}"
+  },
+  "card": {
+    "governedCohorts": "Governed cohorts",
+    "passMark": "Pass mark",
+    "passGrade": "(Grade {{letter}} · {{points}} QP)",
+    "passMarkHint": "Minimum course percentage to pass",
+    "finalExamFloor": "Final-exam floor",
+    "ofFinalExam": "of the final exam",
+    "finalExamNotStated": "Not stated in this bylaw",
+    "finalExamHint": "Required in addition to the pass mark",
+    "graduationCredits": "Graduation credits",
+    "trainingNotStated": "Training credits in GPA: not stated",
+    "trainingExcluded_one": "{{value}} training credit outside the GPA",
+    "trainingExcluded_other": "{{value}} training credits outside the GPA",
+    "creditCap": "Term credit cap",
+    "defaultTermMax": "Default term max",
+    "highestTermMax": "Highest term max",
+    "summerCap": "Summer {{value}} CH",
+    "minLoad": "Min load {{value}} CH",
+    "ruleCount_one": "{{value}} rule",
+    "ruleCount_other": "{{value}} rules",
+    "unstatedRows_one": "{{value}} band not stated",
+    "unstatedRows_other": "{{value}} bands not stated",
+    "updated": "Updated {{date}}",
+    "counts": {
+      "students_one": "{{value}} student",
+      "students_other": "{{value}} students",
+      "programs_one": "{{value}} program",
+      "programs_other": "{{value}} programs",
+      "tracks_one": "{{value}} track",
+      "tracks_other": "{{value}} tracks",
+      "courses_one": "{{value}} course",
+      "courses_other": "{{value}} courses",
+      "letters_one": "{{value}} grade letter",
+      "letters_other": "{{value}} grade letters"
+    },
+    "details": "Programs & standing",
+    "editLabel": "Edit {{name}}",
+    "deleteLabel": "Delete {{name}}"
+  },
+  "detail": {
+    "title": "Bylaw details",
+    "overview": "Overview",
+    "notStated": "Not stated",
+    "trainingExcluded": "Training outside GPA",
+    "updated": "Last updated",
+    "students": "Students bound",
+    "source": "Source",
+    "programs": "Programs and tracks",
+    "noPrograms": "No programs are stored for this bylaw.",
+    "noTracks": "No tracks stored.",
+    "standingBands": "Standing bands",
+    "noBands": "No standing bands are stored for this bylaw.",
+    "level": "Level",
+    "creditsPassed": "Credits passed",
+    "bandFrom": "{{min}} and above",
+    "bandRange": "{{min}} to below {{max}}",
+    "bandRule": "Lower bound included, upper bound excluded. A missing number stays empty until the source states it.",
+    "edit": "Edit bylaw"
+  },
+  "levels": {
+    "freshman": "Freshman",
+    "sophomore": "Sophomore",
+    "junior": "Junior",
+    "senior": "Senior"
+  },
+  "compare": {
+    "title": "Comparative regulatory specifications",
+    "subtitle": "Side-by-side comparison of the stored criteria of each independent bylaw.",
+    "matrix": "Cross-bylaw matrix",
+    "dimension": "Dimension",
+    "isolation": "Isolation status",
+    "rows": {
+      "passGrade": "Passing grade & quality points",
+      "finalExam": "Final-exam floor",
+      "graduation": "Total degree requirement",
+      "training": "Training credits outside GPA",
+      "termCap": "Fall/spring credit cap",
+      "summerCap": "Summer credit cap",
+      "minLoad": "Minimum term load",
+      "programs": "Programs & tracks",
+      "standing": "Standing bands"
+    },
+    "passGradeValue": "Grade {{letter}} ({{pct}}, {{points}} QP)",
+    "creditHours": "{{value}} credit hours",
+    "defaultCap": "{{value}} (default)",
+    "highestCap": "{{value}} (highest band)",
+    "programsValue": "{{programs}} · {{tracks}}",
+    "bandsValue_one": "{{value}} band",
+    "bandsValue_other": "{{value}} bands",
+    "isolationTags": {
+      "independentScale": "Independent scale",
+      "separatePassRule": "Separate pass rule",
+      "nonTransferable": "Non-transferable curricula",
+      "separateGpa": "Separate GPA logic",
+      "distinctLoadRules": "Distinct load rules",
+      "segregatedPrograms": "Segregated programs",
+      "separateStanding": "Separate standing rules"
+    },
+    "crossMerge": "Cross-merge capability",
+    "mergeProhibited": "Prohibited (strict bylaw segregation)",
+    "mergeAllowed": "Allowed",
+    "footnote": "Values come from the stored bylaw rows. \"Not stated\" means the source article does not give a number; it is never treated as zero."
+  },
+  "form": {
+    "createTitle": "New bylaw",
+    "editTitle": "Edit {{name}}",
+    "description": "Enter the numbers exactly as the bylaw PDF states them. Leave optional values empty when the bylaw does not state them.",
+    "code": "Code",
+    "codeHint": "Lower-case letters, digits and underscores, e.g. bylaw_2025.",
+    "status": "Status",
+    "name": "Name",
+    "descriptionField": "Scope note",
+    "graduationCredits": "Graduation credits",
+    "trainingCredits": "Training credits outside GPA",
+    "optionalNullHint": "Leave empty if the bylaw does not state it.",
+    "passPercentage": "Pass percentage",
+    "finalExamMin": "Final-exam minimum %",
+    "effectiveFromCohort": "Effective from cohort",
+    "effectiveFromCohortHint": "First intake year bound to this bylaw.",
+    "sourceReference": "Source reference",
+    "sourceReferencePlaceholder": "e.g. 2025 bylaw PDF, Art. 13",
+    "create": "Create bylaw",
+    "save": "Save changes"
+  },
+  "fieldErrors": {
+    "required": "This field is required.",
+    "invalid": "This value is not valid.",
+    "invalid_code": "Use 2–32 lower-case letters, digits or underscores.",
+    "taken": "Another bylaw already uses this code.",
+    "must_be_positive": "Enter a whole number greater than zero.",
+    "must_be_zero_or_more": "Enter a whole number of zero or more.",
+    "between_0_and_100": "Enter a value between 0 and 100.",
+    "between_1990_and_2100": "Enter a year between 1990 and 2100."
+  },
+  "delete": {
+    "title": "Delete {{name}}?",
+    "body": "This permanently removes the bylaw. Only bylaws with no courses, programs, rules or students can be deleted.",
+    "confirm": "Delete bylaw",
+    "retireInstead": "Retire instead",
+    "inUseTitle": "This bylaw is still in use",
+    "inUseBody": "Other records still reference it, so it cannot be deleted. Retire it to keep the history intact."
+  },
+  "related": {
+    "course_count": "Courses",
+    "program_count": "Programs",
+    "track_count": "Tracks",
+    "credit_limit_count": "Credit limits",
+    "grade_letter_count": "Grade letters",
+    "standing_band_count": "Standing bands",
+    "plan_template_count": "Study plans",
+    "student_count": "Students"
+  }
+}
