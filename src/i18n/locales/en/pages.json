@@ -1,0 +1,58 @@
+{
+  "public": {
+    "landing": "Welcome",
+    "login": "Sign in",
+    "signUp": "Create account",
+    "forgotPassword": "Forgot password",
+    "resetPassword": "Reset password"
+  },
+  "shared": {
+    "notifications": "Notifications",
+    "help": "Help",
+    "profile": "Profile"
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "users": "User Management",
+    "universityData": "University Data Management",
+    "courses": "Course Management",
+    "programs": "Program & Track Management",
+    "studyPlans": "Study Plan Management",
+    "bylaws": "Bylaw Management",
+    "creditLimits": "Credit Limit Management",
+    "gradeScales": "Grade Scale Management",
+    "terms": "Academic Term Management",
+    "imports": "Data Import & Validation",
+    "dataGaps": "Data Gaps",
+    "audit": "System Logs"
+  },
+  "coordinator": {
+    "dashboard": "Coordinator Dashboard",
+    "forecastRuns": "Forecast Runs",
+    "forecastRunDetails": "Forecast Run Details",
+    "courseForecasts": "Course Forecasts",
+    "courseForecastDetails": "Course Forecast Details",
+    "sections": "Section Calculation",
+    "decisions": "Offering Decision",
+    "decisionHistory": "Offering Decision History",
+    "rules": "Bylaw & Rule Reference",
+    "studyPlans": "Study Plan Baseline",
+    "dataGaps": "Unresolved Cases",
+    "explain": "AI Explanation"
+  },
+  "student": {
+    "dashboard": "Student Dashboard",
+    "academicData": "My Academic Data",
+    "expectedOfferings": "Expected Course Offerings",
+    "offeringDetails": "Course Offering Details",
+    "myCourses": "My Offering-Relevant Courses"
+  },
+  "advisor": {
+    "dashboard": "Advisor Dashboard",
+    "students": "Students",
+    "studentOverview": "Student Academic Overview",
+    "studentCourses": "Student Offering-Relevant Courses",
+    "offerings": "Course Offering Information",
+    "offeringForecast": "Offering Forecast Details"
+  }
+}
