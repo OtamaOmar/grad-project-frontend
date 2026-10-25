@@ -1,10 +1,11 @@
 import { facultyRoster, dataLock, universitySnapshots } from "../../data/admin/university-data";
 import { findCourse, requisites } from "../../data/courses";
-import { findStudent } from "../../data/people";
+import { appUsers, findStudent } from "../../data/people";
 import { academicSummary, enrollments } from "../../data/records";
 import { findTerm, PLANNING_TERM_ID, programs } from "../../data/reference";
+import { mockError } from "../../errors";
 import { requireRole } from "../../session";
-import { findOr404, listResponse } from "../../utils";
+import { findOr404, listResponse, nextId, now, requireFields } from "../../utils";
 
 /**
  * Admin "University data" screen: snapshot ingestion overview, faculty roster and the
@@ -17,7 +18,13 @@ import { findOr404, listResponse } from "../../utils";
  *
  * validation_flag codes: consistent | label_mismatch | unresolved_result | prerequisite_not_met
  * flag_severity: null | error | warning | info
+ * snapshot kind: faculty_roster | registration; source: hr_academic_affairs | registrar_sis
+ *
+ * Grades and faculty quotas are never edited here (the screen's synchronization policy): the
+ * only write is recording a new snapshot header, which becomes the current one for its kind.
  */
+
+const SNAPSHOT_SOURCES = { faculty_roster: "hr_academic_affairs", registration: "registrar_sis" };
 
 const REGISTRATION_SNAPSHOT_ID = 4;
 
@@ -201,6 +208,69 @@ export default [
         filters: ["department", "academic_rank", "status", "flagged"],
         defaultSort: "staff_code",
       });
+    },
+  },
+  {
+    method: "POST",
+    path: "/admin/university-data/snapshots",
+    handler: ({ body = {} }) => {
+      const me = requireRole("admin");
+      requireFields(body, ["kind", "version_label", "file_name"]);
+      if (!SNAPSHOT_SOURCES[body.kind]) {
+        throw mockError(400, "VALIDATION_ERROR", "Unknown snapshot kind.", {
+          fields: { kind: "invalid" },
+        });
+      }
+      const label = String(body.version_label).trim().toUpperCase();
+      if (
+        universitySnapshots.some((row) => row.kind === body.kind && row.version_label === label)
+      ) {
+        throw mockError(409, "SNAPSHOT_EXISTS", "This snapshot version was already ingested.", {
+          fields: { version_label: "taken" },
+        });
+      }
+      if (dataLock.locked && dataLock.state === "frozen") {
+        throw mockError(409, "DATA_LOCKED", "University data is frozen for the forecast.");
+      }
+      const id = nextId(universitySnapshots);
+      for (const row of universitySnapshots) {
+        if (row.kind === body.kind && row.is_current) {
+          // Freeze the outgoing version's counts before it stops being computed live.
+          Object.assign(row, snapshotRow(row), { is_current: false });
+        }
+      }
+      const snapshot = {
+        id,
+        kind: body.kind,
+        version_label: label,
+        source: SNAPSHOT_SOURCES[body.kind],
+        file_name: String(body.file_name).trim(),
+        imported_at: now(),
+        imported_by: me.id,
+        accepted_count: null,
+        flagged_count: null,
+        snapshot_hash: `sha256:${id.toString(16).padStart(32, "0")}`,
+        is_current: true,
+      };
+      universitySnapshots.push(snapshot);
+      return snapshotRow(snapshot);
+    },
+  },
+  {
+    method: "GET",
+    path: "/admin/university-data/faculty/:id",
+    handler: ({ params }) => {
+      requireRole("admin");
+      const row = findOr404(facultyRoster, params.id, "Faculty member");
+      const user = row.app_user_id ? appUsers.find((item) => item.id === row.app_user_id) : null;
+      return {
+        ...row,
+        flagged: Boolean(row.flag_reason),
+        app_user: user
+          ? { id: user.id, username: user.username, role: user.role, is_active: user.is_active }
+          : null,
+        snapshot: snapshotRow(universitySnapshots.find((item) => item.id === row.snapshot_id)),
+      };
     },
   },
   {

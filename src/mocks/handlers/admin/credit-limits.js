@@ -242,10 +242,9 @@ export default [
           row.updated_at = now();
         }
       });
-      return {
-        items: own.sort((a, b) => a.priority - b.priority).map(toRow),
-        total: own.length,
-      };
+      return listResponse(own.sort((a, b) => a.priority - b.priority).map(toRow), {
+        page_size: 100,
+      });
     },
   },
   {
