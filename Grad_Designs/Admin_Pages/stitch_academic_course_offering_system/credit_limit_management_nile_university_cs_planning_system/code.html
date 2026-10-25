@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        canvas: "#F5F2F3",
+        brand: "#021F94",
+        "brand-hover": "#1436C4",
+        "primary-text": "#101828",
+        "secondary-text": "#475467",
+        "border-main": "#D0D5DD",
+        "border-subtle": "#EAECF0",
+        "success-text": "#067647",
+        "success-bg": "#E7F6EF",
+        "warning-text": "#B54708",
+        "warning-bg": "#FFF6E8",
+        "danger-text": "#B42318",
+        "danger-bg": "#FDECEC",
+        "surface-panel": "#FFFFFF",
+        "surface-subtle": "#F8F9FA",
+      },
+      borderRadius: {
+        "card": "12px",
+        "panel": "20px"
+      },
+      fontFamily: {
+        sans: ['"Source Sans 3"', 'sans-serif'],
+        serif: ['"Source Serif 4"', 'serif'],
+      }
+    }
+  }
+};</script></head><body class="bg-canvas font-sans text-primary-text antialiased"><header class="fixed top-0 left-0 right-0 z-40 bg-surface-panel border-b border-border-main"><div class="h-20 w-full px-6 flex flex-col justify-between pt-2 pb-1.5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><span class="font-serif text-[20px] font-semibold text-primary-text tracking-tight">Nile University <span class="text-secondary-text font-normal">·</span> CS Course Offering Planning System</span><span class="text-[11px] font-bold px-2 py-0.5 rounded bg-[#EEF2F6] text-brand border border-border-main uppercase tracking-wider">ADMIN</span></div><div class="flex items-center gap-3"><button class="w-8 h-8 rounded flex items-center justify-center text-secondary-text hover:text-primary-text hover:bg-surface-subtle transition-colors" title="Help" type="button"><span class="material-symbols-outlined text-[18px]">help</span></button><button class="w-8 h-8 rounded flex items-center justify-center text-secondary-text hover:text-primary-text hover:bg-surface-subtle transition-colors" title="Notifications" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="flex items-center gap-2 pl-2 border-l border-border-main"><div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center ring-2 ring-brand ring-offset-2"><span class="material-symbols-outlined text-white text-[18px]">person</span></div></div></div></div><nav class="flex items-center gap-6 overflow-x-auto whitespace-nowrap pt-1 text-[13px] text-secondary-text font-medium"><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="users" href="#">Users</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="university-data" href="#">University data</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="courses" href="#">Courses</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="programs" href="#">Programs</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="study-plans" href="#">Study plans</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="bylaws" href="#">Bylaws</a><a class="pb-1 border-b-2 border-brand text-primary-text font-semibold transition-colors" data-path="credit-limits" href="#">Credit limits</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="grade-scales" href="#">Grade scales</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="terms" href="#">Terms</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="imports" href="#">Imports</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="pb-1 border-b-2 border-transparent hover:text-primary-text transition-colors" data-path="audit" href="#">Audit</a></nav></div></header><div class="pr-[380px]"><main class="w-full pt-20 px-6 min-h-screen bg-canvas"><div class="flex flex-col w-full pb-8 pt-4">
+<!-- Interactive & Filter Controller Script -->
+<script>
+    function switchCohortFilter(filterKey, element) {
+      document.querySelectorAll('.filter-tab').forEach(el => {
+        el.classList.remove('bg-white', 'text-primary-text', 'shadow-sm', 'font-semibold');
+        el.classList.add('text-secondary-text');
+      });
+      element.classList.add('bg-white', 'text-primary-text', 'shadow-sm', 'font-semibold');
+      element.classList.remove('text-secondary-text');
+
+      const rows = document.querySelectorAll('.bylaw-row');
+      rows.forEach(row => {
+        if (filterKey === 'all') {
+          row.style.display = '';
+        } else {
+          row.style.display = row.getAttribute('data-bylaw') === filterKey ? '' : 'none';
+        }
+      });
+    }
+
+    function selectRow(tr, ruleCode, bylawTitle, standingBand, maxCredits, statusText, rationale, articleRef) {
+      document.querySelectorAll('.bylaw-row').forEach(r => {
+        r.classList.remove('bg-[#F0F4FE]');
+      });
+      tr.classList.add('bg-[#F0F4FE]');
+
+      // Update right explain panel asynchronously via DOM traversal
+      const panelContext = document.getElementById('audit-rule-context');
+      if (panelContext) {
+        panelContext.innerHTML = `
+          <div class="space-y-3">
+            <div class="p-3.5 rounded-card bg-white border border-border-main shadow-sm">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[11px] font-bold uppercase tracking-wide text-brand">${ruleCode}</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-surface-subtle text-secondary-text border border-border-subtle">${bylawTitle}</span>
+              </div>
+              <p class="text-[14px] font-bold text-primary-text mb-1">${standingBand}</p>
+              <div class="flex items-center gap-1.5 text-secondary-text text-[12px]">
+                <span>Enforced Cap:</span>
+                <span class="text-primary-text font-bold text-[13px]">${maxCredits}</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-card bg-white border border-border-main space-y-1 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-secondary-text">Statutory Gazette Reference</span>
+              <p class="text-[12px] text-secondary-text leading-relaxed italic">${articleRef}</p>
+            </div>
+
+            <div class="p-3.5 rounded-card bg-white border border-border-main space-y-1 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-secondary-text">Registry Invariant Verification</span>
+              <p class="text-[12px] text-secondary-text leading-relaxed">${rationale}</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+<!-- Page Header Title Area -->
+<div class="mb-5 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-1.5">
+<span class="text-[11px] font-bold tracking-wider uppercase text-brand">Academic Charter Specifications</span>
+<span class="text-border-main text-[11px]">/</span>
+<span class="text-[11px] font-medium tracking-wide text-secondary-text">Curriculum Policy Engine</span>
+</div>
+<h1 class="font-serif text-[28px] font-semibold text-primary-text tracking-tight">Credit Limit Management</h1>
+<p class="text-[14px] text-secondary-text max-w-3xl leading-relaxed">
+        Stored semester credit registration maximums and prerequisite GPA bands across bylaws. Admin manages canonical ceilings; cannot alter individual student registration limits.
+      </p>
+</div>
+<!-- Administrative Quick Action Bar -->
+<div class="flex items-center gap-2.5 flex-shrink-0">
+<button class="px-3.5 py-2 rounded-card bg-white border border-border-main text-primary-text text-[13px] font-semibold hover:bg-surface-subtle transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary-text">history</span>
+<span>Version History</span>
+</button>
+<button class="px-3.5 py-2 rounded-card bg-brand text-white text-[13px] font-semibold hover:bg-brand-hover transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Matrix</span>
+</button>
+</div>
+</div>
+<!-- Invariant Notice Banner -->
+<div class="mb-5 rounded-card bg-white border border-border-main p-4 shadow-sm flex items-start gap-3.5 relative overflow-hidden">
+<div class="w-1.5 absolute left-0 top-0 bottom-0 bg-brand"></div>
+<div class="p-2 rounded-lg bg-[#EEF2F6] text-brand flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="text-[13px] font-bold text-primary-text tracking-wide uppercase">Registry Invariant Protocol</span>
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-subtle text-secondary-text border border-border-subtle tracking-wider uppercase">Statutory Lock</span>
+</div>
+<p class="text-[13px] text-secondary-text leading-relaxed">
+        Credit ceiling rules are immutably bound to matriculation charter cohorts. Gaps marked <span class="text-warning-text font-bold px-1.5 py-0.5 rounded bg-warning-bg border border-border-subtle">Unknown</span> reflect missing gazette ratifications and cannot be overridden with heuristic values.
+      </p>
+</div>
+</div>
+<!-- Metrics / Distribution Summary Bento Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-3.5 mb-5">
+<!-- Total Active Caps -->
+<div class="bg-white p-4 rounded-card border border-border-main shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider">Ratified Thresholds</span>
+<span class="material-symbols-outlined text-[18px] text-brand">rule</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-serif text-[24px] font-bold text-primary-text">6</span>
+<span class="text-[12px] text-secondary-text">of 7 rules locked</span>
+</div>
+<div class="w-full bg-[#EAECF0] rounded-full h-1 mt-2.5 overflow-hidden">
+<div class="bg-brand h-full w-[85.7%]"></div>
+</div>
+</div>
+<!-- Active Bylaw Bands -->
+<div class="bg-white p-4 rounded-card border border-border-main shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider">Governing Bylaws</span>
+<span class="material-symbols-outlined text-[18px] text-secondary-text">account_balance</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-serif text-[24px] font-bold text-primary-text">2</span>
+<span class="text-[12px] text-secondary-text">Cohorts (Old &amp; 2025)</span>
+</div>
+<div class="w-full bg-[#EAECF0] rounded-full h-1 mt-2.5 overflow-hidden">
+<div class="bg-secondary-text h-full w-full"></div>
+</div>
+</div>
+<!-- Maximum Departmental Ceiling -->
+<div class="bg-white p-4 rounded-card border border-border-main shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider">Hard Max Credit Cap</span>
+<span class="material-symbols-outlined text-[18px] text-success-text">vertical_align_top</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-serif text-[24px] font-bold text-primary-text">21 CH</span>
+<span class="text-[12px] text-secondary-text">Dean's List / Petition</span>
+</div>
+<div class="w-full bg-[#EAECF0] rounded-full h-1 mt-2.5 overflow-hidden">
+<div class="bg-success-text h-full w-full"></div>
+</div>
+</div>
+<!-- Ratification Gap Counter -->
+<div class="bg-white p-4 rounded-card border border-border-main shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary-text mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider">Unratified Gaps</span>
+<span class="material-symbols-outlined text-[18px] text-warning-text">pending_actions</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-serif text-[24px] font-bold text-primary-text">1 Band</span>
+<span class="text-[12px] text-warning-text font-medium">Action required</span>
+</div>
+<div class="w-full bg-[#EAECF0] rounded-full h-1 mt-2.5 overflow-hidden">
+<div class="bg-warning-text h-full w-[14.3%]"></div>
+</div>
+</div>
+</div>
+<!-- Primary Working Workbench Card -->
+<div class="bg-white rounded-card border border-border-main shadow-sm flex flex-col overflow-hidden">
+<!-- Filter and Context Search Header -->
+<div class="p-3.5 bg-surface-subtle border-b border-border-main flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<span class="text-[13px] font-bold text-primary-text">Cohort Scope:</span>
+<div class="inline-flex rounded-lg bg-[#EAE8E8] p-0.5 border border-border-subtle">
+<button class="filter-tab px-3 py-1 rounded-md text-[12px] bg-white text-primary-text font-semibold shadow-sm transition-colors" onclick="switchCohortFilter('all', this)" type="button">
+            All Bylaws (7)
+          </button>
+<button class="filter-tab px-3 py-1 rounded-md text-[12px] text-secondary-text hover:text-primary-text transition-colors" onclick="switchCohortFilter('Old bylaw', this)" type="button">
+            Old Bylaw (3)
+          </button>
+<button class="filter-tab px-3 py-1 rounded-md text-[12px] text-secondary-text hover:text-primary-text transition-colors" onclick="switchCohortFilter('2025 bylaw', this)" type="button">
+            2025 Bylaw (4)
+          </button>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 text-secondary-text text-[11px] font-medium bg-white px-2.5 py-1 rounded-md border border-border-subtle">
+<span class="w-2 h-2 rounded-full bg-success-text"></span>
+<span>Enforced Standard</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary-text text-[11px] font-medium bg-white px-2.5 py-1 rounded-md border border-border-subtle">
+<span class="w-2 h-2 rounded-full bg-brand"></span>
+<span>Honor / Petition Override</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary-text text-[11px] font-medium bg-white px-2.5 py-1 rounded-md border border-border-subtle">
+<span class="w-2 h-2 rounded-full bg-danger-text"></span>
+<span>Remedial Band</span>
+</div>
+</div>
+</div>
+<!-- Data Grid Table: Credit Limit Rules -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-subtle h-9 text-[11px] font-bold text-secondary-text uppercase tracking-wider border-b border-border-main">
+<th class="px-4 py-2 w-44">Bylaw</th>
+<th class="px-4 py-2">Who / Standing Band</th>
+<th class="px-4 py-2 w-48 text-center">Maximum Credits</th>
+<th class="px-4 py-2 w-56">Priority / Status</th>
+<th class="px-4 py-2 w-20 text-right">Inspect</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle text-[13px] text-primary-text">
+<!-- Row 1 -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="Old bylaw" onclick="selectRow(this, 'RULE-OLD-01', 'Old Bylaw', 'Default Regular Standing', '19 CH', 'Enforced Standard', 'Statutory baseline load applicable to students in good standing under the legacy cohort framework.', 'NU CS Academic Bylaw 2018, Article 14.1 - Regular Term Registration Boundaries')">
+<td class="px-4 py-2 font-semibold text-secondary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary-text">history_edu</span>
+<span>Old bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-primary-text">Default Regular Standing</span>
+<span class="text-[11px] text-secondary-text ml-1.5">(Cumulative GPA ≥ 2.00)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded font-bold text-[13px] bg-surface-subtle text-primary-text border border-border-subtle">19 CH</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-success-bg text-success-text border border-border-main">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Enforced Standard</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="Old bylaw" onclick="selectRow(this, 'RULE-OLD-02', 'Old Bylaw', 'CGPA ≥ 3.00 (Honor Ceiling)', '21 CH', 'Enforced Override', 'Permits overload of up to 2 credits for academic achievers maintaining a minimum CGPA of 3.00.', 'NU CS Academic Bylaw 2018, Article 14.3 - Honor Overload Privileges')">
+<td class="px-4 py-2 font-semibold text-secondary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary-text">history_edu</span>
+<span>Old bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-brand">CGPA ≥ 3.00 (Honor Ceiling)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded font-bold text-[13px] bg-[#EEF2F6] text-brand border border-border-main">21 CH</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EEF2F6] text-brand border border-border-main">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Enforced Override</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="Old bylaw" onclick="selectRow(this, 'RULE-OLD-03', 'Old Bylaw', 'Academic Probation (CGPA &lt; 2.00)', '12 CH', 'Enforced Remedial', 'Mandatory ceiling reduction imposed on all candidates failing to meet minimum collegiate GPA baseline.', 'NU CS Academic Bylaw 2018, Article 18.2 - Academic Warning and Course Load Retraction')">
+<td class="px-4 py-2 font-semibold text-secondary-text">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary-text">history_edu</span>
+<span>Old bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-danger-text">Academic Probation (CGPA &lt; 2.00)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded font-bold text-[13px] bg-danger-bg text-danger-text border border-border-subtle">12 CH</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-danger-bg text-danger-text border border-border-subtle">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>Enforced Remedial</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="2025 bylaw" onclick="selectRow(this, 'RULE-2025-01', '2025 Bylaw', 'Regular Standing (CGPA ≥ 2.00)', '19 CH', 'Enforced Standard', 'Standard term limit codified in revised departmental regulation approved by the Academic Council.', 'NU CS Charter 2025 Revised Edition, Title II, Art. 7 - Standard Curriculum Progression')">
+<td class="px-4 py-2 font-semibold text-brand">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-brand">menu_book</span>
+<span>2025 bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-primary-text">Regular Standing (CGPA ≥ 2.00)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded font-bold text-[13px] bg-surface-subtle text-primary-text border border-border-subtle">19 CH</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-success-bg text-success-text border border-border-main">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Enforced Standard</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+<!-- Row 5 (Data Gap / Unknown) -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="2025 bylaw" onclick="selectRow(this, 'RULE-2025-GAP', '2025 Bylaw', 'CGPA 3.0 to below 3.3', 'Unknown (Unratified)', 'Pending Senate Gazette', 'The University Senate has held Article 8.3 in committee pending resolution of laboratory credit weighting. No algorithmic cap may be inferred.', 'Senate Gazette Draft 2025-B, Provision Pending Ratification - Ref Doc SEC-889')">
+<td class="px-4 py-2 font-semibold text-brand">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-brand">menu_book</span>
+<span>2025 bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-primary-text">CGPA 3.0 to below 3.3</span>
+<span class="text-[11px] text-secondary-text ml-1.5">(Intermediate Honors)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-3 py-0.5 rounded-full bg-warning-bg text-warning-text border border-border-subtle text-[11px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[13px] mr-1">help_outline</span>
+<span>Unknown</span>
+</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-warning-bg text-warning-text border border-border-subtle">
+<span class="material-symbols-outlined text-[13px]">hourglass_empty</span>
+<span>Pending Senate Gazette</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="2025 bylaw" onclick="selectRow(this, 'RULE-2025-02', '2025 Bylaw', 'CGPA ≥ 3.30 (Dean\'s Honor List)', '21 CH', 'Enforced Override', 'Approved high-standing acceleration tier granting up to 21 CH per normal academic semester.', 'NU CS Charter 2025 Revised Edition, Title II, Art. 8.4 - Dean\'s Honor List Registration')">
+<td class="px-4 py-2 font-semibold text-brand">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-brand">menu_book</span>
+<span>2025 bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-brand">CGPA ≥ 3.30 (Dean's Honor List)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded font-bold text-[13px] bg-[#EEF2F6] text-brand border border-border-main">21 CH</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EEF2F6] text-brand border border-border-main">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span>
+<span>Enforced Override</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="bylaw-row h-11 hover:bg-[#F8FAFC] transition-colors cursor-pointer" data-bylaw="2025 bylaw" onclick="selectRow(this, 'RULE-2025-03', '2025 Bylaw', 'Graduating Senior (Final Semester)', '21 CH (Special Petition)', 'Departmental Cap', 'Emergency credit extension restricted to prospective graduates needing precisely ≤ 21 credits to complete degree obligations.', 'NU CS Charter 2025 Revised Edition, Title V, Art. 22 - Senior Degree Completion Dispensations')">
+<td class="px-4 py-2 font-semibold text-brand">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-brand">menu_book</span>
+<span>2025 bylaw</span>
+</div>
+</td>
+<td class="px-4 py-2">
+<span class="font-semibold text-primary-text">Graduating Senior (Final Semester)</span>
+</td>
+<td class="px-4 py-2 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded font-bold text-[13px] bg-surface-subtle text-secondary-text border border-border-subtle">21 CH (Special Petition)</span>
+</td>
+<td class="px-4 py-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-surface-subtle text-secondary-text border border-border-main">
+<span class="material-symbols-outlined text-[13px]">gavel</span>
+<span>Departmental Cap</span>
+</span>
+</td>
+<td class="px-4 py-2 text-right text-secondary-text">
+<span class="material-symbols-outlined text-[18px] hover:text-brand transition-colors">navigate_next</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Data Table Footer / Status Invariant -->
+<div class="px-4 py-2.5 bg-surface-subtle border-t border-border-main flex items-center justify-between text-secondary-text text-[12px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-brand">lock</span>
+<span>Storage Engine: <strong class="text-primary-text">Read-Only Relational Ledger</strong></span>
+</div>
+<div class="flex items-center gap-4">
+<span>Rows displayed: <strong class="text-primary-text">7 of 7</strong></span>
+<span>Last Gazette Sync: <strong class="text-primary-text">2025-02-14 09:30 UTC</strong></span>
+</div>
+</div>
+</div>
+<!-- Auxiliary Audit / Statutory Ledger Deep-Dive -->
+<div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-3.5">
+<!-- Comparative CGPA Ceiling Chart (Inline Pure SVG) -->
+<div class="bg-white p-4 rounded-card border border-border-main shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="text-[11px] font-bold uppercase tracking-wider text-brand">Cross-Cohort Comparison</span>
+<h3 class="font-serif text-[18px] font-semibold text-primary-text">Credit Ceilings by Standing</h3>
+</div>
+<span class="material-symbols-outlined text-secondary-text text-[20px]">bar_chart</span>
+</div>
+<!-- Minimal SVG Visualizer -->
+<div class="pt-1">
+<svg aria-label="Credit limits visualization" class="w-full h-auto text-brand" viewBox="0 0 460 140">
+<!-- Background Guidelines -->
+<line stroke="#EAECF0" stroke-dasharray="3,3" x1="120" x2="440" y1="20" y2="20"></line>
+<line stroke="#EAECF0" stroke-dasharray="3,3" x1="120" x2="440" y1="60" y2="60"></line>
+<line stroke="#EAECF0" stroke-dasharray="3,3" x1="120" x2="440" y1="100" y2="100"></line>
+<!-- Axis Values -->
+<text fill="#475467" font-size="10" text-anchor="middle" x="120" y="125">0 CH</text>
+<text fill="#475467" font-size="10" text-anchor="middle" x="226" y="125">12 CH</text>
+<text fill="#475467" font-size="10" text-anchor="middle" x="288" y="125">16 CH</text>
+<text fill="#475467" font-size="10" text-anchor="middle" x="342" y="125">19 CH</text>
+<text fill="#475467" font-size="10" text-anchor="middle" x="400" y="125">21 CH</text>
+<!-- Band 1: Probation -->
+<text fill="#B42318" font-size="11" font-weight="600" text-anchor="end" x="105" y="32">Probation (&lt;2.0)</text>
+<rect fill="#FDECEC" height="14" rx="4" stroke="#EAECF0" width="106" x="120" y="22"></rect>
+<rect fill="#B42318" height="14" rx="4" width="60" x="120" y="22"></rect>
+<text fill="#B42318" font-size="11" font-weight="600" x="232" y="33">12 CH</text>
+<!-- Band 2: Regular Standing -->
+<text fill="#101828" font-size="11" font-weight="600" text-anchor="end" x="105" y="68">Regular (≥2.0)</text>
+<rect fill="#E7F6EF" height="14" rx="4" stroke="#D0D5DD" width="222" x="120" y="58"></rect>
+<rect fill="#067647" height="14" rx="4" width="150" x="120" y="58"></rect>
+<text fill="#067647" font-size="11" font-weight="600" x="348" y="69">19 CH</text>
+<!-- Band 3: Honors / Petition -->
+<text fill="#021F94" font-size="11" font-weight="600" text-anchor="end" x="105" y="104">Honors (≥3.3 / Pet.)</text>
+<rect fill="#EEF2F6" height="14" rx="4" stroke="#D0D5DD" width="270" x="120" y="94"></rect>
+<rect fill="#021F94" height="14" rx="4" width="220" x="120" y="94"></rect>
+<text fill="#021F94" font-size="11" font-weight="600" x="396" y="105">21 CH</text>
+</svg>
+</div>
+<p class="text-[12px] text-secondary-text leading-relaxed">
+        The system dynamically caps course basket validation at runtime. Administrative overrides require Academic Dean concurrence and charter waiver logging in the audit registry.
+      </p>
+</div>
+<!-- Administrative Responsibility Matrix -->
+<div class="bg-white p-4 rounded-card border border-border-main shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider text-secondary-text">Role Delegation Guardrails</span>
+<span class="material-symbols-outlined text-[20px] text-secondary-text">admin_panel_settings</span>
+</div>
+<h3 class="font-serif text-[18px] font-semibold text-primary-text mb-2.5">Administrative Authority Boundaries</h3>
+<div class="space-y-2">
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-subtle border border-border-subtle">
+<span class="material-symbols-outlined text-brand text-[18px] mt-0.5">check</span>
+<div>
+<p class="text-[13px] font-bold text-primary-text">Department Administrator Scope</p>
+<p class="text-[12px] text-secondary-text">Manages canonical bylaw limits, uploads Gazette amendments, reviews cohort enrollment distribution.</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-subtle border border-border-subtle">
+<span class="material-symbols-outlined text-danger-text text-[18px] mt-0.5">block</span>
+<div>
+<p class="text-[13px] font-bold text-primary-text">Prohibited Operations</p>
+<p class="text-[12px] text-secondary-text">Individual student credit manipulation, unilateral exception generation without gazette backing, or unratified tier synthesis.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-3 flex items-center justify-between border-t border-border-subtle mt-2">
+<span class="text-[10px] font-bold uppercase text-secondary-text tracking-wider">SYSTEM CONFORMANCE: ISO-IEC-ACAD-2024</span>
+<button class="text-brand hover:text-brand-hover text-[12px] font-semibold flex items-center gap-1 transition-colors" type="button">
+<span>Read Bylaw Bylaws Policy</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dynamic Explanation Target Container (Injected into Shell's Aside Context) -->
+<div class="hidden" id="audit-rule-context">
+<!-- Populated dynamically by selectRow JavaScript helper -->
+</div>
+</div></main></div><aside class="fixed right-0 top-20 bottom-0 w-[380px] bg-white border-l border-border-main flex flex-col z-30 rounded-tl-panel rounded-bl-panel overflow-hidden shadow-lg"><div class="p-5 border-b border-border-main"><div class="flex items-center justify-between mb-1"><h2 class="font-serif text-[20px] font-semibold text-primary-text">Explain</h2><span class="text-[10px] font-bold px-2 py-0.5 rounded bg-surface-subtle text-secondary-text border border-border-main tracking-wider uppercase">AUDIT CORE</span></div><p class="text-[12px] text-secondary-text leading-relaxed">Deterministic audit panel. Explains stored rules, catalog schemas, and relational invariants without recommendation or automation.</p></div><div class="p-3.5 border-b border-border-main bg-surface-subtle"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-secondary-text text-[18px]">search</span><input class="w-full h-[36px] pl-9 pr-3 bg-white border border-border-main rounded-lg text-[13px] text-primary-text placeholder:text-secondary-text focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors" placeholder="Ask about a stored rule" type="text"></div></div><div class="flex-1 p-5 overflow-y-auto space-y-3.5 bg-[#FAF9F9]"><div class="p-3.5 rounded-card bg-white border border-border-main shadow-sm"><div class="flex items-center gap-1.5 mb-1 text-brand"><span class="material-symbols-outlined text-[16px]">terminal</span><span class="text-[11px] font-bold uppercase tracking-wide">Active Schema Context</span></div><p class="text-[12px] text-secondary-text leading-relaxed">Select any record, course code, or validation rule to review schema constraints and catalog dependencies.</p></div></div><div class="p-3 border-t border-border-main bg-white text-center"><span class="text-[10px] font-bold tracking-wider text-secondary-text uppercase">READ-ONLY VERIFICATION ENGINE</span></div></aside></body></html>

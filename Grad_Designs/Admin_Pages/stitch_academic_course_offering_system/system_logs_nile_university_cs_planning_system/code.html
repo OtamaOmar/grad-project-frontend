@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-fixed": "#dee0ff",
+          "surface-container-lowest": "#ffffff",
+          "inverse-surface": "#293041",
+          "on-surface": "#101828",
+          "background": "#f9f9ff",
+          "on-error-container": "#93000a",
+          "primary-container": "#021f94",
+          "tertiary-container": "#002093",
+          "surface-container-low": "#f1f3ff",
+          "on-background": "#101828",
+          "tertiary-fixed-dim": "#bac3ff",
+          "outline-variant": "#d0d5dd",
+          "error-container": "#ffdad6",
+          "secondary-container": "#d6e3fb",
+          "surface-variant": "#e4e7ec",
+          "on-primary-container": "#7f91ff",
+          "on-primary-fixed": "#000f5d",
+          "inverse-on-surface": "#edf0ff",
+          "error": "#ba1a1a",
+          "on-surface-variant": "#475467",
+          "surface": "#ffffff",
+          "on-primary": "#ffffff",
+          "surface-bright": "#f9f9ff",
+          "on-tertiary-container": "#7e92ff",
+          "on-tertiary": "#ffffff",
+          "secondary-fixed": "#d6e3fb",
+          "on-secondary": "#ffffff",
+          "on-secondary-fixed": "#0f1c2d",
+          "tertiary": "#00115e",
+          "on-secondary-container": "#586579",
+          "on-error": "#ffffff",
+          "on-primary-fixed-variant": "#253aa9",
+          "inverse-primary": "#bbc3ff",
+          "on-tertiary-fixed": "#00105b",
+          "surface-container-highest": "#e9edff",
+          "surface-dim": "#d2daf0",
+          "surface-container": "#f1f3ff",
+          "primary": "#021f94",
+          "primary-hover": "#1436c4",
+          "primary-fixed-dim": "#bbc3ff",
+          "primary-fixed": "#dee0ff",
+          "on-tertiary-fixed-variant": "#0d32c1",
+          "on-secondary-fixed-variant": "#3b485a",
+          "secondary": "#475467",
+          "outline": "#d0d5dd",
+          "surface-tint": "#4154c1",
+          "surface-container-high": "#e0e8ff",
+          "secondary-fixed-dim": "#bac7de"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-md": "0.75rem",
+          "space-xs": "0.25rem",
+          "margin-mobile": "1rem",
+          "space-lg": "1rem",
+          "margin": "1.5rem",
+          "gutter-mobile": "0.5rem",
+          "space-xl": "1.5rem",
+          "space-sm": "0.5rem",
+          "gutter": "1rem"
+        },
+        "fontFamily": {
+          "headline-xl": [
+            "\"Source Serif 4\""
+          ],
+          "body-sm": [
+            "\"Source Sans 3\""
+          ],
+          "body-xs": [
+            "\"Source Sans 3\""
+          ],
+          "body-lg": [
+            "\"Source Sans 3\""
+          ],
+          "label-lg": [
+            "\"Source Sans 3\""
+          ],
+          "label-md": [
+            "\"Source Sans 3\""
+          ],
+          "body-md": [
+            "\"Source Sans 3\""
+          ],
+          "headline-lg": [
+            "\"Source Serif 4\""
+          ],
+          "label-sm": [
+            "\"Source Sans 3\""
+          ],
+          "headline-sm": [
+            "\"Source Serif 4\""
+          ],
+          "headline-md": [
+            "\"Source Serif 4\""
+          ]
+        },
+        "fontSize": {
+          "headline-xl": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-xs": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "26px",
+            {
+              "lineHeight": "34px",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }
+</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest border-b border-outline"><div class="h-20 w-full px-gutter flex flex-col justify-between pt-space-sm pb-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">Nile University <span class="text-secondary">·</span> CS Course Offering Planning System</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container/10 text-primary border border-primary-container/20 uppercase tracking-wider font-semibold">ADMIN</span></div><div class="flex items-center gap-space-md"><button class="w-8 h-8 rounded flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container transition-colors" title="Help" type="button"><span class="material-symbols-outlined text-[18px]">help</span></button><button class="w-8 h-8 rounded flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container transition-colors" title="Notifications" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-outline"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary-container/20"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div><nav class="flex items-center gap-space-md overflow-x-auto whitespace-nowrap pt-space-xs text-secondary font-label-md text-label-md"><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="users" href="#">Users</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="university-data" href="#">University data</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="courses" href="#">Courses</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="programs" href="#">Programs</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="study-plans" href="#">Study plans</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="bylaws" href="#">Bylaws</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="credit-limits" href="#">Credit limits</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="grade-scales" href="#">Grade scales</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="terms" href="#">Terms</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="imports" href="#">Imports</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="pb-1 border-b-2 border-primary text-primary font-semibold transition-colors" data-path="audit" href="#">Audit</a></nav></div></header><div class="pr-[380px]"><main class="w-full pt-20 px-gutter min-h-screen bg-background"><div class="flex flex-col w-full pb-space-xl">
+<div class="flex flex-col gap-space-lg w-full max-w-[1040px] mx-auto pt-space-md">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">System Governance &amp; Telemetry</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">System Logs</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">
+          Canonical read-only audit ledger of platform actions, database migrations, and operational decisions.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<div class="flex items-center gap-2 px-space-md py-1.5 rounded-lg bg-surface-container-lowest border border-outline shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#00a86e]"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-semibold">Ledger Intact</span>
+<span class="text-secondary font-label-sm text-label-sm">· 4,891 Entries</span>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-primary hover:bg-[#1436C4] text-white font-label-md text-label-md transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export SHA-256 Digest</span>
+</button>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low border border-outline">
+<div class="p-1.5 rounded-lg bg-primary text-white shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+<div class="flex-1">
+<div class="font-label-md text-label-md text-primary font-bold tracking-wide uppercase">Cryptographic Integrity Notice</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5 leading-relaxed">
+          Append-only cryptographic audit stream. Historical records are immutable. Entries are signed using the university hardware security module root and anchored to the Nile University academic trust log.
+        </p>
+</div>
+<div class="shrink-0 flex items-center gap-1.5 text-secondary font-label-sm text-label-sm bg-surface-container-lowest border border-outline px-2.5 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>
+<span>MERKLE ROOT: 9F2A…801C</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Events Verified</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">1,402</span>
+<span class="font-label-sm text-label-sm text-[#00a86e] font-semibold">+18 today</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary mt-1">Fall 2026 Cycle Operations</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Active Actors</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">14</span>
+<span class="font-body-xs text-body-xs text-secondary font-medium">Designated roles</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary mt-1">Dean, Chairs, Coordinators</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Current Bylaw State</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">ED-2024-C3</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary mt-1">Schema strictly enforced</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Last Block Ratification</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">14:22</span>
+<span class="font-body-xs text-body-xs text-secondary font-medium">UTC+2</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary mt-1">3 Oct 2026 · coordinator</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-space-sm bg-surface-container-lowest border border-outline p-space-sm rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm w-full md:w-auto">
+<div class="relative flex-1 md:w-80">
+<span class="material-symbols-outlined absolute left-space-sm top-2 text-secondary text-[18px]">filter_list</span>
+<input class="w-full h-9 pl-9 pr-space-sm bg-surface-container-low border border-outline rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary focus:bg-white" placeholder="Filter by hash, user, course, or decree..." type="text">
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center gap-1 transition-colors" type="button">
+<span>Actor: All</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center gap-1 transition-colors" type="button">
+<span>Range: 30 Days</span>
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end md:self-auto text-secondary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-semibold tracking-wide">READ ONLY LEDGER · REVISION LOCKED</span>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest border border-outline shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline">
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary w-48 font-semibold" scope="col">When</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary w-36 font-semibold" scope="col">Who</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold" scope="col">Action</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary w-36 text-right font-semibold" scope="col">Verification</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-semibold">3 Oct 2026, 14:22</div>
+<div class="font-body-xs text-body-xs text-secondary mt-0.5 font-mono">14:22:18 UTC+02:00</div>
+</td>
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-semibold border border-primary/20">
+<span class="material-symbols-outlined text-[13px]">person</span>
+<span>coordinator</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary mt-1">CS Dept Office</div>
+</td>
+<td class="py-3 px-space-md align-top">
+<div class="font-body-md text-body-md text-on-surface font-semibold flex items-center gap-2">
+<span>decision saved for MATH 112</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary-container text-primary font-bold uppercase tracking-tight">Curriculum Decision</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">Calculus II: 3 Sections ratified</div>
+<div class="mt-2 flex items-center gap-space-sm font-body-xs text-body-xs text-secondary">
+<span class="bg-surface-container-low border border-outline px-1.5 py-0.5 rounded font-mono text-on-surface">SECT-01, SECT-02, SECT-03</span>
+<span>Capacity: 105 seats total</span>
+<span>Rule: Pre-req chain intact (MATH 101 &gt;= C)</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1 text-[#00a86e] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>RATIFIED</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary font-mono mt-1">0x8a9f...c31b</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-semibold">2 Oct 2026, 09:14</div>
+<div class="font-body-xs text-body-xs text-secondary mt-0.5 font-mono">09:14:02 UTC+02:00</div>
+</td>
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-primary-container text-white font-label-sm text-label-sm font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">admin_panel_settings</span>
+<span>admin</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary mt-1">System Console</div>
+</td>
+<td class="py-3 px-space-md align-top">
+<div class="font-body-md text-body-md text-on-surface font-semibold flex items-center gap-2">
+<span>seed loaded</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary-fixed text-primary font-bold uppercase tracking-tight">ETL Ingestion</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">SIS Roster snapshot Rev 4 ingestion complete</div>
+<div class="mt-2 flex items-center gap-space-sm font-body-xs text-body-xs text-secondary">
+<span class="bg-surface-container-low border border-outline px-1.5 py-0.5 rounded font-mono text-on-surface">DELTA_RECS: +312</span>
+<span>Source: Banner-API v2.8</span>
+<span>Reconciliation: Zero orphan keys</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1 text-[#00a86e] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>COMMITTED</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary font-mono mt-1">0x3e17...881f</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-semibold">1 Oct 2026, 11:05</div>
+<div class="font-body-xs text-body-xs text-secondary mt-0.5 font-mono">11:05:49 UTC+02:00</div>
+</td>
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-primary-container text-white font-label-sm text-label-sm font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">admin_panel_settings</span>
+<span>admin</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary mt-1">Governance Root</div>
+</td>
+<td class="py-3 px-space-md align-top">
+<div class="font-body-md text-body-md text-on-surface font-semibold flex items-center gap-2">
+<span>bylaw schema locked</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container text-error font-bold uppercase tracking-tight">Security Lock</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">Decree ED-2024-C3 applied</div>
+<div class="mt-2 flex items-center gap-space-sm font-body-xs text-body-xs text-secondary">
+<span class="bg-surface-container-low border border-outline px-1.5 py-0.5 rounded font-mono text-on-surface">TABLES: bylaw_rules, prerequisite_graph</span>
+<span>Schema Migration #089</span>
+<span>Read-only enforced</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1 text-error font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>ENFORCED</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary font-mono mt-1">0xbb20...76d2</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-semibold">28 Sep 2026, 16:40</div>
+<div class="font-body-xs text-body-xs text-secondary mt-0.5 font-mono">16:40:31 UTC+02:00</div>
+</td>
+<td class="py-3 px-space-md align-top whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-semibold border border-outline">
+<span class="material-symbols-outlined text-[13px]">how_to_reg</span>
+<span>registrar</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary mt-1">Academic Records</div>
+</td>
+<td class="py-3 px-space-md align-top">
+<div class="font-body-md text-body-md text-on-surface font-semibold flex items-center gap-2">
+<span>census lock applied to Summer 2026 completion records</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container border border-outline text-secondary font-bold uppercase tracking-tight">Census Freeze</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">Census lock applied to Summer 2026 completion records</div>
+<div class="mt-2 flex items-center gap-space-sm font-body-xs text-body-xs text-secondary">
+<span class="bg-surface-container-low border border-outline px-1.5 py-0.5 rounded font-mono text-on-surface">TERM_ID: 2026-SUM</span>
+<span>Historical GPAs frozen</span>
+<span>Degree audit validation passed</span>
+</div>
+</td>
+<td class="py-3 px-space-md align-top text-right whitespace-nowrap">
+<div class="inline-flex items-center gap-1 text-[#00a86e] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>FINALIZED</span>
+</div>
+<div class="font-body-xs text-body-xs text-secondary font-mono mt-1">0x12d0...aa09</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-md bg-surface-container-low border-t border-outline flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm">
+<span>Displaying 4 immutable ledger entries</span>
+<span>·</span>
+<span>Next verified block in 18 minutes</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-outline text-secondary opacity-50 cursor-not-allowed" disabled="" type="button">Previous</button>
+<span class="px-2 text-secondary font-medium">Page 1 of 122</span>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest border border-outline text-on-surface hover:bg-surface-container transition-colors" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-outline shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="p-2 rounded-lg bg-surface-container text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Audit Rule Relational Context</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">
+            Every recorded mutation references schema constraints from Decree ED-2024-C3. You may query the Explain panel on the right to trace any cryptographic signature back to primary statute rules.
+          </p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<span class="font-body-xs text-body-xs text-secondary font-medium">No write operations permitted in this view.</span>
+</div>
+</div>
+</div>
+</div></main></div><aside class="fixed right-0 top-20 bottom-0 w-[380px] bg-white border-l border-outline flex flex-col z-30 rounded-tl-[20px] rounded-bl-[20px] overflow-hidden shadow-xl"><div class="p-space-lg border-b border-outline bg-surface-container-low"><div class="flex items-center justify-between mb-space-xs"><h2 class="font-headline-md text-headline-md text-on-surface">Explain</h2><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container border border-outline text-primary font-bold">AUDIT CORE</span></div><p class="font-body-sm text-body-sm text-secondary leading-relaxed">Deterministic audit panel. Explains stored rules, catalog schemas, and relational invariants without recommendation or automation.</p></div><div class="p-space-md border-b border-outline bg-surface-container-low/50"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-space-sm text-secondary text-[18px]">search</span><input class="w-full h-[36px] pl-9 pr-space-sm bg-white border border-outline rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary transition-colors" placeholder="Ask about a stored rule" type="text"></div></div><div class="flex-1 p-space-lg overflow-y-auto space-y-space-md bg-white"><div class="p-space-md rounded-xl bg-surface-container-low border border-outline"><div class="flex items-center gap-space-xs mb-space-xs text-primary font-bold"><span class="material-symbols-outlined text-[16px]">terminal</span><span class="font-label-sm text-label-sm uppercase tracking-wide">Active Schema Context</span></div><p class="font-body-sm text-body-sm text-secondary leading-relaxed">Select any record, course code, or validation rule to review schema constraints and catalog dependencies.</p></div></div><div class="p-space-md border-t border-outline bg-surface-container-low text-center"><span class="font-label-sm text-label-sm text-secondary font-bold tracking-wider">READ-ONLY VERIFICATION ENGINE</span></div></aside></body></html>

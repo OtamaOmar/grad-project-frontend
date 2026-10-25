@@ -1,0 +1,394 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.coordinator-ring{box-shadow:0 0 0 2px #5ee0d6;}.active-coordinator-border{border-bottom:2px solid #5ee0d6;color:#dde1fb!important;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-bright": "#34384c", "outline-variant": "#444653", "on-secondary-container": "#b0b8d1", "tertiary": "#42e09a", "on-tertiary": "#003822", "tertiary-fixed-dim": "#42e09a", "outline": "#8e909f", "primary-fixed": "#dce1ff", "surface-dim": "#0d1225", "on-background": "#dde1fb", "inverse-primary": "#3055c6", "on-primary-fixed": "#001550", "secondary": "#bec6df", "primary-container": "#6b8cff", "on-tertiary-fixed-variant": "#005233", "on-secondary-fixed": "#131b2e", "on-secondary-fixed-variant": "#3e475b", "surface-container-high": "#24293c", "primary-fixed-dim": "#b6c4ff", "surface": "#0d1225", "secondary-container": "#41495e", "on-secondary": "#283044", "on-surface-variant": "#c4c5d5", "on-surface": "#dde1fb", "on-error-container": "#ffdad6", "surface-tint": "#b6c4ff", "secondary-fixed": "#dae2fc", "surface-container-highest": "#2f3448", "tertiary-container": "#00a86e", "background": "#0d1225", "inverse-on-surface": "#2b3043", "on-primary": "#00277f", "on-primary-container": "#002375", "primary": "#b6c4ff", "error-container": "#93000a", "surface-container": "#1a1f31", "surface-container-lowest": "#080d1f", "error": "#ffb4ab", "on-error": "#690005", "surface-variant": "#2f3448", "secondary-fixed-dim": "#bec6df", "tertiary-fixed": "#65fdb5", "surface-container-low": "#161b2d", "on-tertiary-container": "#00331e", "inverse-surface": "#dde1fb", "on-primary-fixed-variant": "#0a3bad", "on-tertiary-fixed": "#002112" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1.5rem", "space-xl": "1.5rem", "gutter-dense": "0.5rem", "margin-compact": "1rem", "space-lg": "1rem", "space-md": "0.75rem", "space-sm": "0.5rem" }, "fontFamily": { "title-lg": ["\"Source Sans 3\""], "label-sm": ["\"Source Sans 3\""], "title-sm": ["\"Source Sans 3\""], "headline-md": ["\"Source Serif 4\""], "body-md": ["\"Source Sans 3\""], "label-md": ["\"Source Sans 3\""], "body-lg": ["\"Source Sans 3\""], "display-lg": ["\"Source Serif 4\""], "label-lg": ["\"Source Sans 3\""], "body-sm": ["\"Source Sans 3\""], "title-md": ["\"Source Sans 3\""], "headline-lg": ["\"Source Serif 4\""] }, "fontSize": { "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}], "label-sm": ["10px", {"lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700"}], "title-sm": ["13px", {"lineHeight": "18px", "fontWeight": "600"}], "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-md": ["13px", {"lineHeight": "18px", "fontWeight": "400"}], "label-md": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}], "body-lg": ["15px", {"lineHeight": "22px", "fontWeight": "400"}], "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}], "label-lg": ["13px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "title-md": ["15px", {"lineHeight": "20px", "fontWeight": "600"}], "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}] } } } }</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-container-low border-b border-outline-variant/30 px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg flex-1 min-w-0"><div class="flex items-center gap-space-sm shrink-0"><span class="font-headline-md text-title-lg text-primary tracking-tight">Nile University</span><span class="text-outline font-body-sm">·</span><span class="font-title-sm text-on-surface tracking-normal hidden xl:inline">CS Course Offering Planning System</span></div><nav class="flex items-center gap-space-xs flex-wrap min-w-0 overflow-hidden" data-active-classes="active-coordinator-border font-title-sm text-on-surface"><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="dashboard" href="#">Dashboard</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="forecast-runs" href="#">Forecast runs</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="course-forecasts" href="#">Course forecasts</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="sections" href="#">Sections</a><a aria-current="page" class="px-space-sm py-1 hover:bg-surface-container-high rounded-DEFAULT transition-colors whitespace-nowrap active-coordinator-border font-title-sm text-on-surface" data-path="decisions" href="#">Decisions</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="history" href="#">History</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="rules" href="#">Rules</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="study-plans" href="#">Study plans</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="data-gaps" href="#">Data gaps</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="explain" href="#">Explain</a></nav></div><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-xs pr-space-sm border-r border-outline-variant/30"><a class="p-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications</span></a><a class="p-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors flex items-center justify-center" data-path="help" href="#"><span class="material-symbols-outlined text-[20px]">help</span></a><a class="p-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors flex items-center justify-center" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">settings</span></a></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="text-right hidden 2xl:block"><div class="font-title-sm text-on-surface leading-tight">Nour Hassan</div><div class="font-label-sm text-outline leading-tight">Coordinator</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center coordinator-ring"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><div class="flex w-full pt-16"><main class="flex-1 min-w-0 pr-[380px] bg-surface-container-lowest min-h-[calc(100vh-4rem)] p-margin"><div class="flex flex-col w-full">
+<!-- Pending Warning Banner -->
+<div class="mb-space-lg rounded-xl bg-[#2A2112] px-space-md py-space-sm shadow-md flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-[#FFC46B] text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-sm text-[#FFC46B] uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#FFC46B]/15">Simulation Model</span>
+<span class="font-body-md text-[#FFC46B] font-medium">Sample students, not a measured result.</span>
+<span class="text-[#FFC46B]/70 font-body-sm hidden md:inline">Cohort enrollment projections utilize stochastic graduation path samples.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-[#FFC46B]/80 font-mono">RUN #4092-B</span>
+</div>
+</div>
+<!-- Header & Context Area -->
+<div class="mb-space-xl flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm">
+<a class="font-label-sm text-secondary hover:text-on-surface uppercase tracking-wider flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span> Decisions Index
+        </a>
+<span class="text-outline font-body-sm">/</span>
+<span class="font-label-sm text-[#5EE0D6] uppercase tracking-wider">Formal Provisioning</span>
+</div>
+<h1 class="font-headline-lg text-display-lg text-on-surface tracking-tight">Offering Decision: CSCI 207</h1>
+<p class="font-body-lg text-secondary">Record official course opening and component provisioning determinations</p>
+</div>
+<!-- Quick Meta Indicator -->
+<div class="flex items-center gap-space-sm bg-surface-container rounded-xl px-space-md py-space-sm self-start xl:self-auto shadow-sm">
+<div class="w-2 h-2 rounded-full bg-[#5EE0D6] animate-pulse"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-outline uppercase tracking-wider">Target Term</span>
+<span class="font-title-sm text-on-surface">Spring 2026 Semester</span>
+</div>
+<span class="text-outline-variant font-body-sm mx-1">·</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-outline uppercase tracking-wider">Catalog Status</span>
+<span class="font-label-sm text-[#42E09A] px-1.5 py-0.5 rounded bg-[#0E2A22] uppercase tracking-wider">Mandatory Core</span>
+</div>
+</div>
+</div>
+<!-- Top Hero Block: Course Review Summary & Sovereign Governance Callout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mb-space-lg">
+<!-- Course Statistics Card -->
+<div class="lg:col-span-7 bg-surface-container rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-space-md mb-space-md">
+<div>
+<span class="font-label-sm text-[#5EE0D6] uppercase tracking-wider block mb-0.5">Undergraduate Program</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">CSCI 207: Computer Organization &amp; Architecture</h2>
+<p class="font-body-sm text-secondary mt-0.5">3 Credit Hours · Prerequisites: CSCI 102 &amp; ENGR 110</p>
+</div>
+<span class="font-label-sm px-2 py-1 rounded bg-[#6B8CFF]/15 text-primary font-mono shrink-0">
+            CID: 0207-F
+          </span>
+</div>
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low rounded-lg p-space-sm">
+<span class="font-label-sm text-secondary block uppercase tracking-wider mb-1">Projected Demand</span>
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-headline-lg text-[#6B8CFF] font-semibold">41.25</span>
+<span class="font-body-sm text-outline">students</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-[#6B8CFF] h-full w-[72%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm">
+<span class="font-label-sm text-secondary block uppercase tracking-wider mb-1">Implied Sections</span>
+<div class="flex items-center gap-space-xs pt-1 flex-wrap font-title-sm text-on-surface">
+<span class="bg-surface-container px-2 py-0.5 rounded">Lec: <span class="text-primary font-semibold">1</span></span>
+<span class="bg-surface-container px-2 py-0.5 rounded">Tut: <span class="text-primary font-semibold">2</span></span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-outline">Lab: —</span>
+</div>
+<span class="font-label-sm text-outline block mt-1.5">Max cap: 45 / room</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm">
+<span class="font-label-sm text-secondary block uppercase tracking-wider mb-1">Audit Risk Factor</span>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="material-symbols-outlined text-[#42E09A] text-[18px]">verified</span>
+<span class="font-title-sm text-[#42E09A]">Low Bottleneck</span>
+</div>
+<span class="font-label-sm text-outline block mt-1.5">Senior clearance 96%</span>
+</div>
+</div>
+</div>
+<!-- Sparkline Mini Visualization -->
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-outline">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">show_chart</span>
+<span class="font-label-sm">5-Term Historical Enrolled:</span>
+<span class="font-body-sm font-mono text-secondary">38 → 42 → 39 → 45 → 41(proj)</span>
+</div>
+<!-- SVG Sparkline -->
+<svg aria-hidden="true" class="w-28 h-6 overflow-visible" fill="none" viewBox="0 0 100 24">
+<path d="M0 16 L25 10 L50 14 L75 4 L100 8" stroke="#6B8CFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="100" cy="8" fill="#5EE0D6" r="3"></circle>
+</svg>
+</div>
+</div>
+<!-- Sovereign Governance Mandate Callout Box -->
+<div class="lg:col-span-5 bg-surface-container-high rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden">
+<!-- Subtle top-accent glow -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#6B8CFF] via-[#5EE0D6] to-[#6B8CFF]"></div>
+<div>
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="material-symbols-outlined text-[#6B8CFF] text-[20px]">gavel</span>
+<span class="font-label-sm text-primary uppercase tracking-wider">Academic Governance Policy § 2.4</span>
+</div>
+<blockquote class="font-headline-md text-headline-md text-on-surface leading-snug my-space-sm">
+          “The system does not open the course. You do.”
+        </blockquote>
+<p class="font-body-md text-secondary leading-relaxed mt-space-xs">
+          Automated forecasting models are non-binding diagnostic advisories. Final course release, component partitioning, and physical venue reservation remain the sole prerogative of the Department Coordinator and Curriculum Chair.
+        </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-[#07102E] text-[#5EE0D6] flex items-center justify-center font-label-sm font-semibold">NU</span>
+<span class="font-body-sm text-outline">Nile Univ. CS Senate Directive</span>
+</div>
+<span class="font-label-sm text-outline-variant font-mono">REV-2025.08</span>
+</div>
+</div>
+</div>
+<!-- Form Wrapper -->
+<form class="space-y-space-lg" id="decisionForm" onsubmit="event.preventDefault(); handleDecisionSubmit();">
+<!-- Section Title -->
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Component Provisioning Matrix</h3>
+<p class="font-body-sm text-outline">Configure individual instructional components and authorized section capacities.</p>
+</div>
+<div class="flex items-center gap-space-xs text-secondary font-label-sm">
+<span class="w-2 h-2 rounded-full bg-[#42E09A]"></span>
+<span>Catalog Syllabi Synced</span>
+</div>
+</div>
+<!-- The Three Decision Component Blocks -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- 1. Lecture Component Block -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col justify-between transition-all hover:bg-surface-container-high/70">
+<div>
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">co_present</span>
+<span class="font-title-md text-on-surface">Lecture Component</span>
+</div>
+<span class="font-label-sm text-[#42E09A] px-2 py-0.5 rounded bg-[#0E2A22] uppercase tracking-wider">
+              Implied: 1 Sec
+            </span>
+</div>
+<p class="font-body-sm text-secondary mb-space-md">
+            Primary theoretical instruction. Model projects 1 room requirement at 45-seat amphitheater capacity.
+          </p>
+<!-- Radio Selection -->
+<div class="space-y-space-xs mb-space-md">
+<label class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<input checked="" class="w-4 h-4 accent-[#6B8CFF] cursor-pointer" name="lec_decision" onchange="updateComponentState('lec', true)" type="radio" value="open">
+<div class="flex flex-col">
+<span class="font-title-sm text-on-surface">Open</span>
+<span class="font-body-sm text-outline">Authorizes registration &amp; timetable slotting</span>
+</div>
+</label>
+<label class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<input class="w-4 h-4 accent-[#6B8CFF] cursor-pointer" name="lec_decision" onchange="updateComponentState('lec', false)" type="radio" value="closed">
+<div class="flex flex-col">
+<span class="font-title-sm text-on-surface">Do not open</span>
+<span class="font-body-sm text-outline">Suppress component for this semester</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section Count Field -->
+<div class="pt-space-sm bg-surface-container-lowest/60 rounded-lg p-space-sm mt-space-sm">
+<label class="font-label-sm text-secondary uppercase tracking-wider block mb-1" for="lec_count">
+            Authorized Section Count
+          </label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest text-on-surface font-title-sm rounded-lg px-space-md py-1.5 focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="lec_count" max="6" min="1" type="number" value="1">
+<span class="absolute right-3 font-body-sm text-outline pointer-events-none">section(s)</span>
+</div>
+<span class="font-body-sm text-outline block mt-1">Suggested capacity: 45 enrolled</span>
+</div>
+</div>
+<!-- 2. Tutorial Component Block -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col justify-between transition-all hover:bg-surface-container-high/70">
+<div>
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">groups</span>
+<span class="font-title-md text-on-surface">Tutorial Component</span>
+</div>
+<span class="font-label-sm text-[#42E09A] px-2 py-0.5 rounded bg-[#0E2A22] uppercase tracking-wider">
+              Implied: 2 Sec
+            </span>
+</div>
+<p class="font-body-sm text-secondary mb-space-md">
+            Discussion &amp; problem-solving recitations. Cap calculated at 22 students per section to preserve TA ratio.
+          </p>
+<!-- Radio Selection -->
+<div class="space-y-space-xs mb-space-md">
+<label class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<input checked="" class="w-4 h-4 accent-[#6B8CFF] cursor-pointer" name="tut_decision" onchange="updateComponentState('tut', true)" type="radio" value="open">
+<div class="flex flex-col">
+<span class="font-title-sm text-on-surface">Open</span>
+<span class="font-body-sm text-outline">Authorizes 2 teaching assistant slots</span>
+</div>
+</label>
+<label class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<input class="w-4 h-4 accent-[#6B8CFF] cursor-pointer" name="tut_decision" onchange="updateComponentState('tut', false)" type="radio" value="closed">
+<div class="flex flex-col">
+<span class="font-title-sm text-on-surface">Do not open</span>
+<span class="font-body-sm text-outline">Consolidate into lecture hours only</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section Count Field -->
+<div class="pt-space-sm bg-surface-container-lowest/60 rounded-lg p-space-sm mt-space-sm">
+<label class="font-label-sm text-secondary uppercase tracking-wider block mb-1" for="tut_count">
+            Authorized Section Count
+          </label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest text-on-surface font-title-sm rounded-lg px-space-md py-1.5 focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="tut_count" max="8" min="1" type="number" value="2">
+<span class="absolute right-3 font-body-sm text-outline pointer-events-none">sections</span>
+</div>
+<span class="font-body-sm text-outline block mt-1">Suggested capacity: 22 per section</span>
+</div>
+</div>
+<!-- 3. Lab Component Block (Disabled / Inactive) -->
+<div class="bg-surface-container/60 rounded-xl p-space-md shadow-sm flex flex-col justify-between opacity-75">
+<div>
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs text-outline">
+<span class="material-symbols-outlined text-[20px]">science</span>
+<span class="font-title-md text-outline">Lab Component</span>
+</div>
+<span class="font-label-sm text-outline px-2 py-0.5 rounded bg-surface-container-highest uppercase tracking-wider">
+              Implied: —
+            </span>
+</div>
+<!-- Helper Badge verbatim -->
+<div class="mb-space-md p-space-sm rounded-lg bg-[#2A2112]/60 text-[#FFC46B] flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] shrink-0">info</span>
+<span class="font-body-sm leading-snug">No lab component in 2025 curriculum syllabus</span>
+</div>
+<!-- Disabled Radio Choices -->
+<div class="space-y-space-xs mb-space-md pointer-events-none select-none">
+<label class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low/40 opacity-40 cursor-not-allowed">
+<input class="w-4 h-4 cursor-not-allowed" disabled="" name="lab_decision" type="radio" value="open">
+<div class="flex flex-col">
+<span class="font-title-sm text-outline">Open</span>
+<span class="font-body-sm text-outline/60">Not applicable for course catalog</span>
+</div>
+</label>
+<label class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low/40 opacity-40 cursor-not-allowed">
+<input checked="" class="w-4 h-4 cursor-not-allowed" disabled="" name="lab_decision" type="radio" value="closed">
+<div class="flex flex-col">
+<span class="font-title-sm text-outline">Do not open</span>
+<span class="font-body-sm text-outline/60">Standard syllabus baseline</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section Count Field (Disabled) -->
+<div class="pt-space-sm bg-surface-container-lowest/30 rounded-lg p-space-sm mt-space-sm opacity-50">
+<label class="font-label-sm text-outline uppercase tracking-wider block mb-1">
+            Authorized Section Count
+          </label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest text-outline font-title-sm rounded-lg px-space-md py-1.5 cursor-not-allowed" disabled="" type="text" value="0">
+<span class="absolute right-3 font-body-sm text-outline/60">disabled</span>
+</div>
+<span class="font-body-sm text-outline/50 block mt-1">Requires department curriculum override</span>
+</div>
+</div>
+</div>
+<!-- Coordinator Notes & Committee Textarea Block -->
+<div class="bg-surface-container rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<label class="font-title-md text-on-surface flex items-center gap-space-xs" for="coordinator_notes">
+<span class="material-symbols-outlined text-[#5EE0D6] text-[18px]">edit_note</span>
+          Coordinator Decision Rationale &amp; Committee Notes
+        </label>
+<span class="font-label-sm text-outline">Mandatory audit archive entry</span>
+</div>
+<p class="font-body-sm text-secondary mb-space-sm">
+        Document operational context, specialized instructor assignments, laboratory hardware waivers, or scheduling conflicts reviewed during the departmental convening.
+      </p>
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline/50 font-body-md rounded-xl p-space-md focus:outline-none focus:ring-1 focus:ring-[#6B8CFF] shadow-inner transition-colors resize-y leading-relaxed" id="coordinator_notes" placeholder="Record formal justification for room allocations and instructor loads..." rows="4"></textarea>
+</div>
+<div class="mt-space-sm flex flex-wrap items-center justify-between gap-space-sm pt-space-xs text-outline font-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-[#5EE0D6]">lock</span>
+<span>Decision signed digitally as: <strong class="text-on-surface font-semibold">Nour Hassan (Coordinator ID: 8841-CS)</strong></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm uppercase tracking-wider">Timestamp:</span>
+<span class="font-mono text-secondary" id="liveTimestamp">2025-05-18 14:31 UTC</span>
+</div>
+</div>
+</div>
+<!-- Action Bar & Decision Dispatch -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-sm pb-space-lg">
+<div class="flex items-center gap-space-sm text-secondary">
+<a class="px-space-md py-2 rounded-xl text-secondary hover:text-on-surface hover:bg-surface-container font-title-sm transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">close</span> Cancel without saving
+        </a>
+<button class="px-space-md py-2 rounded-xl text-secondary hover:text-on-surface hover:bg-surface-container font-title-sm transition-colors flex items-center gap-1" onclick="resetFormToImplied()" type="button">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span> Reset to implied counts
+        </button>
+</div>
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<!-- Prominent Primary Save Button -->
+<button class="w-full sm:w-auto px-8 py-3 bg-[#6B8CFF] hover:bg-[#8DA5FF] text-[#07102E] font-title-md rounded-xl font-semibold shadow-lg hover:shadow-[#6B8CFF]/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-space-sm group" id="saveBtn" type="submit">
+<span class="material-symbols-outlined text-[#07102E] text-[20px] transition-transform group-hover:translate-x-0.5">check_circle</span>
+          Save decision
+        </button>
+</div>
+</div>
+</form>
+<!-- Interactive Feedback Toast (Hidden by default) -->
+<div class="fixed bottom-6 left-8 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none" id="toastNotification">
+<div class="bg-surface-container-high text-on-surface rounded-xl px-space-lg py-space-md shadow-2xl flex items-center gap-space-md">
+<span class="w-8 h-8 rounded-full bg-[#0E2A22] text-[#42E09A] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">done_all</span>
+</span>
+<div>
+<div class="font-title-sm text-on-surface">Offering Determination Recorded</div>
+<div class="font-body-sm text-secondary">CSCI 207 decisions saved to Spring 2026 registry trace.</div>
+</div>
+</div>
+</div>
+<script>
+    function updateComponentState(prefix, isOpen) {
+      const countInput = document.getElementById(prefix + '_count');
+      if (countInput) {
+        if (!isOpen) {
+          countInput.setAttribute('disabled', 'true');
+          countInput.classList.add('opacity-40', 'cursor-not-allowed');
+        } else {
+          countInput.removeAttribute('disabled');
+          countInput.classList.remove('opacity-40', 'cursor-not-allowed');
+        }
+      }
+    }
+
+    function resetFormToImplied() {
+      document.querySelector('input[name="lec_decision"][value="open"]').checked = true;
+      document.getElementById('lec_count').value = 1;
+      updateComponentState('lec', true);
+
+      document.querySelector('input[name="tut_decision"][value="open"]').checked = true;
+      document.getElementById('tut_count').value = 2;
+      updateComponentState('tut', true);
+
+      document.getElementById('coordinator_notes').value = '';
+    }
+
+    function handleDecisionSubmit() {
+      const btn = document.getElementById('saveBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span> Storing Audit...';
+      btn.setAttribute('disabled', 'true');
+
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">verified</span> Saved';
+        btn.classList.remove('bg-[#6B8CFF]', 'hover:bg-[#8DA5FF]');
+        btn.classList.add('bg-[#42E09A]', 'text-[#003822]');
+
+        // Show Toast
+        const toast = document.getElementById('toastNotification');
+        toast.classList.remove('translate-y-16', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-16', 'opacity-0');
+          btn.innerHTML = originalText;
+          btn.removeAttribute('disabled');
+          btn.classList.remove('bg-[#42E09A]', 'text-[#003822]');
+          btn.classList.add('bg-[#6B8CFF]', 'hover:bg-[#8DA5FF]');
+        }, 3200);
+      }, 750);
+    }
+  </script>
+</div></main><aside class="fixed right-0 top-16 bottom-0 w-[380px] bg-surface-container border-l border-outline-variant/30 flex flex-col z-40"><div class="p-space-lg border-b border-outline-variant/30 shrink-0"><div class="flex items-center justify-between mb-1"><h2 class="font-headline-md text-headline-md text-on-surface">Explain</h2><span class="font-label-sm text-tertiary-fixed border border-tertiary-fixed/30 bg-tertiary-container/20 px-space-xs py-0.5 rounded-DEFAULT uppercase tracking-wider">Audit Engine</span></div><p class="font-body-sm text-outline">Stored rules &amp; forecast rationale</p></div><div class="flex-1 overflow-y-auto p-space-lg space-y-space-md"><div class="p-space-md bg-surface-container-high/60 border border-outline-variant/20 rounded-[20px]"><div class="font-label-md text-secondary-fixed mb-1">SYSTEM BOUNDARY</div><p class="font-body-sm text-outline-variant leading-relaxed">The system supplies capacity audits, historical constraints, and demand models. It does not determine policy or mandate course opening.</p></div><div class="flex flex-col gap-space-xs items-end"><div class="bg-primary-container text-on-primary-container px-space-lg py-space-sm rounded-[20px] rounded-tr-sm max-w-[85%] font-body-md shadow-sm">Why is CS401 flagged with prerequisite bottlenecks for Spring 2026?</div><span class="font-label-sm text-outline pr-1">14:28</span></div><div class="flex flex-col gap-space-xs items-start"><div class="bg-surface-container-high text-on-surface px-space-lg py-space-md rounded-[20px] rounded-tl-sm max-w-[95%] font-body-md border border-outline-variant/30 space-y-space-sm"><p class="text-on-surface font-body-md">CS401 requires CS301 with grade ≥ C. Audit traces identify that 42 eligible seniors are currently enrolled in CS301 Fall section 02.</p><div class="flex flex-wrap gap-space-xs pt-1"><span class="font-label-sm text-primary border border-primary/30 bg-surface-container-lowest px-space-xs py-0.5 rounded-DEFAULT">RULE § 4.2 PREREQ</span><span class="font-label-sm text-secondary border border-outline-variant/40 bg-surface-container-lowest px-space-xs py-0.5 rounded-DEFAULT">COHORT 2022-CS</span></div><div class="flex items-center gap-space-xs pt-2 text-outline font-body-sm"><span class="w-1.5 h-1.5 rounded-full bg-[#5EE0D6] animate-pulse"></span><span class="font-label-sm text-[#5EE0D6]">Writing rationale trace</span></div></div><span class="font-label-sm text-outline pl-1">14:29</span></div></div><div class="p-space-lg border-t border-outline-variant/30 bg-surface-container-low shrink-0"><div class="relative flex items-center"><input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-space-md py-space-sm text-on-surface placeholder:text-outline/60 font-body-md focus:outline-none focus:border-primary-container transition-colors pr-10" placeholder="Ask about a stored rule or this result" type="text"><button class="absolute right-2 text-outline-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">send</span></button></div></div></aside></div></body></html>

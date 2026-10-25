@@ -1,0 +1,441 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#080d1f", "primary-fixed": "#dce1ff", "primary-container": "#6b8cff", "tertiary-fixed-dim": "#42e09a", "on-secondary-fixed-variant": "#3e475b", "on-primary": "#00277f", "primary": "#b6c4ff", "surface-tint": "#b6c4ff", "background": "#0d1225", "outline-variant": "#444653", "inverse-on-surface": "#2b3043", "surface-variant": "#2f3448", "tertiary-container": "#00a86e", "on-tertiary": "#003822", "secondary-fixed": "#dae2fc", "inverse-surface": "#dde1fb", "surface-dim": "#0d1225", "secondary-fixed-dim": "#bec6df", "on-secondary-fixed": "#131b2e", "on-background": "#dde1fb", "error": "#ffb4ab", "surface-container-high": "#24293c", "on-surface-variant": "#c4c5d5", "primary-fixed-dim": "#b6c4ff", "surface-container-highest": "#2f3448", "error-container": "#93000a", "on-tertiary-container": "#00331e", "surface-container-low": "#161b2d", "surface-bright": "#34384c", "tertiary": "#42e09a", "on-error": "#690005", "on-error-container": "#ffdad6", "secondary": "#bec6df", "on-secondary": "#283044", "inverse-primary": "#3055c6", "on-primary-fixed-variant": "#0a3bad", "on-tertiary-fixed-variant": "#005233", "secondary-container": "#41495e", "on-primary-container": "#002375", "outline": "#8e909f", "tertiary-fixed": "#65fdb5", "on-surface": "#dde1fb", "on-primary-fixed": "#001550", "surface-container": "#1a1f31", "on-tertiary-fixed": "#002112", "surface": "#0d1225", "on-secondary-container": "#b0b8d1" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "space-md": "0.75rem", "gutter": "1rem", "margin": "1.5rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter-dense": "0.5rem", "margin-compact": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg": [ "\"Source Serif 4\"" ], "label-sm": [ "\"Source Sans 3\"" ], "headline-md": [ "\"Source Serif 4\"" ], "body-sm": [ "\"Source Sans 3\"" ], "label-md": [ "\"Source Sans 3\"" ], "body-md": [ "\"Source Sans 3\"" ], "title-sm": [ "\"Source Sans 3\"" ], "title-md": [ "\"Source Sans 3\"" ], "label-lg": [ "\"Source Sans 3\"" ], "body-lg": [ "\"Source Sans 3\"" ], "title-lg": [ "\"Source Sans 3\"" ], "display-lg": [ "\"Source Serif 4\"" ] }, "fontSize": { "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "label-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "body-md": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "title-sm": [ "13px", { "lineHeight": "18px", "fontWeight": "600" } ], "title-md": [ "15px", { "lineHeight": "20px", "fontWeight": "600" } ], "label-lg": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "body-lg": [ "15px", { "lineHeight": "22px", "fontWeight": "400" } ], "title-lg": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "display-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest border-b border-surface-variant"><div class="h-20 w-full px-gutter flex flex-col justify-between pt-space-sm pb-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">Nile University <span class="text-outline">·</span> CS Course Offering Planning System</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container/20 text-primary border border-primary-container/40 uppercase tracking-wider">ADMIN</span></div><div class="flex items-center gap-space-md"><button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Help" type="button"><span class="material-symbols-outlined text-[18px]">help</span></button><button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Notifications" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-variant"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary-container"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div><nav class="flex items-center gap-space-md overflow-x-auto whitespace-nowrap pt-space-xs text-on-surface-variant font-label-md text-label-md" data-active-classes="text-on-surface border-b-2 border-primary-container font-semibold"><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="users" href="#">Users</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="university-data" href="#">University data</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="courses" href="#">Courses</a><a aria-current="page" class="pb-1 transition-colors text-on-surface border-b-2 border-primary-container font-semibold" data-path="programs" href="#">Programs</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="study-plans" href="#">Study plans</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="bylaws" href="#">Bylaws</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="credit-limits" href="#">Credit limits</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="grade-scales" href="#">Grade scales</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="terms" href="#">Terms</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="imports" href="#">Imports</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="audit" href="#">Audit</a></nav></div></header><div class="pr-[380px]"><main class="w-full pt-20 px-gutter min-h-screen bg-background"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-lg pb-space-xl">
+<!-- Top Action & Meta Bar -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pt-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span>Curriculum Registry</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-semibold">Programs &amp; Tracks</span>
+</div>
+<h1 class="font-headline-lg text-display-lg text-on-surface">Program and Track Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Canonical degree programs, specialization tracks, and bylaw charters governing degree completion criteria.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-lg text-label-lg transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">download</span>
+<span>Export Curricular Map</span>
+</button>
+<button class="px-space-md py-1.5 rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-semibold hover:bg-primary transition-colors flex items-center gap-space-xs shadow-md" type="button">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Add Program Record</span>
+</button>
+</div>
+</div>
+<!-- Summary Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Active Programs</span>
+<span class="material-symbols-outlined text-[18px] text-primary">school</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-display-lg text-on-surface">2</span>
+<span class="font-body-sm text-body-sm text-tertiary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Grounded
+          </span>
+</div>
+<p class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+          Computer Science, Artificial Intelligence
+        </p>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Registered Tracks</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">alt_route</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-display-lg text-on-surface">5</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Across 2 Majors</span>
+</div>
+<p class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+          General, Big Data, SWE, Cyber, Bioinf
+        </p>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Active Bylaws</span>
+<span class="material-symbols-outlined text-[18px] text-primary">policy</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-display-lg text-on-surface">2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-high">CHARTERS</span>
+</div>
+<p class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+          Old 2019 Charter, 2025 Revised Edition
+        </p>
+</div>
+<!-- Card 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Program Invariants</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">verified_user</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-sm">
+<span class="font-title-md text-title-lg text-tertiary">All Grounded</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">100% Valid</span>
+</div>
+<p class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+          Zero unmapped core prerequisites
+        </p>
+</div>
+</div>
+<!-- Curricular Catalog Table Section -->
+<div class="rounded-xl bg-surface-container-low shadow-md overflow-hidden flex flex-col">
+<!-- Filter Bar -->
+<div class="px-space-md py-space-sm bg-surface-container flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wide">Registry Records</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">5 Entries</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-outline text-[16px]">filter_list</span>
+<select class="h-[34px] pl-8 pr-7 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded-xl focus:outline-none appearance-none cursor-pointer">
+<option value="all">All Bylaws</option>
+<option value="2025">2025 Revised</option>
+<option value="old">Old 2019</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-outline text-[14px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-outline text-[16px]">search</span>
+<input class="h-[34px] pl-8 pr-3 bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm rounded-xl focus:outline-none w-48 focus:w-64 transition-all" placeholder="Filter track or degree..." type="text">
+</div>
+</div>
+</div>
+<!-- Table Viewport -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md uppercase tracking-wider h-8">
+<th class="px-space-md font-semibold">Program</th>
+<th class="px-space-md font-semibold">Specialization Track</th>
+<th class="px-space-md font-semibold">Bylaw Charter</th>
+<th class="px-space-md font-semibold">Total Credits</th>
+<th class="px-space-md font-semibold">Status</th>
+<th class="px-space-md font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="h-10 hover:bg-surface-container transition-colors group cursor-pointer" onclick="updateAuditFocus('CS-BD-OLD', 'Old 2019 Charter', '134 credits')">
+<td class="px-space-md font-title-sm text-title-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Computer Science</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="font-semibold text-primary">Big Data</span>
+</td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-semibold">Old</span>
+</td>
+<td class="px-space-md font-semibold text-on-surface">
+                134 Credits
+              </td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#0E2A22] text-[#3DDC97] font-semibold flex items-center gap-1 w-max">
+<span class="w-1 h-1 rounded-full bg-[#3DDC97]"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs text-on-surface-variant">
+<button class="p-1 hover:text-primary transition-colors" title="View Requirements" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+</button>
+<button class="p-1 hover:text-on-surface transition-colors" title="Audit Specifications" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="h-10 hover:bg-surface-container transition-colors group cursor-pointer" onclick="updateAuditFocus('CS-GEN-2025', '2025 Revised Edition', '132 credits')">
+<td class="px-space-md font-title-sm text-title-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Computer Science</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="font-semibold text-primary">General</span>
+</td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold">2025</span>
+</td>
+<td class="px-space-md font-semibold text-on-surface">
+                132 Credits
+              </td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#0E2A22] text-[#3DDC97] font-semibold flex items-center gap-1 w-max">
+<span class="w-1 h-1 rounded-full bg-[#3DDC97]"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs text-on-surface-variant">
+<button class="p-1 hover:text-primary transition-colors" title="View Requirements" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+</button>
+<button class="p-1 hover:text-on-surface transition-colors" title="Audit Specifications" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="h-10 hover:bg-surface-container transition-colors group cursor-pointer" onclick="updateAuditFocus('CS-SWE-OLD', 'Old 2019 Charter', '134 credits')">
+<td class="px-space-md font-title-sm text-title-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Computer Science</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="font-semibold text-primary">Software Engineering</span>
+</td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-semibold">Old</span>
+</td>
+<td class="px-space-md font-semibold text-on-surface">
+                134 Credits
+              </td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#0E2A22] text-[#3DDC97] font-semibold flex items-center gap-1 w-max">
+<span class="w-1 h-1 rounded-full bg-[#3DDC97]"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs text-on-surface-variant">
+<button class="p-1 hover:text-primary transition-colors" title="View Requirements" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+</button>
+<button class="p-1 hover:text-on-surface transition-colors" title="Audit Specifications" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="h-10 hover:bg-surface-container transition-colors group cursor-pointer" onclick="updateAuditFocus('CS-CYBER-2025', '2025 Revised Edition', '132 credits')">
+<td class="px-space-md font-title-sm text-title-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Computer Science</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="font-semibold text-primary">Cybersecurity</span>
+</td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold">2025</span>
+</td>
+<td class="px-space-md font-semibold text-on-surface">
+                132 Credits
+              </td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#0E2A22] text-[#3DDC97] font-semibold flex items-center gap-1 w-max">
+<span class="w-1 h-1 rounded-full bg-[#3DDC97]"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs text-on-surface-variant">
+<button class="p-1 hover:text-primary transition-colors" title="View Requirements" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+</button>
+<button class="p-1 hover:text-on-surface transition-colors" title="Audit Specifications" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="h-10 hover:bg-surface-container transition-colors group cursor-pointer" onclick="updateAuditFocus('AI-MI-2025', '2025 Revised Edition', '132 credits')">
+<td class="px-space-md font-title-sm text-title-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Artificial Intelligence</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="font-semibold text-primary">Machine Intelligence</span>
+</td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold">2025</span>
+</td>
+<td class="px-space-md font-semibold text-on-surface">
+                132 Credits
+              </td>
+<td class="px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#0E2A22] text-[#3DDC97] font-semibold flex items-center gap-1 w-max">
+<span class="w-1 h-1 rounded-full bg-[#3DDC97]"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<div class="flex items-center justify-end gap-space-xs text-on-surface-variant">
+<button class="p-1 hover:text-primary transition-colors" title="View Requirements" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+</button>
+<button class="p-1 hover:text-on-surface transition-colors" title="Audit Specifications" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Metadata -->
+<div class="px-space-md py-space-xs bg-surface-container-lowest flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Deterministic Curriculum Snapshot · Revision Lock: Stable</span>
+<span>Catalog Sync Hash: #8F20B2-NILE-CS</span>
+</div>
+</div>
+<!-- Curricular Independence Directive Invariant Callout -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[22px]">shield</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-sm">
+<span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wide">Curricular Independence Directive</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant">STATUTE #7</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Tracks defined under distinct academic bylaws maintain independent prerequisite trees and cannot share mandatory core mappings without formal academic board equivalencies.
+        </p>
+</div>
+</div>
+<!-- Embedded Audit & Schema State Sync -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Charter Breakdown -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">Charter Credit Allocations</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Comparative</span>
+</div>
+<div class="space-y-space-sm mt-space-xs">
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1 text-on-surface-variant">
+<span>2025 Revised Edition (132 Credits)</span>
+<span class="text-on-surface font-semibold">100% Core + Track Standard</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 100%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1 text-on-surface-variant">
+<span>Old 2019 Charter (134 Credits)</span>
+<span class="text-on-surface font-semibold">+2 Legacy Lab Practicums</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Integrity Log -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">Curricular Board Sign-off</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-[#0E2A22] text-[#3DDC97] uppercase">Validated</span>
+</div>
+<div class="flex items-center gap-space-md mt-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Academic Chair</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Dr. T. Mostafa</span>
+</div>
+<div class="h-8 w-px bg-surface-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Registry Approval</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Fall 2024 / Ratified</span>
+</div>
+</div>
+<div class="mt-space-sm font-body-sm text-body-sm text-on-surface-variant">
+          Program boundaries indexed with zero unassigned curricular vertices.
+        </div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function updateAuditFocus(trackCode, bylawName, credits) {
+    const aside = document.querySelector('aside');
+    if (!aside) return;
+
+    // Update panel header and subtitle
+    const asideHeader = aside.querySelector('h2');
+    if (asideHeader) {
+      asideHeader.innerText = "Explain | " + trackCode;
+    }
+
+    // Update rule context
+    const schemaBox = aside.querySelector('.overflow-y-auto');
+    if (schemaBox) {
+      schemaBox.innerHTML = `
+        <div class="p-space-md rounded-xl bg-surface-container-low">
+          <div class="flex items-center justify-between mb-space-xs text-primary">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[16px]">rule</span>
+              <span class="font-label-sm text-label-sm uppercase tracking-wide">ACTIVE SCHEMA CONSTRAINT</span>
+            </div>
+            <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">GUARD ACTIVE</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+            Program tracks are strictly bounded to their matriculation charter. Transfer of credit between old and 2025 charters requires explicit Senate equivalence.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+          <div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Track Context Matrix</div>
+          <div class="flex justify-between font-body-sm text-body-sm text-on-surface">
+            <span>Bylaw Binding</span>
+            <span class="text-primary font-semibold">${bylawName}</span>
+          </div>
+          <div class="flex justify-between font-body-sm text-body-sm text-on-surface">
+            <span>Minimum Completion</span>
+            <span class="font-semibold">${credits}</span>
+          </div>
+          <div class="flex justify-between font-body-sm text-body-sm text-on-surface">
+            <span>Cross-Bylaw Core Sharing</span>
+            <span class="text-error font-semibold">Prohibited (Statute #7)</span>
+          </div>
+        </div>
+
+        <div class="p-space-md rounded-xl bg-surface-container-lowest">
+          <div class="flex items-center gap-space-xs text-tertiary mb-1">
+            <span class="material-symbols-outlined text-[14px]">check</span>
+            <span class="font-label-sm text-label-sm uppercase font-semibold">Relational Verification</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Prerequisite tree validated for matriculation cohorts under ${bylawName}. Zero cyclic or ungrounded dependencies identified.
+          </p>
+        </div>
+      `;
+    }
+
+    // Update query placeholder
+    const input = aside.querySelector('input');
+    if (input) {
+      input.placeholder = "Ask about " + trackCode + " rules...";
+    }
+  }
+
+  // Prepopulate initial audit state
+  window.addEventListener('DOMContentLoaded', () => {
+    updateAuditFocus('CS-BD-OLD', 'Old 2019 Charter', '134 credits');
+  });
+</script></main></div><aside class="fixed right-0 top-20 bottom-0 w-[380px] bg-surface-container border-l border-surface-variant flex flex-col z-30 rounded-tl-[20px] rounded-bl-[20px] overflow-hidden shadow-2xl"><div class="p-space-lg border-b border-surface-variant"><div class="flex items-center justify-between mb-space-xs"><h2 class="font-headline-md text-headline-md text-on-surface">Explain</h2><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-surface-variant">AUDIT CORE</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Deterministic audit panel. Explains stored rules, catalog schemas, and relational invariants without recommendation or automation.</p></div><div class="p-space-md border-b border-surface-variant bg-surface-container-low"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-space-sm text-outline text-[18px]">search</span><input class="w-full h-[34px] pl-9 pr-space-sm bg-surface-container-lowest border border-surface-variant rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container transition-colors" placeholder="Ask about a stored rule" type="text"></div></div><div class="flex-1 p-space-lg overflow-y-auto space-y-space-md"><div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant"><div class="flex items-center gap-space-xs mb-space-xs text-primary"><span class="material-symbols-outlined text-[16px]">terminal</span><span class="font-label-sm text-label-sm uppercase tracking-wide">Active Schema Context</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Select any record, course code, or validation rule to review schema constraints and catalog dependencies.</p></div></div><div class="p-space-md border-t border-surface-variant bg-surface-container-lowest text-center"><span class="font-label-sm text-label-sm text-outline">READ-ONLY VERIFICATION ENGINE</span></div></aside></body></html>

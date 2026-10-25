@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#080d1f", "primary-fixed": "#dce1ff", "primary-container": "#6b8cff", "tertiary-fixed-dim": "#42e09a", "on-secondary-fixed-variant": "#3e475b", "on-primary": "#00277f", "primary": "#b6c4ff", "surface-tint": "#b6c4ff", "background": "#0d1225", "outline-variant": "#444653", "inverse-on-surface": "#2b3043", "surface-variant": "#2f3448", "tertiary-container": "#00a86e", "on-tertiary": "#003822", "secondary-fixed": "#dae2fc", "inverse-surface": "#dde1fb", "surface-dim": "#0d1225", "secondary-fixed-dim": "#bec6df", "on-secondary-fixed": "#131b2e", "on-background": "#dde1fb", "error": "#ffb4ab", "surface-container-high": "#24293c", "on-surface-variant": "#c4c5d5", "primary-fixed-dim": "#b6c4ff", "surface-container-highest": "#2f3448", "error-container": "#93000a", "on-tertiary-container": "#00331e", "surface-container-low": "#161b2d", "surface-bright": "#34384c", "tertiary": "#42e09a", "on-error": "#690005", "on-error-container": "#ffdad6", "secondary": "#bec6df", "on-secondary": "#283044", "inverse-primary": "#3055c6", "on-primary-fixed-variant": "#0a3bad", "on-tertiary-fixed-variant": "#005233", "secondary-container": "#41495e", "on-primary-container": "#002375", "outline": "#8e909f", "tertiary-fixed": "#65fdb5", "on-surface": "#dde1fb", "on-primary-fixed": "#001550", "surface-container": "#1a1f31", "on-tertiary-fixed": "#002112", "surface": "#0d1225", "on-secondary-container": "#b0b8d1" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "space-md": "0.75rem", "gutter": "1rem", "margin": "1.5rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter-dense": "0.5rem", "margin-compact": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg": [ "\"Source Serif 4\"" ], "label-sm": [ "\"Source Sans 3\"" ], "headline-md": [ "\"Source Serif 4\"" ], "body-sm": [ "\"Source Sans 3\"" ], "label-md": [ "\"Source Sans 3\"" ], "body-md": [ "\"Source Sans 3\"" ], "title-sm": [ "\"Source Sans 3\"" ], "title-md": [ "\"Source Sans 3\"" ], "label-lg": [ "\"Source Sans 3\"" ], "body-lg": [ "\"Source Sans 3\"" ], "title-lg": [ "\"Source Sans 3\"" ], "display-lg": [ "\"Source Serif 4\"" ] }, "fontSize": { "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "label-md": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "body-md": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "title-sm": [ "13px", { "lineHeight": "18px", "fontWeight": "600" } ], "title-md": [ "15px", { "lineHeight": "20px", "fontWeight": "600" } ], "label-lg": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "body-lg": [ "15px", { "lineHeight": "22px", "fontWeight": "400" } ], "title-lg": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "display-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest border-b border-surface-variant"><div class="h-20 w-full px-gutter flex flex-col justify-between pt-space-sm pb-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">Nile University <span class="text-outline">·</span> CS Course Offering Planning System</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container/20 text-primary border border-primary-container/40 uppercase tracking-wider">ADMIN</span></div><div class="flex items-center gap-space-md"><button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Help" type="button"><span class="material-symbols-outlined text-[18px]">help</span></button><button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Notifications" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-variant"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border-2 border-primary-container"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div><nav class="flex items-center gap-space-md overflow-x-auto whitespace-nowrap pt-space-xs text-on-surface-variant font-label-md text-label-md" data-active-classes="text-on-surface border-b-2 border-primary-container font-semibold"><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="users" href="#">Users</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="university-data" href="#">University data</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="courses" href="#">Courses</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="programs" href="#">Programs</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="study-plans" href="#">Study plans</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="bylaws" href="#">Bylaws</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="credit-limits" href="#">Credit limits</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="grade-scales" href="#">Grade scales</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="terms" href="#">Terms</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="imports" href="#">Imports</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="pb-1 border-b-2 border-transparent hover:text-on-surface transition-colors" data-path="audit" href="#">Audit</a></nav></div></header><div class="pr-[380px]"><main class="w-full pt-20 px-gutter min-h-screen bg-background"><div class="flex flex-col w-full pb-space-xl">
+<!-- Dynamic Audit State Tracker & Visual Header Context -->
+<div class="relative w-full rounded-xl p-space-lg mb-space-lg bg-surface-container-low shadow-xl overflow-hidden">
+<!-- Ambient cryptographic lattice visual background -->
+<div class="absolute -right-16 -top-24 w-96 h-96 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute right-64 -bottom-20 w-80 h-80 rounded-full bg-tertiary/5 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary px-space-xs py-0.5 rounded bg-primary-container/20">
+            Immutable Sequence Hash: 0x8F92...B31D
+          </span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Realtime Sync Active
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-space-xs">
+          System Logs
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+          Canonical read-only audit ledger of platform actions, database migrations, and operational decisions.
+        </p>
+</div>
+<!-- High-density Audit Telemetry Metrics -->
+<div class="flex items-center gap-space-md">
+<div class="bg-surface-container rounded-xl p-space-md min-w-[140px]">
+<div class="flex items-center justify-between text-outline text-label-sm font-label-sm uppercase tracking-wider">
+<span>Ledger Integrity</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]">lock</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-1">100.0%</div>
+<div class="font-label-sm text-label-sm text-tertiary">Cryptographically verified</div>
+</div>
+<div class="bg-surface-container rounded-xl p-space-md min-w-[140px]">
+<div class="flex items-center justify-between text-outline text-label-sm font-label-sm uppercase tracking-wider">
+<span>Total Events</span>
+<span class="material-symbols-outlined text-primary text-[16px]">dataset</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-1">42,891</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Archived 2024–2026</div>
+</div>
+<div class="bg-surface-container rounded-xl p-space-md min-w-[130px]">
+<div class="flex items-center justify-between text-outline text-label-sm font-label-sm uppercase tracking-wider">
+<span>State Drift</span>
+<span class="material-symbols-outlined text-outline text-[16px]">rule</span>
+</div>
+<div class="font-headline-md text-headline-md text-tertiary mt-1">0.00%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Zero discrepancies</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Non-dismissible Institutional Security Banner -->
+<div class="flex items-center gap-space-md p-space-md rounded-xl bg-surface-container-high mb-space-lg text-on-surface shadow-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary-container/20 text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-md text-label-md font-semibold text-primary uppercase tracking-wide">Security Invariant:</span>
+<span class="font-body-md text-body-md text-on-surface">
+          Append-only cryptographic audit stream. Historical records are immutable.
+        </span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">history_edu</span>
+<span>Storage Engine: SHA-256 Merkle Chain</span>
+</div>
+</div>
+</div>
+<!-- Filter, Search and Query Toolbar (Read-Only Exploration) -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md mb-space-md">
+<div class="flex items-center gap-space-sm flex-1 max-w-xl">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2 text-outline text-[18px]">search</span>
+<input class="w-full h-[36px] pl-9 pr-space-md bg-surface-container-low rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container transition-colors" placeholder="Filter by actor, course token, decree reference, or sha256 prefix..." type="text">
+</div>
+<div class="relative">
+<select class="h-[36px] px-space-md bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-xl appearance-none pr-8 focus:outline-none cursor-pointer">
+<option>All Actors (Admin, Coord, Registrar)</option>
+<option>admin</option>
+<option>coordinator</option>
+<option>registrar</option>
+<option>system</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-outline text-[16px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-auto">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Timespan:</span>
+<span class="font-label-md text-label-md text-on-surface px-space-sm py-1 rounded bg-surface-container-low">Fall 2026 Term Window</span>
+<button class="h-[34px] px-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-space-xs transition-colors" title="Export raw verified ledger as JSON-LD" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Log Ledger</span>
+</button>
+</div>
+</div>
+<!-- Primary System Logs Table Container -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden">
+<!-- Cryptographic Block Digest Indicator -->
+<div class="px-space-md py-space-xs bg-surface-container flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+          LEDGER NODE: cs-core-audit-01.nu.eg
+        </span>
+<span class="text-outline">·</span>
+<span>BLOCK SEQUENCE #94821</span>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span>CHAIN HEAD: 7a3f81e2dc8...</span>
+<span>ZERO PERMISSIONS FOR REWRITE</span>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full border-collapse text-left">
+<thead>
+<tr class="bg-surface-container-lowest text-outline font-label-md text-label-md uppercase tracking-wider h-[34px]">
+<th class="py-2 px-space-md font-semibold w-12 text-center" scope="col">#</th>
+<th class="py-2 px-space-md font-semibold w-48" scope="col">When</th>
+<th class="py-2 px-space-md font-semibold w-36" scope="col">Who</th>
+<th class="py-2 px-space-md font-semibold" scope="col">Action &amp; Target Context</th>
+<th class="py-2 px-space-md font-semibold w-32 text-right" scope="col">Verification</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y-0">
+<!-- Row 1: MATH 112 Decision -->
+<tr class="group hover:bg-surface-container/60 transition-colors bg-surface-container-low/30">
+<td class="py-space-sm px-space-md text-center text-outline font-label-sm text-label-sm">01</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">3 Oct 2026</span>
+<span class="font-label-sm text-label-sm text-outline">14:22:04 EEST</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-primary text-[14px]">engineering</span>
+<span class="font-semibold text-primary">coordinator</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface">decision saved for MATH 112</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-tertiary-container/30 text-tertiary font-semibold uppercase">RATIFIED</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Calculus II: 3 Sections ratified (Quota: 105 seats, Lecture Hall B204 allocated)
+                </div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+<span>SIG_VALID</span>
+</span>
+</td>
+</tr>
+<!-- Row 2: SIS Snapshot Rev 4 -->
+<tr class="group hover:bg-surface-container/60 transition-colors bg-surface-container-low/10">
+<td class="py-space-sm px-space-md text-center text-outline font-label-sm text-label-sm">02</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">2 Oct 2026</span>
+<span class="font-label-sm text-label-sm text-outline">09:14:18 EEST</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-tertiary text-[14px]">admin_panel_settings</span>
+<span class="font-semibold text-tertiary">admin</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface">seed loaded</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-primary-container/20 text-primary font-semibold uppercase">DATA IMPORT</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  SIS Roster snapshot Rev 4 ingestion complete (1,482 student entities reconciled across 28 CS cohorts)
+                </div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+<span>SIG_VALID</span>
+</span>
+</td>
+</tr>
+<!-- Row 3: Bylaw Decree ED-2024-C3 -->
+<tr class="group hover:bg-surface-container/60 transition-colors bg-surface-container-low/30">
+<td class="py-space-sm px-space-md text-center text-outline font-label-sm text-label-sm">03</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">1 Oct 2026</span>
+<span class="font-label-sm text-label-sm text-outline">11:05:51 EEST</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-tertiary text-[14px]">admin_panel_settings</span>
+<span class="font-semibold text-tertiary">admin</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface">bylaw schema locked</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-highest text-secondary-fixed font-semibold uppercase">REGULATORY</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Decree ED-2024-C3 applied (Core prerequisite threshold: GPA ≥ 2.20 hard requirement enforced)
+                </div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+<span>SIG_VALID</span>
+</span>
+</td>
+</tr>
+<!-- Row 4: Registrar Census Lock -->
+<tr class="group hover:bg-surface-container/60 transition-colors bg-surface-container-low/10">
+<td class="py-space-sm px-space-md text-center text-outline font-label-sm text-label-sm">04</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">28 Sep 2026</span>
+<span class="font-label-sm text-label-sm text-outline">16:40:02 EEST</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary-fixed text-[14px]">account_balance</span>
+<span class="font-semibold text-secondary-fixed">registrar</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface">census lock applied to Summer 2026 completion records</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-highest text-outline font-semibold uppercase">ARCHIVE LOCK</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Summer term terminal state achieved. Grade distribution curves permanently preserved in institutional vault.
+                </div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+<span>SIG_VALID</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Read-Only Status Footer & Pagination Context -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">lock_clock</span>
+<span>Showing records 1 - 4 of verified ledger. Modifications and deletions are mathematically prohibited by catalog protocol.</span>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface font-label-md text-label-md">
+<span class="text-outline">Page 1 of 10,723</span>
+<button class="px-space-xs py-1 rounded bg-surface-container text-outline hover:text-on-surface transition-colors cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="px-space-xs py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Deep Audit Invariant Diagnostic Grid (Complementary visual layer) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-lg">
+<!-- Card 1: Cryptographic Invariance -->
+<div class="bg-surface-container-low rounded-xl p-space-md">
+<div class="flex items-center gap-space-xs text-primary mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-title-sm text-title-sm text-on-surface">Merkle Root Seal</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Every logged operation computes a hash chaining back to the Nile University academic charter genesis block. Unaltered chain confirmed.
+      </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Block ID: #000000000019d668</span>
+<span class="text-tertiary">Verified</span>
+</div>
+</div>
+<!-- Card 2: Regulatory Traceability -->
+<div class="bg-surface-container-low rounded-xl p-space-md">
+<div class="flex items-center gap-space-xs text-secondary-fixed mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span class="font-title-sm text-title-sm text-on-surface">Bylaw Alignment</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Decisions are mapped directly to University Supreme Council bylaws. Decree ED-2024-C3 remains actively binding across all departments.
+      </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Framework: Supreme Council v24</span>
+<span class="text-on-surface">Active Decree</span>
+</div>
+</div>
+<!-- Card 3: Role Separation -->
+<div class="bg-surface-container-low rounded-xl p-space-md">
+<div class="flex items-center gap-space-xs text-tertiary mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span class="font-title-sm text-title-sm text-on-surface">Dual-Key Governance</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Registrar locks and curriculum committee determinations require distinct signing keys. Independent audit identities maintained.
+      </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Quorum: 2/2 Signatures Present</span>
+<span class="text-tertiary">Satisfied</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Interactive micro-interaction for ledger row inspection in right Explain panel
+  document.addEventListener('DOMContentLoaded', () => {
+    const tableRows = document.querySelectorAll('tbody tr');
+    tableRows.forEach(row => {
+      row.addEventListener('click', () => {
+        tableRows.forEach(r => r.classList.remove('bg-surface-container', 'outline', 'outline-1', 'outline-primary/50'));
+        row.classList.add('bg-surface-container');
+        
+        // Populate audit context if side panel is accessible
+        const explainContent = document.querySelector('aside .space-y-space-md');
+        if (explainContent) {
+          const actionText = row.querySelector('.font-title-sm').innerText;
+          const actorBadge = row.querySelector('.font-semibold').innerText;
+          const whenText = row.querySelector('.whitespace-nowrap .font-title-sm').innerText;
+          
+          explainContent.innerHTML = `
+            <div class="p-space-md rounded-xl bg-surface-container-low">
+              <div class="flex items-center justify-between mb-space-xs text-primary">
+                <span class="font-label-sm text-label-sm uppercase tracking-wide flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">lock</span> Record Verified
+                </span>
+                <span class="font-label-sm text-label-sm text-tertiary">IMMUTABLE</span>
+              </div>
+              <div class="font-title-sm text-title-sm text-on-surface mb-space-xs">${actionText}</div>
+              <div class="space-y-1 font-body-sm text-body-sm text-on-surface-variant">
+                <div><strong class="text-on-surface font-semibold">Actor:</strong> ${actorBadge}</div>
+                <div><strong class="text-on-surface font-semibold">Recorded:</strong> ${whenText}</div>
+                <div><strong class="text-on-surface font-semibold">Digest:</strong> sha256:d8a2...4f91b</div>
+                <div><strong class="text-on-surface font-semibold">Authorization Policy:</strong> Hierarchical RBAC (Rule #88-C)</div>
+              </div>
+            </div>
+            <div class="p-space-md rounded-xl bg-surface-container-low">
+              <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-space-xs">Relational Integrity Invariants</div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">
+                This transaction has been permanently written to storage. No client or administrative credential possesses permission to prune, redact, or overwrite this entry.
+              </p>
+            </div>
+          `;
+        }
+      });
+    });
+  });
+</script></main></div><aside class="fixed right-0 top-20 bottom-0 w-[380px] bg-surface-container border-l border-surface-variant flex flex-col z-30 rounded-tl-[20px] rounded-bl-[20px] overflow-hidden shadow-2xl"><div class="p-space-lg border-b border-surface-variant"><div class="flex items-center justify-between mb-space-xs"><h2 class="font-headline-md text-headline-md text-on-surface">Explain</h2><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-surface-variant">AUDIT CORE</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Deterministic audit panel. Explains stored rules, catalog schemas, and relational invariants without recommendation or automation.</p></div><div class="p-space-md border-b border-surface-variant bg-surface-container-low"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-space-sm text-outline text-[18px]">search</span><input class="w-full h-[34px] pl-9 pr-space-sm bg-surface-container-lowest border border-surface-variant rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container transition-colors" placeholder="Ask about a stored rule" type="text"></div></div><div class="flex-1 p-space-lg overflow-y-auto space-y-space-md"><div class="p-space-md rounded-xl bg-surface-container-low border border-surface-variant"><div class="flex items-center gap-space-xs mb-space-xs text-primary"><span class="material-symbols-outlined text-[16px]">terminal</span><span class="font-label-sm text-label-sm uppercase tracking-wide">Active Schema Context</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Select any record, course code, or validation rule to review schema constraints and catalog dependencies.</p></div></div><div class="p-space-md border-t border-surface-variant bg-surface-container-lowest text-center"><span class="font-label-sm text-label-sm text-outline">READ-ONLY VERIFICATION ENGINE</span></div></aside></body></html>

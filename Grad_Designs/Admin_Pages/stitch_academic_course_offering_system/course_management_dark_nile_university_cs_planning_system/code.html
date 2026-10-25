@@ -1,0 +1,684 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..700;1,300..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 20;font-size:20px;line-height:1;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "outline": "#8e909f",
+          "surface-container-low": "#161b2d",
+          "surface-variant": "#2f3448",
+          "primary": "#b6c4ff",
+          "primary-fixed": "#dce1ff",
+          "on-primary-fixed": "#001550",
+          "surface-container-lowest": "#080d1f",
+          "inverse-primary": "#3055c6",
+          "on-tertiary": "#003822",
+          "on-tertiary-fixed-variant": "#005233",
+          "on-surface-variant": "#c4c5d5",
+          "on-primary": "#00277f",
+          "inverse-surface": "#dde1fb",
+          "tertiary": "#42e09a",
+          "on-tertiary-container": "#00331e",
+          "secondary-fixed": "#dae2fc",
+          "tertiary-fixed": "#65fdb5",
+          "secondary": "#bec6df",
+          "on-error": "#690005",
+          "on-error-container": "#ffdad6",
+          "outline-variant": "#444653",
+          "on-surface": "#dde1fb",
+          "on-secondary": "#283044",
+          "secondary-fixed-dim": "#bec6df",
+          "inverse-on-surface": "#2b3043",
+          "surface-container-high": "#24293c",
+          "on-background": "#dde1fb",
+          "error": "#ffb4ab",
+          "primary-fixed-dim": "#b6c4ff",
+          "surface-bright": "#34384c",
+          "surface-container-highest": "#2f3448",
+          "tertiary-container": "#00a86e",
+          "on-secondary-container": "#b0b8d1",
+          "on-secondary-fixed": "#131b2e",
+          "surface-tint": "#b6c4ff",
+          "surface": "#0d1225",
+          "error-container": "#93000a",
+          "on-primary-fixed-variant": "#0a3bad",
+          "surface-dim": "#0d1225",
+          "on-tertiary-fixed": "#002112",
+          "tertiary-fixed-dim": "#42e09a",
+          "secondary-container": "#41495e",
+          "on-secondary-fixed-variant": "#3e475b",
+          "background": "#0d1225",
+          "surface-container": "#1a1f31",
+          "primary-container": "#6b8cff",
+          "on-primary-container": "#002375"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "1.5rem",
+          "gutter-dense": "0.5rem",
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "gutter": "1rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "margin-compact": "1rem",
+          "margin": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-lg": [
+            "\"Source Serif 4\""
+          ],
+          "title-md": [
+            "\"Source Sans 3\""
+          ],
+          "title-sm": [
+            "\"Source Sans 3\""
+          ],
+          "body-sm": [
+            "\"Source Sans 3\""
+          ],
+          "label-md": [
+            "\"Source Sans 3\""
+          ],
+          "label-sm": [
+            "\"Source Sans 3\""
+          ],
+          "headline-md": [
+            "\"Source Serif 4\""
+          ],
+          "display-lg": [
+            "\"Source Serif 4\""
+          ],
+          "label-lg": [
+            "\"Source Sans 3\""
+          ],
+          "title-lg": [
+            "\"Source Sans 3\""
+          ],
+          "body-md": [
+            "\"Source Sans 3\""
+          ],
+          "body-lg": [
+            "\"Source Sans 3\""
+          ]
+        },
+        "fontSize": {
+          "headline-lg": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "title-md": [
+            "15px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "600"
+            }
+          ],
+          "title-sm": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "10px",
+            {
+              "lineHeight": "12px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-lg": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "title-lg": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "15px",
+            {
+              "lineHeight": "22px",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface-container-lowest text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-low"><div class="h-20 w-full px-space-xl flex items-center justify-between"><div class="flex items-center gap-space-lg flex-1 min-w-0 pr-space-lg"><div class="flex items-baseline gap-space-sm shrink-0"><span class="font-headline-md text-headline-md text-on-surface tracking-tight whitespace-nowrap">Nile University</span><span class="font-body-md text-body-md text-on-surface-variant select-none">·</span><span class="font-title-sm text-title-sm text-on-surface-variant font-normal whitespace-nowrap">CS Course Offering Planning System</span><span class="ml-space-sm px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm uppercase tracking-wider">Admin</span></div><nav class="flex flex-wrap items-center gap-x-space-md gap-y-1 overflow-hidden max-h-14" data-active-classes="text-on-surface font-semibold border-b-2 border-primary-container pb-1"><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="dashboard" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="users" href="#">Users</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="university-data" href="#">University data</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="courses" href="#">Courses</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="programs" href="#">Programs</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="study-plans" href="#">Study plans</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="bylaws" href="#">Bylaws</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="credit-limits" href="#">Credit limits</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="grade-scales" href="#">Grade scales</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="terms" href="#">Terms</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="imports" href="#">Imports</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="data-gaps" href="#">Data gaps</a><a class="text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm transition-colors whitespace-nowrap" data-path="audit" href="#">Audit</a></nav></div><div class="flex items-center gap-space-md shrink-0"><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="System Documentation &amp; Help" type="button"><span class="material-symbols-outlined">help_outline</span></button><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors relative" title="Administrative Notifications" type="button"><span class="material-symbols-outlined">notifications</span><span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-primary-container"></span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-primary-container ring-offset-2 ring-offset-surface-container-lowest"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><div class="pr-[380px]"><main class="w-full pt-20 px-space-xl pb-space-xl bg-surface-container-lowest min-h-screen"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-lg">
+<!-- Header & Metadata Breadcrumbs -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm tracking-wider uppercase">
+<span>Curriculum Registry</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">Course Management</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Course Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Canonical course catalog definitions and relational prerequisite trees across academic bylaws.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-xl bg-surface-container-high text-on-surface font-title-sm text-title-sm hover:bg-surface-container-highest transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Schema</span>
+</button>
+<button class="px-space-md py-1.5 rounded-xl bg-primary-container text-on-primary-container font-title-sm text-title-sm hover:opacity-95 transition-opacity flex items-center gap-space-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Course Definition</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Architectural Directive Callout -->
+<div class="bg-surface-container rounded-xl p-space-md flex items-start gap-space-md shadow-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">schema</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Catalog Invariant</span>
+<span class="text-outline-variant text-[10px]">●</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Bylaw Partition Guard Active</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface mt-0.5 font-semibold">
+          Old and 2025 courses stay in separate rows.
+        </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Dual-curriculum integrity requires strict separation of course codes mapped to distinct regulatory charters. Never merge legacy mappings into the 2025 semester schema.
+        </p>
+</div>
+<div class="shrink-0 flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium uppercase">Catalog Synchronized</span>
+</div>
+</div>
+<!-- Statistics Strip -->
+<div class="grid grid-cols-4 gap-space-md">
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">Registered Courses</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">6</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">Bylaw Partitioned</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-primary-container h-full w-full"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">Legacy Bylaw (Old)</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">4</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">66.6% Total</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary h-full w-[66.6%]"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">2025 Charter Edition</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">2</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">33.4% Total</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-primary-container h-full w-[33.4%]"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">Prerequisite Trees</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">4</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">Acyclic DAG</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-tertiary-container h-full w-full"></div>
+</div>
+</div>
+</div>
+<!-- Primary Table: Course Catalog -->
+<div class="bg-surface-container rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="p-space-md flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">table_rows</span>
+<span class="font-title-md text-title-md text-on-surface">Course Catalog Definitions</span>
+</div>
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-space-xs py-0.5 rounded">
+            6 Records
+          </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative flex items-center">
+<input class="bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 font-body-sm text-body-sm rounded-xl px-space-md py-1.5 pr-8 focus:outline-none focus:ring-1 focus:ring-primary-container w-64" placeholder="Filter code, title..." type="text">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant absolute right-2.5">search</span>
+</div>
+<button class="h-8 px-space-sm rounded-xl bg-surface-container-lowest text-on-surface-variant hover:text-on-surface flex items-center gap-1 font-title-sm text-title-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Filter</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md uppercase tracking-wider h-8">
+<th class="px-space-md font-semibold w-36">Code</th>
+<th class="px-space-md font-semibold w-28">Bylaw</th>
+<th class="px-space-md font-semibold w-24">Credits</th>
+<th class="px-space-md font-semibold">Components</th>
+<th class="px-space-md font-semibold">Title</th>
+<th class="px-space-md font-semibold w-28">Status</th>
+<th class="px-space-md font-semibold w-16 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-none font-body-md text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-[16px] text-outline">code</span>
+<span>CSCI 207</span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">2025</span>
+</td>
+<td class="px-space-md font-medium text-on-surface">3</td>
+<td class="px-space-md text-on-surface-variant font-body-sm text-body-sm">Lecture and tutorial</td>
+<td class="px-space-md font-medium text-on-surface">Computer Organization &amp; Architecture</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container-low">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-[16px] text-outline">calculate</span>
+<span>MATH 112</span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">Old</span>
+</td>
+<td class="px-space-md font-medium text-on-surface">4</td>
+<td class="px-space-md text-outline font-body-sm text-body-sm italic">No weekly hours</td>
+<td class="px-space-md font-medium text-on-surface">Calculus II</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-[16px] text-outline">code</span>
+<span>CSCI 101</span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">Old</span>
+</td>
+<td class="px-space-md font-medium text-on-surface">3</td>
+<td class="px-space-md text-on-surface-variant font-body-sm text-body-sm">Lecture, tutorial, and lab</td>
+<td class="px-space-md font-medium text-on-surface">Introduction to Computer Science</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container-low">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-[16px] text-outline">code</span>
+<span>CSCI 211</span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">2025</span>
+</td>
+<td class="px-space-md font-medium text-on-surface">3</td>
+<td class="px-space-md text-on-surface-variant font-body-sm text-body-sm">Lecture, tutorial, and lab</td>
+<td class="px-space-md font-medium text-on-surface">Computer Architecture &amp; Assembly</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-[16px] text-outline">code</span>
+<span>CSCI 301</span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">Old</span>
+</td>
+<td class="px-space-md font-medium text-on-surface">3</td>
+<td class="px-space-md text-on-surface-variant font-body-sm text-body-sm">Lecture and tutorial</td>
+<td class="px-space-md font-medium text-on-surface">Database Systems</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container-low">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-[16px] text-outline">code</span>
+<span>CSCI 495</span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">Old</span>
+</td>
+<td class="px-space-md font-medium text-on-surface">3</td>
+<td class="px-space-md text-on-surface-variant font-body-sm text-body-sm">Lecture</td>
+<td class="px-space-md font-medium text-on-surface">Senior Capstone Project I</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-space-md text-right">
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-lowest" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-space-md py-space-sm bg-surface-container-high flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Displaying 6 of 6 registered entries across 2 active bylaws</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface opacity-50 cursor-not-allowed" type="button">Previous</button>
+<span class="px-2 py-1 text-primary font-bold">1</span>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface opacity-50 cursor-not-allowed" type="button">Next</button>
+</div>
+</div>
+</div>
+<!-- Second Section: Requisites & Prerequisite Graphs -->
+<div class="grid grid-cols-12 gap-space-lg">
+<!-- Second Small Table: Requisites -->
+<div class="col-span-8 bg-surface-container rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="p-space-md flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface leading-tight">Stored Prerequisite Rules</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Deterministic DAG Invariants</span>
+</div>
+</div>
+<button class="px-space-sm py-1 rounded-xl bg-surface-container-lowest text-on-surface font-title-sm text-title-sm hover:bg-surface-container-high transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">add_link</span>
+<span>Attach Requisite</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md uppercase tracking-wider h-8">
+<th class="px-space-md font-semibold w-32">Course Code</th>
+<th class="px-space-md font-semibold w-24">Bylaw</th>
+<th class="px-space-md font-semibold">Required Course / Condition</th>
+<th class="px-space-md font-semibold w-36">Type</th>
+<th class="px-space-md font-semibold w-32">Enforced State</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Requisite Row 1 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold">CSCI 207</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">2025</span>
+</td>
+<td class="px-space-md">
+<div class="flex items-center gap-1.5 font-medium">
+<span class="text-on-surface">CSCI 112</span>
+<span class="text-outline-variant font-body-sm text-body-sm">(Programming II)</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded tracking-wide uppercase font-semibold">
+                    course
+                  </span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    Hard Rule
+                  </span>
+</td>
+</tr>
+<!-- Requisite Row 2 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container-low">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold">CSCI 211</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">2025</span>
+</td>
+<td class="px-space-md">
+<div class="flex items-center gap-1.5 font-medium">
+<span class="text-on-surface">CSCI 207</span>
+<span class="text-outline-variant font-body-sm text-body-sm">(Computer Org &amp; Arch)</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded tracking-wide uppercase font-semibold">
+                    course
+                  </span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    Hard Rule
+                  </span>
+</td>
+</tr>
+<!-- Requisite Row 3 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold">CSCI 301</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">Old</span>
+</td>
+<td class="px-space-md">
+<div class="flex items-center gap-1.5 font-medium">
+<span class="text-on-surface">CSCI 201</span>
+<span class="text-outline-variant font-body-sm text-body-sm">(Data Structures)</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-secondary font-label-sm text-label-sm px-2 py-0.5 rounded tracking-wide uppercase font-semibold">
+                    course
+                  </span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    Hard Rule
+                  </span>
+</td>
+</tr>
+<!-- Requisite Row 4 -->
+<tr class="h-10 hover:bg-surface-container-high transition-colors bg-surface-container-low">
+<td class="px-space-md font-title-sm text-title-sm text-primary font-semibold">CSCI 495</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded font-bold">Old</span>
+</td>
+<td class="px-space-md">
+<div class="flex items-center gap-1.5 font-medium text-tertiary">
+<span class="material-symbols-outlined text-[16px]">school</span>
+<span>Senior Standing (&gt;= 90 credits completed)</span>
+</div>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded tracking-wide uppercase font-semibold">
+                    standing milestone
+                  </span>
+</td>
+<td class="px-space-md">
+<span class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded uppercase font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    Audit Blocker
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Relational Graph Visualizer & Invariant Card -->
+<div class="col-span-4 flex flex-col gap-space-md">
+<!-- SVG Dependency Topology -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<span class="font-title-sm text-title-sm text-on-surface">Topology Dependency Preview</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">DAG OK</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-space-md flex flex-col items-center justify-center">
+<!-- Mini SVG Graph -->
+<svg class="w-full h-28 text-primary" fill="none" viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg">
+<!-- Edge 1 -->
+<path class="opacity-40" d="M70 25 L140 25" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<!-- Edge 2 -->
+<path class="opacity-80" d="M140 25 L210 25" stroke="currentColor" stroke-width="1.5"></path>
+<!-- Edge Milestone -->
+<path class="opacity-60" d="M70 65 L210 65" stroke="#42e09a" stroke-width="1.5"></path>
+<!-- Nodes -->
+<!-- CSCI 112 -->
+<rect fill="#161b2d" height="22" rx="4" stroke="#444653" stroke-width="1" width="50" x="20" y="14"></rect>
+<text fill="#c4c5d5" font-family="'Source Sans 3'" font-size="9" font-weight="600" text-anchor="middle" x="45" y="29">CS 112</text>
+<!-- CSCI 207 -->
+<rect fill="#1a1f31" height="22" rx="4" stroke="#6b8cff" stroke-width="1" width="50" x="115" y="14"></rect>
+<text fill="#b6c4ff" font-family="'Source Sans 3'" font-size="9" font-weight="600" text-anchor="middle" x="140" y="29">CS 207</text>
+<!-- CSCI 211 -->
+<rect fill="#24293c" height="22" rx="4" stroke="#6b8cff" stroke-width="1.5" width="50" x="210" y="14"></rect>
+<text fill="#dde1fb" font-family="'Source Sans 3'" font-size="9" font-weight="700" text-anchor="middle" x="235" y="29">CS 211</text>
+<!-- Milestone Node -->
+<rect fill="#00331e" height="22" rx="4" stroke="#00a86e" stroke-width="1" width="60" x="20" y="54"></rect>
+<text fill="#65fdb5" font-family="'Source Sans 3'" font-size="9" font-weight="600" text-anchor="middle" x="50" y="69">≥90 Cred</text>
+<!-- CSCI 495 -->
+<rect fill="#161b2d" height="22" rx="4" stroke="#42e09a" stroke-width="1" width="60" x="200" y="54"></rect>
+<text fill="#dde1fb" font-family="'Source Sans 3'" font-size="9" font-weight="600" text-anchor="middle" x="230" y="69">CS 495</text>
+</svg>
+<div class="flex items-center justify-between w-full mt-2 pt-2 text-[10px] text-on-surface-variant font-label-sm">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded bg-primary-container"></span>
+<span>Active 2025 Chain</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded bg-tertiary"></span>
+<span>Milestone Gate</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Catalog Rule Card -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-secondary font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Relational Guarantee</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Prerequisite cycles are rejected at write-time. The planning matrix prevents scheduling a child course in an offering term earlier than or parallel to its prerequisite chain.
+          </p>
+<div class="mt-2 pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Bylaw ISO Model: 2022-R4</span>
+<span class="text-tertiary font-medium">Zero Cyclic Faults</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div><aside class="fixed right-0 top-20 bottom-0 w-[380px] bg-surface-container-high z-40 flex flex-col p-space-md"><div class="h-full w-full bg-surface-container-high rounded-[20px] flex flex-col overflow-hidden"><div class="px-space-md py-space-sm flex items-center justify-between shrink-0"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary-container text-[18px]">info</span><span class="font-headline-md text-headline-md text-on-surface">Explain</span></div><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant bg-surface-container-lowest px-space-xs py-0.5 rounded">Rule Guard</span></div><div class="px-space-md py-space-xs shrink-0"><p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Deterministic audit panel. Explains stored rules, catalog schemas, and relational invariants without recommendation or automation.</p></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm space-y-space-md"><div class="p-space-sm rounded-xl bg-surface-container-low"><div class="flex items-center gap-space-xs mb-1"><span class="material-symbols-outlined text-tertiary text-[16px]">verified</span><span class="font-label-md text-label-md uppercase tracking-wider text-tertiary">Active Schema Constraint</span></div><p class="font-body-sm text-body-sm text-on-surface">CS Course code prerequisite relations require mutual non-cyclic validation under Bylaw 2022-R4.</p></div><div class="p-space-sm rounded-xl bg-surface-container-low"><div class="flex items-center gap-space-xs mb-1"><span class="material-symbols-outlined text-outline text-[16px]">lock_clock</span><span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Term Invariant</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Academic terms with locked enrollment status block direct credit ceiling modifications.</p></div></div><div class="p-space-md shrink-0 bg-surface-container-high"><div class="relative flex items-center"><input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 font-body-sm text-body-sm rounded-xl px-space-md py-2.5 pr-9 focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Ask about a stored rule" type="text"><button class="absolute right-2.5 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">search</span></button></div></div></div></aside></body></html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"primary":"#001060","error":"#ba1a1a","on-secondary-fixed":"#0f1c2d","surface-container-lowest":"#ffffff","on-primary-fixed":"#000f5d","on-background":"#141b2c","on-primary-fixed-variant":"#253aa9","tertiary":"#00115e","primary-fixed-dim":"#bbc3ff","on-secondary-fixed-variant":"#3b485a","on-primary-container":"#7f91ff","surface":"#f9f9ff","inverse-primary":"#bbc3ff","on-secondary-container":"#586579","tertiary-fixed-dim":"#bac3ff","on-secondary":"#ffffff","primary-fixed":"#dee0ff","surface-bright":"#f9f9ff","surface-tint":"#4154c1","on-tertiary-fixed":"#00105b","surface-container":"#e9edff","on-tertiary-fixed-variant":"#0d32c1","outline-variant":"#c5c5d5","outline":"#757684","inverse-surface":"#293041","secondary-container":"#d6e3fb","surface-variant":"#dbe2f9","surface-container-highest":"#dbe2f9","surface-container-low":"#f1f3ff","on-tertiary-container":"#7e92ff","tertiary-fixed":"#dee0ff","error-container":"#ffdad6","tertiary-container":"#002093","surface-container-high":"#e0e8ff","on-tertiary":"#ffffff","secondary":"#525f73","inverse-on-surface":"#edf0ff","on-primary":"#ffffff","background":"#f9f9ff","surface-dim":"#d2daf0","secondary-fixed":"#d6e3fb","on-error":"#ffffff","on-surface":"#141b2c","secondary-fixed-dim":"#bac7de","on-error-container":"#93000a","on-surface-variant":"#454653","primary-container":"#021f94"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1rem","margin":"1.5rem","space-sm":"0.5rem","space-md":"0.75rem","margin-mobile":"1rem","space-lg":"1rem","space-xs":"0.25rem","gutter-mobile":"0.5rem","space-xl":"1.5rem"},"fontFamily":{"label-sm":["\"Source Sans 3\""],"body-lg":["\"Source Sans 3\""],"headline-lg":["\"Source Serif 4\""],"label-md":["\"Source Sans 3\""],"body-md":["\"Source Sans 3\""],"body-sm":["\"Source Sans 3\""],"headline-md":["\"Source Serif 4\""],"headline-xl":["\"Source Serif 4\""],"body-xs":["\"Source Sans 3\""],"headline-sm":["\"Source Serif 4\""],"label-lg":["\"Source Sans 3\""]},"fontSize":{"label-sm":["11px",{"lineHeight":"14px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["26px",{"lineHeight":"34px","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","fontWeight":"600"}],"body-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 w-full z-40 bg-surface-container-lowest border-b border-outline-variant"><div class="h-14 px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-sm whitespace-nowrap"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Nile University</span><span class="text-outline text-body-sm">·</span><span class="font-body-md text-body-md text-on-surface-variant font-medium">CS Course Offering Planning System</span></div><nav class="hidden xl:flex items-center gap-space-md h-14" data-active-classes="text-on-surface border-b-2 border-[#0E6E6B] font-semibold"><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="forecast-runs" href="#">Forecast runs</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="course-forecasts" href="#">Course forecasts</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="sections" href="#">Sections</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="decisions" href="#">Decisions</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="history" href="#">History</a><a aria-current="page" class="hover:bg-surface-container px-space-sm h-full flex items-center transition-colors text-on-surface border-b-2 border-[#0E6E6B] font-semibold" data-path="rules" href="#">Rules</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="study-plans" href="#">Study plans</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="explain" href="#">Explain</a></nav></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-space-xs text-on-surface-variant"><a class="hover:text-on-surface hover:bg-surface-container px-space-sm py-space-xs rounded font-label-md text-label-md transition-colors" data-path="help" href="#">Help</a><a aria-label="Notifications" class="hover:text-on-surface hover:bg-surface-container p-space-xs rounded flex items-center transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications</span></a><a class="hover:text-on-surface hover:bg-surface-container px-space-sm py-space-xs rounded font-label-md text-label-md transition-colors" data-path="profile" href="#">Profile</a></div><div class="h-5 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-[#0E6E6B] ring-offset-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Nour Hassan</span><span class="font-body-xs text-body-xs text-[#0E6E6B] font-semibold leading-tight">Coordinator</span></div></div></div></div></header><div class="w-full"><main class="relative pt-14 pr-[380px] min-h-screen bg-background"><div class="w-full p-margin"><div class="flex flex-col w-full">
+<!-- Governance Mandate Banner -->
+<div class="w-full mb-space-lg">
+<div class="bg-surface-container-high rounded-xl p-space-md shadow-sm flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Statutory Governance Mode</span>
+<p class="font-label-md text-label-md text-on-surface truncate">
+<span class="font-bold text-primary">These are stored rules. They are not edited here.</span>
+<span class="text-on-surface-variant ml-space-xs font-normal">Directives apply immutably across departmental course projections.</span>
+</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-label-sm text-label-sm px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface-variant font-mono">HASH: SHA256-BYLAW-0x9F4E</span>
+<button class="bg-surface-container-lowest hover:bg-surface-container text-on-surface p-1.5 rounded-lg transition-colors" title="Export Schema Audit Log" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Page Header Title & Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Curriculum Regulatory Registry</span>
+<span>/</span>
+<span class="font-label-sm text-label-sm text-[#0E6E6B] font-semibold">Faculty of Computing</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Bylaw and Rule Reference</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">Curriculum statutory frameworks and prerequisite scoring parameters</p>
+</div>
+<!-- Micro Metadata Metric Badges -->
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex items-center gap-space-md">
+<div class="text-left px-space-xs">
+<span class="block font-label-sm text-label-sm text-secondary">Active Bylaws</span>
+<span class="font-headline-sm text-headline-sm text-primary">2 Cohorts</span>
+</div>
+<div class="w-[1px] h-8 bg-surface-container"></div>
+<div class="text-left px-space-xs">
+<span class="block font-label-sm text-label-sm text-secondary">Registered Constraints</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">48 Rules</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-[#1436C4] text-on-primary px-space-md py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-space-xs shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">compare_arrows</span>
+<span>Run Model Differential</span>
+</button>
+</div>
+</div>
+<!-- Prerequisite Scoring Parameter Overview Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm mb-space-xl">
+<div class="flex items-center justify-between pb-space-md mb-space-md border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">account_tree</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Global Prerequisite Flow Parameters &amp; DAG Weightings</h2>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span> Engine Online: v4.8
+      </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary block">PREREQUISITE SATISFACTION</span>
+<span class="font-headline-md text-headline-md text-primary mt-1 block">Grade ≥ C (2.0)</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant mt-1 block">Automatic unenroll if prerequisite incomplete by registration lock</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary block">COHORT ATTRITION COEFFICIENT</span>
+<span class="font-headline-md text-headline-md text-primary mt-1 block">0.072 ± 0.015</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant mt-1 block">Calculated dynamically across past 6 spring semesters</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary block">COREQUISITE SYNC INTERVAL</span>
+<span class="font-headline-md text-headline-md text-primary mt-1 block">Simultaneous</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant mt-1 block">Dropped corequisite forces automated section withdrawal</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary block">ACADEMIC STANDING EVAL</span>
+<span class="font-headline-md text-headline-md text-primary mt-1 block">Term-Final</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant mt-1 block">Updated immediately following institutional grade submission lock</span>
+</div>
+</div>
+</div>
+<!-- Side-by-Side Comparative Matrix -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl">
+<!-- COLUMN 1: Old Bylaw (Regulations 2019) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm flex flex-col overflow-hidden">
+<!-- Column Header -->
+<div class="bg-surface-container-low p-space-lg flex items-center justify-between border-b border-surface-container">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant uppercase font-mono">REG-2019-V2</span>
+<span class="font-label-sm text-label-sm text-secondary">Applies to Cohorts 2019-2024</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Old Bylaw (Regulations 2019)</h2>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">history_edu</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col gap-space-xl">
+<!-- Sub-section: Credit Limits Small Table -->
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide">Credit Load Allocation Bounds</h3>
+<span class="font-label-sm text-label-sm text-secondary">Standard Semester Units</span>
+</div>
+<div class="rounded-lg overflow-hidden bg-surface-container-low">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-secondary font-label-sm text-label-sm uppercase">
+<th class="py-2.5 px-space-md">Parameter Metric</th>
+<th class="py-2.5 px-space-md text-right">Statutory Threshold</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Standard Semester Cap</td>
+<td class="py-2 px-space-md text-right font-semibold text-primary">18 Credit Hours</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Overload Threshold</td>
+<td class="py-2 px-space-md text-right font-semibold text-primary">≥ 3.00 GPA (Max 21 cr)</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Probation Ceiling</td>
+<td class="py-2 px-space-md text-right font-semibold text-error">12 Credit Hours</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Graduation Minimum</td>
+<td class="py-2 px-space-md text-right font-semibold text-on-surface">135 Total Credits</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Sub-section: Eligibility & Prerequisite Rules -->
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide">Statutory Eligibility Constraints</h3>
+<span class="font-label-sm text-label-sm text-secondary">Article III Rules</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<!-- Row 1 -->
+<div class="p-space-md bg-surface-container-low hover:bg-surface-container rounded-lg flex items-start gap-space-md transition-colors">
+<span class="font-label-md text-label-md px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-mono shrink-0">§3.1</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  Direct prerequisite clearance required prior to term start.
+                </p>
+<p class="font-body-xs text-body-xs text-secondary mt-0.5">
+                  Pre-requisite tree does not tolerate concurrent enrolment under any waiver mechanism.
+                </p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-space-md bg-surface-container-low hover:bg-surface-container rounded-lg flex items-start gap-space-md transition-colors">
+<span class="font-label-md text-label-md px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-mono shrink-0">§3.4</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  Capstone eligibility requires Senior Standing (≥90 earned credits).
+                </p>
+<p class="font-body-xs text-body-xs text-secondary mt-0.5">
+                  Senior project CS491 and CS492 mandatory split over two consecutive non-summer terms.
+                </p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="p-space-md bg-surface-container-low hover:bg-surface-container rounded-lg flex items-start gap-space-md transition-colors">
+<span class="font-label-md text-label-md px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-mono shrink-0">§3.8</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  Drop-retake cohort retention coefficient: 7.5% per cycle.
+                </p>
+<p class="font-body-xs text-body-xs text-secondary mt-0.5">
+                  Forecast projection reserves mandatory seat cushion based on static historic fail rates.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Chain Matrix Sample -->
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide mb-space-sm">Core Prerequisite Paths (2019)</h3>
+<div class="bg-surface-container-low p-space-md rounded-lg flex items-center justify-between text-body-sm text-secondary">
+<div class="flex items-center gap-space-sm font-mono font-medium text-on-surface">
+<span>CS101</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_forward</span>
+<span>CS201</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_forward</span>
+<span>CS301</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_forward</span>
+<span>CS401</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#0E6E6B] font-semibold">Strict Sequential</span>
+</div>
+</div>
+</div>
+<div class="mt-auto p-space-md bg-surface-container border-t border-surface-container-high flex items-center justify-between text-body-xs text-secondary">
+<span>Stored Database Reference: <span class="font-mono text-on-surface">SCHEMA_NU_CS_19.SQL</span></span>
+<span class="flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-[16px] text-[#067647]">lock</span> Read Only</span>
+</div>
+</div>
+<!-- COLUMN 2: 2025 Bylaw (Revised Framework) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm flex flex-col overflow-hidden">
+<!-- Column Header -->
+<div class="bg-surface-container-low p-space-lg flex items-center justify-between border-b border-surface-container">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container text-on-primary uppercase font-mono">REG-2025-CURRENT</span>
+<span class="font-label-sm text-label-sm text-[#0E6E6B] font-semibold">Effective Cohort Fall 2025+</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">2025 Bylaw (Revised Framework)</h2>
+</div>
+<div class="w-10 h-10 rounded-lg bg-[#E0E8FF] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col gap-space-xl">
+<!-- Sub-section: Credit Limits Small Table -->
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide">Credit Load Allocation Bounds</h3>
+<span class="font-label-sm text-label-sm text-secondary">Standard Semester Units</span>
+</div>
+<div class="rounded-lg overflow-hidden bg-surface-container-low">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-secondary font-label-sm text-label-sm uppercase">
+<th class="py-2.5 px-space-md">Parameter Metric</th>
+<th class="py-2.5 px-space-md text-right">Statutory Threshold</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Standard Semester Cap</td>
+<td class="py-2 px-space-md text-right font-semibold text-primary">18 Credit Hours</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Overload Threshold</td>
+<td class="py-2 px-space-md text-right font-semibold text-primary flex items-center justify-end gap-1">
+<span>≥ 3.20 GPA (Max 20 cr)</span>
+<span class="material-symbols-outlined text-[14px] text-error" title="Stricter requirement">arrow_upward</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Probation Ceiling</td>
+<td class="py-2 px-space-md text-right font-semibold text-error">13 Credit Hours</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-medium">Graduation Minimum</td>
+<td class="py-2 px-space-md text-right font-semibold text-on-surface flex items-center justify-end gap-1">
+<span>138 Total Credits</span>
+<span class="material-symbols-outlined text-[14px] text-[#067647]" title="+3 Credits Systems Track">add</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Sub-section: Eligibility & Prerequisite Rules -->
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide">Statutory Eligibility Constraints</h3>
+<span class="font-label-sm text-label-sm text-secondary">Article IV Rules</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<!-- Row 1 -->
+<div class="p-space-md bg-surface-container-low hover:bg-surface-container rounded-lg flex items-start gap-space-md transition-colors">
+<span class="font-label-md text-label-md px-space-xs py-0.5 rounded bg-primary text-on-primary font-mono shrink-0">§4.1</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  Prerequisite graph evaluated dynamically across active DAG chains.
+                </p>
+<p class="font-body-xs text-body-xs text-secondary mt-0.5">
+                  Allows soft concurrency when prerequisite course score achieved ≥ B- in foundational modules.
+                </p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-space-md bg-surface-container-low hover:bg-surface-container rounded-lg flex items-start gap-space-md transition-colors">
+<span class="font-label-md text-label-md px-space-xs py-0.5 rounded bg-primary text-on-primary font-mono shrink-0">§4.2</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  Senior standing evaluated at ≥92 earned credits.
+                </p>
+<p class="font-body-xs text-body-xs text-secondary mt-0.5">
+                  Includes mandatory validation of Software Engineering (CSCI 315) and Operating Systems (CSCI 320).
+                </p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="p-space-md bg-surface-container-low hover:bg-surface-container rounded-lg flex items-start gap-space-md transition-colors">
+<span class="font-label-md text-label-md px-space-xs py-0.5 rounded bg-primary text-on-primary font-mono shrink-0">§4.5</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  Lab component requirement enforced for systems sequence (CSCI 211).
+                </p>
+<p class="font-body-xs text-body-xs text-secondary mt-0.5">
+                  Concurrent 1-credit lab section registration automated; uncoupling raises section audit exception.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Chain Matrix Sample -->
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wide mb-space-sm">Directed Acyclic Graph Model (2025)</h3>
+<div class="bg-surface-container-low p-space-md rounded-lg flex items-center justify-between text-body-sm text-secondary">
+<div class="flex items-center gap-space-sm font-mono font-medium text-on-surface">
+<span>CSCI 110</span>
+<span class="material-symbols-outlined text-[16px] text-primary">alt_route</span>
+<span>CSCI 211 + LAB</span>
+<span class="material-symbols-outlined text-[16px] text-primary">arrow_forward</span>
+<span>CSCI 320</span>
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span>CSCI 491</span>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-semibold">Modular DAG</span>
+</div>
+</div>
+</div>
+<div class="mt-auto p-space-md bg-surface-container border-t border-surface-container-high flex items-center justify-between text-body-xs text-secondary">
+<span>Stored Database Reference: <span class="font-mono text-on-surface">SCHEMA_NU_CS_25_REV3.SQL</span></span>
+<span class="flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-[16px] text-[#067647]">lock</span> Read Only</span>
+</div>
+</div>
+</div>
+<!-- Prerequisite Delta Breakdown Data Grid -->
+<div class="mt-space-xl bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md mb-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Bylaw Transition Variance Analysis</h2>
+<p class="font-body-sm text-body-sm text-secondary">Operational changes impacting section scheduling and prerequisite gating for upcoming semesters</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<input class="h-9 px-space-md pl-8 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary w-64" id="ruleSearch" placeholder="Search rules (§) or course codes..." type="text">
+<span class="material-symbols-outlined absolute left-2 top-2 text-[18px] text-secondary">search</span>
+</div>
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface p-2 rounded-lg transition-colors" title="Print Documentation" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-sm text-label-sm uppercase border-b border-surface-container">
+<th class="py-3 px-space-md">Domain</th>
+<th class="py-3 px-space-md">Old Regulation (2019)</th>
+<th class="py-3 px-space-md">Revised Framework (2025)</th>
+<th class="py-3 px-space-md">Forecasting Impact</th>
+<th class="py-3 px-space-md text-right">Model Weight</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface" id="varianceTableBody">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Overload GPA Gate</td>
+<td class="py-3 px-space-md font-mono text-on-surface-variant">≥ 3.00 Cumulative</td>
+<td class="py-3 px-space-md font-mono text-on-surface">≥ 3.20 Cumulative</td>
+<td class="py-3 px-space-md">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Reduces 5th-course demand by 11.2%</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">1.000</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Academic Probation Max</td>
+<td class="py-3 px-space-md font-mono text-on-surface-variant">12 Credit Hours</td>
+<td class="py-3 px-space-md font-mono text-on-surface">13 Credit Hours</td>
+<td class="py-3 px-space-md">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Permits 4 cr lab course repeat</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">0.850</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Senior Capstone Clearance</td>
+<td class="py-3 px-space-md font-mono text-on-surface-variant">90 Credits Completed</td>
+<td class="py-3 px-space-md font-mono text-on-surface">92 Credits + CSCI 315</td>
+<td class="py-3 px-space-md">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Defers 14 students to Spring cycle</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">0.975</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Independent Study Ceiling</td>
+<td class="py-3 px-space-md font-mono text-on-surface-variant">Max 6 credits career</td>
+<td class="py-3 px-space-md font-mono text-on-surface">Max 3 credits career</td>
+<td class="py-3 px-space-md">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Shifts demand to regular CS electives</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">0.420</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-3 px-space-md font-semibold text-primary">Repeat Grade Rule</td>
+<td class="py-3 px-space-md font-mono text-on-surface-variant">Replace prior grade</td>
+<td class="py-3 px-space-md font-mono text-on-surface">Average both attempts</td>
+<td class="py-3 px-space-md">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Decreases retake probability for C- grades</span>
+</td>
+<td class="py-3 px-space-md text-right font-mono font-medium">0.680</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Note -->
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex flex-col sm:flex-row items-center justify-between text-body-xs text-secondary">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-[#0E6E6B]">verified_user</span>
+<span>Verified by Nile University Curriculum Council · Decision Minuted May 14, 2024</span>
+</div>
+<div class="flex items-center gap-space-md mt-2 sm:mt-0">
+<span>Displaying 5 of 5 Core Transition Mappings</span>
+</div>
+</div>
+</div>
+<!-- Inline Filter Logic Micro-Script -->
+<script>
+    (function() {
+      const searchInput = document.getElementById('ruleSearch');
+      const tableBody = document.getElementById('varianceTableBody');
+      if (searchInput && tableBody) {
+        searchInput.addEventListener('input', function(e) {
+          const query = e.target.value.toLowerCase();
+          const rows = tableBody.getElementsByTagName('tr');
+          for (let i = 0; i < rows.length; i++) {
+            const rowText = rows[i].textContent.toLowerCase();
+            if (rowText.includes(query)) {
+              rows[i].style.display = '';
+            } else {
+              rows[i].style.display = 'none';
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</div></div></main><aside class="fixed top-14 right-0 bottom-0 w-[380px] bg-surface-container-lowest border-l border-outline-variant z-30 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="p-margin border-b border-outline-variant"><div class="flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[20px]">psychology</span><h2 class="font-headline-sm text-headline-sm text-on-surface">Explain</h2></div><span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded bg-secondary-container text-on-secondary-fixed tracking-wide">COGNITIVE AUDIT</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Stored rules &amp; forecast rationale</p></div><div class="flex-1 overflow-y-auto p-margin flex flex-col gap-space-md"><div class="bg-surface-container rounded-xl p-space-md border border-outline-variant"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm mb-space-xs"><span class="material-symbols-outlined text-[16px]">info</span><span>GOVERNANCE CONSTRAINT</span></div><p class="font-body-sm text-body-sm text-on-surface">Statistical projection mode active. Model displays prerequisite load, enrollment demand probability, and stored faculty constraints without prescriptive opening directives.</p></div><div class="flex flex-col gap-space-sm"><div class="self-end max-w-[85%] bg-primary-container text-on-primary p-space-md rounded-xl font-body-sm text-body-sm shadow-sm"><p>Why is CS302 (Data Structures II) highlighted under capacity threshold for Fall 2025?</p></div><div class="self-start max-w-[92%] bg-surface-container p-space-md rounded-xl font-body-sm text-body-sm text-on-surface border border-outline-variant flex flex-col gap-space-sm"><p>Based on stored rule <span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-mono">RULE-CS-204-CHAIN</span>, completion rates for prerequisite CS201 increased by 18.4% across the prior spring cohort.</p><div class="flex flex-wrap gap-space-xs pt-space-xs"><span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">description</span>Rule: PREREQ_FLOW</span><span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">dataset</span>Catalog 2023-R2</span></div></div><div class="self-start flex items-center gap-space-xs text-[#0E6E6B] font-label-sm text-label-sm pl-space-xs"><span class="inline-block w-2 h-2 rounded-full bg-[#0E6E6B] animate-pulse"></span><span>Writing analysis...</span></div></div></div><div class="p-margin border-t border-outline-variant bg-surface-container-low"><div class="relative"><input class="w-full h-10 pl-space-md pr-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-body-sm text-body-sm placeholder:text-secondary focus:outline-none focus:border-primary" placeholder="Ask about a stored rule or this result" type="text"><button aria-label="Send" class="absolute right-1.5 top-1.5 w-7 h-7 flex items-center justify-center rounded bg-primary text-on-primary hover:bg-[#1436C4] transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">arrow_upward</span></button></div><p class="font-body-xs text-body-xs text-on-surface-variant text-center mt-space-xs">Informational rationale only. Does not mandate section opening.</p></div></aside></div></body></html>

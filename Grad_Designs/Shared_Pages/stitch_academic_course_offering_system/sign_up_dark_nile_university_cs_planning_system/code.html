@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_blank" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#6B8CFF","primary-hover":"#8DA5FF","on-primary":"#07102E","background":"#080D1F","card":"#10172D","elevated":"#171F3A","text-main":"#F5F7FF","secondary":"#B8C0D9","border-color":"#293451"},fontFamily:{"body-xs":["\"Source Sans 3\""],"body-sm":["\"Source Sans 3\""],"body-lg":["\"Source Sans 3\""],"headline-sm":["\"Source Serif 4\""],"headline-lg":["\"Source Serif 4\""],"label-lg":["\"Source Sans 3\""],"body-md":["\"Source Sans 3\""],"headline-md":["\"Source Serif 4\""],"label-sm":["\"Source Sans 3\""],"label-md":["\"Source Sans 3\""],"headline-xl":["\"Source Serif 4\""]},fontSize:{"body-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg":["26px",{"lineHeight":"34px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","fontWeight":"600"}]}}}};</script></head><body class="bg-[#080D1F] font-body-md text-body-md text-[#F5F7FF] antialiased min-h-screen flex items-center justify-center p-6"><main class="w-full max-w-[420px] bg-[#10172D] border border-[#293451] rounded-[12px] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.36)]"><div class="flex flex-col w-full">
+<div class="flex flex-col items-center text-center mb-6">
+<div class="flex items-center gap-2.5 mb-3">
+<img alt="Nile University CS Planning System Logo" class="w-10 h-10 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida/AEtjO1VTPUM5NJ4i9YL-taUwWWzNAXDx18dPMQ5_eTyOiElKeVEYgiIxuXji3P7bQcXOrjGcsT1Or-TpVniucZ-lix-W_zmUQ5l9oT-vuh4G0yqoQNS_4aSxfVhvxx1GprgzuunfVVNKiD2ucErIoYd5r85qhFX4TlFkrjl0ms4HudVaFnR-H9lnb0lkPk8m2b1JttLHtkBJR3szlWal6SPkIVtyn6VkyO4lKMK3XCKy-t5CNg">
+<span class="font-headline-sm text-headline-sm text-[#F5F7FF] tracking-tight">Nile University · Computer Science</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-[#F5F7FF] tracking-tight">Create an account</h1>
+<p class="font-body-sm text-body-sm text-[#B8C0D9] mt-1">Course Offering &amp; Timetable Planning System</p>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex flex-col bg-[#171F3A]/60 border border-[#293451] p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-[#F5F7FF]" for="university-id">Step 1: Faculty University ID</label>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#171F3A] text-[#B8C0D9] border border-[#293451]">Required</span>
+</div>
+<div class="flex gap-2">
+<input class="flex-1 bg-[#171F3A] border border-[#293451] text-[#F5F7FF] placeholder-[#B8C0D9]/50 font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none focus:border-[#6B8CFF] transition-colors" id="university-id" placeholder="e.g. 202100842" type="text" value="202100842">
+<button class="px-4 py-2 bg-transparent hover:bg-[#171F3A] border border-[#293451] text-[#F5F7FF] text-label-md font-label-md rounded-lg transition-colors cursor-pointer" id="btn-lookup" type="button">
+          Look up
+        </button>
+</div>
+<p class="font-body-xs text-body-xs text-[#B8C0D9] mt-1.5">
+        An account is created only if this ID is already on the faculty list.
+      </p>
+<div class="flex items-center gap-2 bg-[#0E2A22] border border-[#3DDC97]/20 text-[#3DDC97] px-3 py-2 rounded-lg font-body-sm text-body-sm font-medium mt-3" id="status-success">
+<svg class="w-4 h-4 shrink-0 text-[#3DDC97]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>ID found. Computer Science, 2025 bylaw.</span>
+</div>
+<div class="hidden items-center gap-2 bg-[#361317] border border-[#FF6B6B]/20 text-[#FF8585] px-3 py-2 rounded-lg font-body-sm text-body-sm font-medium mt-2" id="status-danger">
+<svg class="w-4 h-4 shrink-0 text-[#FF8585]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>This ID is not on the faculty registry list.</span>
+</div>
+</div>
+<form class="flex flex-col gap-3.5" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-[#F5F7FF]" for="username">Step 2: Account Username</label>
+<input class="bg-[#171F3A] border border-[#293451] text-[#F5F7FF] placeholder-[#B8C0D9]/50 font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none focus:border-[#6B8CFF] transition-colors" id="username" placeholder="n.faculty@nu.edu.eg" type="text">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-[#F5F7FF]" for="password">Password</label>
+<input class="bg-[#171F3A] border border-[#293451] text-[#F5F7FF] placeholder-[#B8C0D9]/50 font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none focus:border-[#6B8CFF] transition-colors" id="password" placeholder="Minimum 8 characters" type="password">
+</div>
+<button class="w-full mt-2 py-2.5 px-4 bg-[#6B8CFF] hover:bg-[#8DA5FF] text-[#07102E] font-label-md text-label-md rounded-lg transition-colors cursor-pointer text-center font-semibold shadow-sm" type="submit">
+        Create account
+      </button>
+</form>
+<div class="flex flex-col items-center gap-3 pt-2">
+<a class="font-body-sm text-body-sm text-[#6B8CFF] hover:text-[#8DA5FF] underline underline-offset-2 transition-colors" href="#">
+        Already have an account? Sign in
+      </a>
+<div class="flex items-center gap-2 text-[#B8C0D9] font-body-xs text-body-xs">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#B8C0D9]"></span>
+<span>Nile University, Computer Science</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const lookupBtn = document.getElementById('btn-lookup');
+    const inputId = document.getElementById('university-id');
+    const successBox = document.getElementById('status-success');
+    const dangerBox = document.getElementById('status-danger');
+
+    if (lookupBtn && inputId && successBox && dangerBox) {
+      lookupBtn.addEventListener('click', function() {
+        const val = inputId.value.trim();
+        if (val === '202100842') {
+          successBox.classList.remove('hidden');
+          successBox.classList.add('flex');
+          dangerBox.classList.add('hidden');
+          dangerBox.classList.remove('flex');
+        } else {
+          successBox.classList.add('hidden');
+          successBox.classList.remove('flex');
+          dangerBox.classList.remove('hidden');
+          dangerBox.classList.add('flex');
+        }
+      });
+    }
+  })();
+</script></main></body></html>

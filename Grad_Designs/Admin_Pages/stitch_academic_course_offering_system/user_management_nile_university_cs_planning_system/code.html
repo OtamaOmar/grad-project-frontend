@@ -1,0 +1,476 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#141b2c", "surface-container": "#e9edff", "primary": "#001060", "surface-dim": "#d2daf0", "primary-container": "#021f94", "secondary-fixed-dim": "#bac7de", "outline": "#757684", "surface-bright": "#f9f9ff", "tertiary-fixed-dim": "#bac3ff", "on-tertiary-container": "#7e92ff", "surface-container-low": "#f1f3ff", "outline-variant": "#c5c5d5", "background": "#f9f9ff", "on-tertiary-fixed": "#00105b", "on-secondary": "#ffffff", "secondary-fixed": "#d6e3fb", "on-error": "#ffffff", "surface-container-high": "#e0e8ff", "on-secondary-fixed": "#0f1c2d", "surface-container-lowest": "#ffffff", "inverse-surface": "#293041", "tertiary": "#00115e", "surface-variant": "#dbe2f9", "tertiary-container": "#002093", "inverse-primary": "#bbc3ff", "on-tertiary-fixed-variant": "#0d32c1", "primary-fixed": "#dee0ff", "on-primary-container": "#7f91ff", "primary-fixed-dim": "#bbc3ff", "on-secondary-container": "#586579", "inverse-on-surface": "#edf0ff", "on-primary-fixed-variant": "#253aa9", "surface-tint": "#4154c1", "secondary-container": "#d6e3fb", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#3b485a", "on-surface": "#141b2c", "error-container": "#ffdad6", "tertiary-fixed": "#dee0ff", "surface-container-highest": "#dbe2f9", "on-surface-variant": "#454653", "error": "#ba1a1a", "surface": "#f9f9ff", "on-primary": "#ffffff", "on-primary-fixed": "#000f5d", "secondary": "#525f73", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1rem", "space-md": "0.75rem" }, "fontFamily": { "headline-xl": [ "\"Source Serif 4\"" ], "label-md": [ "\"Source Sans 3\"" ], "label-sm": [ "\"Source Sans 3\"" ], "headline-lg": [ "\"Source Serif 4\"" ], "body-sm": [ "\"Source Sans 3\"" ], "headline-sm": [ "\"Source Serif 4\"" ], "headline-md": [ "\"Source Serif 4\"" ], "body-xs": [ "\"Source Sans 3\"" ], "body-md": [ "\"Source Sans 3\"" ], "body-lg": [ "\"Source Sans 3\"" ], "label-lg": [ "\"Source Sans 3\"" ] }, "fontSize": { "headline-xl": [ "32px", { "lineHeight": "40px", "fontWeight": "600" } ], "label-md": [ "13px", { "lineHeight": "18px", "fontWeight": "600" } ], "label-sm": [ "11px", { "lineHeight": "14px", "fontWeight": "600" } ], "headline-lg": [ "26px", { "lineHeight": "34px", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-xs": [ "11px", { "lineHeight": "14px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest border-b border-outline-variant"><div class="w-full px-margin"><div class="flex items-center justify-between h-14 border-b border-outline-variant"><div class="flex items-center gap-space-lg"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Nile University · CS Course Offering Planning System</span><span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium border border-outline-variant">Ref Data Admin</span></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-1.5 px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high text-label-md font-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">help</span><span>Help</span></button><button aria-label="Notifications" class="relative p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary-container"></span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-primary-container ring-offset-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div><div class="py-2"><nav class="flex flex-wrap items-center gap-x-space-lg gap-y-1" data-active-classes="text-primary border-b-2 border-primary-container font-semibold pb-1.5"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="dashboard" href="#">Dashboard</a><a aria-current="page" class="transition-colors text-primary border-b-2 border-primary-container font-semibold pb-1.5" data-path="users" href="#">Users</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="university-data" href="#">University data</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="courses" href="#">Courses</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="programs" href="#">Programs</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="study-plans" href="#">Study plans</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="bylaws" href="#">Bylaws</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="credit-limits" href="#">Credit limits</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="grade-scales" href="#">Grade scales</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="terms" href="#">Terms</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="imports" href="#">Imports</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="audit" href="#">Audit</a></nav></div></div></header><div class="flex w-full pt-[97px]"><main class="flex-1 min-w-0 pr-[380px] px-margin py-margin bg-surface"><div class="flex flex-col w-full">
+<div class="flex items-start justify-between mb-space-xl">
+<div class="flex flex-col max-w-3xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Identity &amp; Governance Registry</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-secondary">RBAC Policy V4.2</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">User Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+        Manage system access roles, departmental identities, and active catalog affiliations. Passwords are encrypted externally; zero password fields displayed.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container text-label-md font-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Audit Roster</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-lg py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary text-label-md font-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Provision Identity</span>
+</button>
+</div>
+</div>
+<!-- Metric Strip -->
+<div class="grid grid-cols-4 gap-space-lg mb-space-xl">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block">Total Active Users</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-semibold mt-0.5 block">138</span>
+<span class="font-body-xs text-body-xs text-secondary">Across 2 degree bylaws</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block">Undergraduate Cohorts</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-semibold mt-0.5 block">116</span>
+<span class="font-body-xs text-body-xs text-secondary">42 on 2025 bylaw</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">school</span>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block">Faculty &amp; Advisors</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-semibold mt-0.5 block">18</span>
+<span class="font-body-xs text-body-xs text-secondary">Advisory scope: Both</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">account_tree</span>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block">Decision Coordinators</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-semibold mt-0.5 block">4</span>
+<span class="font-body-xs text-body-xs text-secondary">Senate §6.3 quorum</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Filter & Control Deck -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md flex-1 min-w-[320px]">
+<div class="relative flex-1">
+<input class="w-full h-9 pl-9 pr-3 rounded-lg bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:ring-1 focus:ring-primary-container" id="user-search" placeholder="Search by user name or ID..." type="text">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-[18px] text-secondary pointer-events-none">search</span>
+</div>
+<div class="flex items-center gap-2">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-wider whitespace-nowrap" for="role-filter">Role</label>
+<select class="h-9 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container cursor-pointer" id="role-filter">
+<option value="all">All Roles</option>
+<option value="student">Student</option>
+<option value="advisor">Advisor</option>
+<option value="coordinator">Coordinator</option>
+<option value="admin">Admin</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-wider whitespace-nowrap" for="status-filter">Status</label>
+<select class="h-9 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container cursor-pointer" id="status-filter">
+<option value="all">All Statuses</option>
+<option value="active">Active</option>
+<option value="inactive">Inactive</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary mr-1">Sort:</span>
+<button class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+<span>Identifier</span>
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- User Directory Table Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-lg">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="py-2.5 px-space-lg font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">User &amp; Identifier</th>
+<th class="py-2.5 px-space-lg font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">System Role</th>
+<th class="py-2.5 px-space-lg font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Bylaw Affiliation</th>
+<th class="py-2.5 px-space-lg font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Account Status</th>
+<th class="py-2.5 px-space-lg font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-semibold">
+                  OF
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Omar H. Farouk</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: 2023-2201</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-secondary font-semibold">
+                Student
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Old bylaw (2019)</span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                Active
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md text-label-md font-semibold">
+                  KM
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Dr. K. Mostafa</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: FAC-104</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-primary-container font-semibold">
+                Advisor
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Both <span class="text-secondary font-normal text-body-xs">(Advisory scope)</span></span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                Active
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-label-md text-label-md font-semibold">
+                  NH
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Nour Hassan</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: 8841-CS</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+                Coordinator
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Both <span class="text-secondary font-normal text-body-xs">(Curriculum decision authority)</span></span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                Active
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md font-semibold">
+                  TE
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Eng. Tarek El-Kabbani</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: ADM-002</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed-variant font-semibold">
+                Admin
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Systemwide</span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                Active
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-semibold">
+                  LN
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Laila M. Nour</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: 2023-2144</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-secondary font-semibold">
+                Student
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Old bylaw (2019)</span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                Active
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-semibold">
+                  KS
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Kareem T. Selim</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: 2024-1089</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-secondary font-semibold">
+                Student
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">2025 bylaw</span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                Active
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors opacity-85">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container text-secondary flex items-center justify-center font-label-md text-label-md font-semibold">
+                  MZ
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Mariam S. Zaki</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: 2022-0941</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-secondary font-semibold">
+                Student
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Old bylaw (2019)</span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high text-secondary font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                Inactive
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors opacity-85">
+<td class="py-space-sm px-space-lg">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container text-secondary flex items-center justify-center font-label-md text-label-md font-semibold">
+                  AM
+                </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">Dr. Ahmed Mansour</span>
+<span class="font-body-xs text-body-xs text-secondary font-mono">ID: FAC-088</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-primary-container font-semibold">
+                Advisor
+              </span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="text-on-surface-variant font-medium">Both</span>
+</td>
+<td class="py-space-sm px-space-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high text-secondary font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                Inactive
+              </span>
+</td>
+<td class="py-space-sm px-space-lg text-right">
+<button class="p-1 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Inspect permissions">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-lg py-space-md bg-surface-container-lowest flex items-center justify-between border-t border-surface-container-low">
+<span class="font-body-sm text-body-sm text-secondary">
+        Showing <strong class="text-on-surface font-semibold">8</strong> of <strong class="text-on-surface font-semibold">142</strong> users
+      </span>
+<div class="flex items-center gap-1">
+<button class="px-space-md py-1 rounded bg-surface-container-low text-secondary text-label-md font-label-md hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span>Previous</span>
+</button>
+<button class="w-7 h-7 rounded bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center">
+          1
+        </button>
+<button class="w-7 h-7 rounded bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md font-semibold flex items-center justify-center transition-colors">
+          2
+        </button>
+<button class="px-space-md py-1 rounded bg-surface-container-low text-on-surface text-label-md font-label-md hover:bg-surface-container transition-colors flex items-center gap-1">
+<span>Next</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Operational Invariant Banner -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex items-start gap-space-md">
+<span class="material-symbols-outlined text-[20px] text-primary-container mt-0.5">verified</span>
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm text-primary">Departmental Separation of Concern</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+        Administrative accounts operate strictly on reference datasets (bylaws, grade bounds, course catalog schema). Academic decision records—such as term schedule approvals and student overload exceptions—remain locked to Coordinator and Dean identities respectively.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  (function initUserDirectory() {
+    // Populate the right Explain container with role-specific context
+    const asideScope = document.querySelector('aside .overflow-y-auto');
+    if (asideScope) {
+      // Add a simulated active reasoning query context for this screen
+      const existingQueries = asideScope.querySelectorAll('[data-explain-rule]');
+      if (!existingQueries.length) {
+        const queryBlock = document.createElement('div');
+        queryBlock.setAttribute('data-explain-rule', 'rbac-6.3');
+        queryBlock.className = 'p-space-md rounded-lg bg-surface-container-lowest border border-outline-variant flex flex-col gap-2 mt-2';
+        queryBlock.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Active Invariant Context</span>
+            <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary font-mono">[Senate Charter §6.3]</span>
+          </div>
+          <div class="bg-surface-container-low p-2 rounded text-body-xs font-body-xs text-secondary font-mono">
+            Q: "What role authorizes course opening decisions?"
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface">
+            Course opening and section capacity authorizations belong exclusively to the <strong>Coordinator</strong> role under Senate Rule §6.3. Admins manage reference data and cannot record opening decisions.
+          </p>
+        `;
+        asideScope.appendChild(queryBlock);
+      }
+    }
+
+    // Interactive table filtering micro-interaction
+    const searchInput = document.getElementById('user-search');
+    const roleFilter = document.getElementById('role-filter');
+    const statusFilter = document.getElementById('status-filter');
+    const rows = document.querySelectorAll('tbody tr');
+
+    function applyFilters() {
+      const q = (searchInput?.value || '').toLowerCase().trim();
+      const r = (roleFilter?.value || 'all').toLowerCase();
+      const s = (statusFilter?.value || 'all').toLowerCase();
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const matchesQuery = !q || text.includes(q);
+        const matchesRole = r === 'all' || text.includes(r);
+        const matchesStatus = s === 'all' || text.includes(s);
+
+        if (matchesQuery && matchesRole && matchesStatus) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput?.addEventListener('input', applyFilters);
+    roleFilter?.addEventListener('change', applyFilters);
+    statusFilter?.addEventListener('change', applyFilters);
+  })();
+</script></main><aside class="fixed right-0 top-[97px] bottom-0 w-[380px] bg-surface-container-lowest border-l border-outline-variant p-space-lg flex flex-col z-30"><div class="bg-surface-container-low border border-outline-variant rounded-[20px] p-space-lg flex-1 flex flex-col"><div class="flex items-center justify-between pb-space-md border-b border-outline-variant"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-primary">rule</span><h2 class="font-headline-sm text-headline-sm text-on-surface">Explain</h2></div><span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Invariants Only</span></div><div class="flex-1 overflow-y-auto py-space-md flex flex-col gap-space-sm"><div class="p-space-md rounded-lg bg-surface-container-lowest border border-outline-variant"><span class="font-label-sm text-label-sm uppercase tracking-wide text-secondary block mb-1">Audit &amp; Reasoning Scope</span><p class="font-body-sm text-body-sm text-on-surface-variant">Explains active curriculum rules, prerequisite validations, credit thresholds, and data integrity invariants without generating prescriptive academic decisions or student-level advice.</p></div></div><div class="pt-space-md border-t border-outline-variant"><div class="relative"><input class="w-full h-10 px-space-md pr-10 rounded-lg bg-surface-container-lowest border border-outline-variant font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Ask about a stored rule" type="text"><span class="material-symbols-outlined absolute right-3 top-2.5 text-[20px] text-secondary pointer-events-none">search</span></div></div></div></aside></div></body></html>

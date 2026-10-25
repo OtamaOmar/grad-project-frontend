@@ -1,0 +1,547 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_dashboard" name="shell-type">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "background": "#F9F9FF",
+            "surface": "#FFFFFF",
+            "surface-container-lowest": "#FFFFFF",
+            "surface-container-low": "#F8FAFC",
+            "surface-container": "#F1F5F9",
+            "surface-container-high": "#E2E8F0",
+            "surface-container-highest": "#CBD5E1",
+            "on-surface": "#101828",
+            "on-surface-variant": "#344054",
+            "secondary": "#475467",
+            "outline": "#D0D5DD",
+            "outline-variant": "#E4E7EC",
+            "primary": "#021F94",
+            "primary-container": "#021F94",
+            "on-primary": "#FFFFFF",
+            "error": "#D92D20",
+            "error-container": "#FEE4E2"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "margin": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "gutter-dense": "0.5rem",
+            "margin-compact": "1rem",
+            "space-xs": "0.25rem"
+          },
+          fontFamily: {
+            "headline-xl": ["\"Source Serif 4\"", "serif"],
+            "headline-lg": ["\"Source Serif 4\"", "serif"],
+            "headline-md": ["\"Source Serif 4\"", "serif"],
+            "headline-sm": ["\"Source Serif 4\"", "serif"],
+            "body-lg": ["\"Source Sans 3\"", "sans-serif"],
+            "body-md": ["\"Source Sans 3\"", "sans-serif"],
+            "body-sm": ["\"Source Sans 3\"", "sans-serif"],
+            "body-xs": ["\"Source Sans 3\"", "sans-serif"],
+            "label-lg": ["\"Source Sans 3\"", "sans-serif"],
+            "label-md": ["\"Source Sans 3\"", "sans-serif"],
+            "label-sm": ["\"Source Sans 3\"", "sans-serif"],
+            "title-lg": ["\"Source Sans 3\"", "sans-serif"],
+            "title-md": ["\"Source Sans 3\"", "sans-serif"],
+            "title-sm": ["\"Source Sans 3\"", "sans-serif"]
+          },
+          fontSize: {
+            "headline-xl": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-sm": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+            "body-lg": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+            "body-md": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+            "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "body-xs": ["11px", { lineHeight: "14px", fontWeight: "400" }],
+            "label-lg": ["13px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "label-md": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "label-sm": ["10px", { lineHeight: "12px", letterSpacing: "0.04em", fontWeight: "700" }],
+            "title-lg": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "title-md": ["15px", { lineHeight: "20px", fontWeight: "600" }],
+            "title-sm": ["13px", { lineHeight: "18px", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#F9F9FF] font-body-md text-[#101828] antialiased">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-white border-b border-[#D0D5DD]">
+<div class="h-20 w-full px-gutter flex flex-col justify-between pt-space-sm pb-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="font-headline-md text-headline-md text-[#101828] tracking-tight">
+            Nile University <span class="text-[#98A2B3]">·</span> CS Course Offering Planning System
+          </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-[#EEF4FF] text-[#021F94] border border-[#C7D7FE] uppercase tracking-wider font-semibold">ADMIN</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="w-8 h-8 rounded flex items-center justify-center text-[#475467] hover:text-[#101828] hover:bg-[#F2F4F7] transition-colors" title="Help" type="button">
+<span class="material-symbols-outlined text-[18px]">help</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-[#475467] hover:text-[#101828] hover:bg-[#F2F4F7] transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+<div class="flex items-center gap-space-sm pl-space-xs border-l border-[#D0D5DD]">
+<div class="w-8 h-8 rounded-full bg-[#021F94] flex items-center justify-center border-2 border-[#D1E0FF] text-white">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</div>
+<nav class="flex items-center gap-space-md overflow-x-auto whitespace-nowrap pt-space-xs text-[#475467] font-label-md text-label-md">
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="dashboard" href="#">Dashboard</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="users" href="#">Users</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="university-data" href="#">University data</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="courses" href="#">Courses</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="programs" href="#">Programs</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="study-plans" href="#">Study plans</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="bylaws" href="#">Bylaws</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="credit-limits" href="#">Credit limits</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="grade-scales" href="#">Grade scales</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="terms" href="#">Terms</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="imports" href="#">Imports</a>
+<a class="pb-1 border-b-2 border-[#021F94] text-[#021F94] font-semibold" data-path="data-gaps" href="#">Data gaps</a>
+<a class="pb-1 border-b-2 border-transparent hover:text-[#101828] transition-colors" data-path="audit" href="#">Audit</a>
+</nav>
+</div>
+</header>
+<div class="pr-[380px]">
+<main class="w-full pt-20 px-gutter min-h-screen bg-[#F9F9FF]">
+<div class="flex flex-col w-full pb-space-xl">
+<!-- Top Context Header Area -->
+<div class="flex flex-col gap-space-xs pt-space-lg mb-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-[#344054] px-space-xs py-0.5 rounded bg-[#EAECF0] font-semibold border border-[#D0D5DD]">Audit Phase II</span>
+<span class="font-body-xs text-body-xs text-[#98A2B3]">·</span>
+<span class="font-body-xs text-body-xs text-[#475467] font-medium">Registry Snapshot #EG-NU-2025-Q1</span>
+</div>
+<div class="flex items-center gap-space-sm text-[#475467] font-label-sm text-label-sm">
+<span class="flex items-center gap-1.5 font-semibold text-[#B54708]">
+<span class="w-2 h-2 rounded-full bg-[#B54708]"></span>
+                4 Unresolved Invariants
+              </span>
+<span class="text-[#98A2B3]">·</span>
+<span class="text-[#344054] font-medium">Strict Enforcement Active</span>
+</div>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-[#101828] tracking-tight">Data Gaps</h1>
+<p class="font-body-lg text-body-lg text-[#475467] max-w-4xl">
+            Active catalog ambiguities and unratified curricular invariants awaiting official Senate or Departmental decree.
+          </p>
+</div>
+<!-- Invariant Notice Banner -->
+<div class="w-full mb-space-xl rounded-xl bg-white border border-[#D0D5DD] shadow-sm overflow-hidden flex items-start gap-space-md p-space-md">
+<div class="w-9 h-9 rounded-lg bg-[#EEF4FF] border border-[#C7D7FE] flex items-center justify-center shrink-0 text-[#021F94]">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">policy</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-label-md text-label-md text-[#101828] font-semibold uppercase tracking-wider">Immutable Ledger Invariant</span>
+<span class="font-body-xs text-body-xs text-[#344054] px-2 py-0.5 rounded bg-[#F2F4F7] font-medium border border-[#E4E7EC]">Zero-Synthesis Directive</span>
+</div>
+<p class="font-body-md text-body-md text-[#475467] leading-relaxed">
+              System strictly disallows heuristic guesses or default values. No control permits typing or synthesizing missing numbers. Unresolved rules remain explicitly open until certified by Departmental Council decree.
+            </p>
+</div>
+<div class="hidden xl:flex flex-col items-end shrink-0 pl-space-md text-right border-l border-[#EAECF0]">
+<span class="font-label-sm text-label-sm text-[#475467] uppercase tracking-wider font-semibold">Catalog Authority</span>
+<span class="font-body-sm text-body-sm text-[#101828] font-semibold mt-0.5">Faculty Senate Bylaw Art. 19-B</span>
+</div>
+</div>
+<!-- Key Metrics Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-space-xl">
+<div class="bg-white border border-[#D0D5DD] rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-[#475467] mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-[#475467]">Catalog State</span>
+<span class="material-symbols-outlined text-[18px] text-[#021F94]">verified_user</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-[#101828]">Non-Derived</div>
+<p class="font-body-xs text-body-xs text-[#475467] mt-1">Arbitrary assumptions blocked</p>
+</div>
+</div>
+<div class="bg-white border border-[#D0D5DD] rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-[#475467] mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-[#475467]">Pending Ratifications</span>
+<span class="material-symbols-outlined text-[18px] text-[#B54708]">history_edu</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-[#B54708]">04 Items</div>
+<p class="font-body-xs text-body-xs text-[#475467] mt-1">Pending Gazette or Senate signoff</p>
+</div>
+</div>
+<div class="bg-white border border-[#D0D5DD] rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-[#475467] mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-[#475467]">Affected Cohorts</span>
+<span class="material-symbols-outlined text-[18px] text-[#021F94]">groups</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-[#101828]">2019 &amp; 2025</div>
+<p class="font-body-xs text-body-xs text-[#475467] mt-1">Undergraduate Computer Science</p>
+</div>
+</div>
+<div class="bg-white border border-[#D0D5DD] rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-[#475467] mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-[#475467]">Synthesis Gate</span>
+<span class="material-symbols-outlined text-[18px] text-[#021F94]">lock</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-[#021F94]">100% Strict</div>
+<p class="font-body-xs text-body-xs text-[#475467] mt-1">Heuristics completely suppressed</p>
+</div>
+</div>
+</div>
+<!-- Primary Ledger Table Wrapper -->
+<div class="w-full bg-white border border-[#D0D5DD] rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Context Action Toolbar -->
+<div class="p-space-md flex flex-wrap items-center justify-between gap-space-md border-b border-[#EAECF0] bg-white">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#021F94] text-[20px]">account_tree</span>
+<span class="font-label-lg text-label-lg text-[#101828]">Senate Ledger &amp; Curricular Invariants</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#F2F4F7] text-[#344054] border border-[#EAECF0] font-medium">Read-Only Audit Trail</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2 text-[#667085] text-[16px]">filter_alt</span>
+<input class="h-8 pl-7 pr-3 bg-[#F8FAFC] border border-[#D0D5DD] rounded-lg font-body-sm text-body-sm text-[#101828] placeholder:text-[#667085] focus:outline-none focus:border-[#021F94] focus:bg-white transition-colors w-64" id="gapSearch" onkeyup="filterLedger()" placeholder="Filter gap definitions..." type="text">
+</div>
+<button class="h-8 px-space-sm rounded-lg bg-[#F8FAFC] border border-[#D0D5DD] text-[#344054] hover:text-[#101828] hover:bg-[#EAECF0] transition-colors font-label-md text-label-md flex items-center gap-1.5" onclick="printLedger()" title="Export Ledger Copy" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+                Export Audit
+              </button>
+</div>
+</div>
+<!-- Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left table-fixed min-w-[760px]" id="ledgerTable">
+<colgroup>
+<col class="w-[32%]">
+<col class="w-[53%]">
+<col class="w-[15%]">
+</colgroup>
+<thead>
+<tr class="bg-[#F8FAFC] text-[#475467] font-label-sm text-label-sm uppercase tracking-wider border-b border-[#EAECF0]">
+<th class="py-2.5 px-space-lg">Gap Invariant</th>
+<th class="py-2.5 px-space-md">Affects / Legislative Perimeter</th>
+<th class="py-2.5 px-space-lg text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#EAECF0] font-body-md text-body-md text-[#101828]">
+<!-- Row 1 -->
+<tr class="hover:bg-[#F8FAFC] transition-colors group cursor-pointer" onclick="selectGapRecord('GAP-2019-SEN-01', 'Old senior threshold', 'Graduating seniors under 2019 charter attempting 21 CH overload', 'Pending Senate resolution on distinction credit calculation threshold. Overload logic paused.')">
+<td class="py-space-md px-space-lg align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-[#021F94] font-semibold group-hover:underline">Old senior threshold</span>
+</div>
+<div class="flex items-center gap-2 font-body-xs text-body-xs text-[#475467] font-mono">
+<span>GAP-2019-SEN-01</span>
+<span>·</span>
+<span>Rule: CH_OVERLOAD_MAX</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="flex flex-col gap-1">
+<span class="font-body-md text-body-md text-[#101828] font-medium">Graduating seniors under 2019 charter attempting 21 CH overload</span>
+<span class="font-body-xs text-body-xs text-[#475467]">
+                        Charter cohort: Senior II standing (≥102 credit hours). System blocks automated 21-hour ceiling unlock until Senate clarification decree.
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg align-top text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-semibold leading-tight bg-[#FFFAEB] text-[#B54708] border border-[#FEDF89]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B54708]"></span>
+                      Open
+                    </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#F8FAFC] transition-colors group cursor-pointer" onclick="selectGapRecord('GAP-2025-EQUIV-04', 'Confirmed equivalences', 'Cross-bylaw transfer petitions between Old CSC 101/102 and 2025 CS 110', 'Equivalence table pending ratification by Faculty Curricular Committee. Bridge modules unratified.')">
+<td class="py-space-md px-space-lg align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-[#021F94] font-semibold group-hover:underline">Confirmed equivalences</span>
+</div>
+<div class="flex items-center gap-2 font-body-xs text-body-xs text-[#475467] font-mono">
+<span>GAP-2025-EQUIV-04</span>
+<span>·</span>
+<span>Rule: XBYLAW_CREDIT_MAP</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="flex flex-col gap-1">
+<span class="font-body-md text-body-md text-[#101828] font-medium">Cross-bylaw transfer petitions between Old CSC 101/102 and 2025 CS 110</span>
+<span class="font-body-xs text-body-xs text-[#475467]">
+                        Legacy 6 credit-hour combined syllabus against unified 4 credit-hour lecture/lab structure. Transfer audit flags rule as pending council signoff.
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg align-top text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-semibold leading-tight bg-[#FFFAEB] text-[#B54708] border border-[#FEDF89]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B54708]"></span>
+                      Open
+                    </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#F8FAFC] transition-colors group cursor-pointer" onclick="selectGapRecord('GAP-2025-CAP-09', 'Official class size', 'Section calculation for newly accredited software engineering electives', 'Section sizing constraints missing laboratory physical capacity ceiling validation.')">
+<td class="py-space-md px-space-lg align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-[#021F94] font-semibold group-hover:underline">Official class size</span>
+</div>
+<div class="flex items-center gap-2 font-body-xs text-body-xs text-[#475467] font-mono">
+<span>GAP-2025-CAP-09</span>
+<span>·</span>
+<span>Rule: SECT_QUOTA_DEFAULT</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="flex flex-col gap-1">
+<span class="font-body-md text-body-md text-[#101828] font-medium">Section calculation for newly accredited software engineering electives</span>
+<span class="font-body-xs text-body-xs text-[#475467]">
+                        SWE 412, SWE 445, and SWE 480 lack statutory student-to-workstation ratios. Timetable generator halts slot multiplication until quota decree.
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg align-top text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-semibold leading-tight bg-[#FFFAEB] text-[#B54708] border border-[#FEDF89]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B54708]"></span>
+                      Open
+                    </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#F8FAFC] transition-colors group cursor-pointer" onclick="selectGapRecord('GAP-2025-HONS-12', 'Intermediate Honors Credit Cap', '2025 Bylaw students with CGPA 3.00–3.29 awaiting Gazette publication', 'Bylaw revision amendment awaiting formal Minister of Higher Education Gazette stamp.')">
+<td class="py-space-md px-space-lg align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-[#021F94] font-semibold group-hover:underline">Intermediate Honors Credit Cap</span>
+</div>
+<div class="flex items-center gap-2 font-body-xs text-body-xs text-[#475467] font-mono">
+<span>GAP-2025-HONS-12</span>
+<span>·</span>
+<span>Rule: REG_CAP_TIER_2</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="flex flex-col gap-1">
+<span class="font-body-md text-body-md text-[#101828] font-medium">2025 Bylaw students with CGPA 3.00–3.29 awaiting Gazette publication</span>
+<span class="font-body-xs text-body-xs text-[#475467]">
+                        Proposed expansion from 18 to 19.5 credit units without warning status. Retained in hard-lock at standard 18 credits until Gazette issue number is entered.
+                      </span>
+</div>
+</td>
+<td class="py-space-md px-space-lg align-top text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-semibold leading-tight bg-[#FFFAEB] text-[#B54708] border border-[#FEDF89]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B54708]"></span>
+                      Open
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Invariant Affirmation -->
+<div class="px-space-lg py-space-md bg-[#F8FAFC] border-t border-[#EAECF0] flex items-center justify-between font-body-xs text-body-xs text-[#475467]">
+<div class="flex items-center gap-space-sm font-medium">
+<span class="material-symbols-outlined text-[16px] text-[#027A48]">lock_clock</span>
+<span>Deterministic Rule Enforcement: 0 fallback values synthesized. All open invariants fail closed.</span>
+</div>
+<div>Showing 4 of 4 statutory gaps</div>
+</div>
+</div>
+<!-- Detailed Ledger Specification Breakdown (Asymmetric Bento Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-space-xl">
+<!-- Left specification context: 8 cols -->
+<div class="lg:col-span-8 bg-white border border-[#D0D5DD] rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-[#021F94]">gavel</span>
+<h2 class="font-headline-md text-headline-md text-[#101828]">Resolution Protocol &amp; Legal Constraints</h2>
+</div>
+<span class="font-label-sm text-label-sm text-[#344054] bg-[#F2F4F7] border border-[#E4E7EC] px-2 py-0.5 rounded font-semibold">Senate Charter Sec. 11</span>
+</div>
+<p class="font-body-md text-body-md text-[#475467] mb-space-md">
+                Any resolution to these gaps requires a signed decree transmitted directly via the Office of the Registrar. The planning engine operates under strict zero-synthesization:
+              </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-lg bg-[#F8FAFC] border border-[#EAECF0] flex flex-col gap-1">
+<span class="font-label-md text-label-md text-[#101828] font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#D92D20]">block</span>
+                    Prohibition on Heuristic Fallbacks
+                  </span>
+<span class="font-body-xs text-body-xs text-[#475467]">
+                    If an official class size or prerequisite weighting is not codified by the University Senate, algorithms cannot substitute historical medians or departmental estimates.
+                  </span>
+</div>
+<div class="p-space-md rounded-lg bg-[#F8FAFC] border border-[#EAECF0] flex flex-col gap-1">
+<span class="font-label-md text-label-md text-[#101828] font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#021F94]">shield_with_heart</span>
+                    Fail-Closed Protection
+                  </span>
+<span class="font-body-xs text-body-xs text-[#475467]">
+                    Students whose progress depends on ambiguous rules are safeguarded against accidental graduation credit revocation by withholding auto-scheduling.
+                  </span>
+</div>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-[#EAECF0] flex items-center justify-between text-[#475467] font-body-xs text-body-xs">
+<span class="font-medium">Codified Invariant Engine Version 4.2.0-STRICT</span>
+<span class="font-mono text-[#344054]">HASH: 9e88b...d2a01</span>
+</div>
+</div>
+<!-- Right context: 4 cols -->
+<div class="lg:col-span-4 bg-white border border-[#D0D5DD] rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-space-xs text-[#B54708]">
+<span class="material-symbols-outlined text-[20px]">notification_important</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Immediate Impact</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-[#101828] mb-2">Upcoming Term Scheduling</h3>
+<p class="font-body-sm text-body-sm text-[#475467] leading-relaxed mb-space-md">
+                Spring 2026 preliminary timetables will exclude SWE elective section projections until GAP-2025-CAP-09 receives official board validation.
+              </p>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-body-xs font-body-xs p-2.5 rounded bg-[#F8FAFC] border border-[#EAECF0]">
+<span class="text-[#101828] font-semibold">Senate Assembly</span>
+<span class="text-[#475467] font-mono font-medium">14 Nov 2025</span>
+</div>
+<div class="flex items-center justify-between text-body-xs font-body-xs p-2.5 rounded bg-[#F8FAFC] border border-[#EAECF0]">
+<span class="text-[#101828] font-semibold">Curriculum Committee</span>
+<span class="text-[#475467] font-mono font-medium">28 Oct 2025</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-[#EAECF0]">
+<a class="font-label-md text-label-md text-[#021F94] hover:underline inline-flex items-center gap-1 font-semibold" href="#">
+<span>View full legislative docket</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function selectGapRecord(code, title, affects, notes) {
+          const explainInput = document.querySelector('aside input[placeholder="Ask about a stored rule"]');
+          if (explainInput) {
+            explainInput.value = code + ': ' + title;
+            explainInput.focus();
+          }
+          const schemaBlock = document.querySelector('aside .space-y-space-md');
+          if (schemaBlock) {
+            schemaBlock.innerHTML = `
+              <div class="p-space-md rounded-xl bg-[#F8FAFC] border border-[#D0D5DD] shadow-sm">
+                <div class="flex items-center justify-between mb-space-xs text-[#021F94]">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wide flex items-center gap-1 font-semibold">
+                    <span class="material-symbols-outlined text-[15px]">lock</span>
+                    ${code}
+                  </span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-[#FFFAEB] border border-[#FEDF89] text-[#B54708] font-semibold">UNRATIFIED</span>
+                </div>
+                <h4 class="font-title-md text-title-md text-[#101828] mb-1 font-semibold">${title}</h4>
+                <p class="font-body-sm text-body-sm text-[#475467] mb-space-sm leading-relaxed">${affects}</p>
+                <div class="p-2.5 rounded bg-white font-body-xs text-body-xs text-[#344054] border border-[#D0D5DD]">
+                  <div class="text-[#475467] font-semibold uppercase text-[9px] mb-0.5">Audit Evaluation</div>
+                  ${notes}
+                </div>
+                <div class="mt-3 pt-2 border-t border-[#EAECF0] flex items-center justify-between text-[11px] text-[#667085]">
+                  <span>Synthesis: <strong class="text-[#D92D20] font-semibold">Disallowed</strong></span>
+                  <span>Target: Senate Gazette</span>
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        function filterLedger() {
+          const filter = document.getElementById('gapSearch').value.toUpperCase();
+          const rows = document.querySelectorAll('#ledgerTable tbody tr');
+          rows.forEach(row => {
+            const text = row.textContent || row.innerText;
+            if (text.toUpperCase().indexOf(filter) > -1) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        }
+
+        function printLedger() {
+          window.print();
+        }
+      </script>
+</main>
+</div>
+<!-- Explain Aside Panel (True Light Mode) -->
+<aside class="fixed right-0 top-20 bottom-0 w-[380px] bg-white border-l border-[#D0D5DD] flex flex-col z-30 shadow-lg">
+<div class="p-space-lg border-b border-[#EAECF0] bg-white">
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-md text-headline-md text-[#101828]">Explain</h2>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-[#EEF4FF] text-[#021F94] border border-[#C7D7FE] font-semibold">AUDIT CORE</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#475467] leading-relaxed">
+        Deterministic audit panel. Explains stored rules, catalog schemas, and relational invariants without recommendation or automation.
+      </p>
+</div>
+<div class="p-space-md border-b border-[#EAECF0] bg-[#F8FAFC]">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-sm text-[#667085] text-[18px]">search</span>
+<input class="w-full h-[36px] pl-9 pr-space-sm bg-white border border-[#D0D5DD] rounded-lg font-body-sm text-body-sm text-[#101828] placeholder:text-[#667085] focus:outline-none focus:border-[#021F94] transition-colors" placeholder="Ask about a stored rule" type="text">
+</div>
+</div>
+<div class="flex-1 p-space-lg overflow-y-auto space-y-space-md bg-white">
+<div class="p-space-md rounded-xl bg-[#F8FAFC] border border-[#D0D5DD]">
+<div class="flex items-center gap-space-xs mb-space-xs text-[#021F94]">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide font-semibold">Active Schema Context</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#475467] leading-relaxed">
+          Select any record, course code, or validation rule to review schema constraints and catalog dependencies.
+        </p>
+</div>
+</div>
+<div class="p-space-md border-t border-[#EAECF0] bg-[#F8FAFC] text-center">
+<span class="font-label-sm text-label-sm text-[#475467] tracking-wider font-semibold">READ-ONLY VERIFICATION ENGINE</span>
+</div>
+</aside>
+</body></html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"primary":"#001060","error":"#ba1a1a","on-secondary-fixed":"#0f1c2d","surface-container-lowest":"#ffffff","on-primary-fixed":"#000f5d","on-background":"#141b2c","on-primary-fixed-variant":"#253aa9","tertiary":"#00115e","primary-fixed-dim":"#bbc3ff","on-secondary-fixed-variant":"#3b485a","on-primary-container":"#7f91ff","surface":"#f9f9ff","inverse-primary":"#bbc3ff","on-secondary-container":"#586579","tertiary-fixed-dim":"#bac3ff","on-secondary":"#ffffff","primary-fixed":"#dee0ff","surface-bright":"#f9f9ff","surface-tint":"#4154c1","on-tertiary-fixed":"#00105b","surface-container":"#e9edff","on-tertiary-fixed-variant":"#0d32c1","outline-variant":"#c5c5d5","outline":"#757684","inverse-surface":"#293041","secondary-container":"#d6e3fb","surface-variant":"#dbe2f9","surface-container-highest":"#dbe2f9","surface-container-low":"#f1f3ff","on-tertiary-container":"#7e92ff","tertiary-fixed":"#dee0ff","error-container":"#ffdad6","tertiary-container":"#002093","surface-container-high":"#e0e8ff","on-tertiary":"#ffffff","secondary":"#525f73","inverse-on-surface":"#edf0ff","on-primary":"#ffffff","background":"#f9f9ff","surface-dim":"#d2daf0","secondary-fixed":"#d6e3fb","on-error":"#ffffff","on-surface":"#141b2c","secondary-fixed-dim":"#bac7de","on-error-container":"#93000a","on-surface-variant":"#454653","primary-container":"#021f94"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1rem","margin":"1.5rem","space-sm":"0.5rem","space-md":"0.75rem","margin-mobile":"1rem","space-lg":"1rem","space-xs":"0.25rem","gutter-mobile":"0.5rem","space-xl":"1.5rem"},"fontFamily":{"label-sm":["\"Source Sans 3\""],"body-lg":["\"Source Sans 3\""],"headline-lg":["\"Source Serif 4\""],"label-md":["\"Source Sans 3\""],"body-md":["\"Source Sans 3\""],"body-sm":["\"Source Sans 3\""],"headline-md":["\"Source Serif 4\""],"headline-xl":["\"Source Serif 4\""],"body-xs":["\"Source Sans 3\""],"headline-sm":["\"Source Serif 4\""],"label-lg":["\"Source Sans 3\""]},"fontSize":{"label-sm":["11px",{"lineHeight":"14px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["26px",{"lineHeight":"34px","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","fontWeight":"600"}],"body-xs":["11px",{"lineHeight":"14px","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 w-full z-40 bg-surface-container-lowest border-b border-outline-variant"><div class="h-14 px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-sm whitespace-nowrap"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Nile University</span><span class="text-outline text-body-sm">·</span><span class="font-body-md text-body-md text-on-surface-variant font-medium">CS Course Offering Planning System</span></div><nav class="hidden xl:flex items-center gap-space-md h-14" data-active-classes="text-on-surface border-b-2 border-[#0E6E6B] font-semibold"><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="forecast-runs" href="#">Forecast runs</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="course-forecasts" href="#">Course forecasts</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="sections" href="#">Sections</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="decisions" href="#">Decisions</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="history" href="#">History</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="rules" href="#">Rules</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="study-plans" href="#">Study plans</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container px-space-sm h-full flex items-center font-label-md text-label-md transition-colors" data-path="explain" href="#">Explain</a></nav></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-space-xs text-on-surface-variant"><a class="hover:text-on-surface hover:bg-surface-container px-space-sm py-space-xs rounded font-label-md text-label-md transition-colors" data-path="help" href="#">Help</a><a aria-label="Notifications" class="hover:text-on-surface hover:bg-surface-container p-space-xs rounded flex items-center transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications</span></a><a class="hover:text-on-surface hover:bg-surface-container px-space-sm py-space-xs rounded font-label-md text-label-md transition-colors" data-path="profile" href="#">Profile</a></div><div class="h-5 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-[#0E6E6B] ring-offset-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Nour Hassan</span><span class="font-body-xs text-body-xs text-[#0E6E6B] font-semibold leading-tight">Coordinator</span></div></div></div></div></header><div class="w-full"><main class="relative pt-14 pr-[380px] min-h-screen bg-background"><div class="flex flex-col w-full">
+<!-- PENDING BANNER -->
+<div class="w-full bg-[#FFF6E8] border-b border-[#D0D5DD] px-margin py-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[#B54708] text-[18px]">info</span>
+<span class="font-label-md text-label-md text-[#B54708] font-semibold">Sample students, not a measured result.</span>
+<span class="text-[#D0D5DD] font-body-sm">|</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Deterministic curriculum path generation active for Fall 2025 forecasting.</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-[#FFFFFF] text-[#B54708] border border-[#D0D5DD] font-mono">SIM-ENGINE-v4.2</span>
+</div>
+</div>
+<div class="p-margin space-y-space-lg">
+<!-- PAGE HEADER SECTION -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between flex-wrap gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs text-[#0E6E6B] font-label-sm text-label-sm uppercase tracking-wider mb-space-xs">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>Curriculum Framework Baseline</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-[#101828] tracking-tight">Study Plan Baseline</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Official curriculum roadmap matriculation sheets utilized as deterministic forecast inputs.</p>
+</div>
+<!-- AUDIT METADATA CHIPS -->
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="flex items-center gap-space-xs bg-[#FFFFFF] px-space-sm py-1 rounded-[4px] border border-[#D0D5DD] text-[#101828]">
+<span class="material-symbols-outlined text-secondary text-[16px]">calendar_today</span>
+<span class="font-body-xs text-body-xs text-secondary">Catalog Year:</span>
+<span class="font-label-sm text-label-sm font-semibold">2024–2025</span>
+</div>
+<div class="flex items-center gap-space-xs bg-[#FFFFFF] px-space-sm py-1 rounded-[4px] border border-[#D0D5DD] text-[#101828]">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_tree</span>
+<span class="font-body-xs text-body-xs text-secondary">Active Cohorts:</span>
+<span class="font-label-sm text-label-sm font-semibold">5 Tracks</span>
+</div>
+<div class="flex items-center gap-space-xs bg-[#E7F6EF] px-space-sm py-1 rounded-[4px] border border-[#A6F4C5] text-[#067647]">
+<span class="material-symbols-outlined text-[#067647] text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm font-semibold">Department Approved</span>
+</div>
+<button class="flex items-center gap-space-xs bg-[#021F94] hover:bg-[#1436C4] text-[#FFFFFF] px-space-md py-1.5 rounded-lg font-label-md text-label-md transition-colors ml-space-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Verify Registrar Sync</span>
+</button>
+</div>
+</div>
+<!-- PROMINENT CALLOUT BANNER -->
+<div class="relative overflow-hidden bg-gradient-to-r from-surface-container via-[#FFFFFF] to-surface-container-low rounded-xl p-space-md border border-[#D0D5DD] flex items-center justify-between">
+<div class="flex items-center gap-space-md z-10">
+<div class="w-10 h-10 rounded-lg bg-[#0E6E6B] text-[#FFFFFF] flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[22px]">source</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-[#101828] font-bold">The forecast starts from these official sheets.</div>
+<div class="font-body-sm text-body-sm text-[#475467]">Each matriculation path guarantees deterministic prerequisites; simulation runs pull immutable cohort milestones directly from this table.</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0 z-10">
+<span class="font-mono text-body-xs text-[#475467] bg-[#F0EEF0] px-space-sm py-1 rounded">IMMUTABLE_HASH: #CS-8924A-24R</span>
+<button class="text-[#0E6E6B] hover:text-[#094d4b] font-label-sm text-label-sm flex items-center gap-0.5" type="button">
+<span>View Catalog Invariants</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-[#0E6E6B]/5 pointer-events-none"></div>
+</div>
+</div>
+<!-- PRIMARY STUDY PLAN TABLE CARD -->
+<div class="bg-[#FFFFFF] rounded-[12px] border border-[#D0D5DD] shadow-sm overflow-hidden">
+<div class="px-space-md py-space-sm bg-[#F0EEF0] border-b border-[#D0D5DD] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">table_chart</span>
+<span class="font-label-md text-label-md text-[#101828] uppercase tracking-wider">Approved Degree Sheets (Baseline Source)</span>
+<span class="font-label-sm text-label-sm bg-[#D6E3FB] text-[#0F1C2D] px-2 py-0.5 rounded-full font-mono">5 ENTRIES</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<input class="h-7 w-48 pl-7 pr-2 text-body-xs bg-[#FFFFFF] border border-[#D0D5DD] rounded text-[#101828] focus:outline-none focus:border-[#021F94]" placeholder="Filter sheet or track..." type="text">
+<span class="material-symbols-outlined absolute left-1.5 top-1.5 text-[15px] text-secondary">search</span>
+</div>
+<button class="h-7 px-2.5 bg-[#FFFFFF] border border-[#D0D5DD] hover:bg-[#F0EEF0] rounded text-body-xs font-label-sm text-[#101828] flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span>Filters</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F0EEF0] border-b border-[#D0D5DD]">
+<th class="py-space-sm px-space-md font-label-sm text-label-sm text-[#475467] uppercase tracking-wider">Sheet Identifier</th>
+<th class="py-space-sm px-space-md font-label-sm text-label-sm text-[#475467] uppercase tracking-wider">Track</th>
+<th class="py-space-sm px-space-md font-label-sm text-label-sm text-[#475467] uppercase tracking-wider">English Path</th>
+<th class="py-space-sm px-space-md font-label-sm text-label-sm text-[#475467] uppercase tracking-wider">Math Path</th>
+<th class="py-space-sm px-space-md font-label-sm text-label-sm text-[#475467] uppercase tracking-wider">Term Used</th>
+<th class="py-space-sm px-space-md font-label-sm text-label-sm text-[#475467] uppercase tracking-wider">Status / Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#D0D5DD]">
+<!-- ROW 1 -->
+<tr class="hover:bg-[#F0EEF0] transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#0E6E6B] text-[18px]">description</span>
+<span class="font-mono text-body-sm font-semibold text-[#101828]">Science_Intensive_bigdata</span>
+</div>
+<div class="text-[11px] text-[#475467] pl-6 font-mono">ID: PLN-CS-2024-DS01</div>
+</td>
+<td class="py-2.5 px-space-md">
+<div class="font-body-md text-body-md text-[#101828] font-medium">Big Data &amp; Data Science</div>
+<div class="text-[11px] text-secondary">Department of Computer Science</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#E9EDFF] text-[#021F94] font-label-sm text-label-sm">
+                  Intensive
+                </span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#F1F3FF] text-[#141B2C] border border-[#D0D5DD] font-label-sm text-label-sm">
+                  Precalculus
+                </span>
+</td>
+<td class="py-2.5 px-space-md font-body-sm text-body-sm text-[#101828] font-medium">
+                Year 2 Fall
+              </td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                    Active Baseline
+                  </span>
+<button class="p-1 text-secondary hover:text-[#021F94] hover:bg-[#FFFFFF] rounded transition-colors" title="Inspect Roadmap" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-[#0E6E6B] hover:bg-[#FFFFFF] rounded transition-colors" title="View Invariant Constraints" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-[#F0EEF0] transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#0E6E6B] text-[18px]">description</span>
+<span class="font-mono text-body-sm font-semibold text-[#101828]">Software_Engineering_Standard</span>
+</div>
+<div class="text-[11px] text-[#475467] pl-6 font-mono">ID: PLN-CS-2024-SE02</div>
+</td>
+<td class="py-2.5 px-space-md">
+<div class="font-body-md text-body-md text-[#101828] font-medium">Software Engineering</div>
+<div class="text-[11px] text-secondary">Department of Computer Science</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#F1F3FF] text-[#141B2C] border border-[#D0D5DD] font-label-sm text-label-sm">
+                  Standard
+                </span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#E9EDFF] text-[#021F94] font-label-sm text-label-sm">
+                  Calculus I
+                </span>
+</td>
+<td class="py-2.5 px-space-md font-body-sm text-body-sm text-[#101828] font-medium">
+                Year 2 Fall
+              </td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                    Active Baseline
+                  </span>
+<button class="p-1 text-secondary hover:text-[#021F94] hover:bg-[#FFFFFF] rounded transition-colors" title="Inspect Roadmap" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-[#0E6E6B] hover:bg-[#FFFFFF] rounded transition-colors" title="View Invariant Constraints" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-[#F0EEF0] transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#0E6E6B] text-[18px]">description</span>
+<span class="font-mono text-body-sm font-semibold text-[#101828]">Artificial_Intelligence_Accelerated</span>
+</div>
+<div class="text-[11px] text-[#475467] pl-6 font-mono">ID: PLN-CS-2024-AI03</div>
+</td>
+<td class="py-2.5 px-space-md">
+<div class="font-body-md text-body-md text-[#101828] font-medium">Artificial Intelligence</div>
+<div class="text-[11px] text-secondary">Department of Computer Science</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#F0EEF0] text-[#475467] border border-[#D0D5DD] font-label-sm text-label-sm">
+                  Exempt
+                </span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#E9EDFF] text-[#021F94] font-label-sm text-label-sm">
+                  Calculus I
+                </span>
+</td>
+<td class="py-2.5 px-space-md font-body-sm text-body-sm text-[#101828] font-medium">
+                Year 2 Fall
+              </td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                    Active Baseline
+                  </span>
+<button class="p-1 text-secondary hover:text-[#021F94] hover:bg-[#FFFFFF] rounded transition-colors" title="Inspect Roadmap" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-[#0E6E6B] hover:bg-[#FFFFFF] rounded transition-colors" title="View Invariant Constraints" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-[#F0EEF0] transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#0E6E6B] text-[18px]">description</span>
+<span class="font-mono text-body-sm font-semibold text-[#101828]">Cybersecurity_Core_Pathway</span>
+</div>
+<div class="text-[11px] text-[#475467] pl-6 font-mono">ID: PLN-CS-2024-CY04</div>
+</td>
+<td class="py-2.5 px-space-md">
+<div class="font-body-md text-body-md text-[#101828] font-medium">Cybersecurity</div>
+<div class="text-[11px] text-secondary">Department of Computer Science</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#F1F3FF] text-[#141B2C] border border-[#D0D5DD] font-label-sm text-label-sm">
+                  Standard
+                </span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#F1F3FF] text-[#141B2C] border border-[#D0D5DD] font-label-sm text-label-sm">
+                  Precalculus
+                </span>
+</td>
+<td class="py-2.5 px-space-md font-body-sm text-body-sm text-[#101828] font-medium">
+                Year 2 Fall
+              </td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                    Active Baseline
+                  </span>
+<button class="p-1 text-secondary hover:text-[#021F94] hover:bg-[#FFFFFF] rounded transition-colors" title="Inspect Roadmap" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-[#0E6E6B] hover:bg-[#FFFFFF] rounded transition-colors" title="View Invariant Constraints" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-[#F0EEF0] transition-colors">
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#0E6E6B] text-[18px]">description</span>
+<span class="font-mono text-body-sm font-semibold text-[#101828]">Bioinformatics_Cross_Track</span>
+</div>
+<div class="text-[11px] text-[#475467] pl-6 font-mono">ID: PLN-CS-2024-BI05</div>
+</td>
+<td class="py-2.5 px-space-md">
+<div class="font-body-md text-body-md text-[#101828] font-medium">Bioinformatics</div>
+<div class="text-[11px] text-secondary">Joint CS &amp; Biotechnology</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#E9EDFF] text-[#021F94] font-label-sm text-label-sm">
+                  Intensive
+                </span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded-[4px] bg-[#E9EDFF] text-[#021F94] font-label-sm text-label-sm">
+                  Calculus I
+                </span>
+</td>
+<td class="py-2.5 px-space-md font-body-sm text-body-sm text-[#101828] font-medium">
+                Year 2 Fall
+              </td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#067647]"></span>
+                    Active Baseline
+                  </span>
+<button class="p-1 text-secondary hover:text-[#021F94] hover:bg-[#FFFFFF] rounded transition-colors" title="Inspect Roadmap" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-[#0E6E6B] hover:bg-[#FFFFFF] rounded transition-colors" title="View Invariant Constraints" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-space-md py-space-sm bg-[#F0EEF0] border-t border-[#D0D5DD] flex items-center justify-between text-body-xs text-[#475467]">
+<div class="flex items-center gap-space-md">
+<span>Displaying 5 baseline sheets verified against Nile University Academic Catalog 2024-R1.</span>
+<span class="text-[#D0D5DD]">|</span>
+<span class="flex items-center gap-1 text-[#067647] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">lock</span>
+            Immutable for Fall 2025 Run
+          </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span>Last modified by: Registrar Academic Standards (2024-05-18)</span>
+</div>
+</div>
+</div>
+<!-- SHEET VALIDATION & PRECEDENCE HIERARCHY INFORMATIONAL SECTION -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- PANEL 1 -->
+<div class="bg-[#FFFFFF] rounded-[12px] p-space-md border border-[#D0D5DD] flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-[#021F94]">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<h3 class="font-headline-sm text-headline-sm text-[#101828]">Invariant Catalog Checking</h3>
+</div>
+<p class="font-body-sm text-body-sm text-[#475467]">
+            Deterministic cross-verification against the official Registrar Course Catalog ensures all prerequisite chains, corequisite clusters, and credit caps correspond strictly to degree bylaws.
+          </p>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-[#D0D5DD] flex items-center justify-between font-label-sm text-label-sm text-[#0E6E6B]">
+<span>Checked: 142 Prerequisite Nodes</span>
+<span class="material-symbols-outlined text-[16px]">done_all</span>
+</div>
+</div>
+<!-- PANEL 2 -->
+<div class="bg-[#FFFFFF] rounded-[12px] p-space-md border border-[#D0D5DD] flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-[#021F94]">
+<span class="material-symbols-outlined text-[20px]">lock_clock</span>
+<h3 class="font-headline-sm text-headline-sm text-[#101828]">Immutable Baseline Status</h3>
+</div>
+<p class="font-body-sm text-body-sm text-[#475467]">
+            Forecast simulation passes are read-only. Course demand models execute without altering degree pathway templates, preserving historic reproducibility across departmental audits.
+          </p>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-[#D0D5DD] flex items-center justify-between font-label-sm text-label-sm text-[#475467]">
+<span>Lock State: Read-Only Coordinator</span>
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+</div>
+<!-- PANEL 3 -->
+<div class="bg-[#FFFFFF] rounded-[12px] p-space-md border border-[#D0D5DD] flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-[#021F94]">
+<span class="material-symbols-outlined text-[20px]">schema</span>
+<h3 class="font-headline-sm text-headline-sm text-[#101828]">Precedence Hierarchy</h3>
+</div>
+<p class="font-body-sm text-body-sm text-[#475467]">
+            Priority is resolved deterministically: Faculty bylaws supersede standard department paths; cohort matriculation rules supersede general elective scheduling windows.
+          </p>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-[#D0D5DD] flex items-center justify-between font-label-sm text-label-sm text-[#021F94]">
+<span>Level 1: Senate Bylaws &gt; Level 2: Tracks</span>
+<span class="material-symbols-outlined text-[16px]">low_priority</span>
+</div>
+</div>
+</div>
+<!-- METRICS & VALIDATION SUMMARY BAR -->
+<div class="bg-[#F0EEF0] rounded-[12px] p-space-md border border-[#D0D5DD] flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-lg flex-wrap">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#0E6E6B] text-[20px]">storage</span>
+<span class="font-body-sm text-body-sm text-[#475467]">Catalog Source:</span>
+<span class="font-label-sm text-label-sm font-semibold text-[#101828]">NU_CATALOG_2024_R1.sql</span>
+</div>
+<div class="h-4 w-[1px] bg-[#D0D5DD]"></div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#021F94] text-[20px]">rule_folder</span>
+<span class="font-body-sm text-body-sm text-[#475467]">Validation Hash:</span>
+<span class="font-mono text-body-xs text-[#101828] font-bold">SHA256: 4e9a8f...21b0</span>
+</div>
+<div class="h-4 w-[1px] bg-[#D0D5DD]"></div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#067647] text-[20px]">task_alt</span>
+<span class="font-body-sm text-body-sm text-[#475467]">Integrity Check:</span>
+<span class="font-label-sm text-label-sm font-semibold text-[#067647]">100% Deterministic</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-body-xs text-[#475467]">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Coordinators may not alter requirements directly without Dean approval.</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Ensure the active navigation state reflects 'Study plans'
+  document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('header nav a');
+    navItems.forEach(item => {
+      if (item.getAttribute('data-path') === 'study-plans') {
+        item.classList.add('text-on-surface', 'border-b-2', 'border-[#0E6E6B]', 'font-semibold');
+        item.classList.remove('text-on-surface-variant');
+      } else {
+        item.classList.remove('text-on-surface', 'border-b-2', 'border-[#0E6E6B]', 'font-semibold');
+        item.classList.add('text-on-surface-variant');
+      }
+    });
+
+    // Populate Explain panel with custom study plan baseline scenario
+    const explainPanelContainer = document.querySelector('aside .flex-1');
+    if (explainPanelContainer) {
+      explainPanelContainer.innerHTML = `
+        <div class="bg-surface-container rounded-xl p-space-md border border-outline-variant">
+          <div class="flex items-center gap-space-xs text-[#0E6E6B] font-label-sm text-label-sm mb-space-xs">
+            <span class="material-symbols-outlined text-[16px]">analytics</span>
+            <span>AUDIT ENGINE · BASELINE REASONING</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface">
+            Baseline sheets determine cohort progression. Stored rules verify mandatory course eligibility across prerequisite milestones without prescriptive opening directives.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-space-sm mt-space-xs">
+          <!-- User Prompt -->
+          <div class="self-end max-w-[88%] bg-[#021F94] text-[#FFFFFF] p-space-md rounded-xl font-body-sm text-body-sm shadow-sm">
+            <p>Which study plan sheet generated the CSCI 207 demand?</p>
+          </div>
+
+          <!-- AI Response -->
+          <div class="self-start max-w-[95%] bg-[#F0EEF0] p-space-md rounded-xl font-body-sm text-body-sm text-[#101828] border border-[#D0D5DD] flex flex-col gap-space-sm">
+            <p>
+              Demand for CSCI 207 is derived from <span class="font-mono text-body-xs font-semibold px-1 py-0.5 rounded bg-[#FFFFFF] border border-[#D0D5DD]">Science_Intensive_bigdata</span> and <span class="font-mono text-body-xs font-semibold px-1 py-0.5 rounded bg-[#FFFFFF] border border-[#D0D5DD]">Software_Engineering_Standard</span> matriculation roadmaps for Year 2 Fall cohorts.
+            </p>
+            
+            <div class="flex flex-wrap gap-space-xs pt-space-xs border-t border-[#D0D5DD]">
+              <span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-[#FFFFFF] text-[#021F94] border border-[#D0D5DD] flex items-center gap-1 font-mono">
+                <span class="material-symbols-outlined text-[13px]">description</span>[Sheet: Science_Intensive_bigdata]
+              </span>
+              <span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-[#FFFFFF] text-[#475467] border border-[#D0D5DD] flex items-center gap-1 font-mono">
+                <span class="material-symbols-outlined text-[13px]">library_books</span>[Catalog 2024-R1]
+              </span>
+            </div>
+            
+            <div class="text-[11px] text-[#475467] bg-[#FFFFFF] p-space-xs rounded border border-[#D0D5DD] mt-1">
+              <strong>Invariant Note:</strong> This audit provides historical derivation metrics and prerequisite tracing. It does not mandate whether a section should open.
+            </div>
+          </div>
+
+          <!-- Caret / Status Indicator -->
+          <div class="self-start flex items-center gap-space-xs text-[#0E6E6B] font-label-sm text-label-sm pl-space-xs mt-1">
+            <span class="material-symbols-outlined text-[15px] animate-spin">sync</span>
+            <span>Invariant verification ready · Catalog synchronized</span>
+          </div>
+        </div>
+      `;
+
+      // Update Aside Header Badge
+      const explainBadge = document.querySelector('aside .p-margin.border-b span.font-label-sm');
+      if (explainBadge) {
+        explainBadge.innerText = 'AUDIT ENGINE';
+        explainBadge.className = 'font-label-sm text-label-sm px-space-sm py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-semibold tracking-wide border border-[#A6F4C5]';
+      }
+    }
+  });
+</script></main><aside class="fixed top-14 right-0 bottom-0 w-[380px] bg-surface-container-lowest border-l border-outline-variant z-30 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="p-margin border-b border-outline-variant"><div class="flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[20px]">psychology</span><h2 class="font-headline-sm text-headline-sm text-on-surface">Explain</h2></div><span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded bg-secondary-container text-on-secondary-fixed tracking-wide">COGNITIVE AUDIT</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Stored rules &amp; forecast rationale</p></div><div class="flex-1 overflow-y-auto p-margin flex flex-col gap-space-md"><div class="bg-surface-container rounded-xl p-space-md border border-outline-variant"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm mb-space-xs"><span class="material-symbols-outlined text-[16px]">info</span><span>GOVERNANCE CONSTRAINT</span></div><p class="font-body-sm text-body-sm text-on-surface">Statistical projection mode active. Model displays prerequisite load, enrollment demand probability, and stored faculty constraints without prescriptive opening directives.</p></div><div class="flex flex-col gap-space-sm"><div class="self-end max-w-[85%] bg-primary-container text-on-primary p-space-md rounded-xl font-body-sm text-body-sm shadow-sm"><p>Why is CS302 (Data Structures II) highlighted under capacity threshold for Fall 2025?</p></div><div class="self-start max-w-[92%] bg-surface-container p-space-md rounded-xl font-body-sm text-body-sm text-on-surface border border-outline-variant flex flex-col gap-space-sm"><p>Based on stored rule <span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-mono">RULE-CS-204-CHAIN</span>, completion rates for prerequisite CS201 increased by 18.4% across the prior spring cohort.</p><div class="flex flex-wrap gap-space-xs pt-space-xs"><span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">description</span>Rule: PREREQ_FLOW</span><span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded bg-surface-container-high text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">dataset</span>Catalog 2023-R2</span></div></div><div class="self-start flex items-center gap-space-xs text-[#0E6E6B] font-label-sm text-label-sm pl-space-xs"><span class="inline-block w-2 h-2 rounded-full bg-[#0E6E6B] animate-pulse"></span><span>Writing analysis...</span></div></div></div><div class="p-margin border-t border-outline-variant bg-surface-container-low"><div class="relative"><input class="w-full h-10 pl-space-md pr-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-body-sm text-body-sm placeholder:text-secondary focus:outline-none focus:border-primary" placeholder="Ask about a stored rule or this result" type="text"><button aria-label="Send" class="absolute right-1.5 top-1.5 w-7 h-7 flex items-center justify-center rounded bg-primary text-on-primary hover:bg-[#1436C4] transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">arrow_upward</span></button></div><p class="font-body-xs text-body-xs text-on-surface-variant text-center mt-space-xs">Informational rationale only. Does not mandate section opening.</p></div></aside></div></body></html>

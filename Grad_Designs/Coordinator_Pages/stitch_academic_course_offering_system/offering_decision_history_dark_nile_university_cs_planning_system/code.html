@@ -1,0 +1,390 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.coordinator-ring{box-shadow:0 0 0 2px #5ee0d6;}.active-coordinator-border{border-bottom:2px solid #5ee0d6;color:#dde1fb!important;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-bright": "#34384c", "outline-variant": "#444653", "on-secondary-container": "#b0b8d1", "tertiary": "#42e09a", "on-tertiary": "#003822", "tertiary-fixed-dim": "#42e09a", "outline": "#8e909f", "primary-fixed": "#dce1ff", "surface-dim": "#0d1225", "on-background": "#dde1fb", "inverse-primary": "#3055c6", "on-primary-fixed": "#001550", "secondary": "#bec6df", "primary-container": "#6b8cff", "on-tertiary-fixed-variant": "#005233", "on-secondary-fixed": "#131b2e", "on-secondary-fixed-variant": "#3e475b", "surface-container-high": "#24293c", "primary-fixed-dim": "#b6c4ff", "surface": "#0d1225", "secondary-container": "#41495e", "on-secondary": "#283044", "on-surface-variant": "#c4c5d5", "on-surface": "#dde1fb", "on-error-container": "#ffdad6", "surface-tint": "#b6c4ff", "secondary-fixed": "#dae2fc", "surface-container-highest": "#2f3448", "tertiary-container": "#00a86e", "background": "#0d1225", "inverse-on-surface": "#2b3043", "on-primary": "#00277f", "on-primary-container": "#002375", "primary": "#b6c4ff", "error-container": "#93000a", "surface-container": "#1a1f31", "surface-container-lowest": "#080d1f", "error": "#ffb4ab", "on-error": "#690005", "surface-variant": "#2f3448", "secondary-fixed-dim": "#bec6df", "tertiary-fixed": "#65fdb5", "surface-container-low": "#161b2d", "on-tertiary-container": "#00331e", "inverse-surface": "#dde1fb", "on-primary-fixed-variant": "#0a3bad", "on-tertiary-fixed": "#002112" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1.5rem", "space-xl": "1.5rem", "gutter-dense": "0.5rem", "margin-compact": "1rem", "space-lg": "1rem", "space-md": "0.75rem", "space-sm": "0.5rem" }, "fontFamily": { "title-lg": ["\"Source Sans 3\""], "label-sm": ["\"Source Sans 3\""], "title-sm": ["\"Source Sans 3\""], "headline-md": ["\"Source Serif 4\""], "body-md": ["\"Source Sans 3\""], "label-md": ["\"Source Sans 3\""], "body-lg": ["\"Source Sans 3\""], "display-lg": ["\"Source Serif 4\""], "label-lg": ["\"Source Sans 3\""], "body-sm": ["\"Source Sans 3\""], "title-md": ["\"Source Sans 3\""], "headline-lg": ["\"Source Serif 4\""] }, "fontSize": { "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}], "label-sm": ["10px", {"lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700"}], "title-sm": ["13px", {"lineHeight": "18px", "fontWeight": "600"}], "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-md": ["13px", {"lineHeight": "18px", "fontWeight": "400"}], "label-md": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}], "body-lg": ["15px", {"lineHeight": "22px", "fontWeight": "400"}], "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}], "label-lg": ["13px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "title-md": ["15px", {"lineHeight": "20px", "fontWeight": "600"}], "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}] } } } }</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-container-low border-b border-outline-variant/30 px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg flex-1 min-w-0"><div class="flex items-center gap-space-sm shrink-0"><span class="font-headline-md text-title-lg text-primary tracking-tight">Nile University</span><span class="text-outline font-body-sm">·</span><span class="font-title-sm text-on-surface tracking-normal hidden xl:inline">CS Course Offering Planning System</span></div><nav class="flex items-center gap-space-xs flex-wrap min-w-0 overflow-hidden" data-active-classes="active-coordinator-border font-title-sm text-on-surface"><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="dashboard" href="#">Dashboard</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="forecast-runs" href="#">Forecast runs</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="course-forecasts" href="#">Course forecasts</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="sections" href="#">Sections</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="decisions" href="#">Decisions</a><a aria-current="page" class="px-space-sm py-1 hover:bg-surface-container-high rounded-DEFAULT transition-colors whitespace-nowrap active-coordinator-border font-title-sm text-on-surface" data-path="history" href="#">History</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="rules" href="#">Rules</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="study-plans" href="#">Study plans</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="data-gaps" href="#">Data gaps</a><a class="px-space-sm py-1 font-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors whitespace-nowrap" data-path="explain" href="#">Explain</a></nav></div><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-xs pr-space-sm border-r border-outline-variant/30"><a class="p-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications</span></a><a class="p-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors flex items-center justify-center" data-path="help" href="#"><span class="material-symbols-outlined text-[20px]">help</span></a><a class="p-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-DEFAULT transition-colors flex items-center justify-center" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">settings</span></a></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="text-right hidden 2xl:block"><div class="font-title-sm text-on-surface leading-tight">Nour Hassan</div><div class="font-label-sm text-outline leading-tight">Coordinator</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center coordinator-ring"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><div class="flex w-full pt-16"><main class="flex-1 min-w-0 pr-[380px] bg-surface-container-lowest min-h-[calc(100vh-4rem)] p-margin"><div class="flex flex-col w-full">
+<!-- Interactive Audit Page Header -->
+<div class="flex flex-col gap-space-sm mb-space-lg">
+<!-- Pending / Advisory Banner -->
+<div class="flex items-center justify-between px-space-md py-space-sm rounded-xl bg-secondary-container/40 text-[#FFC46B] shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-[#FFC46B]">warning</span>
+<span class="font-title-sm text-title-sm text-[#FFC46B] tracking-normal">Advisory Notice:</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Sample students, not a measured result. Final capacity caps remain subject to department review.</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-outline">
+<span>LOG ID: NU-CS-AUDIT-2026-F</span>
+</div>
+</div>
+<!-- Title & Metadata Ribbon -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pt-space-xs">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-[#5EE0D6]">Academic Operations</span>
+<span class="text-outline-variant font-body-sm">/</span>
+<span class="font-label-sm text-label-sm text-secondary">Registry Trace</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Offering Decision History</h1>
+<p class="font-body-md text-body-md text-secondary mt-0.5">Auditable log of coordinator opening records and committee signoffs.</p>
+</div>
+<!-- Quick Action Metrics Pill -->
+<div class="flex items-center gap-space-sm bg-surface-container px-space-md py-space-xs rounded-xl shadow-sm">
+<div class="flex flex-col pr-space-md">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Total Signed</span>
+<span class="font-title-md text-title-md text-primary font-bold">142 Courses</span>
+</div>
+<div class="w-px h-6 bg-surface-container-high"></div>
+<div class="flex flex-col pl-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Sync Status</span>
+<span class="font-label-md text-label-md text-tertiary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+            Ledger Anchored
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter & Query Control Toolbar -->
+<div class="bg-surface-container rounded-xl p-space-md mb-space-lg shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Search Input -->
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest rounded-xl pl-9 pr-space-md py-2 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:bg-surface-container-high transition-colors" id="auditSearch" placeholder="Filter course code, title, or catalog tag..." type="text">
+</div>
+<!-- Term Selector -->
+<div class="md:col-span-3 relative">
+<select class="w-full appearance-none bg-surface-container-lowest rounded-xl px-space-md py-2 font-body-md text-body-md text-on-surface focus:outline-none cursor-pointer" id="termSelect">
+<option value="all">All Academic Terms</option>
+<option value="Fall 2026">Fall 2026</option>
+<option value="Spring 2026">Spring 2026</option>
+<option value="Fall 2025">Fall 2025</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Approver Selector -->
+<div class="md:col-span-3 relative">
+<select class="w-full appearance-none bg-surface-container-lowest rounded-xl px-space-md py-2 font-body-md text-body-md text-on-surface focus:outline-none cursor-pointer" id="approverSelect">
+<option value="all">All Approvers</option>
+<option value="Nour Hassan">Nour Hassan (Coordinator)</option>
+<option value="Dr. M. Tarek">Dr. M. Tarek (Curriculum Chair)</option>
+<option value="Registrar Desk">Registrar Desk (Direct)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Reset & Export Utility -->
+<div class="md:col-span-1 flex justify-end">
+<button class="p-2 rounded-xl text-outline-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" id="resetFiltersBtn" title="Reset Active Filters">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary Auditable Log Table Section -->
+<div class="bg-surface-container rounded-xl overflow-hidden shadow-sm flex flex-col">
+<!-- Table Header Info Bar -->
+<div class="px-space-lg py-space-sm bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-title-sm text-title-sm text-on-surface">Verified Department Commitments</span>
+<span class="bg-surface-container px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm text-secondary" id="resultCountPill">4 of 4 displayed</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+<span>SORT: CHRONOLOGICAL DESC</span>
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+</div>
+</div>
+<!-- Responsive Scrollable Data Grid -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left" id="auditDecisionsTable">
+<thead>
+<tr class="bg-surface-container-lowest text-secondary text-label-md font-label-md uppercase tracking-wider">
+<th class="py-space-sm px-space-lg font-label-md">Course</th>
+<th class="py-space-sm px-space-md font-label-md">Term</th>
+<th class="py-space-sm px-space-md font-label-md">Decision &amp; Components</th>
+<th class="py-space-sm px-space-md font-label-md">Approver</th>
+<th class="py-space-sm px-space-md font-label-md">Date</th>
+<th class="py-space-sm px-space-lg font-label-md">Notes</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md" id="tableBody">
+<!-- Row 1: MATH 112 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-default" data-approver="Nour Hassan" data-course="MATH 112 Calculus II" data-term="Fall 2026">
+<td class="py-space-md px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-[#5EE0D6]"></div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface group-hover:text-primary transition-colors">MATH 112</div>
+<div class="font-body-sm text-body-sm text-secondary">Calculus II</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="bg-surface-container-highest px-space-sm py-1 rounded-DEFAULT font-label-md text-label-md text-on-surface">Fall 2026</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1.5 items-center">
+<!-- Lecture Open Badge -->
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Lecture Open
+                </span>
+<!-- Tutorial Open Badge -->
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Tutorial Open
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-[10px]">NH</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Nour Hassan</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-body-sm text-body-sm text-secondary">
+              3 Oct 2026
+            </td>
+<td class="py-space-md px-space-lg text-secondary font-body-sm text-body-sm">
+<p class="max-w-md line-clamp-1 group-hover:line-clamp-none transition-all">Approved per cross-listing agreement with Basic Science.</p>
+</td>
+</tr>
+<!-- Row 2: CSCI 201 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-default" data-approver="Nour Hassan" data-course="CSCI 201 Data Structures" data-term="Fall 2026">
+<td class="py-space-md px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-[#5EE0D6]"></div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface group-hover:text-primary transition-colors">CSCI 201</div>
+<div class="font-body-sm text-body-sm text-secondary">Data Structures</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="bg-surface-container-highest px-space-sm py-1 rounded-DEFAULT font-label-md text-label-md text-on-surface">Fall 2026</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1.5 items-center">
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Lecture Open
+                </span>
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Tutorial Open
+                </span>
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Lab Open
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-[10px]">NH</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Nour Hassan</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-body-sm text-body-sm text-secondary">
+              2 Oct 2026
+            </td>
+<td class="py-space-md px-space-lg text-secondary font-body-sm text-body-sm">
+<p class="max-w-md line-clamp-1 group-hover:line-clamp-none transition-all">Standard sophomore core intake.</p>
+</td>
+</tr>
+<!-- Row 3: CSCI 301 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-default" data-approver="Nour Hassan" data-course="CSCI 301 Database Systems" data-term="Spring 2026">
+<td class="py-space-md px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-[#5EE0D6]"></div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface group-hover:text-primary transition-colors">CSCI 301</div>
+<div class="font-body-sm text-body-sm text-secondary">Database Systems</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="bg-surface-container-highest px-space-sm py-1 rounded-DEFAULT font-label-md text-label-md text-on-surface">Spring 2026</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1.5 items-center">
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Lecture Open
+                </span>
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Tutorial Open
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-[10px]">NH</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Nour Hassan</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-body-sm text-body-sm text-secondary">
+              28 Jan 2026
+            </td>
+<td class="py-space-md px-space-lg text-secondary font-body-sm text-body-sm">
+<p class="max-w-md line-clamp-1 group-hover:line-clamp-none transition-all">2 lecture sections confirmed.</p>
+</td>
+</tr>
+<!-- Row 4: CSCI 495 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-default" data-approver="Nour Hassan" data-course="CSCI 495 Senior Capstone I" data-term="Fall 2025">
+<td class="py-space-md px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-[#5EE0D6]"></div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface group-hover:text-primary transition-colors">CSCI 495</div>
+<div class="font-body-sm text-body-sm text-secondary">Senior Capstone I</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="bg-surface-container-highest px-space-sm py-1 rounded-DEFAULT font-label-md text-label-md text-on-surface">Fall 2025</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-wrap gap-1.5 items-center">
+<span class="inline-flex items-center gap-1 bg-[#0E2A22] text-[#3DDC97] px-space-xs py-0.5 rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Lecture Open
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-xs">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-[10px]">NH</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Nour Hassan</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-body-sm text-body-sm text-secondary">
+              18 Sep 2025
+            </td>
+<td class="py-space-md px-space-lg text-secondary font-body-sm text-body-sm">
+<p class="max-w-md line-clamp-1 group-hover:line-clamp-none transition-all">Capstone committee cleared cohort.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Empty State Container -->
+<div class="hidden p-space-xl flex-col items-center justify-center text-center bg-surface-container-low/50" id="noResultsNotice">
+<span class="material-symbols-outlined text-outline text-[40px] mb-space-xs">search_off</span>
+<h3 class="font-title-md text-title-md text-on-surface">No decision records found</h3>
+<p class="font-body-sm text-body-sm text-outline max-w-sm mt-1">Adjust your keyword query, academic term, or approver parameters to locate signed logs.</p>
+</div>
+<!-- Table Footer Meta Details -->
+<div class="px-space-lg py-space-sm bg-surface-container-low flex flex-col sm:flex-row items-center justify-between text-outline text-body-sm font-body-sm gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>All records cryptographically stamped by Nile University SIS Gateway</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>Displaying page 1 of 1</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded-DEFAULT bg-surface-container text-outline hover:text-on-surface text-label-sm" disabled="">PREV</button>
+<button class="px-2 py-1 rounded-DEFAULT bg-surface-container text-outline hover:text-on-surface text-label-sm" disabled="">NEXT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Analytical Summary Micro-Cards Below Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-lg">
+<!-- Component Distribution Metric -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Component Breakdown</span>
+<span class="material-symbols-outlined text-primary text-[18px]">pie_chart</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-headline-lg text-on-surface">100%</span>
+<span class="font-body-sm text-body-sm text-tertiary">Lecture Clearance</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1">4 of 4 audited courses unlocked primary lecture delivery formats.</p>
+</div>
+<!-- Coordinator Velocity Metric -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Signing Authority</span>
+<span class="material-symbols-outlined text-[#5EE0D6] text-[18px]">badge</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-xs">NH</div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface">Nour Hassan</div>
+<div class="font-label-sm text-label-sm text-outline">Lead Coordinator · CS Dept</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1">Responsible for 100% of recorded opening validations in current view.</p>
+</div>
+<!-- Cross-Listing Compliance -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Cross-Listing Sync</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">sync_alt</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-headline-lg text-[#5EE0D6]">MATH 112</span>
+<span class="font-body-sm text-body-sm text-secondary">Basic Science</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1">Inter-departmental allocation fully synchronized with zero credit conflicts.</p>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const searchInput = document.getElementById('auditSearch');
+    const termSelect = document.getElementById('termSelect');
+    const approverSelect = document.getElementById('approverSelect');
+    const resetBtn = document.getElementById('resetFiltersBtn');
+    const tableBody = document.getElementById('tableBody');
+    const countPill = document.getElementById('resultCountPill');
+    const emptyNotice = document.getElementById('noResultsNotice');
+
+    function filterRecords() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      const term = termSelect.value;
+      const approver = approverSelect.value;
+      const rows = tableBody.querySelectorAll('tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const courseText = (row.getAttribute('data-course') || '').toLowerCase();
+        const rowTerm = row.getAttribute('data-term') || '';
+        const rowApprover = row.getAttribute('data-approver') || '';
+        const notesText = row.querySelector('td:last-child p')?.textContent.toLowerCase() || '';
+
+        const matchesQuery = !query || courseText.includes(query) || notesText.includes(query);
+        const matchesTerm = term === 'all' || rowTerm === term;
+        const matchesApprover = approver === 'all' || rowApprover === approver;
+
+        if (matchesQuery && matchesTerm && matchesApprover) {
+          row.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+
+      countPill.textContent = `${visibleCount} of ${rows.length} displayed`;
+
+      if (visibleCount === 0) {
+        emptyNotice.classList.remove('hidden');
+        emptyNotice.classList.add('flex');
+      } else {
+        emptyNotice.classList.add('hidden');
+        emptyNotice.classList.remove('flex');
+      }
+    }
+
+    searchInput.addEventListener('input', filterRecords);
+    termSelect.addEventListener('change', filterRecords);
+    approverSelect.addEventListener('change', filterRecords);
+
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      termSelect.value = 'all';
+      approverSelect.value = 'all';
+      filterRecords();
+    });
+  })();
+</script></main><aside class="fixed right-0 top-16 bottom-0 w-[380px] bg-surface-container border-l border-outline-variant/30 flex flex-col z-40"><div class="p-space-lg border-b border-outline-variant/30 shrink-0"><div class="flex items-center justify-between mb-1"><h2 class="font-headline-md text-headline-md text-on-surface">Explain</h2><span class="font-label-sm text-tertiary-fixed border border-tertiary-fixed/30 bg-tertiary-container/20 px-space-xs py-0.5 rounded-DEFAULT uppercase tracking-wider">Audit Engine</span></div><p class="font-body-sm text-outline">Stored rules &amp; forecast rationale</p></div><div class="flex-1 overflow-y-auto p-space-lg space-y-space-md"><div class="p-space-md bg-surface-container-high/60 border border-outline-variant/20 rounded-[20px]"><div class="font-label-md text-secondary-fixed mb-1">SYSTEM BOUNDARY</div><p class="font-body-sm text-outline-variant leading-relaxed">The system supplies capacity audits, historical constraints, and demand models. It does not determine policy or mandate course opening.</p></div><div class="flex flex-col gap-space-xs items-end"><div class="bg-primary-container text-on-primary-container px-space-lg py-space-sm rounded-[20px] rounded-tr-sm max-w-[85%] font-body-md shadow-sm">Why is CS401 flagged with prerequisite bottlenecks for Spring 2026?</div><span class="font-label-sm text-outline pr-1">14:28</span></div><div class="flex flex-col gap-space-xs items-start"><div class="bg-surface-container-high text-on-surface px-space-lg py-space-md rounded-[20px] rounded-tl-sm max-w-[95%] font-body-md border border-outline-variant/30 space-y-space-sm"><p class="text-on-surface font-body-md">CS401 requires CS301 with grade ≥ C. Audit traces identify that 42 eligible seniors are currently enrolled in CS301 Fall section 02.</p><div class="flex flex-wrap gap-space-xs pt-1"><span class="font-label-sm text-primary border border-primary/30 bg-surface-container-lowest px-space-xs py-0.5 rounded-DEFAULT">RULE § 4.2 PREREQ</span><span class="font-label-sm text-secondary border border-outline-variant/40 bg-surface-container-lowest px-space-xs py-0.5 rounded-DEFAULT">COHORT 2022-CS</span></div><div class="flex items-center gap-space-xs pt-2 text-outline font-body-sm"><span class="w-1.5 h-1.5 rounded-full bg-[#5EE0D6] animate-pulse"></span><span class="font-label-sm text-[#5EE0D6]">Writing rationale trace</span></div></div><span class="font-label-sm text-outline pl-1">14:29</span></div></div><div class="p-space-lg border-t border-outline-variant/30 bg-surface-container-low shrink-0"><div class="relative flex items-center"><input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-space-md py-space-sm text-on-surface placeholder:text-outline/60 font-body-md focus:outline-none focus:border-primary-container transition-colors pr-10" placeholder="Ask about a stored rule or this result" type="text"><button class="absolute right-2 text-outline-variant hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">send</span></button></div></div></aside></div></body></html>

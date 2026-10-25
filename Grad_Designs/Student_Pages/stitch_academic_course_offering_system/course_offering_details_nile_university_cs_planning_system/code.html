@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'wght' 300,'opsz' 20;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-fixed-variant":"#0d32c1","on-tertiary-fixed":"#00105b","on-secondary-fixed-variant":"#3b485a","on-primary":"#ffffff","on-primary-fixed":"#000f5d","tertiary":"#00115e","inverse-on-surface":"#edf0ff","on-primary-container":"#7f91ff","surface-container-high":"#e0e8ff","error":"#ba1a1a","primary-fixed":"#dee0ff","surface-container":"#e9edff","on-secondary-fixed":"#0f1c2d","secondary":"#525f73","surface-container-highest":"#dbe2f9","on-background":"#141b2c","on-secondary":"#ffffff","on-tertiary-container":"#7e92ff","outline":"#757684","on-secondary-container":"#586579","secondary-container":"#d6e3fb","surface-container-lowest":"#ffffff","on-surface-variant":"#454653","error-container":"#ffdad6","primary":"#001060","tertiary-fixed":"#dee0ff","on-tertiary":"#ffffff","inverse-primary":"#bbc3ff","on-error":"#ffffff","surface-container-low":"#f1f3ff","surface-tint":"#4154c1","secondary-fixed-dim":"#bac7de","surface-variant":"#dbe2f9","surface":"#f9f9ff","outline-variant":"#c5c5d5","inverse-surface":"#293041","tertiary-container":"#002093","tertiary-fixed-dim":"#bac3ff","primary-fixed-dim":"#bbc3ff","background":"#f9f9ff","on-primary-fixed-variant":"#253aa9","primary-container":"#021f94","on-error-container":"#93000a","surface-bright":"#f9f9ff","surface-dim":"#d2daf0","on-surface":"#141b2c","secondary-fixed":"#d6e3fb"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"gutter":"1rem","gutter-mobile":"0.5rem","margin":"1.5rem","space-lg":"1rem","space-md":"0.75rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"1.5rem","margin-mobile":"1rem"},fontFamily:{"label-lg":["\"Source Sans 3\""],"body-md":["\"Source Sans 3\""],"headline-lg":["\"Source Serif 4\""],"headline-sm":["\"Source Serif 4\""],"body-xs":["\"Source Sans 3\""],"body-sm":["\"Source Sans 3\""],"body-lg":["\"Source Sans 3\""],"label-md":["\"Source Sans 3\""],"headline-xl":["\"Source Serif 4\""],"headline-md":["\"Source Serif 4\""],"label-sm":["\"Source Sans 3\""]},fontSize:{"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["26px",{lineHeight:"34px",fontWeight:"600"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-xs":["11px",{lineHeight:"14px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-md":["13px",{lineHeight:"18px",fontWeight:"600"}],"headline-xl":["32px",{lineHeight:"40px",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant"><div class="h-14 w-full px-margin flex items-center justify-between"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Nile University</span><span class="text-outline-variant font-body-sm text-body-sm">·</span><span class="font-headline-sm text-headline-sm text-on-surface">CS Course Offering Planning System</span></div><nav class="hidden md:flex items-center gap-space-xs h-14" data-active-classes="text-primary font-label-md border-b-2 border-primary-container bg-surface-container-low"><a class="px-space-md h-full inline-flex items-center font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="px-space-md h-full inline-flex items-center font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="academic-data" href="#">Academic data</a><a aria-current="page" class="px-space-md h-full inline-flex items-center transition-colors text-primary font-label-md border-b-2 border-primary-container bg-surface-container-low" data-path="expected-offerings" href="#">Expected offerings</a><a class="px-space-md h-full inline-flex items-center font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="my-courses" href="#">My courses</a></nav></div><div class="flex items-center gap-space-lg"><div class="hidden lg:flex items-center gap-space-md"><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="notifications" href="#">Notifications</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="help" href="#">Help</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="profile" href="#">Profile</a></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-primary-container ring-offset-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><div class="pt-14 flex min-h-screen"><main class="flex-1 bg-background p-margin min-w-0 pr-[400px]"><div class="flex flex-col w-full">
+<!-- Interactive Script for Tab/Filter switches and App Shell Alignment -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Highlight Active Nav 'Expected offerings' with student accent
+      const navLinks = document.querySelectorAll('header nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'expected-offerings') {
+          link.className = "px-space-md h-full inline-flex items-center font-label-md text-label-md text-primary border-b-2 border-[#3D4F8C] bg-surface-container-low";
+        }
+      });
+
+      // Update right-side Explain assistant panel to CSCI 207 Context & Finished State
+      const explainPanel = document.querySelector('aside');
+      if (explainPanel) {
+        const chatContainer = explainPanel.querySelector('.overflow-y-auto');
+        if (chatContainer) {
+          chatContainer.innerHTML = `
+            <div class="flex flex-col items-end gap-space-xs">
+              <div class="bg-primary-container text-on-primary rounded-xl rounded-tr-none px-space-md py-space-sm max-w-[90%] font-body-sm text-body-sm shadow-sm">
+                <p>What rule determined my eligibility for CSCI 207?</p>
+              </div>
+              <span class="font-body-xs text-body-xs text-outline">09:14 AM · Academic Standing Audit</span>
+            </div>
+            <div class="flex flex-col items-start gap-space-xs">
+              <div class="bg-surface-container text-on-surface rounded-xl rounded-tl-none p-space-md max-w-[98%] space-y-space-sm font-body-sm text-body-sm shadow-sm">
+                <p class="leading-relaxed">Your eligibility is confirmed via degree milestone audit. CSCI 207 is scheduled in your study plan for Term 3, and prerequisite MATH 111 has been successfully satisfied.</p>
+                <div class="flex flex-wrap gap-space-xs pt-space-xs">
+                  <span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+                    <span class="material-symbols-outlined text-[13px]">gavel</span>
+                    [2025 bylaw, credit cap]
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm shadow-sm">
+                    <span class="material-symbols-outlined text-[13px]">verified</span>
+                    Rule §2.1 (Plan Sequence)
+                  </span>
+                </div>
+              </div>
+              <span class="font-body-xs text-body-xs text-outline pl-space-xs">Verified by Rules Engine v4.8</span>
+            </div>
+          `;
+        }
+        const inputField = explainPanel.querySelector('input');
+        if (inputField) {
+          inputField.placeholder = "Ask about a stored rule";
+        }
+      }
+    });
+  </script>
+<!-- Top Context & Back Navigation Ribbon -->
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-sm">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container-lowest text-secondary hover:text-primary font-label-sm text-label-sm shadow-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Expected offerings
+      </a>
+<span class="text-outline-variant font-body-sm text-body-sm">/</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Undergraduate CS Curriculum</span>
+<span class="text-outline-variant font-body-sm text-body-sm">/</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">CSCI 207</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded bg-[#FFF6E8] text-[#B54708] font-label-sm text-label-sm font-semibold tracking-wide shadow-sm">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+        In review
+      </span>
+<span class="font-body-xs text-body-xs text-outline px-space-xs">Fall 2026 Batch Release</span>
+</div>
+</div>
+<!-- Page Title Header (Source Serif 4) -->
+<div class="pb-space-lg flex flex-col gap-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Course Offering Details: CSCI 207</h1>
+<p class="font-body-sm text-body-sm text-secondary">Computer Organization &amp; Architecture · Formal departmental syllabus projection and enrollment eligibility review</p>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-12 gap-space-lg">
+<!-- Left Main Column (9 Cols): Course Specification & Rationale -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Course Headline and Primary Metadata Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md bg-surface-container-low -mx-space-lg -mt-space-lg p-space-lg rounded-t-xl">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md shadow-sm">
+<span class="material-symbols-outlined text-[24px]">memory</span>
+</div>
+<div>
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-primary font-bold">CSCI 207</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">2025 bylaw</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Computer Organization &amp; Architecture</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-[#FFF6E8] text-[#B54708] font-label-md text-label-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#B54708] animate-pulse"></span>
+              Status: In review
+            </span>
+</div>
+</div>
+<!-- Metric Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Credits</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-primary">3</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant">Credits (ECTS 6)</span>
+</div>
+<span class="font-body-xs text-body-xs text-outline">Standard Academic Load</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Component Format</span>
+<div class="font-body-md text-body-md font-semibold text-on-surface">Lecture and tutorial</div>
+<div class="font-body-xs text-body-xs text-secondary flex items-center gap-1">
+<span>Lab:</span>
+<span class="font-bold text-on-surface">—</span>
+<span class="text-outline text-[10px]">(No laboratory)</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Target Term</span>
+<div class="font-body-md text-body-md font-semibold text-on-surface">Fall 2026</div>
+<span class="font-body-xs text-body-xs text-outline">Academic Cycle 2026/27</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Projected Headcount</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-primary">41.25</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant">FTE students</span>
+</div>
+<span class="font-body-xs text-body-xs text-[#067647] font-medium">96.8% model confidence</span>
+</div>
+</div>
+<!-- Expected Sections Detailed Breakout -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Expected Sections Provisioned (2 Sections)</span>
+<span class="font-body-xs text-body-xs text-secondary">Target cohort capacity cap: 45 / section</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Section 1 -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md text-on-surface font-bold">Section 1</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-secondary-container font-label-sm text-label-sm">Primary Morning</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary">Proj. 21 FTE</span>
+</div>
+<div class="flex flex-col text-body-xs font-body-xs text-on-surface-variant gap-0.5 pt-1">
+<div class="flex items-center justify-between">
+<span>Lecture (3 hrs/wk):</span>
+<span class="font-medium text-on-surface">Mon / Wed 08:30 – 10:00</span>
+</div>
+<div class="flex items-center justify-between">
+<span>Tutorial (1.5 hrs/wk):</span>
+<span class="font-medium text-on-surface">Thu 10:15 – 11:45</span>
+</div>
+<div class="flex items-center justify-between">
+<span>Lab session:</span>
+<span class="font-medium text-on-surface">—</span>
+</div>
+</div>
+</div>
+<!-- Section 2 -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-[#3D4F8C]"></span>
+<span class="font-label-md text-label-md text-on-surface font-bold">Section 2</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-secondary-container font-label-sm text-label-sm">Secondary Midday</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary">Proj. 20.25 FTE</span>
+</div>
+<div class="flex flex-col text-body-xs font-body-xs text-on-surface-variant gap-0.5 pt-1">
+<div class="flex items-center justify-between">
+<span>Lecture (3 hrs/wk):</span>
+<span class="font-medium text-on-surface">Tue / Thu 12:00 – 13:30</span>
+</div>
+<div class="flex items-center justify-between">
+<span>Tutorial (1.5 hrs/wk):</span>
+<span class="font-medium text-on-surface">Wed 14:00 – 15:30</span>
+</div>
+<div class="flex items-center justify-between">
+<span>Lab session:</span>
+<span class="font-medium text-on-surface">—</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Rationale Section Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm pb-space-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Why this is expected</h2>
+<p class="font-body-xs text-body-xs text-secondary">Automated prerequisite graph validation &amp; curricular graduation pathway tracking</p>
+</div>
+</div>
+<!-- Verbatim Mandatory Banner -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">info</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Curriculum Determination Statement</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold pt-0.5 leading-relaxed">
+              It sits on the official plan for this term and the stored rules mark you eligible.
+            </p>
+</div>
+</div>
+<!-- Structured Criteria List -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Validated Curricular Criteria</span>
+<div class="flex flex-col gap-space-xs">
+<!-- Criterion 1 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[#067647] text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-1">
+<div>
+<span class="font-label-md text-label-md text-on-surface">Degree requirement in Year 2 Fall semester</span>
+<p class="font-body-xs text-body-xs text-secondary">Identified as core foundational milestone on CS Major Degree Roadmap (Cohort 2025 bylaw).</p>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm shrink-0 font-medium">Mandatory Core</span>
+</div>
+</div>
+<!-- Criterion 2 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[#067647] text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-1">
+<div>
+<span class="font-label-md text-label-md text-on-surface">Prerequisite MATH 111 passed</span>
+<p class="font-body-xs text-body-xs text-secondary">Discrete Mathematics &amp; Linear Structures credit cleared with required threshold.</p>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm shrink-0 font-medium">Prereq Cleared</span>
+</div>
+</div>
+<!-- Criterion 3 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[#067647] text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-1">
+<div>
+<span class="font-label-md text-label-md text-on-surface">Academic standing criteria met</span>
+<p class="font-body-xs text-body-xs text-secondary">Cumulative GPA and accumulated credit tally satisfy departmental advancement regulations.</p>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm shrink-0 font-medium">Good Standing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy & Protection Safeguard Compliance Card -->
+<div class="mt-space-xs p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between text-secondary shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">privacy_tip</span>
+<span class="font-body-xs text-body-xs">Audit Isolation: Stored rules calculated strictly against your individualized degree ledger.</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">FERPA / Bylaw 2025 Enforced</span>
+</div>
+</section>
+<!-- Course Plan Matrix & Equivalency Sequence Table -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Sequence Pathway Context: Year 2 (Semester 3)</h3>
+</div>
+<span class="font-body-xs text-body-xs text-secondary">Fall 2026 Core Roster</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Course Code</th>
+<th class="py-space-sm px-space-md">Subject Description</th>
+<th class="py-space-sm px-space-md">Credits</th>
+<th class="py-space-sm px-space-md">Prerequisites</th>
+<th class="py-space-sm px-space-md text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<tr class="bg-surface-container-low font-semibold">
+<td class="py-space-sm px-space-md text-primary">CSCI 207</td>
+<td class="py-space-sm px-space-md">Computer Organization &amp; Architecture</td>
+<td class="py-space-sm px-space-md">3</td>
+<td class="py-space-sm px-space-md">MATH 111 (Passed)</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-[#FFF6E8] text-[#B54708] font-label-sm text-label-sm">
+                    In review
+                  </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md text-secondary font-medium">CSCI 201</td>
+<td class="py-space-sm px-space-md">Data Structures &amp; Algorithms</td>
+<td class="py-space-sm px-space-md">4</td>
+<td class="py-space-sm px-space-md">CSCI 102 (Passed)</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm">
+                    Eligible
+                  </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md text-secondary font-medium">MATH 205</td>
+<td class="py-space-sm px-space-md">Probability &amp; Statistics for CS</td>
+<td class="py-space-sm px-space-md">3</td>
+<td class="py-space-sm px-space-md">MATH 101 (Passed)</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-[#E7F6EF] text-[#067647] font-label-sm text-label-sm">
+                    Eligible
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Side Column (4 Cols): Departmental Offering Metrics & Rules Summary -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Offering Capacity & Load Forecast Widget -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Capacity Forecast</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">analytics</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm text-secondary">Aggregated Demand</span>
+<span class="font-headline-sm text-headline-sm text-primary">41.25 / 90 Seat Cap</span>
+</div>
+<!-- Progress Visual Metric -->
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 45.8%;"></div>
+</div>
+<span class="font-body-xs text-body-xs text-outline text-right">45.8% utilization projection across 2 sections</span>
+</div>
+<!-- Inline SVG Visualization: Term Offering Flow -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Semester Cadence History</span>
+<div class="h-16 w-full flex items-end justify-between gap-2 pt-2">
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-[#3D4F8C] opacity-40 rounded-t h-10"></div>
+<span class="text-[10px] font-body-xs text-outline">F'24</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t h-3"></div>
+<span class="text-[10px] font-body-xs text-outline">S'25</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-[#3D4F8C] opacity-70 rounded-t h-12"></div>
+<span class="text-[10px] font-body-xs text-outline">F'25</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t h-4"></div>
+<span class="text-[10px] font-body-xs text-outline">S'26</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-primary-container rounded-t h-14"></div>
+<span class="text-[10px] font-body-xs text-primary font-bold">F'26</span>
+</div>
+</div>
+<p class="font-body-xs text-body-xs text-secondary mt-1">CSCI 207 is historically offered primarily during Autumn semesters to serve Year 2 cohorts.</p>
+</div>
+</section>
+<!-- Department Contact & Syllabus Reference Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Curricular Governance</h3>
+<div class="flex flex-col gap-space-sm text-body-sm font-body-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="text-secondary">Governing Academic Body</span>
+<span class="font-semibold text-on-surface">Faculty of Computing</span>
+</div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="text-secondary">Curriculum Revision</span>
+<span class="font-semibold text-primary">Bylaw 2025 (§4.A)</span>
+</div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="text-secondary">Expected Lab Offering</span>
+<span class="font-semibold text-on-surface">— (Lecture &amp; Tut Only)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary">Next Review Milestone</span>
+<span class="font-semibold text-[#B54708]">August 15, 2026</span>
+</div>
+</div>
+<button class="w-full mt-space-xs py-2 px-space-md rounded-lg bg-primary-container hover:bg-[#1436C4] text-on-primary font-label-md text-label-md transition-colors flex items-center justify-center gap-space-xs shadow-sm">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+          Download CSCI 207 Syllabus Specs
+        </button>
+</section>
+<!-- Direct Assistance / Rule Query Helper Trigger -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">help_outline</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Need eligibility adjustment?</span>
+<span class="font-body-xs text-body-xs text-secondary">Inquire directly in the right Explain panel</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+</div></main><aside class="fixed top-14 right-0 bottom-0 w-[380px] bg-surface-container-lowest border-l border-outline-variant p-space-md flex flex-col z-40"><div class="bg-surface-container-lowest border border-outline-variant rounded-[20px] flex flex-col h-full overflow-hidden"><div class="p-space-lg border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between"><div><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary">Explain</span><span class="px-space-xs py-0.5 rounded text-[10px] font-label-sm bg-surface-container text-on-secondary-container uppercase tracking-wide">Rules Engine</span></div><p class="font-body-xs text-body-xs text-on-surface-variant mt-0.5">Curriculum prerequisites &amp; offering logic</p></div><span class="material-symbols-outlined text-on-surface-variant text-[20px]">auto_awesome</span></div><div class="flex-1 p-space-lg overflow-y-auto space-y-space-md"><div class="flex flex-col items-end gap-space-xs"><div class="bg-primary-container text-on-primary rounded-xl rounded-tr-none px-space-md py-space-sm max-w-[85%] font-body-sm text-body-sm"><p>Why is CS 340 not scheduled in Fall semester for Cohort 2022?</p></div><span class="font-body-xs text-body-xs text-outline">10:42 AM · Student Query</span></div><div class="flex flex-col items-start gap-space-xs"><div class="bg-surface-container-low text-on-surface border border-outline-variant rounded-xl rounded-tl-none p-space-md max-w-[95%] space-y-space-sm font-body-sm text-body-sm"><p class="leading-relaxed">CS 340 requires prerequisite completion of CS 210 and Math 220. Projected student count satisfies the threshold only in Spring term.</p><div class="flex flex-wrap gap-space-xs pt-space-xs"><span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant"><span class="material-symbols-outlined text-[13px]">menu_book</span>Rule §4.2 (Prereq)</span><span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant"><span class="material-symbols-outlined text-[13px]">domain_verification</span>Faculty Load Cap</span></div></div><div class="flex items-center gap-space-xs pl-space-xs"><span class="inline-block w-1.5 h-3 bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-primary">Writing explanation...</span></div></div></div><div class="p-space-md border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center border border-outline-variant rounded-lg bg-surface-container-lowest px-space-sm py-space-xs focus-within:border-primary-container"><span class="material-symbols-outlined text-outline text-[18px] mr-space-xs">search</span><input class="w-full bg-transparent border-none text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none" placeholder="Ask about a stored rule..." type="text"><button class="p-space-xs text-primary hover:text-on-primary-fixed-variant transition-colors"><span class="material-symbols-outlined text-[18px]">arrow_upward</span></button></div></div></div></aside></div></body></html>

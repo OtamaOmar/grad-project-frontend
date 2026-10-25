@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#141b2c", "surface-container": "#e9edff", "primary": "#001060", "surface-dim": "#d2daf0", "primary-container": "#021f94", "secondary-fixed-dim": "#bac7de", "outline": "#757684", "surface-bright": "#f9f9ff", "tertiary-fixed-dim": "#bac3ff", "on-tertiary-container": "#7e92ff", "surface-container-low": "#f1f3ff", "outline-variant": "#c5c5d5", "background": "#f9f9ff", "on-tertiary-fixed": "#00105b", "on-secondary": "#ffffff", "secondary-fixed": "#d6e3fb", "on-error": "#ffffff", "surface-container-high": "#e0e8ff", "on-secondary-fixed": "#0f1c2d", "surface-container-lowest": "#ffffff", "inverse-surface": "#293041", "tertiary": "#00115e", "surface-variant": "#dbe2f9", "tertiary-container": "#002093", "inverse-primary": "#bbc3ff", "on-tertiary-fixed-variant": "#0d32c1", "primary-fixed": "#dee0ff", "on-primary-container": "#7f91ff", "primary-fixed-dim": "#bbc3ff", "on-secondary-container": "#586579", "inverse-on-surface": "#edf0ff", "on-primary-fixed-variant": "#253aa9", "surface-tint": "#4154c1", "secondary-container": "#d6e3fb", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#3b485a", "on-surface": "#141b2c", "error-container": "#ffdad6", "tertiary-fixed": "#dee0ff", "surface-container-highest": "#dbe2f9", "on-surface-variant": "#454653", "error": "#ba1a1a", "surface": "#f9f9ff", "on-primary": "#ffffff", "on-primary-fixed": "#000f5d", "secondary": "#525f73", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1rem", "space-md": "0.75rem" }, "fontFamily": { "headline-xl": [ "\"Source Serif 4\"" ], "label-md": [ "\"Source Sans 3\"" ], "label-sm": [ "\"Source Sans 3\"" ], "headline-lg": [ "\"Source Serif 4\"" ], "body-sm": [ "\"Source Sans 3\"" ], "headline-sm": [ "\"Source Serif 4\"" ], "headline-md": [ "\"Source Serif 4\"" ], "body-xs": [ "\"Source Sans 3\"" ], "body-md": [ "\"Source Sans 3\"" ], "body-lg": [ "\"Source Sans 3\"" ], "label-lg": [ "\"Source Sans 3\"" ] }, "fontSize": { "headline-xl": [ "32px", { "lineHeight": "40px", "fontWeight": "600" } ], "label-md": [ "13px", { "lineHeight": "18px", "fontWeight": "600" } ], "label-sm": [ "11px", { "lineHeight": "14px", "fontWeight": "600" } ], "headline-lg": [ "26px", { "lineHeight": "34px", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-xs": [ "11px", { "lineHeight": "14px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest border-b border-outline-variant"><div class="w-full px-margin"><div class="flex items-center justify-between h-14 border-b border-outline-variant"><div class="flex items-center gap-space-lg"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Nile University · CS Course Offering Planning System</span><span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium border border-outline-variant">Ref Data Admin</span></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-1.5 px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high text-label-md font-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">help</span><span>Help</span></button><button aria-label="Notifications" class="relative p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary-container"></span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-primary-container ring-offset-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div><div class="py-2"><nav class="flex flex-wrap items-center gap-x-space-lg gap-y-1" data-active-classes="text-primary border-b-2 border-primary-container font-semibold pb-1.5"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="users" href="#">Users</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="university-data" href="#">University data</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="courses" href="#">Courses</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="programs" href="#">Programs</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="study-plans" href="#">Study plans</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="bylaws" href="#">Bylaws</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="credit-limits" href="#">Credit limits</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="grade-scales" href="#">Grade scales</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="terms" href="#">Terms</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="imports" href="#">Imports</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="data-gaps" href="#">Data gaps</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface pb-1.5 border-b-2 border-transparent transition-colors" data-path="audit" href="#">Audit</a></nav></div></div></header><div class="flex w-full pt-[97px]"><main class="flex-1 min-w-0 pr-[380px] px-margin py-margin bg-surface"><div class="flex flex-col w-full">
+<!-- Header / Meta Hierarchy -->
+<div class="flex flex-col gap-space-sm mb-space-lg">
+<!-- Breadcrumb & Architecture Scope -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">CURRICULUM REGISTRY</span>
+<span class="text-secondary text-label-sm">/</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wide uppercase">Course Management</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-body-xs text-body-xs text-secondary">Catalog Freeze:</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">AY 2024–2025 Enforced</span>
+</div>
+</div>
+<!-- Title and Invariant Subtext -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Course Management</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">
+          Canonical course catalog definitions and relational prerequisite trees across academic bylaws.
+        </p>
+</div>
+<!-- Primary Action & Secondary Tools -->
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-space-md h-9 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span>Filter Bylaws</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md h-9 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Schema</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md h-9 rounded bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Define Course Record</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mandatory Architectural Directive Callout -->
+<div class="bg-surface-container-low rounded-xl p-space-md mb-space-lg shadow-sm flex items-start gap-space-md">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary tracking-tight">Bylaw Separation Directive</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary font-semibold">Schema Constraint</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+        Course codes shared across transition cohorts are maintained as distinct schema rows to prevent cross-framework prerequisite poisoning.
+      </p>
+<div class="mt-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wide">
+          Notice: Old and 2025 courses stay in separate rows.
+        </span>
+</div>
+</div>
+</div>
+<!-- Filter & Tabular Control Toolbar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md mb-space-md shadow-sm flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md flex-1 min-w-[280px]">
+<div class="relative flex-1 max-w-sm">
+<input class="w-full h-9 pl-9 pr-3 rounded bg-surface-container-low text-body-sm font-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm transition-all" placeholder="Search by code (e.g. CSCI 207) or title..." type="text">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-[18px] text-secondary pointer-events-none">search</span>
+</div>
+<div class="flex items-center bg-surface-container-low p-0.5 rounded">
+<button class="px-space-md py-1 rounded text-label-sm font-label-sm bg-surface-container-lowest text-primary shadow-sm">All Bylaws</button>
+<button class="px-space-md py-1 rounded text-label-sm font-label-sm text-secondary hover:text-on-surface transition-colors">2025 Reform</button>
+<button class="px-space-md py-1 rounded text-label-sm font-label-sm text-secondary hover:text-on-surface transition-colors">Old Framework</button>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 text-secondary font-label-sm text-label-sm">
+<span>Displaying:</span>
+<span class="font-semibold text-on-surface">6 Canonical Definitions</span>
+</div>
+<span class="text-surface-container-high">|</span>
+<button class="p-1.5 rounded text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Reload Schema Invariants">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Primary Section: Course Catalog Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm mb-space-xl overflow-hidden">
+<div class="px-space-md py-3 flex items-center justify-between bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Course Catalog</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">Master List</span>
+</div>
+<span class="font-body-xs text-body-xs text-secondary">Read-only reference invariant view</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Code</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bylaw</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary text-center">Credits</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Components</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Title</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Department</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface">
+<!-- Row 1: CSCI 207 | 2025 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 207</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container text-on-primary font-semibold">2025</span>
+</td>
+<td class="py-2 px-space-md text-center font-mono font-medium">3</td>
+<td class="py-2 px-space-md text-secondary">Lecture and tutorial</td>
+<td class="py-2 px-space-md font-medium text-on-surface">Computer Organization &amp; Architecture</td>
+<td class="py-2 px-space-md text-secondary">Computer Science</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Active
+              </span>
+</td>
+</tr>
+<!-- Row 2: MATH 112 | Old -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">MATH 112</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">Old</span>
+</td>
+<td class="py-2 px-space-md text-center font-mono font-medium">4</td>
+<td class="py-2 px-space-md text-secondary">No weekly hours</td>
+<td class="py-2 px-space-md font-medium text-on-surface">Calculus II</td>
+<td class="py-2 px-space-md text-secondary">Basic Sciences</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Active
+              </span>
+</td>
+</tr>
+<!-- Row 3: CSCI 101 | Old -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 101</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">Old</span>
+</td>
+<td class="py-2 px-space-md text-center font-mono font-medium">3</td>
+<td class="py-2 px-space-md text-secondary">Lecture, tutorial, and lab</td>
+<td class="py-2 px-space-md font-medium text-on-surface">Introduction to Computer Science</td>
+<td class="py-2 px-space-md text-secondary">Computer Science</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Active
+              </span>
+</td>
+</tr>
+<!-- Row 4: CSCI 211 | 2025 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 211</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container text-on-primary font-semibold">2025</span>
+</td>
+<td class="py-2 px-space-md text-center font-mono font-medium">3</td>
+<td class="py-2 px-space-md text-secondary">Lecture, tutorial, and lab</td>
+<td class="py-2 px-space-md font-medium text-on-surface">Computer Architecture &amp; Assembly</td>
+<td class="py-2 px-space-md text-secondary">Computer Science</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Active
+              </span>
+</td>
+</tr>
+<!-- Row 5: CSCI 301 | Old -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 301</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">Old</span>
+</td>
+<td class="py-2 px-space-md text-center font-mono font-medium">3</td>
+<td class="py-2 px-space-md text-secondary">Lecture and tutorial</td>
+<td class="py-2 px-space-md font-medium text-on-surface">Database Systems</td>
+<td class="py-2 px-space-md text-secondary">Computer Science</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Active
+              </span>
+</td>
+</tr>
+<!-- Row 6: CSCI 495 | Old -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 495</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">Old</span>
+</td>
+<td class="py-2 px-space-md text-center font-mono font-medium">3</td>
+<td class="py-2 px-space-md text-secondary">Lecture</td>
+<td class="py-2 px-space-md font-medium text-on-surface">Senior Capstone Project I</td>
+<td class="py-2 px-space-md text-secondary">Computer Science</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Active
+              </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Schema Verification Line -->
+<div class="px-space-md py-2.5 bg-surface-container-low flex items-center justify-between text-secondary font-body-xs text-body-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Catalog rows synchronized with Department Board Resolution #418</span>
+</div>
+<span>Database Source: nu_cs_curriculum_prod</span>
+</div>
+</div>
+<!-- Secondary Section: Requisites (Stored Prerequisite Rules) -->
+<div class="flex flex-col gap-space-sm mb-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-primary">Stored Prerequisite Rules</h2>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">Deterministic DAG Edges</span>
+</div>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-lowest text-secondary hover:text-on-surface text-label-sm font-label-sm transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Append Rule Edge</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Course Code</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bylaw</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Required Course / Condition</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">Type</th>
+<th class="py-2.5 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary text-right">Enforced State</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface">
+<!-- Requisite 1: CSCI 207 requires CSCI 112 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 207</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container text-on-primary font-semibold">2025</span>
+</td>
+<td class="py-2 px-space-md">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">CSCI 112</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-high px-1.5 py-0.5 rounded">Min Grade: C</span>
+</div>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm text-secondary">Course (Prerequisite)</span>
+</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                  Hard Invariant
+                </span>
+</td>
+</tr>
+<!-- Requisite 2: CSCI 211 requires CSCI 207 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 211</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container text-on-primary font-semibold">2025</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-semibold text-on-surface">CSCI 207</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm text-secondary">Course (Prerequisite)</span>
+</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                  Hard Invariant
+                </span>
+</td>
+</tr>
+<!-- Requisite 3: CSCI 301 requires CSCI 201 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 301</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">Old</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-semibold text-on-surface">CSCI 201</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm text-secondary">Course (Prerequisite)</span>
+</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                  Hard Invariant
+                </span>
+</td>
+</tr>
+<!-- Requisite 4: CSCI 495 requires Senior Standing -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-space-md font-label-md text-label-md font-semibold text-primary">CSCI 495</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">Old</span>
+</td>
+<td class="py-2 px-space-md">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">Senior Standing</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-high px-1.5 py-0.5 rounded">≥ 90 Earned Credits</span>
+</div>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-label-sm text-label-sm text-secondary">Standing Milestone</span>
+</td>
+<td class="py-2 px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                  Hard Invariant
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Operational Guardrails Bottom Banner -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="p-2 rounded bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Role Boundaries Enforced</span>
+<span class="font-body-xs text-body-xs text-secondary">
+          Reference data administrators manage catalog metadata only. Faculty workload assignment and section scheduling occur in downstream operational modules.
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">Direct Schema Access</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-mono text-label-sm text-label-sm text-on-surface">v2.4-strict</span>
+</div>
+</div>
+</div></main><aside class="fixed right-0 top-[97px] bottom-0 w-[380px] bg-surface-container-lowest border-l border-outline-variant p-space-lg flex flex-col z-30"><div class="bg-surface-container-low border border-outline-variant rounded-[20px] p-space-lg flex-1 flex flex-col"><div class="flex items-center justify-between pb-space-md border-b border-outline-variant"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-primary">rule</span><h2 class="font-headline-sm text-headline-sm text-on-surface">Explain</h2></div><span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Invariants Only</span></div><div class="flex-1 overflow-y-auto py-space-md flex flex-col gap-space-sm"><div class="p-space-md rounded-lg bg-surface-container-lowest border border-outline-variant"><span class="font-label-sm text-label-sm uppercase tracking-wide text-secondary block mb-1">Audit &amp; Reasoning Scope</span><p class="font-body-sm text-body-sm text-on-surface-variant">Explains active curriculum rules, prerequisite validations, credit thresholds, and data integrity invariants without generating prescriptive academic decisions or student-level advice.</p></div></div><div class="pt-space-md border-t border-outline-variant"><div class="relative"><input class="w-full h-10 px-space-md pr-10 rounded-lg bg-surface-container-lowest border border-outline-variant font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Ask about a stored rule" type="text"><span class="material-symbols-outlined absolute right-3 top-2.5 text-[20px] text-secondary pointer-events-none">search</span></div></div></div></aside></div></body></html>
