@@ -117,4 +117,56 @@ export default [
       return { user: toMe(user) };
     },
   },
+  {
+    method: "POST",
+    path: "/auth/forgot-password",
+    handler: ({ body }) => {
+      const email = String(body?.email ?? "").trim();
+      if (!email) throw mockError(400, "EMAIL_REQUIRED", "Email address is required.");
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        throw mockError(400, "INVALID_EMAIL", "Please enter a valid institutional email.");
+      }
+      return {
+        success: true,
+        message: "If an account exists for this email address, password reset instructions will be sent.",
+        demoToken: "mock-valid-token-12345",
+      };
+    },
+  },
+  {
+    method: "GET",
+    path: "/auth/verify-reset-token",
+    handler: ({ query, searchParams }) => {
+      const token = query?.token ?? searchParams?.get?.("token");
+      if (!token || token === "expired" || token === "invalid") {
+        throw mockError(
+          400,
+          "INVALID_OR_EXPIRED_TOKEN",
+          "This password reset link is invalid or has expired.",
+        );
+      }
+      return { valid: true };
+    },
+  },
+  {
+    method: "POST",
+    path: "/auth/reset-password",
+    handler: ({ body }) => {
+      const token = String(body?.token ?? "");
+      const password = String(body?.password ?? "");
+      if (!token || token === "expired" || token === "invalid") {
+        throw mockError(
+          400,
+          "INVALID_OR_EXPIRED_TOKEN",
+          "This password reset link is invalid or has expired.",
+        );
+      }
+      if (password.length < 8) {
+        throw mockError(400, "PASSWORD_TOO_SHORT", "Password must be at least 8 characters long.");
+      }
+      return { success: true };
+    },
+  },
 ];
+

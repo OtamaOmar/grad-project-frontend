@@ -10,4 +10,8 @@ export const authApi = {
     http.post("/auth/signup/lookup", { university_id: universityId }),
   signUp: ({ universityId, username, password }) =>
     http.post("/auth/signup", { university_id: universityId, username, password }),
+  requestPasswordReset: ({ email }) => http.post("/auth/forgot-password", { email }),
+  verifyResetToken: (token) =>
+    http.get("/auth/verify-reset-token", { query: { token } }),
+  resetPassword: ({ token, password }) => http.post("/auth/reset-password", { token, password }),
 };
