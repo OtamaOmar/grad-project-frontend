@@ -34,15 +34,24 @@ const delay = () =>
     setTimeout(resolve, LATENCY_MS.min + Math.random() * (LATENCY_MS.max - LATENCY_MS.min)),
   );
 
-export async function handleMockRequest(method, path, { query = {}, body } = {}) {
+export async function handleMockRequest(method, rawPath, { query = {}, body } = {}) {
   await delay();
+
+  const [path, queryString] = rawPath.split("?");
+  const mergedQuery = { ...query };
+  if (queryString) {
+    const sp = new URLSearchParams(queryString);
+    for (const [k, v] of sp.entries()) {
+      if (mergedQuery[k] === undefined) mergedQuery[k] = v;
+    }
+  }
 
   for (const route of routes) {
     if (route.method !== method) continue;
     const params = route.matcher(path);
     if (!params) continue;
     // Clone so callers can't mutate the in-memory "database" by accident.
-    const result = await route.handler({ params, query, body });
+    const result = await route.handler({ params, query: mergedQuery, body });
     return result === undefined ? null : structuredClone(result);
   }
 
