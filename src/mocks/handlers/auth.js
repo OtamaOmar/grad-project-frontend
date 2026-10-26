@@ -9,10 +9,13 @@ export default [
     method: "POST",
     path: "/auth/login",
     handler: ({ body }) => {
-      const username = String(body?.username ?? "")
+      const raw = String(body?.username ?? body?.email ?? "")
         .trim()
         .toLowerCase();
-      const user = appUsers.find((candidate) => candidate.username === username);
+      const username = raw.includes("@") ? raw.split("@")[0] : raw;
+      const user =
+        appUsers.find((candidate) => candidate.username === raw) ??
+        appUsers.find((candidate) => candidate.username === username);
       if (!user || body?.password !== MOCK_PASSWORD) {
         throw mockError(401, "INVALID_CREDENTIALS", "Username or password is incorrect.");
       }
