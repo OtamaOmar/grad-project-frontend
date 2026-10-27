@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { Badge, Icon, IconButton } from "@/components/ui";
 import { ROLE_HOME } from "@/config/roles";
 import { PATHS } from "@/routes/paths";
-import { cn } from "@/utils/cn";
 import { AccountMenu } from "./AccountMenu";
+import { NotificationMenu } from "./NotificationMenu";
 import { PreferenceControls } from "./PreferenceControls";
 
 /** Brand row: menu button (mobile), brand, role badge, and the header actions. */
@@ -57,28 +57,7 @@ export function TopBar({ role, user, onOpenMenu, onOpenExplain, onSignOut, unrea
           <Icon name="help" size={20} />
           {t("nav:help")}
         </NavLink>
-        <Link
-          to={PATHS.notifications}
-          aria-label={
-            unreadCount > 0
-              ? `${t("nav:notifications")} (${unreadCount > 99 ? "99+" : unreadCount})`
-              : t("nav:notifications")
-          }
-          title={t("nav:notifications")}
-          className="relative grid size-10 place-items-center rounded-md text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
-        >
-          <Icon name="notifications" size={22} />
-          {unreadCount > 0 && (
-            <span
-              className={cn(
-                "absolute -top-0.5 -end-0.5 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-error px-1 text-[11px] font-bold leading-none text-white shadow-sm ring-2 ring-surface-container-lowest",
-                unreadCount > 9 && "px-1.5",
-              )}
-            >
-              {unreadCount > 99 ? "99+" : unreadCount}
-            </span>
-          )}
-        </Link>
+        <NotificationMenu unreadCount={unreadCount} />
         <PreferenceControls className="hidden sm:flex" />
         <span aria-hidden="true" className="mx-1.5 hidden h-6 w-px bg-outline-variant sm:block" />
         <AccountMenu user={user} role={role} onSignOut={onSignOut} />
