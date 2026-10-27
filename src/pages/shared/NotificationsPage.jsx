@@ -77,27 +77,66 @@ function getNotificationVisuals(item) {
 /**
  * Action button label based on type
  */
-function getActionLabel(item) {
+function getActionLabel(item, t) {
   switch (item.type) {
     case "forecast_ready":
-      return "Inspect Forecast";
+      return t("notifications:actions.forecast_ready");
     case "account":
-      return "Review Account";
+      return t("notifications:actions.account");
     case "import_finished":
-      return "Review Import";
+      return t("notifications:actions.import_finished");
     case "data_gap":
-      return "Resolve Gap";
+      return t("notifications:actions.data_gap");
     case "advising_request":
-      return "Open Advising Request";
+      return t("notifications:actions.advising_request");
     case "student_alert":
-      return "View Student";
+      return t("notifications:actions.student_alert");
     case "offering_update":
-      return "View Offerings";
+      return t("notifications:actions.offering_update");
     case "decision_saved":
-      return "View Decisions";
+      return t("notifications:actions.decision_saved");
     default:
-      return item.link ? "Open Record" : "View Details";
+      return item.link
+        ? t("notifications:actions.openRecord")
+        : t("notifications:actions.viewDetails");
   }
+}
+
+const NOTIFICATION_KEY_MAP = {
+  "Import finished with warnings": "import_finished_warnings",
+  "Open data gap: 2025 credit cap for CGPA 3.0–3.3": "open_data_gap_credit_cap",
+  "Account deactivated: h.salem": "account_deactivated_salem",
+  "Grade scale updated": "grade_scale_updated",
+  "Forecast for Fall 2026 is ready": "forecast_fall_2026_ready",
+  "Opening decision saved for CSC 302": "opening_decision_csc_302",
+  "Forecast run failed": "forecast_run_failed",
+  "Old-bylaw senior standing has no credit threshold": "old_bylaw_senior_standing",
+  "Fall 2026 offering information updated": "fall_2026_offering_updated",
+  "Opening decision saved for CSC 202": "opening_decision_csc_202",
+  "Advising workflow arrives in Phase 2": "advising_workflow_phase_2",
+  "Expected offerings for Fall 2026 are updated": "expected_offerings_updated",
+  "Courses on your plan are expected in Fall 2026": "courses_on_plan_expected",
+  "CSC 302 Database Systems: no separate lab this term": "csc_302_no_separate_lab",
+  "Import finished": "import_finished",
+};
+
+/**
+ * Returns localized title and body for notification item
+ */
+function getLocalizedNotification(item, t) {
+  if (!item) return { title: "", body: "" };
+  let slug = NOTIFICATION_KEY_MAP[item.title];
+  if (!slug && item.title === "Welcome to the CS planning system") {
+    slug = item.body?.includes("Help")
+      ? "welcome_cs_planning_help"
+      : "welcome_cs_planning_account";
+  }
+  if (slug) {
+    const locTitle = t(`notifications:items.${slug}.title`, { defaultValue: item.title });
+    const locBody = t(`notifications:items.${slug}.body`, { defaultValue: item.body });
+    return { title: locTitle, body: locBody };
+  }
+  return { title: item.title, body: item.body };
 }
 
 export default function NotificationsPage() {
@@ -174,8 +213,11 @@ export default function NotificationsPage() {
       // Search query
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
-        const matchesTitle = item.title?.toLowerCase().includes(q);
-        const matchesBody = item.body?.toLowerCase().includes(q);
+        const { title: locTitle, body: locBody } = getLocalizedNotification(item, t);
+        const matchesTitle =
+          item.title?.toLowerCase().includes(q) || locTitle.toLowerCase().includes(q);
+        const matchesBody =
+          item.body?.toLowerCase().includes(q) || locBody.toLowerCase().includes(q);
         const matchesParams = item.params
           ? Object.values(item.params).some((val) => String(val).toLowerCase().includes(q))
           : false;
@@ -184,7 +226,7 @@ export default function NotificationsPage() {
 
       return true;
     });
-  }, [allItems, activeFilter, searchQuery]);
+  }, [allItems, activeFilter, searchQuery, t]);
 
   const handleMarkAllRead = async () => {
     try {
@@ -432,7 +474,8 @@ export default function NotificationsPage() {
           <div className="divide-y divide-outline-variant/40">
             {filteredItems.map((item) => {
               const visuals = getNotificationVisuals(item);
-              const actionLabel = getActionLabel(item);
+              const actionLabel = getActionLabel(item, t);
+              const { title: locTitle, body: locBody } = getLocalizedNotification(item, t);
 
               return (
                 <div
@@ -460,11 +503,11 @@ export default function NotificationsPage() {
                     <div className="mb-1 flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                       <div className="flex flex-wrap items-center gap-2">
                         <h2 className="text-label-lg font-semibold text-on-surface transition-colors group-hover:text-primary">
-                          {item.title}
+                          {locTitle}
                         </h2>
                         {!item.is_read && (
                           <span
-                            title="Unread"
+                            title={t("notifications:unread")}
                             className="size-2 rounded-full bg-primary-container"
                           />
                         )}
@@ -478,7 +521,7 @@ export default function NotificationsPage() {
                     </div>
 
                     <p className="text-body-sm leading-relaxed text-on-surface-variant">
-                      {item.body}
+                      {locBody}
                     </p>
 
                     {/* Metadata chips */}
@@ -490,11 +533,11 @@ export default function NotificationsPage() {
                             className="rounded bg-surface-container px-2 py-0.5 font-mono text-body-xs text-on-surface-variant"
                           >
                             {key === "batch"
-                              ? `Batch: ${value}`
+                              ? `${t("notifications:meta.batch")}: ${value}`
                               : key === "unmapped"
-                                ? `Unmapped: ${value}`
+                                ? `${t("notifications:meta.unmapped")}: ${value}`
                                 : key === "role"
-                                  ? `Role: ${value}`
+                                  ? `${t("notifications:meta.role")}: ${value}`
                                   : key === "code" || key === "course"
                                     ? String(value)
                                     : `${key}: ${value}`}
@@ -516,7 +559,7 @@ export default function NotificationsPage() {
                           className="inline-flex items-center gap-1 rounded bg-primary-container px-2.5 py-1 text-label-sm font-semibold text-on-primary transition-colors hover:bg-tertiary-container"
                         >
                           <span>{actionLabel}</span>
-                          <Icon name="arrow_forward" size={14} />
+                          <Icon name="arrow_forward" size={14} flipRtl />
                         </button>
                       ) : (
                         <button
@@ -577,55 +620,61 @@ export default function NotificationsPage() {
         onClose={() => setSelectedNotification(null)}
         title={t("notifications:details.title")}
       >
-        {selectedNotification && (
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-serif text-headline-sm font-semibold text-on-surface">
-                {selectedNotification.title}
-              </h3>
-              <p className="mt-1 text-body-xs text-on-surface-variant">
-                {formatRelativeTime(selectedNotification.created_at)}
-              </p>
-            </div>
-
-            <p className="text-body-md leading-relaxed text-on-surface">
-              {selectedNotification.body}
-            </p>
-
-            {selectedNotification.params && (
-              <div className="rounded-lg border border-outline-variant/60 bg-surface-container-low p-3">
-                <span className="text-label-sm font-semibold text-on-surface">
-                  {t("notifications:details.parameters")}:
-                </span>
-                <pre className="mt-1 font-mono text-body-xs text-on-surface-variant">
-                  {JSON.stringify(selectedNotification.params, null, 2)}
-                </pre>
+        {selectedNotification && (() => {
+          const { title: locTitle, body: locBody } = getLocalizedNotification(
+            selectedNotification,
+            t,
+          );
+          return (
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-serif text-headline-sm font-semibold text-on-surface">
+                  {locTitle}
+                </h3>
+                <p className="mt-1 text-body-xs text-on-surface-variant">
+                  {formatRelativeTime(selectedNotification.created_at)}
+                </p>
               </div>
-            )}
 
-            <div className="flex justify-end gap-2 pt-2">
-              <Button
-                variant="outlined"
-                size="sm"
-                onClick={() => setSelectedNotification(null)}
-              >
-                {t("notifications:details.close")}
-              </Button>
-              {selectedNotification.link && (
-                <Button
-                  size="sm"
-                  onClick={() => {
-                    const link = selectedNotification.link;
-                    setSelectedNotification(null);
-                    navigate(link);
-                  }}
-                >
-                  {t("notifications:details.action")}
-                </Button>
+              <p className="text-body-md leading-relaxed text-on-surface">
+                {locBody}
+              </p>
+
+              {selectedNotification.params && (
+                <div className="rounded-lg border border-outline-variant/60 bg-surface-container-low p-3">
+                  <span className="text-label-sm font-semibold text-on-surface">
+                    {t("notifications:details.parameters")}:
+                  </span>
+                  <pre className="mt-1 font-mono text-body-xs text-on-surface-variant">
+                    {JSON.stringify(selectedNotification.params, null, 2)}
+                  </pre>
+                </div>
               )}
+
+              <div className="flex justify-end gap-2 pt-2">
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  onClick={() => setSelectedNotification(null)}
+                >
+                  {t("notifications:details.close")}
+                </Button>
+                {selectedNotification.link && (
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      const link = selectedNotification.link;
+                      setSelectedNotification(null);
+                      navigate(link);
+                    }}
+                  >
+                    {t("notifications:details.action")}
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
       </Dialog>
 
       {/* Notification Preferences Dialog */}
@@ -636,26 +685,28 @@ export default function NotificationsPage() {
       >
         <div className="space-y-4 text-body-sm text-on-surface-variant">
           <p>
-            Configure your notification delivery rules for <strong>{user?.username}</strong> (
-            {t(`roles.${role}`)}).
+            {t("notifications:preferencesDesc", {
+              username: user?.username,
+              role: t(`common:roles.${role}`, role),
+            })}
           </p>
           <div className="space-y-3 rounded-lg border border-outline-variant/60 bg-surface-container-low p-3">
             <label className="flex items-center gap-3">
               <input type="checkbox" defaultChecked className="rounded accent-primary" />
-              <span>In-app badges and audio chime</span>
+              <span>{t("notifications:preferencesOptions.audio")}</span>
             </label>
             <label className="flex items-center gap-3">
               <input type="checkbox" defaultChecked className="rounded accent-primary" />
-              <span>Priority scheduling conflict alerts</span>
+              <span>{t("notifications:preferencesOptions.conflicts")}</span>
             </label>
             <label className="flex items-center gap-3">
               <input type="checkbox" defaultChecked className="rounded accent-primary" />
-              <span>Automated batch completion digests</span>
+              <span>{t("notifications:preferencesOptions.digests")}</span>
             </label>
           </div>
           <div className="flex justify-end gap-2 pt-2">
             <Button size="sm" onClick={() => setPreferencesOpen(false)}>
-              {t("common:save", "Save")}
+              {t("common:actions.save", "Save")}
             </Button>
           </div>
         </div>
