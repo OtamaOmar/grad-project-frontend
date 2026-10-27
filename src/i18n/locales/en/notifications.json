@@ -8,6 +8,33 @@
   "dismiss": "Dismiss",
   "markRead": "Mark read",
   "viewDetails": "View Details",
+  "viewAll": "View all notifications",
+  "unread": "Unread",
+  "caughtUp": "You're all caught up!",
+  "noRecent": "No new notifications right now",
+  "preferencesDesc": "Configure your notification delivery rules for {{username}} ({{role}}).",
+  "preferencesOptions": {
+    "audio": "In-app badges and audio chime",
+    "conflicts": "Priority scheduling conflict alerts",
+    "digests": "Automated batch completion digests"
+  },
+  "actions": {
+    "forecast_ready": "Inspect Forecast",
+    "account": "Review Account",
+    "import_finished": "Review Import",
+    "data_gap": "Resolve Gap",
+    "advising_request": "Open Advising Request",
+    "student_alert": "View Student",
+    "offering_update": "View Offerings",
+    "decision_saved": "View Decisions",
+    "openRecord": "Open Record",
+    "viewDetails": "View Details"
+  },
+  "meta": {
+    "batch": "Batch",
+    "unmapped": "Unmapped",
+    "role": "Role"
+  },
   "roles": {
     "admin": {
       "stream": "Audit Stream • Computer Science",
@@ -76,5 +103,75 @@
     "parameters": "System Parameters",
     "action": "Proceed to Page",
     "close": "Close"
+  },
+  "items": {
+    "import_finished_warnings": {
+      "title": "Import finished with warnings",
+      "body": "Registration export Sep 2026 loaded; some rows were flagged for review."
+    },
+    "open_data_gap_credit_cap": {
+      "title": "Open data gap: 2025 credit cap for CGPA 3.0–3.3",
+      "body": "The 2025 bylaw states no maximum for CGPA 3.0 up to 3.3. Affected headcounts are marked incomplete."
+    },
+    "account_deactivated_salem": {
+      "title": "Account deactivated: h.salem",
+      "body": "Coordinator account h.salem was deactivated."
+    },
+    "grade_scale_updated": {
+      "title": "Grade scale updated",
+      "body": "The 2025 bylaw grade scale was edited and is not yet verified against the PDF."
+    },
+    "forecast_fall_2026_ready": {
+      "title": "Forecast for Fall 2026 is ready",
+      "body": "Some headcounts are marked incomplete. Review the run and record opening decisions."
+    },
+    "opening_decision_csc_302": {
+      "title": "Opening decision saved for CSC 302",
+      "body": "Lecture and tutorial open; lab not open this term."
+    },
+    "forecast_run_failed": {
+      "title": "Forecast run failed",
+      "body": "Cutoff term must precede the target term."
+    },
+    "old_bylaw_senior_standing": {
+      "title": "Old-bylaw senior standing has no credit threshold",
+      "body": "Senior-standing requisites on old-bylaw courses are not scored; those pairs are unresolved."
+    },
+    "fall_2026_offering_updated": {
+      "title": "Fall 2026 offering information updated",
+      "body": "A new forecast run finished. Course-level offering information for your advisees is updated."
+    },
+    "opening_decision_csc_202": {
+      "title": "Opening decision saved for CSC 202",
+      "body": "Lecture, tutorial and lab open for Fall 2026."
+    },
+    "advising_workflow_phase_2": {
+      "title": "Advising workflow arrives in Phase 2",
+      "body": "Advising cases and messages are not available yet. Student views are read-only."
+    },
+    "expected_offerings_updated": {
+      "title": "Expected offerings for Fall 2026 are updated",
+      "body": "A new forecast run finished. Availability is the coordinator's decision, not a promise."
+    },
+    "courses_on_plan_expected": {
+      "title": "Courses on your plan are expected in Fall 2026",
+      "body": "See My courses for your eligibility and what blocks each remaining plan course."
+    },
+    "csc_302_no_separate_lab": {
+      "title": "CSC 302 Database Systems: no separate lab this term",
+      "body": "Lecture and tutorial open for Fall 2026; the lab is not open."
+    },
+    "welcome_cs_planning_account": {
+      "title": "Welcome to the CS planning system",
+      "body": "Your account is linked to university ID 2025-0142."
+    },
+    "welcome_cs_planning_help": {
+      "title": "Welcome to the CS planning system",
+      "body": "See Help for a quick guide to your pages."
+    },
+    "import_finished": {
+      "title": "Import finished",
+      "body": "Registration export Sep 2026 loaded."
+    }
   }
 }
