@@ -1,0 +1,80 @@
+{
+  "title": "Notifications",
+  "markAllAsRead": "Mark all as read",
+  "allRead": "All read",
+  "preferences": "Notification Preferences",
+  "recentEntries": "Recent Entries",
+  "searchPlaceholder": "Search notifications, codes, or keywords...",
+  "dismiss": "Dismiss",
+  "markRead": "Mark read",
+  "viewDetails": "View Details",
+  "roles": {
+    "admin": {
+      "stream": "Audit Stream • Computer Science",
+      "engine": "Bylaw Engine v4.2",
+      "subtitle": "System activity, validation results, and administrative updates.",
+      "card1": "Unread Alerts",
+      "card2": "Action Required",
+      "card3": "Validation Rate"
+    },
+    "coordinator": {
+      "stream": "Academic Coordination • Course Offerings",
+      "engine": "Fall 2026 Planning",
+      "subtitle": "Course planning updates, scheduling alerts, and pending actions.",
+      "card1": "Unread Alerts",
+      "card2": "Pending Approvals",
+      "card3": "Scheduling Conflicts"
+    },
+    "advisor": {
+      "stream": "Advising Stream • Student Mentorship",
+      "engine": "Faculty of CS",
+      "subtitle": "Student advising updates, academic planning alerts, and pending requests.",
+      "card1": "Unread Alerts",
+      "card2": "Pending Advising",
+      "card3": "Student Follow-Ups"
+    },
+    "student": {
+      "stream": "Student Portal • Academic Records",
+      "engine": "Degree Progression",
+      "subtitle": "Academic updates, course announcements, and important reminders.",
+      "card1": "Unread Notifications",
+      "card2": "Upcoming Deadlines",
+      "card3": "Course Updates"
+    }
+  },
+  "filters": {
+    "all": "All",
+    "unread": "Unread",
+    "action_required": "Action Required",
+    "read": "Read"
+  },
+  "status": {
+    "pendingReview": "Pending Review",
+    "actionRequired": "Action Required",
+    "savedActive": "Saved & Active",
+    "systemAlert": "System Alert",
+    "information": "Information",
+    "resolved": "Resolved"
+  },
+  "purge": {
+    "title": "Automatic Purge Protocol",
+    "body": "Notifications older than 30 academic calendar days are archived to the Departmental Audit Repository. For complete historical run logs and algorithm parameters, use the Explain panel or request an exported Ledger file."
+  },
+  "empty": {
+    "title": "You're All Caught Up!",
+    "body": "You don't have any notifications right now.",
+    "filteredTitle": "No matching notifications",
+    "filteredBody": "No notifications match your current filter or search query.",
+    "reset": "Reset filters"
+  },
+  "details": {
+    "title": "Notification Details",
+    "received": "Received",
+    "category": "Category",
+    "severity": "Severity",
+    "status": "Status",
+    "parameters": "System Parameters",
+    "action": "Proceed to Page",
+    "close": "Close"
+  }
+}
