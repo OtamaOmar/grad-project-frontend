@@ -36,3 +36,28 @@ export function initials(name = "") {
     .filter(Boolean);
   return ((parts[0]?.[0] ?? "") + (parts.length > 1 ? parts.at(-1)[0] : "")).toUpperCase();
 }
+
+/** Formats a date relative to now (e.g. "12 minutes ago", "yesterday", "2 days ago") */
+export function formatRelativeTime(value) {
+  if (!value) return "—";
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return "—";
+
+  const diffMs = date.getTime() - Date.now();
+  const diffSec = Math.round(diffMs / 1000);
+  const diffMin = Math.round(diffSec / 60);
+  const diffHr = Math.round(diffMin / 60);
+  const diffDays = Math.round(diffHr / 24);
+
+  try {
+    const rtf = new Intl.RelativeTimeFormat(currentLocale(), { numeric: "auto" });
+    if (Math.abs(diffSec) < 60) return rtf.format(diffSec, "second");
+    if (Math.abs(diffMin) < 60) return rtf.format(diffMin, "minute");
+    if (Math.abs(diffHr) < 24) return rtf.format(diffHr, "hour");
+    if (Math.abs(diffDays) < 7) return rtf.format(diffDays, "day");
+  } catch {
+    // Fallback if rtf fails
+  }
+  return formatDate(value, "datetime");
+}
+
