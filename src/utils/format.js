@@ -60,7 +60,3 @@ export function formatRelativeTime(value) {
   }
   return formatDate(value, "datetime");
 }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes

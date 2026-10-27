@@ -17,12 +17,6 @@ export const notificationsApi = {
   list: (query) => http.get("/notifications", { query }),
 
   /**
-   * GET /notifications/unread-count
-   * @returns {Promise<{unread_count: number}>}
-   */
-  unreadCount: () => http.get("/notifications/unread-count"),
-
-  /**
    * POST /notifications/:id/read (idempotent; 404 for another user's notification)
    * @param {number|string} id
    * @returns {Promise<object>} the updated notification
@@ -34,15 +28,7 @@ export const notificationsApi = {
    * @returns {Promise<{updated: number, unread_count: number}>}
    */
   markAllRead: () => http.post("/notifications/read-all"),
-
-  /**
-   * DELETE /notifications/:id
-   * @param {number|string} id
-   * @returns {Promise<{success: boolean, id: number, unread_count: number}>}
-   */
-  dismiss: (id) => http.delete(`/notifications/${id}`),
 };
-
 
 export const profileApi = {
   /**
