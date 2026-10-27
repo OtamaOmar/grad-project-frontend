@@ -108,27 +108,27 @@ export function LoginForm() {
 
   return (
     <>
-      <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-2.5 sm:gap-3">
         {formError && (
-          <Alert tone="danger" className="text-sm">
+          <Alert tone="danger" className="text-xs sm:text-sm py-1.5 sm:py-2">
             {formError}
           </Alert>
         )}
 
         {/* Institutional Email Field */}
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="login-email"
-            className="text-xs font-semibold text-[#123B70] dark:text-blue-200 transition-colors"
+            className="text-[11px] sm:text-xs font-semibold text-[#123B70] dark:text-blue-200 transition-colors"
           >
             {t("institutionalEmail")}
           </label>
           <div className="relative">
             <span
-              className="pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+              className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
               aria-hidden="true"
             >
-              <Icon name="mail" size={19} />
+              <Icon name="mail" size={17} />
             </span>
             <input
               id="login-email"
@@ -146,7 +146,7 @@ export function LoginForm() {
               }}
               aria-invalid={fieldErrors.email ? true : undefined}
               aria-describedby={fieldErrors.email ? "email-error" : undefined}
-              className={`h-11 w-full rounded-lg border bg-white dark:bg-slate-800/80 ps-11 pe-4 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:border-[#123B70] dark:focus:border-blue-400 focus:ring-2 focus:ring-[#123B70]/15 dark:focus:ring-blue-400/20 focus:outline-none ${
+              className={`h-9.5 sm:h-10 w-full rounded-lg border bg-white dark:bg-slate-800/80 ps-9.5 pe-4 text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:border-[#123B70] dark:focus:border-blue-400 focus:ring-2 focus:ring-[#123B70]/15 dark:focus:ring-blue-400/20 focus:outline-none ${
                 fieldErrors.email
                   ? "border-red-500 focus:border-red-500 focus:ring-red-100 dark:focus:ring-red-950/40"
                   : "border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600"
@@ -154,27 +154,27 @@ export function LoginForm() {
             />
           </div>
           {fieldErrors.email && (
-            <p id="email-error" className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400">
-              <Icon name="error" size={15} />
+            <p id="email-error" className="flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400">
+              <Icon name="error" size={13} />
               <span>{fieldErrors.email}</span>
             </p>
           )}
         </div>
 
         {/* Password Field */}
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="login-password"
-            className="text-xs font-semibold text-[#123B70] dark:text-blue-200 transition-colors"
+            className="text-[11px] sm:text-xs font-semibold text-[#123B70] dark:text-blue-200 transition-colors"
           >
             {t("password")}
           </label>
           <div className="relative">
             <span
-              className="pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+              className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
               aria-hidden="true"
             >
-              <Icon name="lock" size={19} />
+              <Icon name="lock" size={17} />
             </span>
             <input
               id="login-password"
@@ -190,7 +190,7 @@ export function LoginForm() {
               }}
               aria-invalid={fieldErrors.password ? true : undefined}
               aria-describedby={fieldErrors.password ? "password-error" : undefined}
-              className={`h-11 w-full rounded-lg border bg-white dark:bg-slate-800/80 ps-11 pe-11 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:border-[#123B70] dark:focus:border-blue-400 focus:ring-2 focus:ring-[#123B70]/15 dark:focus:ring-blue-400/20 focus:outline-none ${
+              className={`h-9.5 sm:h-10 w-full rounded-lg border bg-white dark:bg-slate-800/80 ps-9.5 pe-10 text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:border-[#123B70] dark:focus:border-blue-400 focus:ring-2 focus:ring-[#123B70]/15 dark:focus:ring-blue-400/20 focus:outline-none ${
                 fieldErrors.password
                   ? "border-red-500 focus:border-red-500 focus:ring-red-100 dark:focus:ring-red-950/40"
                   : "border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600"
@@ -200,14 +200,14 @@ export function LoginForm() {
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
               aria-label={showPassword ? t("hidePassword") : t("showPassword")}
-              className="absolute end-1.5 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-md text-slate-400 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none"
+              className="absolute end-1.5 top-1/2 grid size-7.5 -translate-y-1/2 place-items-center rounded-md text-slate-400 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none cursor-pointer"
             >
-              <Icon name={showPassword ? "visibility_off" : "visibility"} size={19} />
+              <Icon name={showPassword ? "visibility_off" : "visibility"} size={17} />
             </button>
           </div>
           {fieldErrors.password && (
-            <p id="password-error" className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400">
-              <Icon name="error" size={15} />
+            <p id="password-error" className="flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400">
+              <Icon name="error" size={13} />
               <span>{fieldErrors.password}</span>
             </p>
           )}
@@ -215,18 +215,18 @@ export function LoginForm() {
 
         {/* Remember me & Forgot Password */}
         <div className="flex items-center justify-between pt-0.5 text-xs">
-          <label className="inline-flex cursor-pointer select-none items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <label className="inline-flex cursor-pointer select-none items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
             <input
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="size-4 rounded border-slate-300 dark:border-slate-600 dark:bg-slate-800 text-[#123B70] dark:text-blue-500 accent-[#123B70] focus:ring-[#123B70] dark:focus:ring-blue-500"
+              className="size-3.5 sm:size-4 rounded border-slate-300 dark:border-slate-600 dark:bg-slate-800 text-[#123B70] dark:text-blue-500 accent-[#123B70] focus:ring-[#123B70] dark:focus:ring-blue-500 cursor-pointer"
             />
-            <span>{t("rememberMe")}</span>
+            <span className="text-[11px] sm:text-xs">{t("rememberMe")}</span>
           </label>
           <Link
             to={PATHS.forgotPassword}
-            className="font-medium text-[#123B70] dark:text-blue-400 hover:text-[#0a2347] dark:hover:text-blue-300 hover:underline transition-colors"
+            className="text-[11px] sm:text-xs font-medium text-[#123B70] dark:text-blue-400 hover:text-[#0a2347] dark:hover:text-blue-300 hover:underline transition-colors"
           >
             {t("forgotPassword")}
           </Link>
@@ -236,23 +236,23 @@ export function LoginForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-sm font-semibold text-white shadow-sm dark:shadow-blue-950/40 transition-all disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
+          className="mt-1 sm:mt-1.5 flex h-9.5 sm:h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-xs sm:text-sm font-semibold text-white shadow-sm dark:shadow-blue-950/40 transition-all disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
         >
           {submitting ? (
             <span className="flex items-center gap-2">
-              <span className="size-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              <span className="size-3.5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
               <span>{t("submit")}...</span>
             </span>
           ) : (
             <>
               <span>{t("submit")}</span>
-              <Icon name="arrow_forward" size={18} flipRtl />
+              <Icon name="arrow_forward" size={16} flipRtl />
             </>
           )}
         </button>
 
         {/* Contact Administrator / Account Assistance */}
-        <p className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p className="mt-1 sm:mt-1.5 text-center text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
           {t("noAccount")}{" "}
           <button
             type="button"
@@ -265,30 +265,30 @@ export function LoginForm() {
 
         {/* Demo Accounts Box (Mock Mode) - Refined, Modern UI */}
         {env.useMocks && (
-          <div className="mt-3 rounded-xl border border-slate-200/90 dark:border-slate-700/70 bg-slate-50/80 dark:bg-slate-800/50 p-3.5 text-start transition-colors shadow-2xs">
-            <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-200/80 dark:border-slate-700/60">
+          <div className="mt-2 sm:mt-2.5 rounded-xl border border-slate-200/90 dark:border-slate-700/70 bg-slate-50/80 dark:bg-slate-800/50 p-2 sm:p-2.5 text-start transition-colors shadow-2xs">
+            <div className="flex items-center justify-between pb-1 sm:pb-1.5 mb-1.5 border-b border-slate-200/80 dark:border-slate-700/60">
               <div className="flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" aria-hidden="true" />
-                <p className="text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+                <p className="text-[10px] sm:text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
                   {t("demoAccounts")}
                 </p>
               </div>
-              <div className="flex items-center gap-1 text-[11px] text-slate-400 dark:text-slate-400">
+              <div className="flex items-center gap-1 text-[10px] sm:text-[11px] text-slate-400 dark:text-slate-400">
                 <span>pass:</span>
-                <code className="font-mono text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300/60 dark:border-slate-600">
+                <code className="font-mono text-[9px] sm:text-[10px] font-semibold px-1 py-0.2 rounded bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300/60 dark:border-slate-600">
                   password
                 </code>
               </div>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-1.5">
               {DEMO_USERS.map(({ key, email: demoEmail, icon }) => (
                 <button
                   key={key}
                   type="button"
                   onClick={() => selectDemoAccount(demoEmail)}
-                  className="flex items-center justify-center gap-1.5 rounded-lg border border-slate-200/90 dark:border-slate-600/80 bg-white dark:bg-slate-800 px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 shadow-2xs transition-all duration-150 hover:border-[#123B70] dark:hover:border-blue-400 hover:text-[#123B70] dark:hover:text-blue-300 hover:bg-blue-50/50 dark:hover:bg-slate-700/80 active:scale-[0.98] cursor-pointer"
+                  className="flex items-center justify-center gap-1 rounded-lg border border-slate-200/90 dark:border-slate-600/80 bg-white dark:bg-slate-800 px-1.5 py-1 text-[11px] sm:text-xs font-medium text-slate-700 dark:text-slate-200 shadow-2xs transition-all duration-150 hover:border-[#123B70] dark:hover:border-blue-400 hover:text-[#123B70] dark:hover:text-blue-300 hover:bg-blue-50/50 dark:hover:bg-slate-700/80 active:scale-[0.98] cursor-pointer"
                 >
-                  <Icon name={icon} size={15} className="text-slate-400 dark:text-slate-400" />
+                  <Icon name={icon} size={14} className="text-slate-400 dark:text-slate-400" />
                   <span>{t(`common:roles.${key}`)}</span>
                 </button>
               ))}
