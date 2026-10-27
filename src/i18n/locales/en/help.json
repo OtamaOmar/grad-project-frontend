@@ -1,0 +1,61 @@
+{
+  "title": "Help Center",
+  "defaultSubtitle": "Departmental guidelines, algorithmic limitations, and operational hierarchy.",
+  "searchPlaceholder": "Search topics, policies, mechanisms, or FAQs...",
+  "clearSearch": "Clear search",
+  "guidingPrinciple": "Guiding Principle",
+  "mechanismsTitle": "Institutional Mechanisms & Governance",
+  "operationalFaqs": "Operational FAQs",
+  "expandAll": "Expand all",
+  "collapseAll": "Collapse all",
+  "resultsCount": "{{count}} topic found",
+  "resultsCount_plural": "{{count}} topics found",
+  "categories": {
+    "all": "All Topics",
+    "about": "About ACOPS",
+    "forecast": "Forecasting",
+    "sections": "Sections & Capacities",
+    "decisions": "Decisions & Authority",
+    "student_data": "Student Records",
+    "advising": "Academic Advising",
+    "explanations": "Explain Assistant",
+    "governance": "Governance & Admin",
+    "account": "Account & Preferences"
+  },
+  "roles": {
+    "admin": {
+      "subtitle": "System administration, access management, governance, and operational guidance.",
+      "governance": "System Administration • Operational Governance Reference",
+      "workflowTitle": "Administrative Governance Pipeline",
+      "workflowBadge": "Continuous Operational & Auditing Cycle"
+    },
+    "coordinator": {
+      "subtitle": "Academic planning, scheduling workflows, approvals, and coordination guidelines.",
+      "governance": "Curriculum Governance • CS Operational Reference",
+      "workflowTitle": "Algorithmic Projection Sequence",
+      "workflowBadge": "Batch Run: Synchronized with Registrar SIS"
+    },
+    "student": {
+      "subtitle": "Academic planning guidance, course information, registration support, and frequently asked questions.",
+      "governance": "Curriculum Governance • Student Academic Planning Reference",
+      "workflowTitle": "Academic Progress & Planning Sequence",
+      "workflowBadge": "Student Academic Journey Cycle"
+    },
+    "advisor": {
+      "subtitle": "Student advising, academic planning, course recommendations, and advising workflows.",
+      "governance": "Academic Advising • Student Guidance Reference",
+      "workflowTitle": "Student Advising & Counseling Sequence",
+      "workflowBadge": "Academic Mentorship Cycle"
+    }
+  },
+  "empty": {
+    "title": "No matching help topics",
+    "description": "We couldn't find any guidelines or questions matching \"{{query}}\". Try adjusting your search keywords or switching categories.",
+    "clear": "Clear search filter"
+  },
+  "footnote": {
+    "contacts": "Reference Contacts:",
+    "committee": "Computer Science Academic Committee",
+    "location": "Nile University • Giza, Egypt"
+  }
+}
