@@ -1,1 +1,213 @@
 @import "tailwindcss";
+
+/*
+ * Design tokens from Grad_Designs/<Role>_Pages/…/academic_planning_system/DESIGN.md (light)
+ * and the *_dark exports (dark). Use the token utilities (bg-surface, text-on-surface,
+ * bg-primary, border-outline-variant…) instead of raw colors so both themes work.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Surfaces */
+  --color-background: #f9f9ff;
+  --color-on-background: #141b2c;
+  --color-surface: #f9f9ff;
+  --color-surface-dim: #d2daf0;
+  --color-surface-bright: #f9f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f3ff;
+  --color-surface-container: #e9edff;
+  --color-surface-container-high: #e0e8ff;
+  --color-surface-container-highest: #dbe2f9;
+  --color-surface-variant: #dbe2f9;
+  --color-on-surface: #141b2c;
+  --color-on-surface-variant: #454653;
+  --color-inverse-surface: #293041;
+  --color-inverse-on-surface: #edf0ff;
+  --color-outline: #757684;
+  --color-outline-variant: #c5c5d5;
+
+  /* Brand */
+  --color-primary: #001060;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #021f94;
+  --color-on-primary-container: #7f91ff;
+  --color-primary-fixed: #dee0ff;
+  --color-on-primary-fixed: #000f5d;
+  --color-inverse-primary: #bbc3ff;
+  --color-secondary: #525f73;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d6e3fb;
+  --color-on-secondary-container: #3b485a;
+  --color-tertiary: #00115e;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #002093;
+  --color-on-tertiary-container: #7e92ff;
+
+  /* Status */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-success: #15803d;
+  --color-success-container: #dcfce7;
+  --color-on-success-container: #14532d;
+  --color-warning: #b45309;
+  --color-warning-container: #fef3c7;
+  --color-on-warning-container: #78350f;
+  --color-info: #253aa9;
+  --color-info-container: #dee0ff;
+  --color-on-info-container: #000f5d;
+
+  /* Type — Latin fonts first; Arabic glyphs fall back to IBM Plex Sans Arabic */
+  --font-sans: "Source Sans 3", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", "IBM Plex Sans Arabic", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Sans Arabic", ui-monospace, monospace;
+
+  --text-display: 2rem;
+  --text-display--line-height: 2.5rem;
+  --text-display--letter-spacing: -0.02em;
+  --text-headline-lg: 1.625rem;
+  --text-headline-lg--line-height: 2.125rem;
+  --text-headline-md: 1.25rem;
+  --text-headline-md--line-height: 1.75rem;
+  --text-headline-sm: 1rem;
+  --text-headline-sm--line-height: 1.5rem;
+  --text-body-lg: 1rem;
+  --text-body-lg--line-height: 1.5rem;
+  --text-body-md: 0.875rem;
+  --text-body-md--line-height: 1.25rem;
+  --text-body-sm: 0.8125rem;
+  --text-body-sm--line-height: 1.125rem;
+  --text-label-lg: 0.875rem;
+  --text-label-lg--line-height: 1.25rem;
+  --text-label-md: 0.8125rem;
+  --text-label-md--line-height: 1.125rem;
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 0.875rem;
+  --text-label-sm--letter-spacing: 0.06em;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  --shadow-card: 0 1px 2px rgb(20 27 44 / 0.04), 0 1px 3px rgb(20 27 44 / 0.06);
+  --shadow-overlay: 0 12px 32px rgb(20 27 44 / 0.18);
+
+  --spacing-shell-header: 3.5rem;
+  --spacing-explain: 22rem;
+}
+
+/* Dark palette from the *_dark design exports */
+.dark {
+  --color-background: #0d1225;
+  --color-on-background: #dde1fb;
+  --color-surface: #0d1225;
+  --color-surface-dim: #0d1225;
+  --color-surface-bright: #34384c;
+  --color-surface-container-lowest: #080d1f;
+  --color-surface-container-low: #161b2d;
+  --color-surface-container: #1a1f31;
+  --color-surface-container-high: #24293c;
+  --color-surface-container-highest: #2f3448;
+  --color-surface-variant: #2f3448;
+  --color-on-surface: #dde1fb;
+  --color-on-surface-variant: #c4c5d5;
+  --color-inverse-surface: #dde1fb;
+  --color-inverse-on-surface: #2b3043;
+  --color-outline: #8e909f;
+  --color-outline-variant: #444653;
+
+  --color-primary: #b6c4ff;
+  --color-on-primary: #00277f;
+  --color-primary-container: #6b8cff;
+  --color-on-primary-container: #002375;
+  --color-primary-fixed: #dce1ff;
+  --color-on-primary-fixed: #001550;
+  --color-inverse-primary: #3055c6;
+  --color-secondary: #bec6df;
+  --color-on-secondary: #283044;
+  --color-secondary-container: #41495e;
+  --color-on-secondary-container: #dae2fc;
+  --color-tertiary: #42e09a;
+  --color-on-tertiary: #003822;
+  --color-tertiary-container: #00a86e;
+  --color-on-tertiary-container: #00331e;
+
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  --color-success: #42e09a;
+  --color-success-container: #0f3b2a;
+  --color-on-success-container: #8ff5c4;
+  --color-warning: #fbbf24;
+  --color-warning-container: #422c0b;
+  --color-on-warning-container: #fde68a;
+  --color-info: #b6c4ff;
+  --color-info-container: #1e2a5c;
+  --color-on-info-container: #dce1ff;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-overlay: 0 12px 32px rgb(0 0 0 / 0.5);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background font-sans text-body-md text-on-background antialiased;
+  }
+
+  /* Arabic reads better slightly larger and without Latin letter-spacing */
+  :lang(ar) body {
+    @apply text-body-lg;
+  }
+  :lang(ar) .uppercase {
+    letter-spacing: 0;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  ::selection {
+    @apply bg-primary-fixed text-on-primary-fixed;
+  }
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

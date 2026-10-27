@@ -1,0 +1,97 @@
+{
+  "app": {
+    "university": "جامعة النيل",
+    "name": "نظام تخطيط طرح مقررات علوم الحاسب",
+    "shortName": "تخطيط المقررات"
+  },
+  "roles": {
+    "admin": "مسؤول النظام",
+    "coordinator": "منسق",
+    "student": "طالب",
+    "advisor": "مرشد أكاديمي"
+  },
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "create": "إنشاء",
+    "add": "إضافة",
+    "search": "بحث",
+    "filter": "تصفية",
+    "export": "تصدير",
+    "import": "استيراد",
+    "retry": "إعادة المحاولة",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "confirm": "تأكيد",
+    "viewAll": "عرض الكل",
+    "viewDetails": "عرض التفاصيل",
+    "signOut": "تسجيل الخروج",
+    "goHome": "الذهاب للرئيسية",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "moreActions": "إجراءات أخرى",
+    "clearFilters": "مسح عوامل التصفية"
+  },
+  "states": {
+    "loading": "جارٍ التحميل…",
+    "empty": "لا توجد بيانات بعد.",
+    "noResults": "لا توجد نتائج مطابقة لعوامل التصفية.",
+    "error": "حدث خطأ ما.",
+    "saved": "تم الحفظ",
+    "saving": "جارٍ الحفظ…",
+    "required": "هذا الحقل مطلوب."
+  },
+  "status": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "draft": "مسودة",
+    "published": "منشور",
+    "archived": "مؤرشف",
+    "pending": "قيد الانتظار",
+    "validated": "تم التحقق",
+    "synced": "متزامن",
+    "failed": "فشل",
+    "open": "مفتوح",
+    "resolved": "تم الحل",
+    "running": "قيد التشغيل",
+    "completed": "مكتمل",
+    "locked": "مقفل",
+    "upcoming": "قادم",
+    "warning": "تحذير"
+  },
+  "preferences": {
+    "theme": "المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "حسب النظام",
+    "language": "اللغة",
+    "toggleTheme": "تبديل المظهر",
+    "toggleLanguage": "تبديل اللغة"
+  },
+  "pagination": {
+    "showing": "عرض {{from}}–{{to}} من {{total}}",
+    "page": "صفحة {{page}} من {{pages}}",
+    "rowsPerPage": "عدد الصفوف"
+  },
+  "errors": {
+    "notFoundTitle": "الصفحة غير موجودة",
+    "notFoundBody": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "forbiddenTitle": "غير مصرح بالدخول",
+    "forbiddenBody": "دورك لا يملك صلاحية الوصول إلى هذه الصفحة.",
+    "unexpectedTitle": "خطأ غير متوقع",
+    "unexpectedBody": "تعذر تحميل الصفحة. حاول مرة أخرى أو عد إلى صفحتك الرئيسية.",
+    "network": "تعذر الاتصال بالخادم. تحقق من اتصالك.",
+    "session": "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى."
+  },
+  "placeholder": {
+    "title": "الصفحة قيد الإنشاء",
+    "body": "تم ربط هذه الصفحة بالمسارات وهي جاهزة للبناء.",
+    "owner": "المسؤول",
+    "branch": "الفرع",
+    "design": "مرجع التصميم"
+  }
+}

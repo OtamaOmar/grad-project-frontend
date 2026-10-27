@@ -1,0 +1,132 @@
+{
+  "eyebrow": ["System governance & telemetry"],
+  "description": "Read-only audit log of sign-ins, reference-data changes, imports, forecast runs and offering decisions.",
+  "ledger": "Log intact · {{value}} entries",
+  "export": "Export CSV",
+  "exportFiltered": "Export filtered CSV",
+  "notice": {
+    "title": "Append-only audit log",
+    "body": "Events are recorded by the server and cannot be edited or deleted from this page. IP addresses are stored masked."
+  },
+  "stats": {
+    "events": "Events (last {{days}} days)",
+    "today": "+{{value}} today",
+    "eventsHint": "Recorded in the last {{days}} days",
+    "actors": "Active actors",
+    "actorsHint": "{{value}} known actors in the log",
+    "attention": "Warnings & errors",
+    "attentionHint": "{{warnings}} warnings · {{errors}} errors · {{failed}} failed sign-ins",
+    "last": "Last event"
+  },
+  "readOnly": "Read-only log",
+  "filters": {
+    "search": "Search summary, entity, user or request ID…",
+    "actor": "Actor",
+    "allActors": "All actors",
+    "category": "Category",
+    "allCategories": "All categories",
+    "action": "Action",
+    "allActions": "All actions",
+    "severity": "Severity",
+    "allSeverities": "All severities",
+    "outcome": "Outcome",
+    "allOutcomes": "All outcomes",
+    "from": "From date",
+    "to": "To date"
+  },
+  "tableCaption": "Audit events",
+  "columns": {
+    "when": "When",
+    "who": "Who",
+    "action": "Action",
+    "verification": "Outcome"
+  },
+  "anonymous": "Anonymous",
+  "anonymousAttempt": "Anonymous (tried {{username}})",
+  "attempted": "Tried: {{username}}",
+  "severity": {
+    "info": "Info",
+    "warning": "Warning",
+    "error": "Error"
+  },
+  "outcome": {
+    "success": "Success",
+    "failure": "Failed"
+  },
+  "category": {
+    "auth": "Sign-in",
+    "user_management": "User management",
+    "catalog": "Catalog",
+    "import": "Import",
+    "forecast": "Forecast",
+    "offering": "Offering decision",
+    "data_quality": "Data quality",
+    "system": "System"
+  },
+  "entityType": {
+    "app_user": "User",
+    "credit_limit": "Credit limit",
+    "bylaw": "Bylaw",
+    "course": "Course",
+    "plan_template": "Plan template",
+    "import_batch": "Import batch",
+    "forecast_run": "Forecast run",
+    "offering_decision": "Offering decision",
+    "data_gap": "Data gap",
+    "audit_event": "Audit log"
+  },
+  "actions": {
+    "auth": {
+      "login": "Signed in",
+      "login_failed": "Sign-in failed",
+      "logout": "Signed out"
+    },
+    "user": {
+      "created": "User created",
+      "updated": "User updated",
+      "deactivated": "User deactivated"
+    },
+    "credit_limit": { "updated": "Credit limit updated" },
+    "bylaw": { "updated": "Bylaw updated" },
+    "course": { "updated": "Course updated" },
+    "study_plan": { "updated": "Study plan updated" },
+    "import": {
+      "started": "Import started",
+      "completed": "Import completed",
+      "failed": "Import failed",
+      "issue_reviewed": "Import issue reviewed"
+    },
+    "forecast_run": {
+      "started": "Forecast run started",
+      "completed": "Forecast run completed",
+      "failed": "Forecast run failed"
+    },
+    "offering_decision": { "saved": "Offering decision saved" },
+    "data_gap": {
+      "created": "Data gap recorded",
+      "updated": "Data gap updated",
+      "resolved": "Data gap resolved"
+    },
+    "audit": { "exported": "Audit log exported" }
+  },
+  "drawer": {
+    "title": "Event",
+    "occurredAt": "Occurred",
+    "actor": "Actor",
+    "role": "Role",
+    "username": "Username",
+    "entity": "Entity",
+    "entityType": "Entity type",
+    "ipAddress": "IP address",
+    "requestId": "Request ID",
+    "details": "Recorded details",
+    "noDetails": "No extra details were recorded.",
+    "related": "Related events (same entity)",
+    "noRelated": "No other events on this entity."
+  },
+  "toast": {
+    "exported": "Exported {{value}} events as CSV."
+  },
+  "policyTitle": "How to read this log",
+  "policyBody": "Each event names who acted, what changed and on which record. Use the Explain panel to trace a rule change back to its bylaw source. No write operations are available here."
+}

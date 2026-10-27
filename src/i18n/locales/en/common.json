@@ -1,0 +1,97 @@
+{
+  "app": {
+    "university": "Nile University",
+    "name": "CS Course Offering Planning System",
+    "shortName": "CS Planning"
+  },
+  "roles": {
+    "admin": "Admin",
+    "coordinator": "Coordinator",
+    "student": "Student",
+    "advisor": "Advisor"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "retry": "Try again",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm",
+    "viewAll": "View all",
+    "viewDetails": "View details",
+    "signOut": "Sign out",
+    "goHome": "Go to home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "moreActions": "More actions",
+    "clearFilters": "Clear filters"
+  },
+  "states": {
+    "loading": "Loading…",
+    "empty": "Nothing to show yet.",
+    "noResults": "No results match your filters.",
+    "error": "Something went wrong.",
+    "saved": "Saved",
+    "saving": "Saving…",
+    "required": "This field is required."
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "draft": "Draft",
+    "published": "Published",
+    "archived": "Archived",
+    "pending": "Pending",
+    "validated": "Validated",
+    "synced": "Synced",
+    "failed": "Failed",
+    "open": "Open",
+    "resolved": "Resolved",
+    "running": "Running",
+    "completed": "Completed",
+    "locked": "Locked",
+    "upcoming": "Upcoming",
+    "warning": "Warning"
+  },
+  "preferences": {
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "language": "Language",
+    "toggleTheme": "Switch theme",
+    "toggleLanguage": "Switch language"
+  },
+  "pagination": {
+    "showing": "Showing {{from}}–{{to}} of {{total}}",
+    "page": "Page {{page}} of {{pages}}",
+    "rowsPerPage": "Rows per page"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you are looking for does not exist or was moved.",
+    "forbiddenTitle": "Access denied",
+    "forbiddenBody": "Your role does not have access to this page.",
+    "unexpectedTitle": "Unexpected error",
+    "unexpectedBody": "The page failed to load. Try again, or go back to your home page.",
+    "network": "Could not reach the server. Check your connection.",
+    "session": "Your session has expired. Please sign in again."
+  },
+  "placeholder": {
+    "title": "Page under construction",
+    "body": "This page is routed and ready to be built.",
+    "owner": "Owner",
+    "branch": "Branch",
+    "design": "Design reference"
+  }
+}

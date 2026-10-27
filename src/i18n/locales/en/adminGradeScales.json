@@ -1,0 +1,112 @@
+{
+  "eyebrow": ["Curricular invariant directory", "Statutory reference scales"],
+  "description": "Letter grades, grade points and percentage bands of each bylaw. Each scale belongs to one bylaw only; the bylaw's pass mark decides pass or fail.",
+  "alert": {
+    "badge": "Statutory compliance alert",
+    "quote": "“Check the letters against the bylaw PDF before relying on them.”",
+    "body": "Several percentage lines are split across the PDF text. If the PDF disagrees with a stored band, the PDF wins. Saving new letters clears the verification until the scale is checked again.",
+    "unverified_one": "{{value}} scale awaiting PDF check",
+    "unverified_other": "{{value}} scales awaiting PDF check",
+    "allVerified": "All scales verified against the PDF"
+  },
+  "stats": {
+    "frameworks": "Active scales",
+    "frameworksValue_one": "{{value}} scale",
+    "frameworksValue_other": "{{value}} scales",
+    "frameworksHint": "One letter scale per bylaw",
+    "floor": "Pass floor · {{name}}",
+    "floorLoading": "Pass floor",
+    "floorValue": "{{pct}}",
+    "floorLetter": "Grade {{letter}} = {{points}} QP",
+    "finalExam": "final exam ≥ {{pct}}",
+    "variance": "Pass threshold shift",
+    "varianceValue": "{{value}} pts",
+    "varianceHint": "From the {{from}} to the {{to}}"
+  },
+  "columns": {
+    "letter": "Letter",
+    "band": "Percentage band",
+    "points": "Grade points",
+    "status": "Status"
+  },
+  "band": {
+    "range": "{{min}} to below {{max}}",
+    "rangeOpenStart": "above {{min}} to below {{max}}",
+    "rangeInclusive": "{{min}} to {{max}}",
+    "rangeInclusiveOpenStart": "above {{min}} to {{max}}",
+    "below": "below {{max}}",
+    "upTo": "up to {{max}}",
+    "from": "{{min}} and above",
+    "above": "above {{min}}"
+  },
+  "roles": {
+    "pass": "Pass",
+    "passing_floor": "Passing floor",
+    "fail": "Fail"
+  },
+  "scale": {
+    "title": "{{name}} grade scale",
+    "subtitle": "From cohort {{cohort}} · {{source}}",
+    "verified": "Verified against PDF",
+    "unverified": "Not verified",
+    "verifiedToggle": "Verified against the bylaw PDF",
+    "editLetters": "Edit letters",
+    "noLetters": "No letters are stored for this scale.",
+    "passRule": "Pass: course ≥ {{pass}}",
+    "passRuleFinal": "Pass: course ≥ {{pass}} and final exam ≥ {{final}}",
+    "letters_one": "{{value}} letter defined",
+    "letters_other": "{{value}} letters defined",
+    "updated": "updated {{date}}"
+  },
+  "compare": {
+    "title": "Minimum cutoff comparison",
+    "subtitle": "Lower bound of each letter in both bylaws. The pass threshold moves by {{delta}} percentage points.",
+    "letter": "Grade {{letter}}",
+    "letterFloor": "Grade {{letter}} (floor)",
+    "delta": "{{value}} pts",
+    "qpTitle": "Grade point consistency",
+    "qpConsistent": "Each letter carries the same grade points in both bylaws (4.00 max).",
+    "qpDiffers": "Some letters carry different grade points in the two bylaws."
+  },
+  "empty": {
+    "title": "No grade scales stored",
+    "body": "A scale is created with its bylaw. Add the bylaw first, then enter its letters."
+  },
+  "editor": {
+    "title": "Edit letters · {{name}}",
+    "description": "Enter the bands exactly as the grade article states them. Saving replaces every letter of this scale.",
+    "fields": {
+      "letter": "Letter",
+      "grade_points": "Points",
+      "min_percentage": "Lower %",
+      "max_percentage": "Upper %",
+      "source_reference": "Source"
+    },
+    "cellLabel": "{{field}}, row {{row}}",
+    "included": "Included",
+    "remove": "Remove",
+    "removeRow": "Remove letter {{letter}}",
+    "addLetter": "Add letter",
+    "bandRule": "Usually the lower bound is included and the upper excluded; the top band includes 100 and F has no lower bound.",
+    "verified": "I checked these letters against the bylaw PDF",
+    "verifiedHint": "Leave unchecked if you have not compared them with the original PDF. The scale will then show as not verified.",
+    "overlapTitle": "Some bands overlap",
+    "errorTitle": "The letters could not be saved",
+    "save": "Save letters"
+  },
+  "fieldErrors": {
+    "required": "required",
+    "invalid": "not valid (1–4 characters)",
+    "duplicate": "used by another row",
+    "between_0_and_4": "must be between 0 and 4",
+    "between_0_and_100": "must be between 0 and 100",
+    "must_exceed_min_percentage": "must be greater than the lower bound",
+    "one_bound_required": "set at least one bound"
+  },
+  "toast": {
+    "verified": "The {{name}} scale is marked as verified.",
+    "unverified": "The {{name}} scale is marked as not verified.",
+    "saved_one": "{{value}} letter saved for the {{name}} scale.",
+    "saved_other": "{{value}} letters saved for the {{name}} scale."
+  }
+}
