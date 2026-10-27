@@ -6,7 +6,7 @@ import { useHelp } from "@/features/help/useHelp";
 import { cn } from "@/utils/cn";
 
 export default function HelpPage() {
-  const { t } = useTranslation(["help", "common", "nav"]);
+  const { t, i18n } = useTranslation(["help", "common", "nav"]);
   const { user } = useAuth();
   const currentRole = user?.role || "student";
 
@@ -15,28 +15,57 @@ export default function HelpPage() {
   const [expandedFaqs, setExpandedFaqs] = useState(() => new Set([1, 2, 4, 8, 13, 17]));
 
   // Fetch help content from the mock API / backend
-  const { data, isLoading } = useHelp({
-    q: searchQuery,
-    category: selectedCategory !== "all" ? selectedCategory : undefined,
-  });
+  const { data, isLoading } = useHelp();
 
   const role = data?.role || currentRole;
   const version = data?.version || "Version 4.8.2-rev";
-  const activeTerm = data?.active_term || "Fall 2026";
-  const principle = data?.principle || "";
-  const governanceLabel =
-    data?.governance_label || t(`roles.${role}.governance`, { defaultValue: "" });
-  const subtitle = data?.subtitle || t(`roles.${role}.subtitle`, { defaultValue: "" });
+  const rawActiveTerm = data?.active_term || "Fall 2026";
+  const activeTerm =
+    rawActiveTerm === "Fall 2026"
+      ? i18n.language === "ar"
+        ? "خريف 2026"
+        : "Fall 2026"
+      : rawActiveTerm;
+
+  const principle = t(`help:principles.${role}`, {
+    defaultValue: data?.principle || "",
+  });
+  const governanceLabel = t(`help:roles.${role}.governance`, {
+    defaultValue: data?.governance_label || "",
+  });
+  const subtitle = t(`help:roles.${role}.subtitle`, {
+    defaultValue: data?.subtitle || t("defaultSubtitle"),
+  });
   const pillars = data?.pillars || [];
   const workflow = data?.workflow || null;
   const categories = data?.categories || [];
-  const contacts = data?.contacts || [];
 
-  // Filter FAQs locally for immediate responsiveness
+  const rawFaqs = data?.faqs;
+
+  // Localized FAQs with full Arabic/English translation
+  const localizedFaqs = useMemo(() => {
+    if (!rawFaqs) return [];
+    return rawFaqs.map((f) => ({
+      ...f,
+      categoryLabel: t(`help:categories.${f.category}`, { defaultValue: f.category }),
+      question: t(`help:faqs.${f.id}.question`, { defaultValue: f.question }),
+      answer: t(`help:faqs.${f.id}.answer`, { defaultValue: f.answer }),
+    }));
+  }, [rawFaqs, t]);
+
+  // Filter FAQs locally for immediate responsiveness and proper language matching
   const filteredFaqs = useMemo(() => {
-    if (!data?.faqs) return [];
-    return data.faqs;
-  }, [data?.faqs]);
+    return localizedFaqs.filter((f) => {
+      if (selectedCategory !== "all" && f.category !== selectedCategory) return false;
+      if (!searchQuery.trim()) return true;
+      const q = searchQuery.trim().toLowerCase();
+      return (
+        f.question.toLowerCase().includes(q) ||
+        f.answer.toLowerCase().includes(q) ||
+        f.categoryLabel.toLowerCase().includes(q)
+      );
+    });
+  }, [localizedFaqs, selectedCategory, searchQuery]);
 
   const toggleFaq = (id) => {
     setExpandedFaqs((prev) => {
@@ -81,7 +110,7 @@ export default function HelpPage() {
             {version}
           </Badge>
           <Badge tone="primary" className="text-label-sm px-2.5 py-0.5 font-semibold">
-            {t("common:activeSession", { defaultValue: "Active Session" })}: {activeTerm}
+            {t("common:activeSession", { defaultValue: i18n.language === "ar" ? "الفصل الحالي" : "Active Session" })}: {activeTerm}
           </Badge>
           <Badge tone="secondary" className="capitalize text-label-sm px-2.5 py-0.5">
             {t(`common:roles.${role}`, { defaultValue: role })}
@@ -95,7 +124,7 @@ export default function HelpPage() {
           {t("title")}
         </h1>
         <p className="mt-1.5 text-body-md text-on-surface-variant sm:text-body-lg">
-          {subtitle || t("defaultSubtitle")}
+          {subtitle}
         </p>
       </div>
 
@@ -166,7 +195,7 @@ export default function HelpPage() {
                 {t("guidingPrinciple")}
               </span>
               <p className="font-serif text-headline-sm sm:text-headline-md font-medium leading-snug text-on-surface">
-                “{principle}”
+                {i18n.language === "ar" ? `«${principle}»` : `“${principle}”`}
               </p>
             </div>
           </div>
@@ -182,32 +211,47 @@ export default function HelpPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              {pillars.map((pillar) => (
-                <div
-                  key={pillar.id}
-                  className="flex flex-col justify-between rounded-lg border border-outline-variant/30 bg-surface-container-low/60 p-5 transition-all hover:border-outline-variant hover:bg-surface-container-low"
-                >
-                  <div>
-                    <div className="mb-3 flex items-center gap-2 text-primary">
-                      <Icon name={pillar.icon} size={20} />
-                      <span className="text-label-sm font-bold tracking-wider text-on-surface-variant uppercase">
-                        {pillar.num}
-                      </span>
-                    </div>
-                    <h3 className="mb-2 text-label-lg font-semibold text-on-surface">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-body-sm leading-relaxed text-on-surface-variant">
-                      {pillar.description}
-                    </p>
-                  </div>
+              {pillars.map((pillar) => {
+                const pillarTitle = t(`help:pillars.${role}.${pillar.id}.title`, {
+                  defaultValue: pillar.title,
+                });
+                const pillarDesc = t(`help:pillars.${role}.${pillar.id}.description`, {
+                  defaultValue: pillar.description,
+                });
+                const pillarBadge = t(`help:pillars.${role}.${pillar.id}.badgeText`, {
+                  defaultValue: pillar.badgeText,
+                });
+                const pillarNum = t(`help:pillars.${role}.${pillar.id}.num`, {
+                  defaultValue: pillar.num,
+                });
 
-                  <div className="mt-4 flex items-center gap-1.5 border-t border-outline-variant/20 pt-3 text-on-secondary-container">
-                    <Icon name={pillar.badgeIcon || "info"} size={16} />
-                    <span className="text-label-sm font-medium">{pillar.badgeText}</span>
+                return (
+                  <div
+                    key={pillar.id}
+                    className="flex flex-col justify-between rounded-lg border border-outline-variant/30 bg-surface-container-low/60 p-5 transition-all hover:border-outline-variant hover:bg-surface-container-low"
+                  >
+                    <div>
+                      <div className="mb-3 flex items-center gap-2 text-primary">
+                        <Icon name={pillar.icon} size={20} />
+                        <span className="text-label-sm font-bold tracking-wider text-on-surface-variant uppercase">
+                          {pillarNum}
+                        </span>
+                      </div>
+                      <h3 className="mb-2 text-label-lg font-semibold text-on-surface">
+                        {pillarTitle}
+                      </h3>
+                      <p className="text-body-sm leading-relaxed text-on-surface-variant">
+                        {pillarDesc}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 flex items-center gap-1.5 border-t border-outline-variant/20 pt-3 text-on-secondary-container">
+                      <Icon name={pillar.badgeIcon || "info"} size={16} />
+                      <span className="text-label-sm font-medium">{pillarBadge}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -217,52 +261,64 @@ export default function HelpPage() {
           <div className="rounded-lg border border-outline-variant/30 bg-surface-container-low/70 p-5 sm:p-6 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-outline-variant/20 pb-3">
               <span className="font-sans text-label-lg font-semibold text-on-surface">
-                {workflow.title}
+                {t(`help:roles.${role}.workflowTitle`, { defaultValue: workflow.title })}
               </span>
               <span className="text-body-xs font-medium text-on-surface-variant">
-                {workflow.badge}
+                {t(`help:roles.${role}.workflowBadge`, { defaultValue: workflow.badge })}
               </span>
             </div>
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
-              {workflow.steps.map((st) => (
-                <div
-                  key={st.step}
-                  className={cn(
-                    "flex flex-col justify-between rounded-lg p-4 text-center transition-all",
-                    st.isHighlight
-                      ? "bg-primary text-on-primary shadow-xs border border-primary"
-                      : "bg-surface-container-lowest border border-outline-variant/30 text-on-surface",
-                  )}
-                >
-                  <div>
-                    <span
-                      className={cn(
-                        "block text-label-sm font-bold uppercase tracking-wider",
-                        st.isHighlight ? "text-primary-fixed opacity-95" : "text-on-surface-variant",
-                      )}
-                    >
-                      {st.title}
-                    </span>
-                    <span
-                      className={cn(
-                        "mt-1.5 block font-serif text-headline-sm font-semibold",
-                        st.isHighlight ? "text-white" : "text-on-surface",
-                      )}
-                    >
-                      {st.subtitle}
-                    </span>
-                  </div>
-                  <span
+              {workflow.steps.map((st) => {
+                const stepTitle = t(`help:workflow.${role}.${st.step}.title`, {
+                  defaultValue: st.title,
+                });
+                const stepSubtitle = t(`help:workflow.${role}.${st.step}.subtitle`, {
+                  defaultValue: st.subtitle,
+                });
+                const stepSource = t(`help:workflow.${role}.${st.step}.source`, {
+                  defaultValue: st.source,
+                });
+
+                return (
+                  <div
+                    key={st.step}
                     className={cn(
-                      "mt-2.5 block text-body-xs font-mono",
-                      st.isHighlight ? "text-primary-fixed/85" : "text-on-surface-variant",
+                      "flex flex-col justify-between rounded-lg p-4 text-center transition-all",
+                      st.isHighlight
+                        ? "bg-primary text-on-primary shadow-xs border border-primary"
+                        : "bg-surface-container-lowest border border-outline-variant/30 text-on-surface",
                     )}
                   >
-                    {st.source}
-                  </span>
-                </div>
-              ))}
+                    <div>
+                      <span
+                        className={cn(
+                          "block text-label-sm font-bold uppercase tracking-wider",
+                          st.isHighlight ? "text-primary-fixed opacity-95" : "text-on-surface-variant",
+                        )}
+                      >
+                        {stepTitle}
+                      </span>
+                      <span
+                        className={cn(
+                          "mt-1.5 block font-serif text-headline-sm font-semibold",
+                          st.isHighlight ? "text-white" : "text-on-surface",
+                        )}
+                      >
+                        {stepSubtitle}
+                      </span>
+                    </div>
+                    <span
+                      className={cn(
+                        "mt-2.5 block text-body-xs font-mono",
+                        st.isHighlight ? "text-primary-fixed/85" : "text-on-surface-variant",
+                      )}
+                    >
+                      {stepSource}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -366,16 +422,16 @@ export default function HelpPage() {
         <div className="flex flex-col items-start justify-between gap-4 border-t border-outline-variant/40 pt-6 sm:flex-row sm:items-center text-body-sm text-on-surface-variant">
           <div>
             <span className="font-semibold text-on-surface">{t("footnote.contacts")} </span>
-            <span>{contacts[0]?.label || t("footnote.committee")} • </span>
+            <span>{t("footnote.committee")} • </span>
             <a
-              href={`mailto:${contacts[0]?.email || "registrar@nu.edu.eg"}`}
+              href="mailto:registrar@nu.edu.eg"
               className="font-medium text-primary underline transition-colors hover:text-primary-container"
             >
-              {contacts[0]?.email || "registrar@nu.edu.eg"}
+              registrar@nu.edu.eg
             </a>
           </div>
           <div className="text-label-sm font-semibold tracking-wider uppercase text-on-surface-variant">
-            {contacts[0]?.location || t("footnote.location")}
+            {t("footnote.location")}
           </div>
         </div>
       </div>
