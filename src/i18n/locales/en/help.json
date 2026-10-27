@@ -48,6 +48,274 @@
       "workflowBadge": "Academic Mentorship Cycle"
     }
   },
+  "principles": {
+    "admin": "System access, configuration, and administrative actions must follow established permissions and institutional policies.",
+    "coordinator": "The system forecasts demand from official study plans and stored rules. A coordinator decides what opens. The explanation panel quotes stored rules and stored results. It does not decide.",
+    "student": "Use the academic information available in ACOPS to understand your course options and planning requirements. Confirm official decisions through the appropriate university channels.",
+    "advisor": "Use available academic information and planning recommendations to support students while respecting institutional policies and coordinator responsibilities."
+  },
+  "pillars": {
+    "admin": {
+      "admin-access": {
+        "num": "01 / Security",
+        "title": "Access & Role Governance",
+        "description": "Multi-tier authorization hierarchy across Admin, Coordinator, Student, and Advisor roles, strictly enforcing the principle of least privilege over institutional academic records.",
+        "badgeText": "Least Privilege Enforced"
+      },
+      "admin-reference": {
+        "num": "02 / Reference",
+        "title": "Curricular Base Integrity",
+        "description": "Direct oversight of official bylaws (2019 and 2025), study plan templates, credit limit tables, and grading scales that parameterize all automated forecast pipelines.",
+        "badgeText": "Bylaws & Plan Matrices"
+      },
+      "admin-audit": {
+        "num": "03 / Monitoring",
+        "title": "Verification & Audit Trails",
+        "description": "Tamper-evident audit logging for user provisioning, permission changes, and data import diagnostics, ensuring discrepancies are tracked without silent data loss.",
+        "badgeText": "Immutable Audit Log"
+      }
+    },
+    "coordinator": {
+      "coord-forecast": {
+        "num": "01 / Engine",
+        "title": "Demand Forecasting",
+        "description": "Built on official Nile University computer science study plans (2019 and 2025 bylaws). Tracks prerequisite completion, failed attempts, and projected cohort progression.",
+        "badgeText": "Bylaw §§ 2.1–4.8"
+      },
+      "coord-authority": {
+        "num": "02 / Authority",
+        "title": "Coordinator Authority",
+        "description": "Algorithms suggest minimum and optimal sections. The departmental coordinator holds exclusive authority to approve, merge, or cancel sections.",
+        "badgeText": "Human in the loop"
+      },
+      "coord-explain": {
+        "num": "03 / Audit",
+        "title": "The Explain Assistant",
+        "description": "The side panel acts as a read-only query engine against audit logs and rule repositories. It cites specific bylaws and historical capacity constraints, without autonomous decision-making power.",
+        "badgeText": "Deterministic quote-only"
+      }
+    },
+    "student": {
+      "student-record": {
+        "num": "01 / Record",
+        "title": "Academic Profile & Standing",
+        "description": "Access your verified transcript record, earned credit hours, CGPA, and bylaw standing computed directly from official Nile University semester records.",
+        "badgeText": "Official Transcript Sync"
+      },
+      "student-offerings": {
+        "num": "02 / Offerings",
+        "title": "Expected Offerings Insight",
+        "description": "Advance visibility into departmental course offerings planned for upcoming terms, allowing you to prepare your academic schedule ahead of official enrollment.",
+        "badgeText": "Forecast Visibility"
+      },
+      "student-requisites": {
+        "num": "03 / Requisites",
+        "title": "Prerequisite & Plan Tracking",
+        "description": "Clear dependency graphs showing completed courses, unmet prerequisites, and standing requirements needed for remaining degree milestones.",
+        "badgeText": "Bylaw Requisite Engine"
+      }
+    },
+    "advisor": {
+      "advisor-roster": {
+        "num": "01 / Roster",
+        "title": "Assigned Advisee Roster",
+        "description": "Direct access to your assigned computer science student cohort, enabling continuous monitoring of academic standing, GPA trajectories, and credit milestones.",
+        "badgeText": "Assigned Cohort Only"
+      },
+      "advisor-planning": {
+        "num": "02 / Guidance",
+        "title": "Prerequisite & Plan Guidance",
+        "description": "Evaluate individual student eligibility against course prerequisites and cross-reference student needs with expected departmental offerings.",
+        "badgeText": "Requisite Graph Scoring"
+      },
+      "advisor-governance": {
+        "num": "03 / Policy",
+        "title": "Advising Governance & Limits",
+        "description": "Advisors provide personalized academic planning and recommendations; official section capacities, scheduling, and registration remain under coordinator authority.",
+        "badgeText": "Counseling Scope"
+      }
+    }
+  },
+  "workflow": {
+    "admin": {
+      "1": {
+        "title": "User Management",
+        "subtitle": "Role & Permission Provisioning",
+        "source": "Admin Console · /admin/users"
+      },
+      "2": {
+        "title": "Reference Data",
+        "subtitle": "Bylaws, Plans & Grade Scales",
+        "source": "Curricular Repositories"
+      },
+      "3": {
+        "title": "Ingestion & Validation",
+        "subtitle": "SIS Import & Gap Detection",
+        "source": "Validation Service · /admin/imports"
+      },
+      "4": {
+        "title": "Audit & Health Signoff",
+        "subtitle": "System Monitoring & Compliance",
+        "source": "Audit Trail · /admin/audit"
+      }
+    },
+    "coordinator": {
+      "1": {
+        "title": "Transcript Scrape",
+        "subtitle": "Degree Audit & Academic History",
+        "source": "SIS Transcript DB"
+      },
+      "2": {
+        "title": "Eligibility Graph",
+        "subtitle": "Prerequisite Tree & Standing",
+        "source": "Bylaw Rules Engine"
+      },
+      "3": {
+        "title": "Proposed Sections",
+        "subtitle": "Demand Tally & Room Capacities",
+        "source": "Planning Figures"
+      },
+      "4": {
+        "title": "Final Schedule",
+        "subtitle": "Human Signoff & Approval",
+        "source": "Coordinator Discretion"
+      }
+    },
+    "student": {
+      "1": {
+        "title": "Audit Academic Record",
+        "subtitle": "Review CGPA, Earned Credits & Standing",
+        "source": "Transcript Record · /student/academic-data"
+      },
+      "2": {
+        "title": "Inspect Offerings",
+        "subtitle": "Browse Forecasted Course Offerings",
+        "source": "Forecast Catalog · /student/expected-offerings"
+      },
+      "3": {
+        "title": "Verify Prerequisites",
+        "subtitle": "Check Eligibility & Degree Milestones",
+        "source": "Study Plan Trees · /student/my-courses"
+      },
+      "4": {
+        "title": "Official Registration",
+        "subtitle": "Advisor Consultation & SIS Enrollment",
+        "source": "University Registrar Channels"
+      }
+    },
+    "advisor": {
+      "1": {
+        "title": "Roster Review",
+        "subtitle": "Inspect Assigned Advisee Cohort",
+        "source": "Advisee List · /advisor/students"
+      },
+      "2": {
+        "title": "Individual Audit",
+        "subtitle": "Assess Cumulative GPA & Academic Standing",
+        "source": "Student Overview · /advisor/students/:id"
+      },
+      "3": {
+        "title": "Offering Alignment",
+        "subtitle": "Compare Student Demand with Planned Sections",
+        "source": "Department Offerings · /advisor/offerings"
+      },
+      "4": {
+        "title": "Guidance & Follow-up",
+        "subtitle": "Academic Recommendation & Intervention",
+        "source": "Advisor Counseling Discretion"
+      }
+    }
+  },
+  "faqs": {
+    "1": {
+      "question": "What is the primary purpose of ACOPS?",
+      "answer": "ACOPS (Academic Course Offering Planning System) forecasts how many students are expected to take each computer science course in an upcoming planning term, using official Nile University study-plan sheets, transcript histories, and stored bylaw rules. It assists departmental planning but does not directly register students."
+    },
+    "2": {
+      "question": "Where does a course's expected headcount come from?",
+      "answer": "From official study plans, student pass/fail records up to the information cutoff term, and stored requisite and credit-limit rules. It is a deterministic projection: the exact same inputs produce identical numbers every time."
+    },
+    "3": {
+      "question": "Why is a forecast marked incomplete or flagged with data gaps?",
+      "answer": "A forecast run is flagged as incomplete when certain inputs could not be scored unambiguously—for instance, an unresolved grade in the student record, an unmapped course prerequisite, or a credit threshold not defined in an older bylaw. Headcounts are still displayed alongside detailed reason tallies."
+    },
+    "4": {
+      "question": "How are implied section counts calculated?",
+      "answer": "Each section count is calculated by dividing total forecasted headcount by team planning class sizes, rounded up: lecture 40, tutorial 25, computing lab 20, physics/circuits lab 15. These represent planning recommendations rather than strict physical room constraints."
+    },
+    "5": {
+      "question": "Who holds final decision authority over course offerings?",
+      "answer": "The departmental coordinator holds sole authority. The forecast only informs decisions; lecture, tutorial, and lab opening flags are recorded and versioned in the decision history following review."
+    },
+    "6": {
+      "question": "What can the AI Explain Assistant answer?",
+      "answer": "The Explain panel answers queries regarding why a specific rule was applied, how a forecasted headcount was derived, and which article or bylaw paragraph governs a requisite. It quotes stored rules and stored results strictly, refusing open-ended chat or unauthorized actions."
+    },
+    "7": {
+      "question": "What should I do if a scheduling conflict or capacity shortage arises?",
+      "answer": "Review the proposed section tallies in the Coordinator Sections view, evaluate room size recommendations, and adjust opening flags or implied section counts manually. All adjustments are tracked in the decision history."
+    },
+    "8": {
+      "question": "Is an expected offering a guarantee that the course will open?",
+      "answer": "No. Course availability is subject to final coordinator approval and university scheduling. \"Expected\" means the course appears on your study plan, the bylaw rules score you as eligible, and the latest forecast model includes demand for it."
+    },
+    "9": {
+      "question": "Why does a course on my study plan state that I am not eligible?",
+      "answer": "This occurs when one or more prerequisites have not yet been satisfied. If prerequisites are organized in a group, all courses in that group must be completed; if multiple alternative groups exist, satisfying any one complete group is sufficient. Check the course details page for the exact requirements."
+    },
+    "10": {
+      "question": "Why is my academic standing shown as \"not yet scored\"?",
+      "answer": "Older university bylaws did not specify an automated credit threshold for academic standing calculation. If your record is registered under an older bylaw, standing remains unscored until manual evaluation by the registrar."
+    },
+    "11": {
+      "question": "Does ACOPS replace the official university course registration portal?",
+      "answer": "No. ACOPS is an academic planning and forecasting tool designed to ensure appropriate course availability. Official course registration, add/drop periods, and tuition settlements are conducted through the university's official Student Information System (SIS)."
+    },
+    "12": {
+      "question": "How can I contact my academic advisor or report incorrect academic data?",
+      "answer": "You can view your assigned academic advisor in your student profile or through the Computer Science Department office. If you notice missing or incorrect transcript data, contact the Academic Committee via registrar@nu.edu.eg."
+    },
+    "13": {
+      "question": "How do I access students assigned to my advising roster?",
+      "answer": "Navigate to the Advisor Students section (/advisor/students). The view automatically filters the student directory to show only those students assigned to your advising roster, displaying cumulative GPA, earned credit hours, and standing."
+    },
+    "14": {
+      "question": "Can an advisor override prerequisites or open additional course sections?",
+      "answer": "No. Advisors provide guidance and course recommendations based on student records. Course section approvals, capacity overrides, and bylaw exemptions belong exclusively to the departmental coordinator and the Academic Committee."
+    },
+    "15": {
+      "question": "How should I advise a student who has an unresolved prerequisite issue?",
+      "answer": "Examine the student's prerequisite graph on their course details page (/advisor/students/:studentId/courses). If the issue stems from an unrecorded transfer credit or transcript lag, guide the student to submit a grade petition to the Registrar before course registration begins."
+    },
+    "16": {
+      "question": "How can I differentiate between a projected offering and an approved course?",
+      "answer": "In the Advisor Offerings view (/advisor/offerings), examine the decision status badge. Courses marked 'Decided: Open' have been explicitly confirmed by the coordinator, whereas 'Pending Review' indicates preliminary algorithmic demand."
+    },
+    "17": {
+      "question": "How do I provision user accounts and manage role assignments?",
+      "answer": "In the Admin Users panel (/admin/users), administrators can create new staff accounts, assign roles (Admin, Coordinator, Advisor), and toggle user active statuses. Student accounts are linked directly to official university IDs upon registration."
+    },
+    "18": {
+      "question": "Where can I review data import warnings and validation exceptions?",
+      "answer": "Open the Admin Imports page (/admin/imports) to inspect all historical file ingests, processing statuses, flagged rows, and validation warnings from SIS transcript dumps."
+    },
+    "19": {
+      "question": "How are university bylaws and credit limit matrices maintained?",
+      "answer": "Administrators configure bylaws and semester registration credit caps under /admin/bylaws and /admin/credit-limits. These tables provide the foundational parameters used by the forecast rules engine."
+    },
+    "20": {
+      "question": "Where can I inspect administrative audit logs for system actions?",
+      "answer": "Visit /admin/audit to inspect a chronological, immutable log of administrative events, including user permission adjustments, reference data updates, and import execution details."
+    },
+    "21": {
+      "question": "How do I switch the application language or color theme?",
+      "answer": "You can switch between English and Arabic or toggle between Light and Dark themes anytime using the header controls or through the Profile page (/profile). Your preferences persist automatically across sessions."
+    },
+    "22": {
+      "question": "What should I do if my university ID is not recognized during registration?",
+      "answer": "Account registration requires that your Nile University student ID already exists in the official registrar roster. If your ID is not found, contact the Computer Science department administration for roster synchronization."
+    }
+  },
   "empty": {
     "title": "No matching help topics",
     "description": "We couldn't find any guidelines or questions matching \"{{query}}\". Try adjusting your search keywords or switching categories.",
