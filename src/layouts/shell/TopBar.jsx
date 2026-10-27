@@ -58,18 +58,24 @@ export function TopBar({ role, user, onOpenMenu, onOpenExplain, onSignOut, unrea
         </NavLink>
         <Link
           to={PATHS.notifications}
-          aria-label={t("nav:notifications")}
+          aria-label={
+            unreadCount > 0
+              ? `${t("nav:notifications")} (${unreadCount > 99 ? "99+" : unreadCount})`
+              : t("nav:notifications")
+          }
           title={t("nav:notifications")}
           className="relative grid size-10 place-items-center rounded-md text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
         >
           <Icon name="notifications" size={22} />
           {unreadCount > 0 && (
             <span
-              aria-hidden="true"
               className={cn(
-                "absolute end-2 top-2 size-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest",
+                "absolute -top-0.5 -end-0.5 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-error px-1 text-[11px] font-bold leading-none text-white shadow-sm ring-2 ring-surface-container-lowest",
+                unreadCount > 9 && "px-1.5",
               )}
-            />
+            >
+              {unreadCount > 99 ? "99+" : unreadCount}
+            </span>
           )}
         </Link>
         <PreferenceControls className="hidden sm:flex" />

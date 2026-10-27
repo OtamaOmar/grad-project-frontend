@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Drawer } from "@/components/ui";
 import { NAVIGATION } from "@/config/navigation";
 import { ExplainPanel } from "@/features/explain/ExplainPanel";
+import { useUnreadNotifications } from "@/features/notifications/useNotifications";
 import { PreferenceControls } from "./shell/PreferenceControls";
 import { RoleNav } from "./shell/RoleNav";
 import { TopBar } from "./shell/TopBar";
@@ -16,10 +17,13 @@ import { TopBar } from "./shell/TopBar";
  */
 export function AppLayout({ role, user, onSignOut, showExplain = true, children }) {
   const { t } = useTranslation(["shell", "explain"]);
+  const { data: unreadData } = useUnreadNotifications();
+  const unreadCount = unreadData?.unread_count ?? 0;
   const items = NAVIGATION[role] ?? [];
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const { pathname } = useLocation();
+
   // Each drawer remembers the path it was opened on, so navigating closes it.
   const [menuOpenOn, setMenuOpenOn] = useState(null);
   const [explainOpenOn, setExplainOpenOn] = useState(null);
@@ -52,6 +56,7 @@ export function AppLayout({ role, user, onSignOut, showExplain = true, children 
         <TopBar
           role={role}
           user={user}
+          unreadCount={unreadCount}
           onSignOut={onSignOut}
           onOpenMenu={() => setMenuOpenOn(pathname)}
           onOpenExplain={showExplain ? () => setExplainOpenOn(pathname) : undefined}
