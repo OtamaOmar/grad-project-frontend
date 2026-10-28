@@ -1,0 +1,126 @@
+{
+  "systemTitle": "Academic Course Offering Planning System",
+  "universityName": "Nile University",
+  "facultyName": "Computer Science",
+  "branding": "Nile University · Computer Science",
+  "actions": {
+    "signIn": "Sign in",
+    "createAccount": "Request Account",
+    "goToDashboard": "Go to Dashboard",
+    "accessPortal": "Access Portal"
+  },
+  "hero": {
+    "badge": "Academic Course Offering Planning System",
+    "headline": "Plan the term before students register.",
+    "description": "ACOPS helps academic teams organize course offerings, review projected demand, and coordinate academic planning before students register. Cohort demand projections synthesize graduation requirements across the 2019 and 2025 bylaws while departmental coordinators confirm final section offerings."
+  },
+  "matrix": {
+    "title": "Fall 2026 Preliminary Load Matrix",
+    "badge": "Term Draft v3",
+    "counter": "Displaying 6 active requirements",
+    "columns": {
+      "course": "Course",
+      "headcount": "Headcount",
+      "lecture": "Lecture",
+      "tutorial": "Tutorial",
+      "lab": "Lab",
+      "status": "Audit Status"
+    },
+    "statuses": {
+      "clear": "Clear",
+      "pendingAudit": "Pending Audit",
+      "prereqFlag": "Prereq Flag"
+    },
+    "rows": [
+      {
+        "code": "CS 101",
+        "name": "Intro to Computer Science",
+        "headcount": 240,
+        "lecture": 2,
+        "tutorial": 8,
+        "lab": 8,
+        "status": "clear"
+      },
+      {
+        "code": "CS 212",
+        "name": "Data Structures & Algorithms",
+        "headcount": 185,
+        "lecture": 2,
+        "tutorial": 6,
+        "lab": 6,
+        "status": "pendingAudit"
+      },
+      {
+        "code": "CS 311",
+        "name": "Operating Systems",
+        "headcount": 142,
+        "lecture": 1,
+        "tutorial": 4,
+        "lab": 4,
+        "status": "clear"
+      },
+      {
+        "code": "CS 340",
+        "name": "Database Systems",
+        "headcount": 160,
+        "lecture": 2,
+        "tutorial": 5,
+        "lab": 5,
+        "status": "pendingAudit"
+      },
+      {
+        "code": "CS 401",
+        "name": "Senior Capstone Project I",
+        "headcount": 94,
+        "lecture": 1,
+        "tutorial": 0,
+        "lab": 3,
+        "status": "clear"
+      },
+      {
+        "code": "MATH 112",
+        "name": "Calculus for Computer Science",
+        "headcount": 210,
+        "lecture": 2,
+        "tutorial": 7,
+        "lab": 0,
+        "status": "prereqFlag"
+      }
+    ]
+  },
+  "roles": {
+    "title": "A Unified Planning System for All Four Roles",
+    "subtitle": "ACOPS connects institutional administration, departmental coordination, student planning, and academic advising into one unified workflow.",
+    "admin": {
+      "title": "System Administration",
+      "desc": "Oversee degree bylaws, verify grade scales, manage data imports, and monitor departmental audit logs.",
+      "action": "Sign in as Admin"
+    },
+    "coordinator": {
+      "title": "Course Offering Coordination",
+      "desc": "Review cohort demand forecasts, calculate lecture and lab sections, and record binding opening decisions.",
+      "action": "Sign in as Coordinator"
+    },
+    "student": {
+      "title": "Student Degree Progression",
+      "desc": "View upcoming course offerings, verify prerequisite eligibility, and plan remaining degree requirements.",
+      "action": "Sign in as Student"
+    },
+    "advisor": {
+      "title": "Academic Advising",
+      "desc": "Track advisee academic progress, identify graduation roadblocks, and inspect projected course availability.",
+      "action": "Sign in as Advisor"
+    }
+  },
+  "contactModal": {
+    "title": "Institutional Account Provisioning",
+    "desc": "ACOPS accounts are managed and provisioned by Nile University Faculty of Computer Science administration. If you are an enrolled student or faculty member needing access, please contact IT Support or your department coordinator.",
+    "office": "Faculty of CS Administration, Building B - 2nd Floor",
+    "email": "it-support@nu.edu.eg",
+    "close": "Close"
+  },
+  "footer": {
+    "university": "Nile University · Faculty of Computer Science",
+    "tagline": "Academic Course Offering Planning System (ACOPS) · All rights reserved."
+  }
+}
