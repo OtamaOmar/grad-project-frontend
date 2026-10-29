@@ -47,7 +47,7 @@ export default [
     path: "/me/onboarding",
     handler: ({ body }) => {
       const user = requireRole();
-      const allowed = ["full_name", "birthdate", "preferred_language", "preferred_theme"];
+      const allowed = ["full_name", "birthdate", "preferred_language", "preferred_theme", "phone", "office_hours"];
       for (const key of allowed) if (body?.[key] !== undefined) user[key] = body[key];
       user.onboarded_at ??= now();
       user.updated_at = now();
