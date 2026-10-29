@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Drawer } from "@/components/ui";
 import { NAVIGATION } from "@/config/navigation";
-import { ExplainPanel } from "@/features/explain/ExplainPanel";
+import { AIChatSidebar } from "@/features/chat/AIChatSidebar";
 import { useUnreadNotifications } from "@/features/notifications/useNotifications";
 import { PreferenceControls } from "./shell/PreferenceControls";
 import { RoleNav } from "./shell/RoleNav";
@@ -11,12 +11,12 @@ import { TopBar } from "./shell/TopBar";
 
 /**
  * Signed-in shell from the designs:
- *   sticky header (brand row + role tabs) │ page │ Explain panel (xl+, drawer below xl)
+ *   sticky header (brand row + role tabs) │ full-width page │ global AI Chat sidebar (slides over)
  * Below lg the tabs move into a start-side drawer.
  * Renders the matched child route, or `children` when given (e.g. a 403 page).
  */
-export function AppLayout({ role, user, onSignOut, showExplain = true, children }) {
-  const { t } = useTranslation(["shell", "explain"]);
+export function AppLayout({ role, user, onSignOut, children }) {
+  const { t } = useTranslation(["shell"]);
   const { data: unreadData } = useUnreadNotifications();
   const unreadCount = unreadData?.unread_count ?? 0;
   const items = NAVIGATION[role] ?? [];
@@ -24,15 +24,13 @@ export function AppLayout({ role, user, onSignOut, showExplain = true, children 
   const [headerHeight, setHeaderHeight] = useState(0);
   const { pathname } = useLocation();
 
-  // Each drawer remembers the path it was opened on, so navigating closes it.
+  // Mobile drawer remembers the path it was opened on, so navigating closes it.
   const [menuOpenOn, setMenuOpenOn] = useState(null);
-  const [explainOpenOn, setExplainOpenOn] = useState(null);
   const menuOpen = menuOpenOn === pathname;
-  const explainOpen = explainOpenOn === pathname;
 
-  // The Explain column sticks just below the header, whose height depends on the nav row.
   useEffect(() => {
     const header = headerRef.current;
+    if (!header) return;
     const observer = new ResizeObserver(([entry]) =>
       setHeaderHeight(entry.borderBoxSize?.[0]?.blockSize ?? header.offsetHeight),
     );
@@ -59,7 +57,6 @@ export function AppLayout({ role, user, onSignOut, showExplain = true, children 
           unreadCount={unreadCount}
           onSignOut={onSignOut}
           onOpenMenu={() => setMenuOpenOn(pathname)}
-          onOpenExplain={showExplain ? () => setExplainOpenOn(pathname) : undefined}
         />
         {items.length > 0 && (
           <div className="hidden border-t border-outline-variant/70 lg:block">
@@ -76,17 +73,9 @@ export function AppLayout({ role, user, onSignOut, showExplain = true, children 
         >
           <div className="mx-auto max-w-[90rem]">{children ?? <Outlet />}</div>
         </main>
-
-        {showExplain && (
-          <aside
-            className="sticky hidden w-explain shrink-0 border-s border-outline-variant bg-surface-container-low xl:block"
-            style={{ top: "var(--shell-top)", height: "calc(100dvh - var(--shell-top))" }}
-          >
-            <ExplainPanel role={role} />
-          </aside>
-        )}
       </div>
 
+      {/* Global Mobile Navigation Drawer */}
       <Drawer open={menuOpen} onClose={() => setMenuOpenOn(null)} side="start" title={t("menu")}>
         <RoleNav items={items} variant="list" />
         <div className="border-t border-outline-variant/70 p-4">
@@ -94,17 +83,8 @@ export function AppLayout({ role, user, onSignOut, showExplain = true, children 
         </div>
       </Drawer>
 
-      {showExplain && (
-        <Drawer
-          open={explainOpen}
-          onClose={() => setExplainOpenOn(null)}
-          side="end"
-          width="24rem"
-          title={t("explain:title")}
-        >
-          <ExplainPanel role={role} className="[&>header]:hidden" />
-        </Drawer>
-      )}
+      {/* Global AI Chat Sidebar (slides over from the right) */}
+      <AIChatSidebar role={role} />
     </div>
   );
 }
