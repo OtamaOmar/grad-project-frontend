@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "directory": "Directory",
+    "academicYear": "AY 2026–2027",
+    "title": "Account & Profile Settings",
+    "subtitle": "Manage your personal profile and application preferences.",
+    "ssoActive": "Nile Single Sign-On Active",
+    "ssoSync": "Credential verified with Registrar directory"
+  },
+  "identity": {
+    "faculty": "Faculty of Computer Science",
+    "tenured": "Tenured Faculty",
+    "registered": "Active Student",
+    "adminScope": "Faculty Administration"
+  },
+  "fields": {
+    "fullName": "Full Name",
+    "fullNameHint": "Official name appearing on academic offerings and departmental approvals.",
+    "email": "University Email",
+    "emailHint": "Primary contact for system notices, alerts, and registry communications.",
+    "phone": "Contact Phone Number",
+    "phoneHint": "Optional departmental or mobile phone contact.",
+    "office": "Department Office",
+    "officeHours": "Office Hours",
+    "officeHoursHint": "Student consultation availability and advisory office hours.",
+    "identifier": "Institutional Identifier",
+    "studentId": "Student University ID",
+    "staffCode": "Faculty / Staff Code",
+    "identifierHint": "Assigned by Registrar directory. Read-only institutional credential.",
+    "department": "Academic Department / Unit",
+    "program": "Degree Program & Track",
+    "role": "System Role & Permissions",
+    "roleDesc": "Assigned by faculty registrar directory. Contact Academic Affairs for role elevations.",
+    "restricted": "Restricted Authority",
+    "verified": "Verified Authority"
+  },
+  "preferences": {
+    "langTitle": "Curriculum Interface Language",
+    "enOption": "English (US)",
+    "enDesc": "Standard catalog syntax · LTR",
+    "arOption": "العربية (Arabic)",
+    "arDesc": "اللوائح والمقررات الدراسية · RTL",
+    "themeTitle": "Workspace Visual Theme",
+    "themeLight": "Light Mode",
+    "themeLightDesc": "Default academic high-contrast theme",
+    "themeDark": "Dark Mode",
+    "themeDarkDesc": "Low-light deep navy workspace"
+  },
+  "roles": {
+    "student": {
+      "title": "Academic Degree Progression",
+      "standing": "Academic Status",
+      "standingVal": "Good Standing · Regular",
+      "cohort": "Academic Cohort",
+      "cohortVal": "Cohort 2025 · 2025 Bylaw",
+      "creditHours": "Completed Credits",
+      "creditHoursVal": "34 Credit Hours (132 Total Required)",
+      "program": "Program Enrollment",
+      "programVal": "B.Sc. in Computer Science (General Track)",
+      "path": "Foundation Paths",
+      "pathVal": "English I · Calculus I"
+    },
+    "coordinator": {
+      "title": "Departmental Offering Coordination",
+      "scope": "Planning Scope",
+      "scopeVal": "Fall 2026 Planning Cycle · 6 Core Offerings",
+      "supervision": "Supervised Offerings",
+      "supervisionVal": "CS 101, CS 212, CS 311, CS 340, CS 401, MATH 112",
+      "load": "Total Departmental Load",
+      "loadVal": "18.0 Credit Hours · 34 Sections",
+      "committee": "Academic Committee",
+      "committeeVal": "Curriculum Planning & Section Allocation Panel"
+    },
+    "advisor": {
+      "title": "Academic Advising Portfolio",
+      "caseload": "Advisee Caseload",
+      "caseloadVal": "48 Assigned Students · 12 at-risk cases flagged",
+      "unit": "Advising Unit",
+      "unitVal": "Academic Support & Degree Audit Unit",
+      "office": "Advising Office",
+      "officeVal": "Building B - Room 204",
+      "hours": "Scheduled Office Hours",
+      "hoursVal": "Mon / Wed 11:00 AM – 1:00 PM"
+    },
+    "admin": {
+      "title": "System Governance & Administration",
+      "level": "Access Privilege Level",
+      "levelVal": "Master Administrative Authority",
+      "scope": "Administrative Scope",
+      "scopeVal": "All Academic Roles, Master Course Catalog & Data Imports",
+      "bylawAdmin": "Active Bylaw Governance",
+      "bylawAdminVal": "2019 Legacy Bylaw & 2025 Modern Bylaw Oversight",
+      "audit": "Audit Logs Access",
+      "auditVal": "Full Departmental & User Audit Trail Access"
+    }
+  },
+  "compliance": {
+    "title": "Curriculum Access & Compliance Auditing",
+    "text": "Course offerings, degree progressions, and bylaw variance submissions are subject to University Bylaw 2025 §4.2 oversight. Active session secured via Nile University SSO."
+  },
+  "actions": {
+    "save": "Save Changes",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "edit": "Edit Profile",
+    "changePassword": "Change Password",
+    "signOut": "Sign out",
+    "successToast": "Profile and preferences updated successfully.",
+    "errorToast": "Failed to update profile. Please verify your inputs."
+  }
+}
+
