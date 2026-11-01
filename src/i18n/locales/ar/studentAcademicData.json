@@ -1,0 +1,54 @@
+{
+  "breadcrumb": "السجل الأكاديمي / دفعة المرحلة الجامعية",
+  "title": "بياناتي الأكاديمية",
+  "academicYear": "العام الأكاديمي {{year}}",
+  "exportAudit": "تصدير السجل الأكاديمي",
+  "studentInfo": {
+    "studentId": "الرقم الجامعي: {{id}}",
+    "degreeCandidate": "مرشح للحصول على الدرجة العلمية",
+    "activeRegular": "طالب منتظم نشط",
+    "department": "القسم",
+    "bylaw": "اللائحة",
+    "cohort": "الدفعة",
+    "majorTrack": "المسار التخصصي"
+  },
+  "standingProgress": {
+    "title": "الوضع والتقدم الأكاديمي",
+    "statusPending": "الحالة قيد التقييم",
+    "goodStanding": "وضع أكاديمي جيد",
+    "academicStanding": "الوضع الأكاديمي",
+    "notYetScored": "لم يتم التقييم بعد",
+    "requiresGraded": "يتطلب ≥ 12 ساعة معتمدة مقدرة",
+    "cumulativeGpa": "المعدل التراكمي",
+    "termEvaluation": "تقييم الفصل",
+    "degreeCreditCompletion": "إنجاز الساعات المعتمدة للدرجة",
+    "creditsCount": "{{passed}} من أصل {{total}} ساعة معتمدة",
+    "coreBreakdown": "المتطلبات الأساسية: {{passed}}/{{total}} س.م.",
+    "electivesBreakdown": "المواد الاختيارية: {{passed}}/{{total}} س.م.",
+    "completedPercent": "تم إنجاز {{percent}}%"
+  },
+  "currentCourses": {
+    "title": "المقررات الحالية",
+    "enrollmentSummary": "{{count}} تسجيلات نشطة ({{credits}} ساعة معتمدة مسجلة)",
+    "courseCode": "رمز المقرر",
+    "courseTitle": "اسم المقرر",
+    "credits": "الساعات المعتمدة",
+    "term": "الفصل",
+    "section": "الشعبة",
+    "status": "الحالة",
+    "active": "نشط",
+    "creditsUnit": "{{credits}} ساعات معتمدة"
+  },
+  "completedCourses": {
+    "title": "المقررات المنجزة",
+    "passedSummary": "{{count}} مقررات مجتازة ({{credits}} ساعات مكتسبة)",
+    "grade": "الدرجة",
+    "passed": "ناجح"
+  },
+  "prerequisiteAlert": {
+    "title": "تنبيه قواعد المتطلبات السابقة للقسم",
+    "description": "اجتياز CSCI 201 (بتقدير C أو أعلى) يستوفي المتطلبات السابقة لـ CSCI 310 (نظم التشغيل) و CSCI 321 (نظم قواعد البيانات) للمقررات المتوقعة في خريف 2025.",
+    "viewDegreeTree": "عرض شجرة المقررات"
+  }
+}
+
