@@ -1,0 +1,75 @@
+{
+  "title": "مقرراتي الدراسية",
+  "subtitle": "عرض ومتابعة المقررات الدراسية في خطتك الأكاديمية ومحطات التسلسل وتوقعات المقررات المطروحة.",
+  "notice": "تنبيه:",
+  "noticeText": "هذه هي مقررات الخطة الدراسية المستخدمة في التنبؤ، وليست شاشة تسجيل المقررات.",
+  "planningWindow": "فترة التخطيط: العام الأكاديمي {{year}}",
+  "curriculumVersion": "اللائحة {{version}}",
+  "cohortLabel": "دفعة {{cohort}}",
+  "summary": {
+    "degreeMatrixTitle": "مصفوفة الدرجة العلمية",
+    "degreeMatrixDesc": "مقررات علوم الحاسب الإجبارية",
+    "completedOfTotal": "تم اجتياز {{completed}} من أصل {{total}}",
+    "percentPlan": "{{percent}}% من الخطة",
+    "loadForecastTitle": "توقع العبء الدراسي",
+    "loadForecastDesc": "الساعات المخططة للدورة الأكاديمية",
+    "creditUnits": "{{credits}} ساعات معتمدة",
+    "optimalLoad": "عبء دراسي مثالي",
+    "cycleDetail": "خريف السنة الثانية: {{fallCredits}} س.م (متوقع) • ربيع السنة الثانية: {{springCredits}} س.م (لاحقاً)",
+    "auditValidationTitle": "التحقق والتدقيق الأكاديمي",
+    "auditValidationDesc": "محرك استيفاء المتطلبات",
+    "unmetBlocks": "{{count}} متطلبات سابقة غير مستوفاة",
+    "passingStatus": "مستوفٍ للشروط",
+    "noHolds": "لا توجد عوائق في المتطلبات السابقة للمراحل الدراسية للدفعة."
+  },
+  "controls": {
+    "matrixTitle": "مصفوفة التنبؤ بالخطة الدراسية",
+    "indexedCount": "{{count}} مقررات مدرجة",
+    "allTerms": "جميع فصول التنبؤ",
+    "fallExpected": "خريف السنة 2 (متوقع)",
+    "springLater": "ربيع السنة 2 (لاحقاً)",
+    "allStatuses": "جميع الحالات",
+    "expected": "متوقع",
+    "later": "لاحقاً",
+    "behind": "متأخر",
+    "printForecast": "طباعة التقرير",
+    "searchPlaceholder": "البحث برمز المقرر أو اسمه...",
+    "resetFilters": "إعادة تعيين التصفية"
+  },
+  "table": {
+    "course": "المقرر",
+    "title": "اسم المقرر",
+    "planTerm": "فصل الخطة",
+    "state": "الحالة",
+    "action": "الإجراء",
+    "viewOfferingDetails": "عرض تفاصيل الطرح",
+    "viewDegreeRule": "عرض قواعد الدرجة",
+    "creditsCore": "{{credits}} ساعات معتمدة • {{area}}"
+  },
+  "modal": {
+    "courseDetails": "تفاصيل المقرر",
+    "courseCode": "رمز المقرر",
+    "credits": "الساعات المعتمدة",
+    "area": "مجال الخطة",
+    "term": "الفصل المحدد",
+    "eligibility": "حالة الأهلية",
+    "prerequisites": "المتطلبات السابقة",
+    "noPrereqs": "لا توجد متطلبات سابقة (تسجيل مباشر)",
+    "description": "وصف المقرر",
+    "openOfferingPage": "الانتقال إلى صفحة تفاصيل الطرح"
+  },
+  "cards": {
+    "policyTitle": "سياسة التنبؤ بالمقررات §7.1",
+    "policyDesc": "تُحدد المقررات المتوقعة لتقدير تعيين أعضاء هيئة التدريس وسعة المعامل المتاحة. أما المقررات المصنفة كـ 'لاحقاً' فمجدولة وفق تقدم الدفعة ومعدل السير الأكاديمي المعتاد.",
+    "readBylaws": "قراءة اللائحة الأكاديمية لجامعة النيل",
+    "sequenceMilestoneTitle": "المحطة المتتابعة القادمة",
+    "semesterTransition": "الانتقال للفصل الدراسي الرابع",
+    "chainVerification": "التحقق من التسلسل: جميع المتطلبات السابقة مستوفاة بالكامل",
+    "verifyAllNodes": "التحقق من كافة المحطات"
+  },
+  "empty": {
+    "noCoursesFound": "لم يتم العثور على مقررات",
+    "noCoursesMatching": "لا توجد مقررات تطابق البحث والتصفية الحالية. يرجى تجربة تعديل معايير البحث."
+  }
+}
+
