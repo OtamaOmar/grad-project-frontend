@@ -26,10 +26,10 @@
   },
   "controls": {
     "searchPlaceholder": "Search course code or title...",
-    "allOfferings": "All Offerings ({{count}})",
-    "underReview": "Under Review ({{count}})",
-    "approved": "Approved ({{count}})",
-    "eligibleOnly": "Eligible for Me ({{count}})",
+    "allOfferings": "All Offerings",
+    "underReview": "Under Review",
+    "approved": "Approved",
+    "eligibleOnly": "Eligible for Me",
     "allEligibility": "All Eligibility",
     "eligible": "Eligible",
     "notEligible": "Not Eligible",
@@ -80,9 +80,17 @@
     "protocolDesc": "Department rules governing approval states and student scheduling constraints.",
     "tutorialRule": "Tutorial Split Rule: Any course with expected enrollment > 30 students must schedule at least two tutorial divisions.",
     "labRule": "Lab Section Floor: CSCI 211 has 2 hardware labs sanctioned per 15-seat laboratory limits.",
-    "meeting": "Coordinator Meeting: June 14, 2026"
+    "meeting": "Coordinator Meeting: June 14, 2026",
+    "exploreCapacity": "Explore capacity",
+    "viewRules": "View all rules"
   },
   "modal": {
+    "capacityTitle": "Classroom Capacity & Enrollment Distribution",
+    "capacitySubtitle": "Fall 2026 Planning Cycle • 50 seats/section nominal room limit",
+    "progressionTitle": "Curriculum Progression Feeder Pipeline",
+    "progressionSubtitle": "Prerequisite intake sources feeding the projected Fall 2026 catalog",
+    "protocolTitle": "Academic Course Offering Protocol & Standards",
+    "protocolSubtitle": "Department rules governing approval states, division splits, and scheduling limits",
     "courseDetails": "Course Offering Details",
     "code": "Course Code",
     "credits": "Credits",
