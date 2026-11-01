@@ -1,0 +1,54 @@
+{
+  "breadcrumb": "Curriculum Record / Undergraduate Cohort",
+  "title": "My Academic Data",
+  "academicYear": "Academic Year {{year}}",
+  "exportAudit": "Export Audit",
+  "studentInfo": {
+    "studentId": "Student ID: {{id}}",
+    "degreeCandidate": "Degree Candidate",
+    "activeRegular": "Active Regular",
+    "department": "Department",
+    "bylaw": "Bylaw",
+    "cohort": "Cohort",
+    "majorTrack": "Major Track"
+  },
+  "standingProgress": {
+    "title": "Standing & Progress",
+    "statusPending": "Status Pending",
+    "goodStanding": "Good Standing",
+    "academicStanding": "Academic Standing",
+    "notYetScored": "Not yet scored",
+    "requiresGraded": "Requires ≥ 12 graded cr.",
+    "cumulativeGpa": "Cumulative GPA",
+    "termEvaluation": "Term evaluation",
+    "degreeCreditCompletion": "Degree Credit Completion",
+    "creditsCount": "{{passed}} of {{total}} Credits",
+    "coreBreakdown": "Core: {{passed}}/{{total}} cr.",
+    "electivesBreakdown": "Electives: {{passed}}/{{total}} cr.",
+    "completedPercent": "{{percent}}% Completed"
+  },
+  "currentCourses": {
+    "title": "Current Courses",
+    "enrollmentSummary": "{{count}} active enrollments ({{credits}} Registered Credits)",
+    "courseCode": "Course Code",
+    "courseTitle": "Course Title",
+    "credits": "Credits",
+    "term": "Term",
+    "section": "Section",
+    "status": "Status",
+    "active": "Active",
+    "creditsUnit": "{{credits}} Credits"
+  },
+  "completedCourses": {
+    "title": "Completed Courses",
+    "passedSummary": "{{count}} courses passed ({{credits}} earned credits)",
+    "grade": "Grade",
+    "passed": "Passed"
+  },
+  "prerequisiteAlert": {
+    "title": "Departmental Prerequisite Rule Alert",
+    "description": "Passing CSCI 201 (C or higher) satisfies prerequisites for CSCI 310 (Operating Systems) and CSCI 321 (Database Systems) for Expected Offerings in Fall 2025.",
+    "viewDegreeTree": "View Degree Tree"
+  }
+}
+
