@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,7 @@ import { Button, Dialog, EmptyState, ErrorState, Icon, Skeleton } from "@/compon
 import { useAuth } from "@/hooks/useAuth";
 import { PATHS } from "@/routes/paths";
 import { studentApi } from "@/services/api/student/student";
+import { cn } from "@/utils/cn";
 
 // Fallback courses matching the official Nile University CS Curriculum Roadmap
 const DEFAULT_COURSES = [
@@ -77,6 +78,63 @@ export default function MyCoursesPage() {
   const [termFilter, setTermFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [selectedCourse, setSelectedCourse] = useState(null);
+
+  // Dropdown menus state
+  const [termMenuOpen, setTermMenuOpen] = useState(false);
+  const [statusMenuOpen, setStatusMenuOpen] = useState(false);
+  const termMenuRef = useRef(null);
+  const statusMenuRef = useRef(null);
+
+  useEffect(() => {
+    if (!termMenuOpen && !statusMenuOpen) return;
+    const onPointer = (e) => {
+      if (termMenuOpen && !termMenuRef.current?.contains(e.target)) {
+        setTermMenuOpen(false);
+      }
+      if (statusMenuOpen && !statusMenuRef.current?.contains(e.target)) {
+        setStatusMenuOpen(false);
+      }
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setTermMenuOpen(false);
+        setStatusMenuOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [termMenuOpen, statusMenuOpen]);
+
+  const termOptions = useMemo(
+    () => [
+      { value: "all", label: t("controls.allTerms", { defaultValue: "All Forecast Terms" }) },
+      { value: "fall", label: t("controls.fallExpected", { defaultValue: "Fall Year 2 (Expected)" }) },
+      { value: "spring", label: t("controls.springLater", { defaultValue: "Spring Year 2 (Later)" }) },
+    ],
+    [t],
+  );
+
+  const statusOptions = useMemo(
+    () => [
+      { value: "all", label: t("controls.allStatuses", { defaultValue: "All Statuses" }), dot: null },
+      { value: "expected", label: t("controls.expected", { defaultValue: "Expected" }), dot: "bg-[#B54708]" },
+      { value: "later", label: t("controls.later", { defaultValue: "Later" }), dot: "bg-secondary" },
+      { value: "behind", label: t("controls.behind", { defaultValue: "Behind" }), dot: "bg-error" },
+    ],
+    [t],
+  );
+
+  const currentTermLabel = useMemo(() => {
+    return termOptions.find((opt) => opt.value === termFilter)?.label || "All Forecast Terms";
+  }, [termOptions, termFilter]);
+
+  const currentStatusOption = useMemo(() => {
+    return statusOptions.find((opt) => opt.value === statusFilter) || statusOptions[0];
+  }, [statusOptions, statusFilter]);
 
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["student", "my-courses"],
@@ -384,34 +442,149 @@ export default function MyCoursesPage() {
               />
             </div>
 
-            {/* Term Filter */}
-            <div className="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg border border-outline-variant/40">
-              <Icon name="filter_list" size={16} className="text-secondary" />
-              <select
-                value={termFilter}
-                onChange={(e) => setTermFilter(e.target.value)}
-                aria-label="Filter terms"
-                className="bg-transparent text-label-sm font-semibold text-secondary pr-2 focus:outline-none cursor-pointer"
+            {/* Custom Modern Term Filter Dropdown */}
+            <div ref={termMenuRef} className="relative inline-block">
+              <button
+                type="button"
+                onClick={() => {
+                  setTermMenuOpen((prev) => !prev);
+                  setStatusMenuOpen(false);
+                }}
+                aria-haspopup="listbox"
+                aria-expanded={termMenuOpen}
+                className={cn(
+                  "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/50 transition-all",
+                  "hover:border-primary/40 hover:bg-surface-container focus:outline-none focus:ring-2 focus:ring-primary/20",
+                  termMenuOpen && "border-primary ring-2 ring-primary/20 bg-surface-container",
+                )}
               >
-                <option value="all">{t("controls.allTerms", { defaultValue: "All Forecast Terms" })}</option>
-                <option value="fall">{t("controls.fallExpected", { defaultValue: "Fall Year 2 (Expected)" })}</option>
-                <option value="spring">{t("controls.springLater", { defaultValue: "Spring Year 2 (Later)" })}</option>
-              </select>
+                <Icon name="filter_list" size={16} className="text-secondary shrink-0" />
+                <span className="text-label-sm font-semibold text-on-surface">
+                  {currentTermLabel}
+                </span>
+                <Icon
+                  name="expand_more"
+                  size={16}
+                  className={cn(
+                    "text-secondary transition-transform duration-200",
+                    termMenuOpen && "rotate-180 text-primary",
+                  )}
+                />
+              </button>
+
+              {termMenuOpen && (
+                <div
+                  role="listbox"
+                  className="absolute left-0 mt-1.5 w-60 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 animate-in fade-in zoom-in-95 duration-100"
+                >
+                  <div className="px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-secondary">
+                    {t("controls.filterByTerm", { defaultValue: "Filter by Term" })}
+                  </div>
+                  <div className="space-y-0.5 mt-1">
+                    {termOptions.map((opt) => {
+                      const isSelected = termFilter === opt.value;
+                      return (
+                        <button
+                          key={opt.value}
+                          type="button"
+                          role="option"
+                          aria-selected={isSelected}
+                          onClick={() => {
+                            setTermFilter(opt.value);
+                            setTermMenuOpen(false);
+                          }}
+                          className={cn(
+                            "w-full flex items-center justify-between px-3 py-2 rounded-lg text-start transition-colors text-label-sm",
+                            isSelected
+                              ? "bg-primary/8 text-primary font-semibold border border-primary/20"
+                              : "text-on-surface hover:bg-surface-container-low border border-transparent",
+                          )}
+                        >
+                          <span>{opt.label}</span>
+                          {isSelected && <Icon name="check" size={16} className="text-primary shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
-            {/* Status Filter */}
-            <div className="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg border border-outline-variant/40">
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                aria-label="Filter status"
-                className="bg-transparent text-label-sm font-semibold text-secondary pr-2 focus:outline-none cursor-pointer"
+            {/* Custom Modern Status Filter Dropdown */}
+            <div ref={statusMenuRef} className="relative inline-block">
+              <button
+                type="button"
+                onClick={() => {
+                  setStatusMenuOpen((prev) => !prev);
+                  setTermMenuOpen(false);
+                }}
+                aria-haspopup="listbox"
+                aria-expanded={statusMenuOpen}
+                className={cn(
+                  "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/50 transition-all",
+                  "hover:border-primary/40 hover:bg-surface-container focus:outline-none focus:ring-2 focus:ring-primary/20",
+                  statusMenuOpen && "border-primary ring-2 ring-primary/20 bg-surface-container",
+                )}
               >
-                <option value="all">{t("controls.allStatuses", { defaultValue: "All Statuses" })}</option>
-                <option value="expected">{t("controls.expected", { defaultValue: "Expected" })}</option>
-                <option value="later">{t("controls.later", { defaultValue: "Later" })}</option>
-                <option value="behind">{t("controls.behind", { defaultValue: "Behind" })}</option>
-              </select>
+                {currentStatusOption.dot && (
+                  <span className={cn("w-2 h-2 rounded-full shrink-0", currentStatusOption.dot)} />
+                )}
+                <span className="text-label-sm font-semibold text-on-surface">
+                  {currentStatusOption.label}
+                </span>
+                <Icon
+                  name="expand_more"
+                  size={16}
+                  className={cn(
+                    "text-secondary transition-transform duration-200",
+                    statusMenuOpen && "rotate-180 text-primary",
+                  )}
+                />
+              </button>
+
+              {statusMenuOpen && (
+                <div
+                  role="listbox"
+                  className="absolute left-0 mt-1.5 w-52 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 animate-in fade-in zoom-in-95 duration-100"
+                >
+                  <div className="px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-secondary">
+                    {t("controls.filterByStatus", { defaultValue: "Filter by Status" })}
+                  </div>
+                  <div className="space-y-0.5 mt-1">
+                    {statusOptions.map((opt) => {
+                      const isSelected = statusFilter === opt.value;
+                      return (
+                        <button
+                          key={opt.value}
+                          type="button"
+                          role="option"
+                          aria-selected={isSelected}
+                          onClick={() => {
+                            setStatusFilter(opt.value);
+                            setStatusMenuOpen(false);
+                          }}
+                          className={cn(
+                            "w-full flex items-center justify-between px-3 py-2 rounded-lg text-start transition-colors text-label-sm",
+                            isSelected
+                              ? "bg-primary/8 text-primary font-semibold border border-primary/20"
+                              : "text-on-surface hover:bg-surface-container-low border border-transparent",
+                          )}
+                        >
+                          <div className="flex items-center gap-2">
+                            {opt.dot ? (
+                              <span className={cn("w-2 h-2 rounded-full shrink-0", opt.dot)} />
+                            ) : (
+                              <span className="w-2 h-2 rounded-full shrink-0 bg-outline/40" />
+                            )}
+                            <span>{opt.label}</span>
+                          </div>
+                          {isSelected && <Icon name="check" size={16} className="text-primary shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Reset Filters */}
@@ -526,19 +699,34 @@ export default function MyCoursesPage() {
                           </span>
                         )}
                       </td>
-                      <td className="py-3.5 px-5 text-end">
-                        <div className="flex items-center justify-end gap-2">
+                      <td className="py-3.5 px-5 text-end whitespace-nowrap">
+                        <div className="flex items-center justify-end">
                           <button
                             type="button"
                             onClick={() => setSelectedCourse(course)}
-                            className="inline-flex items-center gap-1 text-label-sm font-semibold text-primary hover:text-on-primary-fixed-variant transition-colors py-1 px-2.5 rounded-lg hover:bg-surface-container"
+                            className={cn(
+                              "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-label-sm font-semibold transition-all whitespace-nowrap",
+                              "bg-surface-container-lowest text-primary border border-outline-variant/70 shadow-xs",
+                              "hover:bg-primary hover:text-white hover:border-primary hover:shadow-sm",
+                              "focus:outline-none focus:ring-2 focus:ring-primary/20",
+                              "group/btn cursor-pointer",
+                            )}
                           >
+                            <Icon
+                              name={isExpected ? "visibility" : "menu_book"}
+                              size={15}
+                              className="text-primary/70 group-hover/btn:text-white transition-colors"
+                            />
                             <span>
                               {isExpected
                                 ? t("table.viewOfferingDetails", { defaultValue: "View Offering Details" })
                                 : t("table.viewDegreeRule", { defaultValue: "View Degree Rule" })}
                             </span>
-                            <Icon name={isExpected ? "arrow_forward" : "chevron_right"} size={16} />
+                            <Icon
+                              name={isExpected ? "arrow_forward" : "chevron_right"}
+                              size={14}
+                              className="text-primary/70 group-hover/btn:text-white group-hover/btn:translate-x-0.5 transition-all"
+                            />
                           </button>
                         </div>
                       </td>
