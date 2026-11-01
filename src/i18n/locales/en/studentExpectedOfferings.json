@@ -1,0 +1,104 @@
+{
+  "breadcrumb": {
+    "planning": "Curriculum Planning",
+    "projections": "Projections",
+    "term": "Fall 2026"
+  },
+  "title": "Expected Course Offerings — {{term}}",
+  "subtitle": "Explore courses expected to be offered in upcoming academic terms and plan your semester pathway.",
+  "availabilityNotice": "Availability is the coordinator's decision, not a promise.",
+  "quickStats": {
+    "coursesPlanned": "Courses Planned",
+    "projectedUnit": "{{count}} Projected",
+    "meanEnrollment": "Mean Enrollment",
+    "exportReport": "Export Report"
+  },
+  "terms": {
+    "fall2026": "Fall 2026 (Upcoming Planning Term)",
+    "spring2027": "Spring 2027 (Forecast Preview)",
+    "fall2025": "Fall 2025 (Previous Cycle)"
+  },
+  "summary": {
+    "totalCourses": "Total Expected Courses",
+    "onMyPlan": "On Degree Plan",
+    "eligible": "Eligible to Register",
+    "needsPrereq": "Needs Prerequisite"
+  },
+  "controls": {
+    "searchPlaceholder": "Search course code or title...",
+    "allOfferings": "All Offerings ({{count}})",
+    "underReview": "Under Review ({{count}})",
+    "approved": "Approved ({{count}})",
+    "eligibleOnly": "Eligible for Me ({{count}})",
+    "allEligibility": "All Eligibility",
+    "eligible": "Eligible",
+    "notEligible": "Not Eligible",
+    "passed": "Already Passed",
+    "cohortBasis": "Cohort Basis: {{cohort}}",
+    "model": "Model: {{model}}",
+    "resetFilters": "Reset filters"
+  },
+  "table": {
+    "course": "Course",
+    "expectedHeadcount": "Expected Headcount",
+    "lecture": "Lecture",
+    "tutorial": "Tutorial",
+    "lab": "Lab",
+    "prereqs": "Prerequisites",
+    "availability": "Availability",
+    "details": "Details",
+    "inReview": "In review",
+    "approved": "Approved",
+    "cancelled": "Not offered",
+    "offeringDetails": "Offering Details",
+    "onPlanBadge": "On Plan",
+    "noPrereqs": "None",
+    "reqPrefix": "Req: "
+  },
+  "footer": {
+    "showing": "Showing {{count}} expected courses",
+    "estimatedSections": "Estimated Sections: {{lecture}} Lecture / {{tutorial}} Tutorial / {{lab}} Lab",
+    "progressionStandards": "Calculated under Academic Bylaw 2025 cohort progression standards"
+  },
+  "cards": {
+    "capacityTitle": "Capacity Distribution",
+    "capacityBadge": "Fall Target",
+    "capacityDesc": "Target classroom capacity against headcounts calculated by prerequisite pipeline.",
+    "roomCeiling": "Room Ceiling: 50 seats/sec",
+    "adjustBounds": "Adjust bounds",
+    "progressionTitle": "Progression Feeder",
+    "progressionDesc": "Prerequisite intake sources feeding the projected Fall 2026 course catalog.",
+    "progFund": "CSCI 102 (Prog. Fund.)",
+    "progFundPassed": "92 Passed",
+    "progFundFeed": "feeds CSCI 207 & CSCI 211 with 91.2% retention factor",
+    "calcOne": "MATH 101 (Calc I)",
+    "calcOnePassed": "84 Passed",
+    "calcOneFeed": "feeds MATH 201 & CSCI 214 with 86.4% historical transition",
+    "confidence": "Model Confidence: 94.2%",
+    "auditGraph": "Audit Graph",
+    "protocolTitle": "Offering Protocol",
+    "protocolDesc": "Department rules governing approval states and student scheduling constraints.",
+    "tutorialRule": "Tutorial Split Rule: Any course with expected enrollment > 30 students must schedule at least two tutorial divisions.",
+    "labRule": "Lab Section Floor: CSCI 211 has 2 hardware labs sanctioned per 15-seat laboratory limits.",
+    "meeting": "Coordinator Meeting: June 14, 2026"
+  },
+  "modal": {
+    "courseDetails": "Course Offering Details",
+    "code": "Course Code",
+    "credits": "Credits",
+    "department": "Department / Area",
+    "headcount": "Predicted Headcount",
+    "weeklyHours": "Weekly Hours",
+    "weeklyHoursVal": "{{lecture}}h Lecture • {{tutorial}}h Tutorial • {{lab}}h Lab",
+    "prerequisites": "Prerequisite Status",
+    "allPassed": "All prerequisites completed and verified",
+    "missingPrereqs": "Pending prerequisite completion: {{courses}}",
+    "decisionState": "Offering Status",
+    "openOfferings": "Full Details & Syllabi"
+  },
+  "empty": {
+    "title": "No expected offerings found",
+    "description": "No courses match the current search or filters. Try adjusting your search query or reset the filters."
+  }
+}
+
