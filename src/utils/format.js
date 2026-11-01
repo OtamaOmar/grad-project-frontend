@@ -60,4 +60,3 @@ export function formatRelativeTime(value) {
   }
   return formatDate(value, "datetime");
 }
-
