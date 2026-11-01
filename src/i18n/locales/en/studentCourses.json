@@ -1,0 +1,75 @@
+{
+  "title": "My Courses",
+  "subtitle": "View and track your curriculum courses, planned sequence milestones, and offering forecast status.",
+  "notice": "Notice:",
+  "noticeText": "These are the plan courses the forecast used. This is not a registration screen.",
+  "planningWindow": "Planning Window: Academic Year {{year}}",
+  "curriculumVersion": "Curriculum {{version}}",
+  "cohortLabel": "Cohort {{cohort}}",
+  "summary": {
+    "degreeMatrixTitle": "Degree Matrix",
+    "degreeMatrixDesc": "Required CS Courses",
+    "completedOfTotal": "{{completed}} of {{total}} completed",
+    "percentPlan": "{{percent}}% Plan",
+    "loadForecastTitle": "Load Forecast",
+    "loadForecastDesc": "Planned Cycle Credits",
+    "creditUnits": "{{credits}} Credit Units",
+    "optimalLoad": "Optimal Load",
+    "cycleDetail": "Fall Year 2: {{fallCredits}} CR (Forecasted) • Spring Year 2: {{springCredits}} CR (Later)",
+    "auditValidationTitle": "Audit Validation",
+    "auditValidationDesc": "Clearance Engine",
+    "unmetBlocks": "{{count}} Unmet Pre-req Blocks",
+    "passingStatus": "Passing",
+    "noHolds": "No standing prerequisite holds for cohort milestones."
+  },
+  "controls": {
+    "matrixTitle": "Curriculum Forecast Matrix",
+    "indexedCount": "{{count}} Courses Indexed",
+    "allTerms": "All Forecast Terms",
+    "fallExpected": "Fall Year 2 (Expected)",
+    "springLater": "Spring Year 2 (Later)",
+    "allStatuses": "All Statuses",
+    "expected": "Expected",
+    "later": "Later",
+    "behind": "Behind",
+    "printForecast": "Print Forecast",
+    "searchPlaceholder": "Search course code or title...",
+    "resetFilters": "Reset filters"
+  },
+  "table": {
+    "course": "Course",
+    "title": "Course Title",
+    "planTerm": "Plan Term",
+    "state": "State",
+    "action": "Action",
+    "viewOfferingDetails": "View Offering Details",
+    "viewDegreeRule": "View Degree Rule",
+    "creditsCore": "{{credits}} Credits • {{area}}"
+  },
+  "modal": {
+    "courseDetails": "Course Details",
+    "courseCode": "Course Code",
+    "credits": "Credits",
+    "area": "Curriculum Area",
+    "term": "Scheduled Term",
+    "eligibility": "Eligibility Status",
+    "prerequisites": "Prerequisites",
+    "noPrereqs": "None (Direct entry)",
+    "description": "Course Description",
+    "openOfferingPage": "Go to Offering Details Page"
+  },
+  "cards": {
+    "policyTitle": "Curriculum Forecast Policy §7.1",
+    "policyDesc": "Expected courses are flagged for projected faculty assignment and lab capacity reserves. Courses designated as Later are scheduled according to cohort progression and standard milestone pacing.",
+    "readBylaws": "Read Nile University Academic Bylaws",
+    "sequenceMilestoneTitle": "Upcoming Sequence Milestone",
+    "semesterTransition": "Semester 4 Transition",
+    "chainVerification": "Chain verification: Complete prerequisites satisfied",
+    "verifyAllNodes": "Verify All Nodes"
+  },
+  "empty": {
+    "noCoursesFound": "No courses found",
+    "noCoursesMatching": "No courses match the current search or filters. Try adjusting your query."
+  }
+}
+
