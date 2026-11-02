@@ -214,4 +214,11 @@ export const placements = [
   },
 ];
 
-export const findCourse = (id) => courses.find((course) => course.id === Number(id));
+export const findCourse = (id) =>
+  courses.find(
+    (course) =>
+      course.id === Number(id) ||
+      course.code?.toLowerCase() === String(id).toLowerCase() ||
+      course.code?.replace(/[\s-_]+/g, "").toLowerCase() ===
+        String(id).replace(/[\s-_]+/g, "").toLowerCase(),
+  );

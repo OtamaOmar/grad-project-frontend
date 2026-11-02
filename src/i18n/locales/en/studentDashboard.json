@@ -1,0 +1,127 @@
+{
+  "header": {
+    "breadcrumb": "Curriculum Workspace / Undergraduate Computer Science",
+    "title": "Student Dashboard",
+    "welcome": "Welcome back, {{name}}",
+    "subtitle": "Here is an overview of your academic progress, enrolled courses, and planning milestones.",
+    "activeTerm": "Term: {{term}}",
+    "auditCycle": "Active Audit Cycle #{{cycle}}",
+    "exportAudit": "Export Degree Audit"
+  },
+  "notificationBanner": {
+    "title": "Degree Audit & Offering Forecast",
+    "pendingReview": "Pending Review",
+    "description": "Fall 2026 forecast is in review by the Academic Curriculum Board.",
+    "updatedTime": "Updated 14 Oct 2025 · 09:15 UTC",
+    "inspectQueue": "Inspect Queue"
+  },
+  "summaryCards": {
+    "gpa": {
+      "label": "Cumulative GPA",
+      "scale": "/ 4.00",
+      "honors": "Good Academic Standing",
+      "hint": "Current cumulative grade point average"
+    },
+    "credits": {
+      "label": "Degree Progress",
+      "total": "/ {{total}} total credits",
+      "progress": "{{percent}}% Completed",
+      "completed": "{{count}} cr completed",
+      "remaining": "{{count}} cr remaining",
+      "hint": "Foundational & core credit allocation"
+    },
+    "courses": {
+      "label": "My Current Courses",
+      "count": "{{count}} Enrolled",
+      "credits": "{{count}} Credit Hours",
+      "active": "Active this semester",
+      "hint": "Currently enrolled courses"
+    },
+    "standing": {
+      "label": "Academic Standing",
+      "good": "Good Standing",
+      "activeRegular": "Active Regular",
+      "probation": "Academic Warning",
+      "notScored": "Not yet scored",
+      "bylawCompliance": "In Full Bylaw Compliance",
+      "hint": "Official standing verification"
+    }
+  },
+  "currentCourses": {
+    "title": "My Current Courses",
+    "subtitle": "Active courses you are currently attending this term",
+    "viewAll": "View All Courses",
+    "code": "Course Code",
+    "courseTitle": "Course Title",
+    "credits": "Credits",
+    "term": "Term",
+    "section": "Section",
+    "status": "Status",
+    "enrolled": "Enrolled",
+    "inProgress": "In Progress",
+    "empty": "You have no active course enrollments recorded for this term."
+  },
+  "academicProgress": {
+    "title": "Academic Progress",
+    "subtitle": "Completed vs. mandated component distribution across degree domains",
+    "viewAcademicData": "View Academic Data",
+    "totalPace": "Total Pace",
+    "completed": "Completed",
+    "domainBreakdown": "Curriculum Domain Breakdown",
+    "core": "Core Computer Science",
+    "math": "Mathematics & Basic Sci.",
+    "breadth": "Institutional Breadth",
+    "year1": "Year 1 Foundation",
+    "year2": "Year 2 Specialization",
+    "remaining": "Remaining Requirement",
+    "milestonePassed": "Curriculum milestone check passed for current standing",
+    "viewBylawMatrix": "View full bylaw matrix"
+  },
+  "expectedOfferings": {
+    "title": "Expected Offerings",
+    "subtitle": "Automated registration forecast strictly computed per 2025 bylaw prerequisite satisfaction chains.",
+    "exploreOfferings": "Explore Expected Offerings",
+    "recommended": "{{count}} Courses Recommended",
+    "filterCohort": "Filter cohort:",
+    "code": "Course Code",
+    "courseTitle": "Course Title",
+    "credits": "Credits",
+    "structure": "Structure",
+    "prerequisites": "Prerequisite Satisfaction",
+    "status": "Forecast Status",
+    "actions": "Action",
+    "eligible": "Eligible & Projected",
+    "details": "Offering Details",
+    "empty": "No projected offerings calculated for the upcoming term.",
+    "footnote1": "* Mandatory core prerequisite for Junior-level software tracks.",
+    "footnote2": "** Counts towards 32-credit Basic Science mandate.",
+    "engineVersion": "Engine Ver: v4.8.1-Bylaw2025"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "subtitle": "Direct access to key academic tools and planning resources",
+    "academicData": "Academic Data",
+    "academicDataDesc": "Inspect transcripts, passed terms, and bylaw requirements",
+    "myCourses": "My Courses",
+    "myCoursesDesc": "Review your degree roadmap and remaining graduation courses",
+    "expectedOfferings": "Expected Offerings",
+    "expectedOfferingsDesc": "Discover projected course offerings for upcoming semesters",
+    "notifications": "Notifications",
+    "notificationsDesc": "Review academic announcements and registration updates",
+    "help": "Help & Bylaw Guide",
+    "helpDesc": "Consult curriculum bylaws, FAQs, and advisor contacts"
+  },
+  "alerts": {
+    "title": "Academic Alerts & Advising",
+    "advisorPin": "Academic Advisory Pin:",
+    "advisorName": "{{advisor}}",
+    "viewAllNotifications": "View All Notifications"
+  },
+  "loading": "Loading your academic dashboard...",
+  "error": {
+    "title": "Failed to load student dashboard",
+    "description": "An error occurred while fetching your student records. Please try again.",
+    "retry": "Retry"
+  }
+}
+
