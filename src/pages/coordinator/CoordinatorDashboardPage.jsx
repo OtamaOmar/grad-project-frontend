@@ -1,7 +1,26 @@
-import { useContext, useRef, useState } from "react";
-import { ThemeContext } from "@/features/preferences/ThemeContext";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
-import "./coordinator-dashboard.css";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import {
+  Alert,
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  DataTable,
+  Dialog,
+  Field,
+  Icon,
+  PageHeader,
+  ProgressBar,
+  SearchInput,
+  Select,
+  StatCard,
+} from "@/components/ui";
+import { useAIChat } from "@/hooks/useAIChat";
+import { useToast } from "@/hooks/useToast";
+import { formatNumber } from "@/utils/format";
 
 // Stitch sample data only. All interactions stay in this page session.
 const courses = [
@@ -42,64 +61,34 @@ const courses = [
     sections: ["1 Lec"],
   },
 ];
-const paths = {
-  warning: "m12 3 10 18H2L12 3Zm0 6v5m0 3v.1",
-  tune: "M4 7h7m4 0h5M4 17h3m4 0h9M11 4v6M7 14v6m9-10v4M4 12h12m4 0h-4",
-  download: "M12 3v12m-4-4 4 4 4-4M4 15v5h16v-5",
-  play: "m10 8 6 4-6 4V8Zm12 4a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
-  layers: "m12 3 9 6-9 6-9-6 9-6Zm-9 11 9 6 9-6",
-  check: "m5 12 4 4L19 6",
-  clock: "M12 7v5l3 2m7-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
-  chart: "M4 19V9h3v10m4 0V4h3v15m4 0v-7h3v7",
-  search: "m16 16 5 5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z",
-  filter: "M3 6h18M6 12h12m-8 6h4",
-  trend: "m3 17 5-5 4 3 8-10m-5 0h5v5M3 7h4m-2-2v4",
-  shield: "m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Zm-4 10 3 3 5-6",
-  info: "M12 11v6m0-10v.1m10 4.9a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
-  explain: "M9 21v-4H6v-5H3l3-6c2-5 12-5 14 1 2 5-1 8-4 10v4M12 6v7m-3-4h6",
-  file: "M5 2h9l5 5v15H5V2Zm9 0v6h5M8 12h8m-8 4h8",
-  grid: "M3 3h18v18H3V3Zm6 0v18m6-18v18M3 9h18M3 15h18",
-  send: "M12 20V4m-6 6 6-6 6 6",
-  close: "m5 5 14 14M5 19 19 5",
-  moon: "M21 13A9 9 0 0 1 11 3a9 9 0 1 0 10 10Z",
-  sun: "M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2m-3 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z",
-};
-function Icon({ name }) {
+
+const CAPACITY = 70;
+const fte = (value) => formatNumber(value, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+function Unit({ children }) {
   return (
-    <svg
-      className="cd-icon"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d={paths[name] || paths.info} />
-    </svg>
+    <span className="ms-1.5 font-sans text-body-md font-normal text-on-surface-variant">
+      {children}
+    </span>
   );
 }
 
 export default function CoordinatorDashboardPage() {
-  useDocumentTitle("Coordinator Dashboard");
-  const { resolvedTheme, toggleTheme } = useContext(ThemeContext);
+  const { t } = useTranslation("coordinatorDashboard");
+  const toast = useToast();
+  const { openChat } = useAIChat();
   const [search, setSearch] = useState("");
   const [bylaw, setBylaw] = useState("all");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [reviewed, setReviewed] = useState([]);
-  const [notice, setNotice] = useState("");
-  const [question, setQuestion] = useState("");
-  const [conversation, setConversation] = useState(null);
   const [selected, setSelected] = useState(null);
-  const dialog = useRef(null);
-  const explainPanel = useRef(null);
   const visible = courses.filter(
     (course) =>
       `${course.code} ${course.name}`.toLowerCase().includes(search.trim().toLowerCase()) &&
       (bylaw === "all" || course.bylaws.includes(bylaw)),
   );
   const pending = courses.length - reviewed.length;
+  const bylawLabel = (year) => (year === "Old" ? t("table.old") : year);
 
   function exportMatrix() {
     const rows = [
@@ -121,531 +110,446 @@ export default function CoordinatorDashboardPage() {
     link.download = "coordinator-sample-matrix.csv";
     link.click();
     URL.revokeObjectURL(url);
-    setNotice("Sample course matrix exported. No live forecast data was included.");
+    toast.info(t("toast.exported"));
   }
   function clearFilters() {
     setSearch("");
     setBylaw("all");
   }
-  function review(course) {
-    setSelected(course);
-    dialog.current.showModal();
-  }
   function markReviewed(list) {
     setReviewed((previous) => [...new Set([...previous, ...list.map((course) => course.code)])]);
   }
 
-  return (
-    <div className="coordinator-dashboard">
-      <div className="cd-workspace">
-        <div className="cd-content">
-          <div className="cd-simulation">
-            <Icon name="warning" />
-            <strong>Simulation status:</strong>
-            <span>
-              Sample students, not a measured result. Projections rely on stochastic prerequisite
-              survival curves.
-            </span>
-            <span className="cd-run">SAMPLE RUN #F26-BL-04</span>
+  const columns = [
+    {
+      key: "course",
+      header: t("table.course"),
+      render: (course) => (
+        <div className="flex min-w-0 flex-col">
+          <span className="font-semibold text-on-surface">{course.code}</span>
+          <span
+            className="max-w-56 truncate text-body-sm text-on-surface-variant"
+            title={course.name}
+          >
+            {course.name}
+          </span>
+        </div>
+      ),
+    },
+    {
+      key: "bylaw",
+      header: t("table.bylaw"),
+      render: (course) => (
+        <div className="flex flex-wrap items-center gap-1">
+          {course.bylaws.map((year) => (
+            <Badge key={year} tone={year === "Old" ? "warning" : "neutral"} className="font-mono">
+              {bylawLabel(year)}
+            </Badge>
+          ))}
+        </div>
+      ),
+    },
+    {
+      key: "headcount",
+      header: t("table.headcount"),
+      align: "end",
+      render: (course) => (
+        <span
+          className={
+            course.code === "MATH 112"
+              ? "font-semibold text-warning tabular-nums"
+              : "font-medium tabular-nums"
+          }
+        >
+          {fte(course.headcount)}
+        </span>
+      ),
+    },
+    {
+      key: "sections",
+      header: t("table.sections"),
+      render: (course) =>
+        course.sections.length ? (
+          <div className="flex flex-wrap gap-1">
+            {course.sections.map((section) => (
+              <Badge key={section} tone="outline">
+                <bdi>{section}</bdi>
+              </Badge>
+            ))}
           </div>
-          <header className="cd-cycle">
-            <div>
-              <p className="cd-eyebrow">
-                Academic Planning Office <span>/</span> <b>Faculty of Computer Science</b>
-              </p>
-              <h1>
-                <span className="cd-sr-only">Coordinator Dashboard — </span>Fall 2026
-              </h1>
-              <p>Curriculum Planning Cycle · Fall 2026 Execution Baseline</p>
-            </div>
-            <div className="cd-actions">
-              <button
-                className="cd-button"
-                onClick={() => setFiltersOpen(!filtersOpen)}
-                aria-expanded={filtersOpen}
-                aria-controls="cd-filters"
-              >
-                <Icon name="tune" />
-                Filter Scenarios
-              </button>
-              <button className="cd-button" onClick={exportMatrix}>
-                <Icon name="download" />
-                Export Matrix
-              </button>
-              <button
-                className="cd-button cd-primary"
-                onClick={() => {
-                  setReviewed([]);
-                  setNotice(
-                    "Sample simulation reset to the design baseline. No backend simulation was run.",
-                  );
-                }}
-              >
-                <Icon name="play" />
-                Re-run Simulation
-              </button>
-              <button
-                className="cd-button cd-theme"
-                onClick={toggleTheme}
-                aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
-              >
-                <Icon name={resolvedTheme === "dark" ? "sun" : "moon"} />
-              </button>
-            </div>
-          </header>
-          {filtersOpen && (
-            <div id="cd-filters" className="cd-filter-panel">
-              <label htmlFor="cd-bylaw">Sample bylaw</label>
-              <select
-                id="cd-bylaw"
+        ) : (
+          <span className="text-on-surface-variant">—</span>
+        ),
+    },
+    {
+      key: "status",
+      header: t("table.status"),
+      render: (course) =>
+        reviewed.includes(course.code) ? (
+          <Badge tone="success" icon="check">
+            {t("table.reviewed")}
+          </Badge>
+        ) : (
+          <Badge tone="warning" icon="schedule">
+            {t("table.needsDecision")}
+          </Badge>
+        ),
+    },
+    {
+      key: "action",
+      header: t("table.action"),
+      align: "end",
+      render: (course) => (
+        <Button
+          variant="secondary"
+          size="sm"
+          aria-label={t("actions.reviewCourse", { code: course.code })}
+          onClick={() => setSelected(course)}
+        >
+          {t("actions.review")}
+        </Button>
+      ),
+    },
+  ];
+
+  return (
+    <div className="flex min-w-0 flex-col gap-6">
+      <Alert
+        tone="warning"
+        title={t("simulation.title")}
+        actions={
+          <Badge tone="outline" className="font-mono">
+            {t("simulation.run")}
+          </Badge>
+        }
+      >
+        {t("simulation.body")}
+      </Alert>
+
+      <PageHeader
+        eyebrow={t("eyebrow", { returnObjects: true })}
+        title={t("title")}
+        description={t("description")}
+        meta={
+          <Badge tone="primary" dot>
+            {t("term")}
+          </Badge>
+        }
+        actions={
+          <>
+            <Button
+              variant="secondary"
+              icon="tune"
+              onClick={() => setFiltersOpen(!filtersOpen)}
+              aria-expanded={filtersOpen}
+              aria-controls="cd-filters"
+            >
+              {t("actions.filterScenarios")}
+            </Button>
+            <Button variant="secondary" icon="download" onClick={exportMatrix}>
+              {t("actions.export")}
+            </Button>
+            <Button
+              icon="play_arrow"
+              onClick={() => {
+                setReviewed([]);
+                toast.info(t("toast.reset"));
+              }}
+            >
+              {t("actions.rerun")}
+            </Button>
+          </>
+        }
+      />
+
+      {filtersOpen && (
+        <Card id="cd-filters" className="flex flex-wrap items-end gap-4 p-4">
+          <Field label={t("filters.bylaw")} hint={t("filters.bylawHint")} className="w-56">
+            {(props) => (
+              <Select
+                {...props}
+                options={[
+                  { value: "all", label: t("filters.all") },
+                  { value: "2025", label: "2025" },
+                  { value: "2019", label: "2019" },
+                  { value: "Old", label: t("filters.old") },
+                ]}
                 value={bylaw}
                 onChange={(event) => setBylaw(event.target.value)}
-              >
-                <option value="all">All bylaws</option>
-                <option value="2025">2025</option>
-                <option value="2019">2019</option>
-                <option value="Old">Legacy / Old</option>
-              </select>
-              <span>Filters the sample table only.</span>
-              <button className="cd-text-button" onClick={clearFilters}>
-                Clear filters
-              </button>
-            </div>
-          )}
-          <div className="cd-notice" role="status" aria-live="polite">
-            {notice && (
-              <>
-                <Icon name="info" />
-                <span>{notice}</span>
-                <button aria-label="Dismiss notice" onClick={() => setNotice("")}>
-                  <Icon name="close" />
-                </button>
-              </>
+              />
             )}
-          </div>
-          <dl className="cd-metrics">
+          </Field>
+          <Button variant="ghost" onClick={clearFilters}>
+            {t("actions.clearFilters")}
+          </Button>
+        </Card>
+      )}
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard
+          label={t("stats.courses")}
+          icon="layers"
+          value={
+            <>
+              {formatNumber(18)}
+              <Unit>{t("stats.coursesUnit")}</Unit>
+            </>
+          }
+          hint={t("stats.coursesHint")}
+        />
+        <StatCard
+          label={t("stats.review")}
+          badge={
+            <Badge tone="warning" icon="info">
+              {t("stats.reviewBadge")}
+            </Badge>
+          }
+          value={
+            <>
+              {formatNumber(pending)}
+              <Unit>{t("stats.reviewUnit")}</Unit>
+            </>
+          }
+          hint={t("stats.reviewHint")}
+        />
+        <StatCard
+          label={t("stats.decisions")}
+          badge={
+            <Badge tone="success" icon="check">
+              {t("stats.decisionsBadge")}
+            </Badge>
+          }
+          value={
+            <>
+              {formatNumber(4)}
+              <Unit>{t("stats.decisionsUnit")}</Unit>
+            </>
+          }
+          hint={t("stats.decisionsHint")}
+        />
+        <StatCard
+          label={t("stats.unresolved")}
+          badge={
+            <Badge tone="warning" icon="schedule">
+              {t("stats.unresolvedBadge")}
+            </Badge>
+          }
+          value={
+            <>
+              {formatNumber(3)}
+              <Unit>{t("stats.unresolvedUnit")}</Unit>
+            </>
+          }
+          hint={t("stats.unresolvedHint")}
+        />
+      </div>
+
+      <div className="grid items-start gap-6 2xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <Card>
+          <CardHeader
+            title={t("chart.title")}
+            subtitle={t("chart.subtitle")}
+            actions={
+              <span className="grid size-9 place-items-center rounded-lg bg-surface-container-low text-primary">
+                <Icon name="bar_chart" size={20} />
+              </span>
+            }
+          />
+          <CardBody className="flex flex-col gap-5">
             {[
-              {
-                label: "Courses in run",
-                value: 18,
-                unit: "offerings",
-                caption: "Active offerings modeled",
-                icon: "layers",
-              },
-              {
-                label: "Needing review",
-                value: pending,
-                unit: "courses flagged",
-                caption: "Pending coordinator audit",
-                tone: "warning",
-                badge: "Audit",
-              },
-              {
-                label: "Decisions saved",
-                value: 4,
-                unit: "approved",
-                caption: "Recorded opening choices",
-                tone: "success",
-                badge: "Committed",
-              },
-              {
-                label: "Unresolved cases",
-                value: 3,
-                unit: "conflicts",
-                caption: "Prerequisite anomalies flagged",
-                tone: "warning",
-                badge: "Queue",
-                icon: "clock",
-              },
-            ].map((metric) => (
-              <div key={metric.label} className={`cd-card cd-metric ${metric.tone || ""}`}>
-                <dt>
-                  <span>{metric.label}</span>
-                  {metric.badge ? (
-                    <span className={`cd-badge cd-${metric.tone}`}>
-                      <Icon name={metric.tone === "success" ? "check" : metric.icon || "info"} />
-                      {metric.badge}
-                    </span>
-                  ) : (
-                    <Icon name={metric.icon} />
-                  )}
-                </dt>
-                <dd className="cd-metric-value">
-                  <strong>{metric.value}</strong>
-                  <span>{metric.unit}</span>
-                </dd>
-                <dd className="cd-metric-caption">{metric.caption}</dd>
+              { code: "CSCI 207", name: "Comp Organization", value: 41.25, threshold: 30 },
+              { code: "MATH 112", name: "Calculus II", value: 63, threshold: 45 },
+            ].map((course) => (
+              <div key={course.code} className="flex flex-col gap-2">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="min-w-0">
+                    <span className="font-semibold text-on-surface">{course.code}</span>{" "}
+                    <span className="text-body-sm text-on-surface-variant">{course.name}</span>
+                  </span>
+                  <span className="font-semibold text-on-surface tabular-nums">
+                    {t("chart.fte", { value: fte(course.value) })}
+                  </span>
+                </div>
+                <ProgressBar
+                  value={course.value}
+                  max={CAPACITY}
+                  tone={course.value / CAPACITY > 0.85 ? "warning" : "primary"}
+                  label={t("chart.meterLabel", { code: course.code })}
+                  className="h-3"
+                />
+                <div className="flex justify-between gap-3 text-body-sm text-on-surface-variant">
+                  <span>{t("chart.threshold", { value: formatNumber(course.threshold) })}</span>
+                  <span>{t("chart.ceiling", { value: formatNumber(CAPACITY) })}</span>
+                </div>
               </div>
             ))}
-          </dl>
-          <div className="cd-main-grid">
-            <section className="cd-card cd-chart" aria-labelledby="cd-headcount-title">
-              <header className="cd-chart-heading">
-                <div>
-                  <h2 id="cd-headcount-title">Headcount by course</h2>
-                  <p>Simulated cohort demand comparison across benchmark courses</p>
-                </div>
-                <span className="cd-chart-symbol">
-                  <Icon name="chart" />
-                </span>
-              </header>
-              <div className="cd-bars">
-                {[
-                  { code: "CSCI 207", name: "Comp Organization", value: 41.25, threshold: 30 },
-                  { code: "MATH 112", name: "Calculus II", value: 63, threshold: 45 },
-                ].map((course) => (
-                  <div key={course.code}>
-                    <div className="cd-bar-label">
-                      <span>
-                        <strong>{course.code}</strong>
-                        <small>{course.name}</small>
-                      </span>
-                      <b>{course.value.toFixed(2)} FTE</b>
-                    </div>
-                    <div
-                      className="cd-bar-track"
-                      role="meter"
-                      aria-label={`${course.code} sample headcount in FTE`}
-                      aria-valuemin={0}
-                      aria-valuemax={70}
-                      aria-valuenow={course.value}
-                    >
-                      <div
-                        className="cd-bar-fill"
-                        style={{ width: `${(course.value / 70) * 100}%` }}
-                      >
-                        {course.value.toFixed(2)}
-                      </div>
-                    </div>
-                    <div className="cd-bar-threshold">
-                      <span>Lower threshold: {course.threshold}</span>
-                      <span>Capacity ceiling: 70</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="cd-axis" aria-hidden="true">
-                {["0.00", "17.50", "35.00", "52.50", "70.00 max"].map((tick) => (
-                  <span key={tick}>{tick}</span>
-                ))}
-              </div>
-              <div className="cd-legend">
-                <span>
-                  <i />
-                  Projected Headcount (FTE)
-                </span>
-                <small>Confidence ±4.2%</small>
-              </div>
-              <div className="cd-analysis">
-                <Icon name="trend" />
-                <p>
-                  MATH 112 bottleneck observed. Projected demand (63 FTE) approaches the sample
-                  capacity ceiling of 70. Review section requirements before recording an opening
-                  decision.
-                </p>
-              </div>
-            </section>
-            <section className="cd-card cd-review" aria-labelledby="cd-review-title">
-              <header className="cd-table-heading">
-                <div>
-                  <div className="cd-title-row">
-                    <h2 id="cd-review-title">Courses needing review</h2>
-                    <span className="cd-badge cd-warning">{pending} PENDING</span>
-                  </div>
-                  <p>{pending} courses awaiting coordinator evaluation</p>
-                </div>
-                <div className="cd-table-tools">
-                  <label className="cd-search">
-                    <Icon name="search" />
-                    <input
-                      aria-label="Filter sample courses"
-                      placeholder="Filter courses..."
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
-                    />
-                  </label>
-                  <button
-                    className="cd-button cd-small"
-                    aria-expanded={filtersOpen}
-                    aria-controls="cd-filters"
-                    onClick={() => setFiltersOpen(!filtersOpen)}
-                  >
-                    <Icon name="filter" />
-                    Filter
-                  </button>
-                </div>
-              </header>
-              <div className="cd-table-scroll">
-                <table>
-                  <thead>
-                    <tr>
-                      {["Course", "Bylaw", "Headcount", "Implied sections", "Status", "Action"].map(
-                        (label) => (
-                          <th scope="col" key={label}>
-                            {label}
-                          </th>
-                        ),
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {visible.map((course) => (
-                      <tr key={course.code}>
-                        <th scope="row">
-                          <strong>{course.code}</strong>
-                          <span title={course.name}>{course.name}</span>
-                        </th>
-                        <td>
-                          <div className="cd-bylaws">
-                            {course.bylaws.map((year, index) => (
-                              <span key={year}>
-                                {index > 0 && <small>&amp;</small>}
-                                <code className={year === "Old" ? "cd-legacy" : ""}>{year}</code>
-                              </span>
-                            ))}
-                          </div>
-                        </td>
-                        <td
-                          className={`cd-number ${course.code === "MATH 112" ? "cd-highlight" : ""}`}
-                        >
-                          {course.headcount.toFixed(2)}
-                        </td>
-                        <td>
-                          <div className="cd-sections">
-                            {course.sections.length
-                              ? course.sections.map((section) => (
-                                  <span key={section}>{section}</span>
-                                ))
-                              : "—"}
-                          </div>
-                        </td>
-                        <td>
-                          <span
-                            className={`cd-badge ${reviewed.includes(course.code) ? "cd-success" : "cd-warning"}`}
-                          >
-                            <Icon name={reviewed.includes(course.code) ? "check" : "clock"} />
-                            {reviewed.includes(course.code) ? "Reviewed" : "Needs Decision"}
-                          </span>
-                        </td>
-                        <td>
-                          <button
-                            className="cd-button cd-small"
-                            aria-label={`Review ${course.code}`}
-                            onClick={() => review(course)}
-                          >
-                            Review
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {!visible.length && (
-                  <p className="cd-empty">
-                    No sample courses match these filters.
-                    <button className="cd-text-button" onClick={clearFilters}>
-                      Clear filters
-                    </button>
-                  </p>
-                )}
-              </div>
-              <footer className="cd-table-footer">
-                <span>Showing {visible.length} of 18 modeled courses · Sample simulation</span>
-                <button
-                  className="cd-text-button"
-                  disabled={!visible.length}
-                  onClick={() => {
-                    markReviewed(visible.filter((course) => course.sections.length));
-                    setNotice(
-                      "Sample batch review recorded for visible courses with section allocations. No approvals were saved to a backend.",
-                    );
-                  }}
-                >
-                  Batch Review Recommended
-                </button>
-              </footer>
-            </section>
-          </div>
-          <footer className="cd-card cd-governance">
-            <div className="cd-policy-icon">
-              <Icon name="shield" />
-            </div>
-            <div>
-              <strong>Curriculum Governance Policy · Sample</strong>
-              <p>
-                Illustrative University Regulation By-Law 2025/R2 regarding instructor teaching
-                loads.
-              </p>
-            </div>
-            <span className="cd-sync">Design baseline · not synchronized</span>
-            <button
-              className="cd-button cd-small"
-              onClick={() =>
-                setNotice(
-                  `Local sample audit: ${reviewed.length} courses marked reviewed this session. No persistent audit log is connected.`,
-                )
-              }
+            <div
+              className="flex justify-between border-t border-outline-variant/60 pt-2 font-mono text-label-sm text-on-surface-variant"
+              aria-hidden="true"
             >
-              Audit Log
-            </button>
-          </footer>
-        </div>
-        <aside className="cd-explain" aria-labelledby="cd-explain-title" ref={explainPanel}>
-          <header>
-            <div className="cd-title-row">
-              <h2 id="cd-explain-title">
-                <Icon name="explain" />
-                Explain
-              </h2>
-              <span className="cd-badge cd-audit">Cognitive audit</span>
+              {[0, 17.5, 35, 52.5].map((tick) => (
+                <span key={tick}>{fte(tick)}</span>
+              ))}
+              <span>{t("chart.max", { value: fte(CAPACITY) })}</span>
             </div>
-            <p>Stored rules &amp; forecast rationale</p>
-          </header>
-          <div className="cd-explain-body">
-            <div className="cd-constraint">
-              <span>
-                <Icon name="info" />
-                Governance constraint
+            <div className="flex items-center justify-between gap-3 text-body-sm text-on-surface-variant">
+              <span className="flex items-center gap-2">
+                <span aria-hidden="true" className="size-2.5 rounded-sm bg-primary-container" />
+                {t("chart.legend")}
               </span>
-              <p>
-                Statistical projection mode active. Model displays prerequisite load, enrollment
-                demand probability, and stored faculty constraints without prescriptive opening
-                directives.
-              </p>
+              <span>
+                {t("chart.confidence", {
+                  value: formatNumber(0.042, { style: "percent", minimumFractionDigits: 1 }),
+                })}
+              </span>
             </div>
-            <p className="cd-example-label">Sample conversation · no AI service connected</p>
-            <div className="cd-message cd-question">
-              {conversation?.question ||
-                "Why is CS302 (Data Structures II) highlighted under capacity threshold for Fall 2025?"}
-            </div>
-            <div className="cd-message cd-answer">
-              {conversation?.course ? (
-                <p>
-                  In this sample run, <strong>{conversation.course.code}</strong> has a projected
-                  headcount of <strong>{conversation.course.headcount.toFixed(2)} FTE</strong> under
-                  bylaw {conversation.course.bylaws.join(" & ")}.{" "}
-                  {conversation.course.sections.length
-                    ? `The design shows ${conversation.course.sections.join(" and ")} as implied sections.`
-                    : "Section allocation is not specified in this sample."}{" "}
-                  This is illustrative data, not an opening decision.
-                </p>
-              ) : conversation ? (
-                <p>
-                  This is a local sample conversation. Select <strong>Review</strong> on a course to
-                  inspect its sample headcount, bylaw, and section allocation. Live rule lookup and
-                  AI explanations are not connected.
-                </p>
-              ) : (
-                <>
-                  <p>
-                    Based on sample stored rule <code>RULE-CS-204-CHAIN</code>, completion rates for
-                    prerequisite CS201 increased by 18.4% across the prior spring cohort.
-                  </p>
-                  <div className="cd-citations">
-                    <span>
-                      <Icon name="file" />
-                      Rule: PREREQ_FLOW
-                    </span>
-                    <span>
-                      <Icon name="grid" />
-                      Catalog 2023-R2
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
-            <p className="cd-explain-status">
-              <span />
-              Sample analysis complete
-            </p>
-          </div>
-          <form
-            className="cd-explain-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-              if (!question.trim()) return;
-              setConversation({ question: question.trim() });
-              setQuestion("");
-            }}
-          >
-            <div>
-              <input
-                aria-label="Ask about a sample rule or result"
-                placeholder="Ask about a stored rule or this result"
-                value={question}
-                maxLength={500}
-                onChange={(event) => setQuestion(event.target.value)}
-              />
-              <button type="submit" aria-label="Send sample question" disabled={!question.trim()}>
-                <Icon name="send" />
-              </button>
-            </div>
-            <p>Sample rationale only. Does not mandate section opening.</p>
-          </form>
-        </aside>
+            <Alert tone="info" icon="trending_up">
+              {t("chart.analysis")}
+            </Alert>
+          </CardBody>
+        </Card>
+
+        <Card className="min-w-0">
+          <CardHeader
+            title={
+              <span className="flex flex-wrap items-center gap-2">
+                {t("table.title")}
+                <Badge tone="warning" className="font-sans">
+                  {t("table.pending", { count: formatNumber(pending) })}
+                </Badge>
+              </span>
+            }
+            subtitle={t("table.subtitle", { count: formatNumber(pending) })}
+            actions={
+              <>
+                <SearchInput
+                  aria-label={t("filters.searchLabel")}
+                  placeholder={t("filters.search")}
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  className="w-52"
+                />
+                <Button
+                  variant="secondary"
+                  icon="filter_list"
+                  aria-expanded={filtersOpen}
+                  aria-controls="cd-filters"
+                  onClick={() => setFiltersOpen(!filtersOpen)}
+                >
+                  {t("actions.filter")}
+                </Button>
+              </>
+            }
+          />
+          <DataTable
+            columns={columns}
+            rows={visible}
+            getRowId={(course) => course.code}
+            minWidth={680}
+            caption={t("table.title")}
+            empty={
+              <span className="inline-flex flex-wrap items-center justify-center gap-2">
+                {t("table.empty")}
+                <Button variant="ghost" size="sm" onClick={clearFilters}>
+                  {t("actions.clearFilters")}
+                </Button>
+              </span>
+            }
+          />
+          <CardFooter>
+            <span>
+              {t("table.showing", {
+                shown: formatNumber(visible.length),
+                total: formatNumber(18),
+              })}
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              disabled={!visible.length}
+              onClick={() => {
+                markReviewed(visible.filter((course) => course.sections.length));
+                toast.info(t("toast.batch"));
+              }}
+            >
+              {t("actions.batchReview")}
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
-      <dialog ref={dialog} className="cd-dialog" aria-labelledby="cd-dialog-title">
-        <div className="cd-dialog-heading">
-          <span className="cd-badge cd-audit">Sample course review</span>
-          <button
-            className="cd-button cd-small"
-            aria-label="Close review"
-            onClick={() => dialog.current.close()}
-          >
-            <Icon name="close" />
-          </button>
-        </div>
+
+      <Alert
+        tone="policy"
+        title={t("policy.title")}
+        actions={
+          <>
+            <Badge tone="outline" className="max-sm:hidden">
+              {t("policy.sync")}
+            </Badge>
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => toast.info(t("toast.audit", { count: formatNumber(reviewed.length) }))}
+            >
+              {t("actions.auditLog")}
+            </Button>
+          </>
+        }
+      >
+        {t("policy.body")}
+      </Alert>
+
+      <Dialog
+        open={Boolean(selected)}
+        onClose={() => setSelected(null)}
+        title={selected ? `${selected.code} · ${selected.name}` : ""}
+        description={t("dialog.description")}
+        footer={
+          <>
+            <Button
+              variant="secondary"
+              icon="psychology"
+              onClick={() => {
+                setSelected(null);
+                openChat();
+              }}
+            >
+              {t("actions.explain")}
+            </Button>
+            <Button
+              onClick={() => {
+                markReviewed([selected]);
+                toast.success(t("toast.reviewed", { code: selected.code }));
+                setSelected(null);
+              }}
+            >
+              {t("actions.markReviewed")}
+            </Button>
+          </>
+        }
+      >
         {selected && (
           <>
-            <h2 id="cd-dialog-title">
-              {selected.code} · {selected.name}
-            </h2>
-            <dl>
-              <div>
-                <dt>Projected headcount</dt>
-                <dd>{selected.headcount.toFixed(2)} FTE</dd>
-              </div>
-              <div>
-                <dt>Bylaw</dt>
-                <dd>{selected.bylaws.join(" & ")}</dd>
-              </div>
-              <div>
-                <dt>Implied sections</dt>
-                <dd>{selected.sections.join(" / ") || "Not specified"}</dd>
-              </div>
+            <dl className="grid gap-3 sm:grid-cols-3">
+              {[
+                [t("dialog.headcount"), t("chart.fte", { value: fte(selected.headcount) })],
+                [t("dialog.bylaw"), selected.bylaws.map(bylawLabel).join(" & ")],
+                [t("dialog.sections"), selected.sections.join(" / ") || t("dialog.notSpecified")],
+              ].map(([label, value]) => (
+                <div key={label} className="rounded-lg bg-surface-container-low p-3">
+                  <dt className="text-label-sm font-semibold tracking-wider text-on-surface-variant uppercase">
+                    {label}
+                  </dt>
+                  <dd className="mt-1 font-semibold text-on-surface">
+                    <bdi>{value}</bdi>
+                  </dd>
+                </div>
+              ))}
             </dl>
-            <p>Sample data from the design. Review changes last for this page session only.</p>
-            <div className="cd-actions">
-              <button
-                className="cd-button"
-                onClick={() => {
-                  setConversation({
-                    question: `Why is ${selected.code} pending coordinator review?`,
-                    course: selected,
-                  });
-                  dialog.current.close();
-                  explainPanel.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                }}
-              >
-                <Icon name="explain" />
-                Explain this sample
-              </button>
-              <button
-                className="cd-button cd-primary"
-                onClick={() => {
-                  markReviewed([selected]);
-                  setNotice(
-                    `${selected.code} marked reviewed locally. No opening decision was submitted.`,
-                  );
-                  dialog.current.close();
-                }}
-              >
-                Mark reviewed
-              </button>
-            </div>
+            <p className="mt-4 text-body-sm text-on-surface-variant">{t("dialog.note")}</p>
           </>
         )}
-      </dialog>
+      </Dialog>
     </div>
   );
 }

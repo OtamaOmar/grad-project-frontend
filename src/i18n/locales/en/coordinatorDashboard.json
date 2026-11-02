@@ -1,0 +1,100 @@
+{
+  "title": "Coordinator Dashboard",
+  "eyebrow": [
+    "Academic Planning Office",
+    "Faculty of Computer Science"
+  ],
+  "description": "Curriculum Planning Cycle · Fall 2026 Execution Baseline",
+  "term": "Fall 2026",
+  "simulation": {
+    "title": "Simulation status",
+    "body": "Sample students, not a measured result. Projections rely on stochastic prerequisite survival curves.",
+    "run": "SAMPLE RUN #F26-BL-04"
+  },
+  "actions": {
+    "filterScenarios": "Filter Scenarios",
+    "export": "Export Matrix",
+    "rerun": "Re-run Simulation",
+    "filter": "Filter",
+    "clearFilters": "Clear filters",
+    "batchReview": "Batch Review Recommended",
+    "auditLog": "Audit Log",
+    "review": "Review",
+    "reviewCourse": "Review {{code}}",
+    "explain": "Explain this sample",
+    "markReviewed": "Mark reviewed"
+  },
+  "filters": {
+    "bylaw": "Sample bylaw",
+    "bylawHint": "Filters the sample table only.",
+    "all": "All bylaws",
+    "old": "Legacy / Old",
+    "search": "Filter courses...",
+    "searchLabel": "Filter sample courses"
+  },
+  "stats": {
+    "courses": "Courses in run",
+    "coursesUnit": "offerings",
+    "coursesHint": "Active offerings modeled",
+    "review": "Needing review",
+    "reviewUnit": "courses flagged",
+    "reviewHint": "Pending coordinator audit",
+    "reviewBadge": "Audit",
+    "decisions": "Decisions saved",
+    "decisionsUnit": "approved",
+    "decisionsHint": "Recorded opening choices",
+    "decisionsBadge": "Committed",
+    "unresolved": "Unresolved cases",
+    "unresolvedUnit": "conflicts",
+    "unresolvedHint": "Prerequisite anomalies flagged",
+    "unresolvedBadge": "Queue"
+  },
+  "chart": {
+    "title": "Headcount by course",
+    "subtitle": "Simulated cohort demand comparison across benchmark courses",
+    "fte": "{{value}} FTE",
+    "meterLabel": "{{code}} sample headcount in FTE",
+    "threshold": "Lower threshold: {{value}}",
+    "ceiling": "Capacity ceiling: {{value}}",
+    "max": "{{value}} max",
+    "legend": "Projected Headcount (FTE)",
+    "confidence": "Confidence ±{{value}}",
+    "analysis": "MATH 112 bottleneck observed. Projected demand (63 FTE) approaches the sample capacity ceiling of 70. Review section requirements before recording an opening decision."
+  },
+  "table": {
+    "title": "Courses needing review",
+    "pending": "{{count}} PENDING",
+    "subtitle": "{{count}} courses awaiting coordinator evaluation",
+    "course": "Course",
+    "bylaw": "Bylaw",
+    "headcount": "Headcount",
+    "sections": "Implied sections",
+    "status": "Status",
+    "action": "Action",
+    "reviewed": "Reviewed",
+    "needsDecision": "Needs Decision",
+    "empty": "No sample courses match these filters.",
+    "showing": "Showing {{shown}} of {{total}} modeled courses · Sample simulation",
+    "old": "Old"
+  },
+  "policy": {
+    "title": "Curriculum Governance Policy · Sample",
+    "body": "Illustrative University Regulation By-Law 2025/R2 regarding instructor teaching loads.",
+    "sync": "Design baseline · not synchronized"
+  },
+  "dialog": {
+    "description": "Sample course review",
+    "headcount": "Projected headcount",
+    "bylaw": "Bylaw",
+    "sections": "Implied sections",
+    "notSpecified": "Not specified",
+    "note": "Sample data from the design. Review changes last for this page session only."
+  },
+  "toast": {
+    "exported": "Sample course matrix exported. No live forecast data was included.",
+    "reset": "Sample simulation reset to the design baseline. No backend simulation was run.",
+    "batch": "Sample batch review recorded for visible courses with section allocations. No approvals were saved to a backend.",
+    "audit": "Local sample audit: {{count}} courses marked reviewed this session. No persistent audit log is connected.",
+    "reviewed": "{{code}} marked reviewed locally. No opening decision was submitted."
+  }
+}

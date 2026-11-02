@@ -1,0 +1,80 @@
+{
+  "title": "Forecast Runs",
+  "description": "Curriculum forecast simulations and batch execution history",
+  "engine": "TERM-PROJECTION-ENGINE",
+  "seasons": { "Fall": "Fall", "Spring": "Spring", "Summer": "Summer" },
+  "notice": {
+    "title": "Notice: Sample students, not a measured result.",
+    "body": "Simulation runs synthesize cohort progression for academic curriculum scoping.",
+    "badge": "DEV-PREVIEW"
+  },
+  "search": "Filter terms or run ID...",
+  "newRun": "New run",
+  "status": { "Ready": "Ready", "Running": "Running" },
+  "stats": {
+    "active": "Active pipeline",
+    "activeValue": "{{count}} Runs",
+    "activeHint": "Batch 2025/26 processing",
+    "progress": "Sample pipeline progress",
+    "latest": "Latest validated term",
+    "latestHint": "Ready for allocation",
+    "latestFooter": "Cutoff met: {{date}}",
+    "cohort": "Cohort simulated",
+    "cohortHint": "Undergrad CS",
+    "cohortFooter": "Catalogs 2021-R1 through 2024-R1",
+    "accuracy": "Model accuracy",
+    "accuracyHint": "+1.2% over SP25",
+    "accuracyFooter": "Sample Prereq-flow Markov validation"
+  },
+  "log": {
+    "title": "Execution Log",
+    "total": "{{count}} records total",
+    "caption": "Forecast runs execution log",
+    "allStatuses": "All Statuses",
+    "statusLabel": "Filter by status",
+    "allYears": "Academic Years",
+    "yearLabel": "Filter by academic year",
+    "export": "Export filtered sample runs",
+    "term": "Term",
+    "cutoff": "Cutoff",
+    "status": "Status",
+    "created": "Created",
+    "actions": "Actions",
+    "open": "Open {{term}} {{id}}",
+    "new": "New",
+    "runId": "RUN-ID: {{id}}",
+    "lock": "Registration lock",
+    "by": "by {{name}}",
+    "details": "View Details",
+    "detailsLabel": "View details for {{id}}",
+    "emptyTitle": "No sample runs found",
+    "emptyBody": "Try another term, run ID, cutoff date, or filter.",
+    "clearFilters": "Clear filters"
+  },
+  "info": {
+    "engineTitle": "Prerequisite chain engine",
+    "engineBody": "Sample cohort transitions follow degree audit rules from Catalog 2024. Markov fail/pass modeling is illustrated here; no engine is running.",
+    "capacityTitle": "Capacity thresholds",
+    "capacityBody": "Sample section limits: 32 students per lab, 75 per lecture hall. Courses below 12 students are flagged for advisory review in the design.",
+    "auditTitle": "Audit & governance",
+    "auditBody": "Projections do not enforce automatic timetable releases. Coordinator manual review is required prior to faculty notification."
+  },
+  "dialog": {
+    "title": "Initialize New Forecast Run",
+    "description": "Sample batch configuration · local preview only",
+    "cancel": "Cancel",
+    "submit": "Execute sample simulation",
+    "term": "Target term",
+    "cutoff": "Registration data cutoff",
+    "scope": "Cohort scope",
+    "undergraduate": "Undergraduate CS (All catalog years)",
+    "doubleMajors": "Include Double Majors (AI / Data Science)",
+    "faculty": "Apply Faculty Availability Constraints",
+    "note": "Adds a mock running record to this page session. No GPU job, backend request, or persistent record will be created.",
+    "scopeError": "Select at least one cohort scope."
+  },
+  "toast": {
+    "added": "{{id}} added to this sample session. No simulation was executed or sent to a backend; reload resets the list.",
+    "exported": "Exported {{count}} filtered sample records. No live execution data was included."
+  }
+}
