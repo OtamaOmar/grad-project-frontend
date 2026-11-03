@@ -33,6 +33,17 @@ export function ThemeProvider({ children }) {
     document.documentElement.style.colorScheme = resolvedTheme;
   }, [resolvedTheme]);
 
+  // Synchronize theme across multiple tabs/windows
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === STORAGE_KEY) {
+        setThemeState(readSavedTheme());
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
   const setTheme = useCallback((next) => {
     setThemeState(next);
     try {

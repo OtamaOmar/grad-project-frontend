@@ -165,10 +165,9 @@ export function ForgotPasswordForm() {
         <div className="mt-6 w-full">
           <Link
             to={PATHS.login}
-            className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-sm font-semibold text-white shadow-sm transition-all"
+            className="flex h-11 w-full items-center justify-center rounded-lg bg-[#0089ec] hover:bg-[#007ad3] active:bg-[#006bb8] dark:bg-[#0089ec] dark:hover:bg-[#0277d0] px-4 text-sm font-semibold text-white shadow-sm hover:shadow-[0_4px_14px_rgba(0,137,236,0.35)] transition-all duration-200 cursor-pointer"
           >
             <span>{t("returnToSignIn")}</span>
-            <Icon name="arrow_forward" size={18} flipRtl />
           </Link>
         </div>
       </div>
@@ -210,7 +209,7 @@ export function ForgotPasswordForm() {
             <button
               type="button"
               onClick={handleRequestNewLink}
-              className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-sm font-semibold text-white shadow-sm transition-all cursor-pointer"
+              className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#0089ec] hover:bg-[#007ad3] active:bg-[#006bb8] dark:bg-[#0089ec] dark:hover:bg-[#0277d0] px-4 text-sm font-semibold text-white shadow-sm hover:shadow-[0_4px_14px_rgba(0,137,236,0.35)] transition-all duration-200 cursor-pointer"
             >
               <Icon name="refresh" size={18} />
               <span>{t("requestNewLink")}</span>
@@ -402,7 +401,7 @@ export function ForgotPasswordForm() {
           <button
             type="submit"
             disabled={resetSubmitting}
-            className="mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-sm font-semibold text-white shadow-sm dark:shadow-blue-950/40 transition-all disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
+            className="mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#0089ec] hover:bg-[#007ad3] active:bg-[#006bb8] dark:bg-[#0089ec] dark:hover:bg-[#0277d0] px-4 text-sm font-semibold text-white shadow-sm hover:shadow-[0_4px_14px_rgba(0,137,236,0.35)] transition-all duration-200 disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
           >
             {resetSubmitting ? (
               <span className="flex items-center gap-2">
@@ -410,10 +409,7 @@ export function ForgotPasswordForm() {
                 <span>{t("resetPasswordAction")}...</span>
               </span>
             ) : (
-              <>
-                <span>{t("resetPasswordAction")}</span>
-                <Icon name="arrow_forward" size={18} flipRtl />
-              </>
+              <span>{t("resetPasswordAction")}</span>
             )}
           </button>
 
@@ -512,7 +508,7 @@ export function ForgotPasswordForm() {
         <button
           type="submit"
           disabled={requestSubmitting}
-          className="mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-sm font-semibold text-white shadow-sm dark:shadow-blue-950/40 transition-all disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
+          className="mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#0089ec] hover:bg-[#007ad3] active:bg-[#006bb8] dark:bg-[#0089ec] dark:hover:bg-[#0277d0] px-4 text-sm font-semibold text-white shadow-sm hover:shadow-[0_4px_14px_rgba(0,137,236,0.35)] transition-all duration-200 disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
         >
           {requestSubmitting ? (
             <span className="flex items-center gap-2">
@@ -520,10 +516,7 @@ export function ForgotPasswordForm() {
               <span>{t("sendResetLink")}...</span>
             </span>
           ) : (
-            <>
-              <span>{t("sendResetLink")}</span>
-              <Icon name="arrow_forward" size={18} flipRtl />
-            </>
+            <span>{t("sendResetLink")}</span>
           )}
         </button>
 

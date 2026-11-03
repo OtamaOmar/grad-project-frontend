@@ -58,4 +58,15 @@ i18n.use(initReactI18next).init({
 
 applyDocumentLanguage(i18n.language);
 
+// Synchronize language across multiple tabs/windows
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (e) => {
+    if (e.key === STORAGE_KEY && e.newValue && e.newValue in LANGUAGES) {
+      if (i18n.resolvedLanguage !== e.newValue) {
+        i18n.changeLanguage(e.newValue);
+      }
+    }
+  });
+}
+
 export default i18n;

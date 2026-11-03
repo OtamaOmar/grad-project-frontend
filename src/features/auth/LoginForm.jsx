@@ -236,7 +236,7 @@ export function LoginForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-1 sm:mt-1.5 flex h-9.5 sm:h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#123B70] dark:bg-blue-600 hover:bg-[#0c2a52] dark:hover:bg-blue-500 active:bg-[#09203f] dark:active:bg-blue-700 px-4 text-xs sm:text-sm font-semibold text-white shadow-sm dark:shadow-blue-950/40 transition-all disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
+          className="mt-1 sm:mt-1.5 flex h-10 sm:h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#0089ec] hover:bg-[#007ad3] active:bg-[#006bb8] dark:bg-[#0089ec] dark:hover:bg-[#0277d0] px-4 text-xs sm:text-sm font-semibold text-white shadow-sm hover:shadow-[0_4px_14px_rgba(0,137,236,0.35)] transition-all duration-200 disabled:pointer-events-none disabled:opacity-60 cursor-pointer"
         >
           {submitting ? (
             <span className="flex items-center gap-2">
@@ -244,10 +244,7 @@ export function LoginForm() {
               <span>{t("submit")}...</span>
             </span>
           ) : (
-            <>
-              <span>{t("submit")}</span>
-              <Icon name="arrow_forward" size={16} flipRtl />
-            </>
+            <span>{t("submit")}</span>
           )}
         </button>
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
@@ -43,10 +43,22 @@ export function AuthProvider({ children }) {
 
   const applyPreferences = useCallback(
     (next) => {
-      if (next.preferredLanguage && next.preferredLanguage !== i18n.resolvedLanguage) {
-        i18n.changeLanguage(next.preferredLanguage);
+      // Respect user's explicit local storage preferences across all roles/navigation
+      try {
+        const savedLang = localStorage.getItem("language");
+        if (!savedLang && next?.preferredLanguage && next.preferredLanguage !== i18n.resolvedLanguage) {
+          i18n.changeLanguage(next.preferredLanguage);
+        }
+        const savedTheme = localStorage.getItem("theme");
+        if (!savedTheme && next?.preferredTheme) {
+          setTheme(next.preferredTheme);
+        }
+      } catch {
+        if (next?.preferredLanguage && next.preferredLanguage !== i18n.resolvedLanguage) {
+          i18n.changeLanguage(next.preferredLanguage);
+        }
+        if (next?.preferredTheme) setTheme(next.preferredTheme);
       }
-      if (next.preferredTheme) setTheme(next.preferredTheme);
     },
     [i18n, setTheme],
   );
@@ -62,23 +74,46 @@ export function AuthProvider({ children }) {
     [queryClient, applyPreferences],
   );
 
+  const isSigningOutRef = useRef(false);
+
   const signOut = useCallback(async () => {
+    // Prevent duplicate logout requests if user clicks multiple times
+    if (isSigningOutRef.current) return;
+    isSigningOutRef.current = true;
+
     try {
+      // 1. Invalidate session on the backend / mock storage
       await authApi.logout();
+    } catch (err) {
+      // Network/server errors should not block clearing local auth state
+      if (import.meta.env.DEV) console.warn("Logout request failed:", err);
     } finally {
-      // Drop every cached response so the next user never sees this user's data.
-      queryClient.clear();
+      // 2. Cancel all pending queries to stop in-flight background requests
+      await queryClient.cancelQueries();
+
+      // 3. Set the session query to null so useAuth() updates immediately
       queryClient.setQueryData(SESSION_QUERY_KEY, null);
+
+      // 4. Safely purge non-session cached query data
+      queryClient.removeQueries({
+        predicate: (query) => query.queryKey[0] !== SESSION_QUERY_KEY[0],
+      });
+
+      // 5. Navigate directly to the Sign In page
       navigate(PATHS.login, { replace: true });
+      isSigningOutRef.current = false;
     }
   }, [queryClient, navigate]);
 
   // Any request that comes back 401 mid-session means the cookie expired.
   useEffect(() => {
-    setUnauthorizedHandler(() => {
+    setUnauthorizedHandler(async () => {
       if (!queryClient.getQueryData(SESSION_QUERY_KEY)) return;
-      queryClient.clear();
+      await queryClient.cancelQueries();
       queryClient.setQueryData(SESSION_QUERY_KEY, null);
+      queryClient.removeQueries({
+        predicate: (query) => query.queryKey[0] !== SESSION_QUERY_KEY[0],
+      });
       toast.info(t("errors.session"));
       navigate(PATHS.login, { replace: true });
     });

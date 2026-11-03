@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/components/ui";
 import { LoginForm } from "@/features/auth/LoginForm";
@@ -5,10 +7,25 @@ import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PreferenceControls } from "@/layouts/shell/PreferenceControls";
 import nuLogo from "@/assets/nu-logo.png";
 import nuCampus from "@/assets/nu-campus.jpg";
+import { PATHS } from "@/routes/paths";
 
 export default function LoginPage() {
   const { t } = useTranslation(["auth", "common"]);
+  const navigate = useNavigate();
   useDocumentTitle(`${t("branding.acops")} - ${t("signInTitle")}`);
+
+  useEffect(() => {
+    // Ensure pressing the browser Back button while on the Sign In page
+    // returns the user directly to the Landing Page.
+    const handlePopState = () => {
+      navigate(PATHS.landing, { replace: true });
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [navigate]);
 
   return (
     <div

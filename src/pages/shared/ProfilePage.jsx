@@ -12,7 +12,7 @@ import { cn } from "@/utils/cn";
 export default function ProfilePage() {
   const { t, i18n } = useTranslation(["profile", "common"]);
   const { user, signOut, refresh } = useAuth();
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const toast = useToast();
 
   const currentLang = i18n.resolvedLanguage || "en";
@@ -414,7 +414,7 @@ export default function ProfilePage() {
                 onClick={() => handleThemeSelect("light")}
                 className={cn(
                   "flex flex-col rounded-lg border p-4 text-start transition-all",
-                  theme === "light"
+                  resolvedTheme === "light"
                     ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary"
                     : "border-outline-variant bg-surface-container-low hover:border-outline",
                 )}
@@ -426,7 +426,7 @@ export default function ProfilePage() {
                       {t("preferences.themeLight")}
                     </span>
                   </div>
-                  {theme === "light" ? (
+                  {resolvedTheme === "light" ? (
                     <Icon name="check_circle" size={18} className="text-primary" />
                   ) : (
                     <span className="size-4 rounded-full border border-outline" />
@@ -452,7 +452,7 @@ export default function ProfilePage() {
                 onClick={() => handleThemeSelect("dark")}
                 className={cn(
                   "flex flex-col rounded-lg border p-4 text-start transition-all",
-                  theme === "dark"
+                  resolvedTheme === "dark"
                     ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary"
                     : "border-outline-variant bg-surface-container-low hover:border-outline",
                 )}
@@ -464,7 +464,7 @@ export default function ProfilePage() {
                       {t("preferences.themeDark")}
                     </span>
                   </div>
-                  {theme === "dark" ? (
+                  {resolvedTheme === "dark" ? (
                     <Icon name="check_circle" size={18} className="text-primary" />
                   ) : (
                     <span className="size-4 rounded-full border border-outline" />

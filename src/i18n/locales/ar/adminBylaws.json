@@ -1,5 +1,8 @@
 {
-  "eyebrow": ["الحوكمة الأكاديمية النظامية", "الأطر التنظيمية"],
+  "eyebrow": [
+    "الحوكمة الأكاديمية النظامية",
+    "الأطر التنظيمية"
+  ],
   "description": "اللوائح الأكاديمية المعتمدة التي تحكم درجات النجاح وحدود الساعات وشروط التخرج.",
   "scope": "النطاق: مرجع السجل فقط",
   "newBylaw": "لائحة جديدة",
@@ -63,11 +66,27 @@
       "programs": "البرامج: {{value}}",
       "tracks": "المسارات: {{value}}",
       "courses": "المقررات: {{value}}",
-      "letters": "التقديرات: {{value}}"
+      "letters": "التقديرات: {{value}}",
+      "students_one": "طالب واحد",
+      "students_other": "{{value}} طلاب",
+      "programs_one": "برنامج واحد",
+      "programs_other": "{{value}} برامج",
+      "tracks_one": "مسار واحد",
+      "tracks_other": "{{value}} مسارات",
+      "courses_one": "مقرر واحد",
+      "courses_other": "{{value}} مقررات",
+      "letters_one": "تقدير واحد",
+      "letters_other": "{{value}} تقديرات"
     },
     "details": "البرامج والمستويات",
     "editLabel": "تعديل {{name}}",
-    "deleteLabel": "حذف {{name}}"
+    "deleteLabel": "حذف {{name}}",
+    "trainingExcluded_one": "ساعة تدريب واحدة خارج المعدل",
+    "trainingExcluded_other": "{{value}} ساعات تدريب خارج المعدل",
+    "ruleCount_one": "قاعدة واحدة",
+    "ruleCount_other": "{{value}} قواعد",
+    "unstatedRows_one": "شريحة واحدة غير منصوص عليها",
+    "unstatedRows_other": "{{value}} شرائح غير منصوص عليها"
   },
   "detail": {
     "title": "تفاصيل اللائحة",
@@ -130,7 +149,9 @@
     "crossMerge": "إمكانية الدمج بين اللوائح",
     "mergeProhibited": "محظور (فصل صارم بين اللوائح)",
     "mergeAllowed": "مسموح",
-    "footnote": "القيم مأخوذة من صفوف اللوائح المخزنة. عبارة \"غير منصوص عليه\" تعني أن المادة المصدر لا تذكر رقمًا، ولا تُعامل أبدًا كصفر."
+    "footnote": "القيم مأخوذة من صفوف اللوائح المخزنة. عبارة \"غير منصوص عليه\" تعني أن المادة المصدر لا تذكر رقمًا، ولا تُعامل أبدًا كصفر.",
+    "bandsValue_one": "شريحة واحدة",
+    "bandsValue_other": "{{value}} شرائح"
   },
   "form": {
     "createTitle": "لائحة جديدة",

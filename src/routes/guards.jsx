@@ -1,4 +1,5 @@
-import { Navigate, Outlet, useLocation, useSearchParams } from "react-router";
+import { useEffect } from "react";
+import { Navigate, Outlet, useSearchParams } from "react-router";
 import { PageLoader } from "@/components/common/PageLoader";
 import { postLoginPath } from "@/features/auth/redirect";
 import { useAuth } from "@/hooks/useAuth";
@@ -8,13 +9,22 @@ import { PATHS } from "./paths";
 
 /** Signed-in only. Remembers where the user was going so login can send them back. */
 export function RequireAuth() {
-  const { status } = useAuth();
-  const location = useLocation();
+  const { status, refresh } = useAuth();
+
+  useEffect(() => {
+    // If restored from browser bfcache (Back/Forward Cache), verify session
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        refresh?.();
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, [refresh]);
 
   if (status === "loading") return <PageLoader fullScreen />;
   if (status === "anonymous") {
-    const redirect = `${location.pathname}${location.search}`;
-    return <Navigate to={`${PATHS.login}?redirect=${encodeURIComponent(redirect)}`} replace />;
+    return <Navigate to={PATHS.login} replace />;
   }
   return <Outlet />;
 }
@@ -40,6 +50,7 @@ export function GuestOnly() {
  */
 export function RoleLayout({ role }) {
   const { user, signOut } = useAuth();
+  if (!user) return null;
   const allowed = user.role === role;
 
   return (
@@ -52,5 +63,6 @@ export function RoleLayout({ role }) {
 /** Shell for pages every role shares (notifications, help, profile). */
 export function SharedLayout() {
   const { user, signOut } = useAuth();
+  if (!user) return null;
   return <AppLayout role={user.role} user={user} onSignOut={signOut} />;
 }
