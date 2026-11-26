@@ -61,12 +61,29 @@ const usesRealApi = (path) =>
     (prefix) => path === prefix || path.startsWith(`${prefix}/`) || path.startsWith(`${prefix}?`),
   );
 
+// While some pages are real and some are mocked, the mocks need their own signed-in user.
+// After a real login or signup, sign the mocks in as a mock user with the same role;
+// after a real logout, sign them out.
+// shortcut: mock pages see a stand-in user, not the real one; delete once every page is real.
+async function bridgeMockSession(path, data) {
+  if (!env.useMocks) return;
+  const { appUsers } = await import("@/mocks/data/people");
+  const { setSessionUser } = await import("@/mocks/session");
+  if (path === "/auth/logout") return setSessionUser(null);
+  const role = data?.user?.role;
+  if (role) setSessionUser(appUsers.find((user) => user.role === role && user.is_active) ?? null);
+}
+
 async function request(method, path, options) {
   if (env.useMocks && !usesRealApi(path)) {
     const { handleMockRequest } = await import("@/mocks/server");
     return handleMockRequest(method, path, options);
   }
-  return networkRequest(method, path, options);
+  const data = await networkRequest(method, path, options);
+  if (["/auth/login", "/auth/signup", "/auth/logout"].includes(path)) {
+    await bridgeMockSession(path, data);
+  }
+  return data;
 }
 
 export const http = {
