@@ -1,4 +1,4 @@
-> Copy of `grad-project-backend/docs/api-contract.md` (branch `docs/api-contract`). The backend copy is the source; links below point into the backend repo.
+> Copy of `grad-project-backend/docs/api-contract.md`. The backend copy is the source; links below point into the backend repo.
 
 # API contract
 
@@ -88,6 +88,11 @@ One envelope, defined in [contracts/errors.md](../contracts/errors.md):
 | `GET /api/offering-decisions?termId=` | Coordinator | Built (`feature/backend-coordinator-workflow`) | One page of the term's decisions. List query plus `bylaw_code`, `course_id`. Sorts: `course_code` (default), `course_title`, `bylaw_code`, `predicted_headcount`, `approved_by_name`, `approved_at`, `updated_at`, `created_at` |
 | `GET /api/admin/users/summary` | Admin | Built (`feature/backend-admin`) | `{ total_active, total, students, students_on_2025, advisors, coordinators, admins }` (active accounts, except `total`) |
 | `GET /api/admin/users` | Admin | Built (`feature/backend-admin`) | One page of accounts. List query plus `role`, `status` (`active`/`inactive`). Sorts: `display_id` (default), `full_name`, `username`, `role`, `status`, `created_at`. Row below |
+| `GET /api/admin/credit-limits/summary` | Admin | Built (`feature/backend-admin-reference`) | `{ total, stated_count, unstated_count, bylaw_count, highest_max_credits, open_gaps, by_bylaw }`. `open_gaps` are the open `data_gap` rows whose `affected_entity` starts with `credit_limit` |
+| `GET /api/admin/credit-limits` | Admin | Built (`feature/backend-admin-reference`) | `credit_limit` rows plus `bylaw_code`, `rule_kind` (`maximum`/`minimum`/`floor_waived`/`unstated`), `category` (display group), `is_unstated`, `data_gap_id` (always null: no link column). List query plus `bylaw_id`, `bylaw_code`, `term_type`, `population`, `category`, `rule_kind`; 100 per page by default; default order is bylaw, then priority |
+| `GET /api/admin/data-gaps/summary` | Admin | Built (`feature/backend-admin-reference`) | `{ total, open, resolved, open_by_severity, by_category, affected_bylaws, linked_import_issues, last_updated_at }`. `open_by_severity` and `linked_import_issues` are null |
+| `GET /api/admin/data-gaps` | Admin | Built (`feature/backend-admin-reference`) | `data_gap` rows plus `gap_code` (`GAP-001`), `severity` (null), `bylaw_scope`, `import_issue_count` (null). List query plus `status`, `category`, `severity`, `affected_entity`; default sort `id` |
+| `GET /api/admin/data-gaps/:id` | Admin | Built (`feature/backend-admin-reference`) | One gap plus `import_issues: []`. `404 NOT_FOUND` for an unknown id |
 | `POST /api/forecast-runs` | Coordinator | Planned, Ayman | Starts one baseline run. Body in [forecast-io.md](forecast-io.md) |
 | `GET /api/forecast-runs?termId=` | Coordinator | Planned, Ayman | Runs for one target term |
 | `GET /api/forecast-runs/:runId/courses` | Coordinator | Planned, Ayman | Dashboard rows for one run |
@@ -179,6 +184,17 @@ Response (same shape as a list item):
 
 `full_name` falls back to the username. `display_id` is the student's university ID (null for staff). `bylaw_scope` is the student's bylaw code, `systemwide` for admins, `both` for other staff.
 
+### Admin reference reads: what is real and what is null
+
+Every value comes from the database. A field the database has no source for is null or empty, never filled in:
+
+| Field | Value | Why |
+|---|---|---|
+| Credit limit `data_gap_id` | null | No column links a `credit_limit` row to a gap. The summary's `open_gaps` lists them instead |
+| Data gap `severity`, summary `open_by_severity` | null | `data_gap` has no severity. Filtering by severity returns no rows |
+| Data gap `import_issue_count`, `import_issues`, summary `linked_import_issues` | null / `[]` | There are no import tables |
+| Data gap `bylaw_scope` | Read from the gap itself | `old_cs` when the category starts with `old_` or the source cites the old bylaw PDF or the old study-plan sheets; `bylaw_2025` when the category starts with `new_` or the source cites the 2025 bylaw PDF. Empty when it cites neither |
+
 ## `POST /explain`
 
 The browser never calls this route. Node calls it with the `X-Service-Key` header from the environment and an 8 second timeout. Pydantic schemas will come from `contracts/ai-explain.md` (not written yet; owners AI A and AI B). The dispatcher accepts only `kind` `rule` and `kind` `forecast`.
@@ -215,7 +231,7 @@ Python does not compute `p`, headcount, eligibility, sections or approval.
 - Stored explanation rows.
 - Student dashboard, expected offerings and my-courses routes: the frontend mocks propose them, but they need the forecast engine. They are added here when that work starts.
 - Decision history: needs a table that keeps every save.
-- Admin routes other than the two Users reads, including every admin write. Most admin pages need columns or tables that do not exist yet.
+- Admin routes other than the reads listed above, including every admin write. Most other admin pages need columns or tables that do not exist yet.
 - SSO, password-reset email, refresh tokens.
 - API versioning, GraphQL, WebSockets, a message queue, Redis.
 - Registration write-back, timetable, room scheduling, petitions, internship workflow.
