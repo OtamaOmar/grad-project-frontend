@@ -1,115 +1,67 @@
+> Copy of `grad-project-backend/docs/api-contract.md` (branch `docs/api-contract`). The backend copy is the source; links below point into the backend repo.
+
 # API contract
 
-Phase 1 HTTP surface for the five-person team: who may call what, how identity is taken, and how errors and explanations behave.
+Phase 1 HTTP surface: who may call what, how identity is taken, and how errors and explanations behave.
 
-Source: [phase1-implementation-roadmap.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/phase1-implementation-roadmap.md) §4.1–§4.5, §7, §9, §12. Field meanings: [database-design.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/database-design.md).
+Updated 2026-11-27. Owner: Omar. Every change needs Omar's review; REST and error-envelope changes also need Backend B (Ayman).
+Related: [errors.md](../contracts/errors.md), [forecast-io.md](forecast-io.md), [evidence-format.md](evidence-format.md), [database-design.md](database-design.md).
 
-Related: [evidence-format.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/evidence-format.md), [forecast-io.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/forecast-io.md).
+Each route below is marked **Built** (code and tests exist on the branch named) or **Planned** (agreed, not built yet, with its owner).
 
 ## Whole system
 
-The browser talks only to the Node API. Node talks to FastAPI for explanations. FastAPI has no headcount, eligibility, or approval authority. A role or user id sent by the browser is never the identity of the request. The server reads `app_user` for the session.
+The browser talks only to the Node API. Node talks to FastAPI for explanations. FastAPI has no headcount, eligibility, or approval authority, and writes no tables. A role or user id sent by the browser is never the identity of the request; the server reads `app_user` for the session.
 
-Roles on `app_user.role` are `student`, `coordinator`, and `advisor`. `advisor` is reserved for Phase 2 and is not a Phase 1 caller.
+Roles on `app_user.role`:
 
-**Phase 2 has no API contract.** Advising, dynamic offering blocks, and the student plan workspace have no routes, no request bodies, and no response samples. Do not add endpoints for `student_plan`, `offering_block`, `block_membership`, `block_forecast_link`, `advising_case`, or `advising_message`. StudentHome may say that advising arrives in Phase 2. That sentence is not an endpoint.
+| Role | Phase 1 use | How the account is made |
+|---|---|---|
+| `student` | Own academic record | Self-signup with a university ID that exists in `student` |
+| `coordinator` | Opening decisions, forecast review | `npm run user:create -- --role coordinator ...` |
+| `advisor` | Reserved for Phase 2. No Phase 1 routes | `npm run user:create -- --role advisor ...` |
+| `admin` | The five team members. Admin pages | `npm run user:create -- --role admin ...`, each person for themselves |
 
-## Phase 1 (this phase)
+**Phase 2 has no API contract.** Advising, dynamic offering blocks and the student plan workspace have no routes, no request bodies and no response samples. Do not add endpoints for `student_plan`, `offering_block`, `block_membership`, `block_forecast_link`, `advising_case` or `advising_message`.
 
-### Ownership
+## Session identity
 
-Omar owns `grad-project-backend/contracts/`:
+- Login sets a Node-signed JWT (HS256, user id only) in the httpOnly, `SameSite=Strict` cookie `acops_session`. It lasts 8 hours. There are no refresh tokens; the user signs in again. The cookie is `Secure` in production.
+- `authenticate` runs on every route except `GET /health`, `POST /api/auth/signup/lookup`, `POST /api/auth/signup` and `POST /api/auth/login`. It loads the active `app_user` row on every request, so a role change or deactivation applies at once.
+- `requireRole` checks the role from that row, never from the token or the client.
+- Bodies and queries are parsed with strict Zod schemas: any key the route does not expect is a `400`. This is how a client-sent `userId` or `approvedBy` is refused.
+- The browser origin allowed to send the cookie is `CORS_ORIGIN` (default `http://localhost:5173`).
 
-| File | Approver for every change |
-|---|---|
-| `rest-api.md` and REST samples | Backend B |
-| `ai-explain.md` request and retrieval fields | AI A |
-| `ai-explain.md` answer, citation, and refusal fields | AI B |
-| `errors.md` | Backend B (REST envelope). AI errors are mapped into this envelope |
-| `decisions.md` | The owners of the interpretation being locked |
-| `samples/*.json` | The approver of the section the sample belongs to |
+## Errors
 
-A contract change needs that approver’s review plus Omar’s. Backend A owns `db/queries/README.md` directly. It is not under `contracts/`. Pages call `src/api/` only.
+One envelope, defined in [contracts/errors.md](../contracts/errors.md):
 
-### Session identity
-
-- The Node-issued JWT travels in an httpOnly `SameSite=Strict` cookie.
-- `authenticate` runs on every Node route except health, `POST /api/auth/signup/lookup`, `POST /api/auth/signup`, and `POST /api/auth/login`.
-- `requireRole` reads `app_user.role` from the database, not from the token payload alone.
-- The user id is `req.user.id` from that session. Zod rejects a client-sent `userId` or `approvedBy`.
-- Do not log passwords, tokens, `Cookie`, or `Authorization`.
-
-### Error envelope
-
-Node has one error envelope, specified in `contracts/errors.md`. FastAPI failures are mapped into that same envelope. Explanations are not stored. This phase does not add error-body fields the roadmap has not named. The statuses below are the ones tests must cover.
+```json
+{ "error": { "code": "SOME_CODE", "message": "Human text", "details": [] } }
+```
 
 | Situation | HTTP status |
 |---|---|
-| Missing or expired session | 401 |
+| Missing, forged or expired session; deactivated account | 401 |
 | Signed in, wrong role | 403 |
-| Validation failure, or Node JSON body over 16 KB | 400 |
+| Validation failure, unexpected key, bad JSON, or JSON body over 16 KB | 400 |
+| Unknown university ID at signup / unknown route | 404 |
+| University ID already has an account, or username taken | 409 |
+| Too many auth requests | 429 |
 | `POST /explain` with no `X-Service-Key` | 401 |
 | `POST /explain` question over 500 characters, or FastAPI body over 64 KB | 422 or 400 |
 
-Rate limits are in-memory: per IP on auth, per uid on forecast-run and explanations.
+## Conventions
 
-### Phase 1 route table
-
-Coordinator routes use `requireRole('coordinator')`. A student receives 403 on forecast routes. There is no admin UI. Coordinator accounts come from `src/cli/create-coordinator.js`.
-
-| Method and path | Who | Behaviour |
-|---|---|---|
-| `POST /api/auth/signup/lookup` | Public | University ID must already exist in `student` |
-| `POST /api/auth/signup` | Public | ID must exist in `student` and must not already be linked. Username and Argon2id password go on `app_user` |
-| `POST /api/auth/login` | Public | One login for students and coordinators. Sets the session cookie |
-| `POST /api/auth/logout` | Session | Ends the session |
-| `GET /api/me` | Session | Identity for the auth guard. Role comes from the database |
-| `PATCH /api/me/onboarding` | Session | Saves name, birthdate, language (`en` or `ar`), and theme (`light` or `dark`) |
-| `POST /api/forecast-runs` | Coordinator | Starts one baseline run. Body in [forecast-io.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/forecast-io.md) |
-| `GET /api/forecast-runs?termId=` | Coordinator | Runs for one target term |
-| `GET /api/forecast-runs/:runId/courses` | Coordinator | Dashboard rows for one run |
-| `GET /api/forecast-runs/:runId/courses/:courseId` | Coordinator | One course: aggregates by rule, no student ids. See [evidence-format.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/evidence-format.md) |
-| `GET /api/courses/:courseId/rules` | Coordinator | Stored requisite groups for that course |
-| `PUT /api/offering-decisions` | Coordinator | Opening flags. Approver is the session, with a name snapshot. Not forecast output |
-| `GET /api/offering-decisions?termId=` | Coordinator | Decisions for a term |
-| `GET /api/data-gaps` | Coordinator | Open holes. Status is `open` or `resolved` |
-| `POST /api/explanations` | Coordinator | Builds context from stored rows and calls FastAPI. Does not persist the answer |
-| `GET /health` | Public on FastAPI | No service key. FastAPI binds `127.0.0.1` |
-| `POST /explain` | Node only | FastAPI. Requires `X-Service-Key` |
-
-### `POST /explain`
-
-The browser never calls this route. Node calls it with axios, the `X-Service-Key` header from the environment, and an 8 second timeout. Pydantic schemas come from `contracts/ai-explain.md`. The dispatcher accepts only `kind` `rule` and `kind` `forecast`.
-
-Node’s context is stored rows only: requisites, `credit_limit`, the `offering_forecast` row, and `forecast_line` counts by rule. No student identifiers. See the aggregate in [evidence-format.md](/cursor/stores/bc-a41049f8-3811-4a24-a05c-7bb12ec21663/docs/evidence-format.md).
-
-```json
-{
-  "kind": "forecast",
-  "question": "Why is this predicted headcount incomplete?"
-}
-```
-
-`kind` is `rule` or `forecast`. `question` is at most 500 characters. The FastAPI body limit is 64 KB. Node attaches the context object before the call. The sample files for that object are `contracts/samples/explain-context-*.json`.
-
-| Kind | What the answer may use |
+| Topic | Rule |
 |---|---|
-| `rule` | Node-supplied rule rows plus passages from `retrieve(question, bylaw_code, k)` |
-| `forecast` | The stored `offering_forecast` row and the aggregated `forecast_line` counts Node sent. Cites only those supplied rows |
+| Ids | JSON numbers |
+| Decimals from `numeric` columns (headcount, grade points) | Strings, for example `"2.05"`, so no precision is lost |
+| Dates | `YYYY-MM-DD`; timestamps are ISO 8601 |
+| Null | Means unknown or not stated. The UI shows "-", never 0 |
+| List endpoints | Query: `q` (search text), exact-match filters (`all` or empty = no filter), `sort` (a listed column, `-` prefix = descending), `page` (from 1), `page_size` (default 10, max 100). Response: `{ items, total, page, page_size }`, where `total` counts every match. An unknown `sort` or a `page_size` over 100 is a `400` |
 
-Refusals, all of them:
-
-| Case | Result |
-|---|---|
-| Missing `X-Service-Key` | 401. The stub must reject this |
-| Question or body over the size limit | 422 or 400 |
-| General chat, or advice to a student | Refused. Allowlist is rule meaning, why a number is what it is, and which article |
-| A request to decide, including “should I open a lab?” | Refused. The panel must not show an AI answer as a decision |
-| A citation id is missing from the context, or a number in the answer is not in the context | Replaced with a “could not ground” refusal |
-
-Python does not compute `p`, headcount, eligibility, sections, or approval.
-
-### Size limits
+## Size limits
 
 | Boundary | Limit |
 |---|---|
@@ -117,18 +69,154 @@ Python does not compute `p`, headcount, eligibility, sections, or approval.
 | FastAPI request body | 64 KB |
 | `question` | 500 characters |
 | Explain timeout | 8 seconds |
-| Auth rate limit | In-memory, per IP |
-| Forecast-run and explanations rate limit | In-memory, per uid |
+| Auth rate limit | 20 requests per IP per 15 minutes, in memory |
+| Forecast-run and explanations rate limit | In memory, per user. Planned with those routes |
 
-### What is not in the contract
+## Route table
 
-- Any Phase 2 advising, plan-workspace, or dynamic-block route or payload.
+| Method and path | Who | Status | Behaviour |
+|---|---|---|---|
+| `GET /health` | Public | Built (`feature/backend-application-layer`) | `{ "status": "ok" }` |
+| `POST /api/auth/login` | Public | Built (`feature/backend-application-layer`) | Body `{ username, password }`. Username ignores case and spaces. Sets the session cookie, returns `{ user }`. `401 INVALID_CREDENTIALS`, `403 ACCOUNT_INACTIVE` |
+| `POST /api/auth/logout` | Session | Built (`feature/backend-application-layer`) | Clears the cookie. `204` |
+| `GET /api/me` | Session | Built (`feature/backend-application-layer`) | `{ user }`. Role comes from the database |
+| `POST /api/auth/signup/lookup` | Public | Built (`feature/backend-student-workflow`) | Body `{ university_id }`. Returns `{ university_id, cohort_year }`. `404 STUDENT_NOT_FOUND`, `409 ALREADY_LINKED` |
+| `POST /api/auth/signup` | Public | Built (`feature/backend-student-workflow`) | Body `{ university_id, username, password }`. Username 3-64 of `a-z 0-9 . _ -`; password 8-128. Creates the student account, signs in, `201 { user }`. `404`, `409 ALREADY_LINKED`, `409 USERNAME_TAKEN` |
+| `PATCH /api/me/onboarding` | Session | Built (`feature/backend-student-workflow`) | Body: any of `full_name`, `birthdate` (`YYYY-MM-DD`), `preferred_language` (`en`/`ar`), `preferred_theme` (`light`/`dark`). Saves only what is sent; the first save sets `onboarded_at`. Returns `{ user }` |
+| `GET /api/student/academic-data` | Student | Built (`feature/backend-student-workflow`) | The signed-in student's record. See below |
+| `PUT /api/offering-decisions` | Coordinator | Built (`feature/backend-coordinator-workflow`) | Opening flags for one course and term. See below |
+| `GET /api/offering-decisions?termId=` | Coordinator | Built (`feature/backend-coordinator-workflow`) | One page of the term's decisions. List query plus `bylaw_code`, `course_id`. Sorts: `course_code` (default), `course_title`, `bylaw_code`, `predicted_headcount`, `approved_by_name`, `approved_at`, `updated_at`, `created_at` |
+| `GET /api/admin/users/summary` | Admin | Built (`feature/backend-admin`) | `{ total_active, total, students, students_on_2025, advisors, coordinators, admins }` (active accounts, except `total`) |
+| `GET /api/admin/users` | Admin | Built (`feature/backend-admin`) | One page of accounts. List query plus `role`, `status` (`active`/`inactive`). Sorts: `display_id` (default), `full_name`, `username`, `role`, `status`, `created_at`. Row below |
+| `POST /api/forecast-runs` | Coordinator | Planned, Ayman | Starts one baseline run. Body in [forecast-io.md](forecast-io.md) |
+| `GET /api/forecast-runs?termId=` | Coordinator | Planned, Ayman | Runs for one target term |
+| `GET /api/forecast-runs/:runId/courses` | Coordinator | Planned, Ayman | Dashboard rows for one run |
+| `GET /api/forecast-runs/:runId/courses/:courseId` | Coordinator | Planned, Ayman | One course: aggregates by rule, no student ids. See [evidence-format.md](evidence-format.md) |
+| `GET /api/courses/:courseId/rules` | Coordinator | Planned, Ayman | Stored requisite groups for that course |
+| `GET /api/data-gaps` | Coordinator | Planned, owner not set | Open holes. Status is `open` or `resolved` |
+| `POST /api/explanations` | Coordinator | Planned, Omar (blocked on the FastAPI service) | Builds context from stored rows and calls FastAPI. Does not store the answer |
+| `GET /health` (FastAPI) | Public on FastAPI | Planned, AI team | No service key. FastAPI binds `127.0.0.1` |
+| `POST /explain` (FastAPI) | Node only | Planned, AI team | Requires `X-Service-Key` |
+
+### `user` object
+
+Returned by login, signup, `/api/me` and onboarding. Never contains password data.
+
+```json
+{
+  "id": 7, "role": "student", "username": "mora22t", "full_name": "Omar Tarek",
+  "student_id": 412, "birthdate": "2005-03-14",
+  "preferred_language": "en", "preferred_theme": "light", "onboarded_at": "2026-11-27T10:00:00.000Z"
+}
+```
+
+`student_id` is null for staff. There is no `phone`, `email`, `staff_code` or `last_login_at`: `app_user` has no such columns, and sending `phone` to onboarding is a `400`.
+
+### `GET /api/student/academic-data`
+
+```json
+{
+  "profile": { "university_id", "cohort_year", "bylaw_code", "program_code", "program_name", "track_code", "track_name", "english_path", "math_path" },
+  "summary": { "credits_passed", "cgpa", "standing", "standing_band", "attempts", "unresolved_count", "graduation_credits", "credits_remaining", "progress_percent" },
+  "terms": [{ "term": { "id", "academic_year", "term_type" }, "courses": [], "credits_attempted", "credits_passed", "term_gpa" }],
+  "in_progress": []
+}
+```
+
+- The student is always the session's `app_user.student_id`. `403 FORBIDDEN` if the account has no student link.
+- Passed or not comes from the stored `enrollment.attempt_state`; nothing is recalculated.
+- `credits_passed` counts each course once, even if it was passed twice.
+- `cgpa`: the highest grade per course counts (confirmed by the doctor on 2026-11-27). Only courses with `counts_in_gpa = true` and letters that have grade points take part. String such as `"2.91"`, or null.
+- `term_gpa`: every graded attempt in that term.
+- `standing`: the highest `standing_band` whose minimum the passed credits reach. Null when the bylaw has no numbered bands (the old bylaw today).
+- Terms are oldest first (spring, summer, fall within a year). `in_progress` lists attempts whose `attempt_state` is `unresolved`.
+- Not included yet: `credit_limit`, `planning_term` (need the forecast engine) and `credits_by_area` (no area column).
+
+### `PUT /api/offering-decisions`
+
+Body:
+
+```json
+{
+  "course_id": 31, "academic_term_id": 9, "offering_forecast_id": 120,
+  "lecture_open": true, "tutorial_open": false, "lab_open": null,
+  "decision_notes": "Optional reason"
+}
+```
+
+- Send `offering_forecast_id`, or both `course_id` and `academic_term_id`. With only the forecast row id, the row supplies the course and term. If both are sent they must match the row.
+- Flags are `true` (open), `false` (do not open) or `null` (not decided). A non-null flag for a component the course does not have is a `400`. A course with no component rows may set all three.
+- Notes are required when a flag goes against the implied sections of the compared forecast row: opened while it implies 0, or closed while it implies 1 or more. A null flag or a null implied count is not compared.
+- The compared row is the one sent, or else the newest stored `offering_forecast` row for the course and term. With none, nothing is compared.
+- One decision per course and term: saving again replaces it.
+- The approver (`approved_by_user_id`, `approved_by_name`, `approved_at`) comes from the session when any flag is set, and is cleared when all three flags are null.
+- No section counts are accepted or stored.
+
+Response (same shape as a list item):
+
+```json
+{
+  "id": 3, "academic_term_id": 9, "course_id": 31, "offering_forecast_id": 120,
+  "lecture_open": true, "tutorial_open": false, "lab_open": null, "decision_notes": null,
+  "approved_by_user_id": 2, "approved_by_name": "Dr. Coordinator", "approved_at": "...",
+  "created_at": "...", "updated_at": "...",
+  "course_code": "CSC 211", "course_title": "...", "bylaw_code": "bylaw_2025",
+  "components": ["lab", "lecture"], "predicted_headcount": "2.05",
+  "implied_lecture_sections": 1, "implied_tutorial_sections": 0, "implied_lab_sections": null,
+  "differs_from_implied": false
+}
+```
+
+### Admin user row
+
+```json
+{
+  "id": 1, "full_name": "Omar Tarek", "username": "mora22t", "role": "admin",
+  "display_id": null, "bylaw_scope": "systemwide", "status": "active",
+  "last_login_at": null, "created_at": "..."
+}
+```
+
+`full_name` falls back to the username. `display_id` is the student's university ID (null for staff). `bylaw_scope` is the student's bylaw code, `systemwide` for admins, `both` for other staff.
+
+## `POST /explain`
+
+The browser never calls this route. Node calls it with the `X-Service-Key` header from the environment and an 8 second timeout. Pydantic schemas will come from `contracts/ai-explain.md` (not written yet; owners AI A and AI B). The dispatcher accepts only `kind` `rule` and `kind` `forecast`.
+
+Node's context is stored rows only: requisites, `credit_limit`, the `offering_forecast` row and `forecast_line` counts by rule. No student identifiers. See [evidence-format.md](evidence-format.md).
+
+```json
+{ "kind": "forecast", "question": "Why is this predicted headcount incomplete?" }
+```
+
+| Kind | What the answer may use |
+|---|---|
+| `rule` | Node-supplied rule rows plus passages from `retrieve(question, bylaw_code, k)` |
+| `forecast` | The stored `offering_forecast` row and the aggregated `forecast_line` counts Node sent. Cites only those rows |
+
+Refusals:
+
+| Case | Result |
+|---|---|
+| Missing `X-Service-Key` | 401 |
+| Question or body over the size limit | 422 or 400 |
+| General chat, or advice to a student | Refused. Allowlist: rule meaning, why a number is what it is, which article |
+| A request to decide, including "should I open a lab?" | Refused. The panel must not show an AI answer as a decision |
+| A citation id missing from the context, or a number not in the context | Replaced with a "could not ground" refusal |
+
+Python does not compute `p`, headcount, eligibility, sections or approval.
+
+## Not in the contract
+
+- Any Phase 2 advising, plan-workspace or dynamic-block route or payload.
 - A generic student chatbot. Students have no chat in Phase 1.
-- Hidden-semester MAE, an accuracy field, or an evaluation run. UC4 stays blocked on Nile registration history.
-- Client `userId` or `approvedBy` on any body.
-- Section counts on `PUT /api/offering-decisions`.
+- Hidden-semester MAE, an accuracy field, or an evaluation run.
+- Client `userId` or `approvedBy` on any body; section counts on `PUT /api/offering-decisions`.
 - Stored explanation rows.
-- SSO, password-reset email, refresh tokens, an admin console.
+- Student dashboard, expected offerings and my-courses routes: the frontend mocks propose them, but they need the forecast engine. They are added here when that work starts.
+- Decision history: needs a table that keeps every save.
+- Admin routes other than the two Users reads, including every admin write. Most admin pages need columns or tables that do not exist yet.
+- SSO, password-reset email, refresh tokens.
 - API versioning, GraphQL, WebSockets, a message queue, Redis.
 - Registration write-back, timetable, room scheduling, petitions, internship workflow.
-- A second error envelope for FastAPI. AI failures use `contracts/errors.md`.
+- A second error envelope for FastAPI.
