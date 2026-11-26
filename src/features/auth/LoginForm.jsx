@@ -44,13 +44,9 @@ export function LoginForm() {
   const validate = () => {
     const errors = {};
     const trimmedEmail = email.trim();
+    // A username or an email both work; for an email, the part before "@" is the username.
     if (!trimmedEmail) {
       errors.email = t("required");
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(trimmedEmail)) {
-        errors.email = t("emailInvalid");
-      }
     }
 
     if (!password) {
@@ -121,7 +117,7 @@ export function LoginForm() {
             htmlFor="login-email"
             className="text-[11px] sm:text-xs font-semibold text-[#123B70] dark:text-blue-200 transition-colors"
           >
-            {t("institutionalEmail")}
+            {t("usernameOrEmail")}
           </label>
           <div className="relative">
             <span
@@ -132,11 +128,11 @@ export function LoginForm() {
             </span>
             <input
               id="login-email"
-              type="email"
-              autoComplete="username email"
+              type="text"
+              autoComplete="username"
               autoCapitalize="none"
               spellCheck={false}
-              placeholder={t("institutionalEmailPlaceholder")}
+              placeholder={t("usernameOrEmailPlaceholder")}
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
