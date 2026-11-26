@@ -54,8 +54,15 @@ async function networkRequest(method, path, { query, body, signal } = {}) {
   return data;
 }
 
+// True when this path should use the real backend even though mocks are on.
+// "/admin/users" matches "/admin/users" and "/admin/users/summary", not "/admin/users-x".
+const usesRealApi = (path) =>
+  env.realApiPaths.some(
+    (prefix) => path === prefix || path.startsWith(`${prefix}/`) || path.startsWith(`${prefix}?`),
+  );
+
 async function request(method, path, options) {
-  if (env.useMocks) {
+  if (env.useMocks && !usesRealApi(path)) {
     const { handleMockRequest } = await import("@/mocks/server");
     return handleMockRequest(method, path, options);
   }
