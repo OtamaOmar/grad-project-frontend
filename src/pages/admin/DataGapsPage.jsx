@@ -140,9 +140,13 @@ export default function DataGapsPage() {
     {
       key: "severity",
       header: t("columns.severity"),
-      render: (gap) => (
-        <Badge tone={SEVERITY_TONE[gap.severity]}>{t(`severity.${gap.severity}`)}</Badge>
-      ),
+      // The register has no severity yet, so an unset one shows as "—".
+      render: (gap) =>
+        gap.severity ? (
+          <Badge tone={SEVERITY_TONE[gap.severity]}>{t(`severity.${gap.severity}`)}</Badge>
+        ) : (
+          <span className="text-on-surface-variant">—</span>
+        ),
     },
     {
       key: "import_issue_count",
@@ -244,15 +248,15 @@ export default function DataGapsPage() {
             icon="priority_high"
             loading={summary.isPending}
             value={
-              <span className={s?.open_by_severity.high ? "text-error" : undefined}>
-                {formatNumber(s?.open_by_severity.high)}
+              <span className={s?.open_by_severity?.high ? "text-error" : undefined}>
+                {formatNumber(s?.open_by_severity?.high)}
               </span>
             }
             hint={
               s &&
               t("stats.highHint", {
-                medium: formatNumber(s.open_by_severity.medium),
-                low: formatNumber(s.open_by_severity.low),
+                medium: formatNumber(s.open_by_severity?.medium),
+                low: formatNumber(s.open_by_severity?.low),
               })
             }
           />
