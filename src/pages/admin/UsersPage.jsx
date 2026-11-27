@@ -18,6 +18,7 @@ import {
   PageHeader,
 } from "@/components/ui";
 import { ROLES } from "@/config/roles";
+import { TemporaryPasswordDialog } from "@/features/admin/users/TemporaryPasswordDialog";
 import { UserFormDialog } from "@/features/admin/users/UserFormDialog";
 import {
   useCreateUser,
@@ -60,6 +61,7 @@ export default function UsersPage() {
 
   const [dialog, setDialog] = useState(null); // { mode: "create" } | { mode: "edit", user }
   const [confirmUser, setConfirmUser] = useState(null);
+  const [createdUser, setCreatedUser] = useState(null); // shows its one-time password
 
   const closeDialog = () => {
     setDialog(null);
@@ -73,6 +75,7 @@ export default function UsersPage() {
         onSuccess: (user) => {
           toast.success(t("toast.created", { name: user.full_name }));
           closeDialog();
+          if (user.temporary_password) setCreatedUser(user);
         },
       });
     } else {
@@ -297,7 +300,7 @@ export default function UsersPage() {
                 className="border-t border-outline-variant/70"
               />
             )}
-          </>
+    </>
         )}
       </Card>
 
@@ -327,6 +330,8 @@ export default function UsersPage() {
         description={t("confirm.deactivateBody")}
         confirmLabel={t("confirm.deactivate")}
       />
+
+      <TemporaryPasswordDialog user={createdUser} onClose={() => setCreatedUser(null)} />
     </div>
   );
 }
