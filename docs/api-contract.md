@@ -26,8 +26,10 @@ Roles on `app_user.role`:
 
 ## Session identity
 
-- Login sets a Node-signed JWT (HS256, user id only) in the httpOnly, `SameSite=Strict` cookie `acops_session`. It lasts 8 hours. There are no refresh tokens; the user signs in again. The cookie is `Secure` in production.
-- `authenticate` runs on every route except `GET /health`, `POST /api/auth/signup/lookup`, `POST /api/auth/signup` and `POST /api/auth/login`. It loads the active `app_user` row on every request, so a role change or deactivation applies at once.
+- Login sets a Node-signed JWT (HS256, user id and the user's `session_version`) in the httpOnly, `SameSite=Strict` cookie `acops_session`. It lasts 8 hours. There are no refresh tokens; the user signs in again. The cookie is `Secure` in production.
+- Logout increments `app_user.session_version`, so every token issued before it stops working at once (on every device), even if it was copied. Then the cookie is cleared.
+- Every `/api` response is sent with `Cache-Control: no-store`, so the browser keeps no copy of user data.
+- `authenticate` runs on every route except `GET /health`, `POST /api/auth/signup/lookup`, `POST /api/auth/signup`, `POST /api/auth/login` and `POST /api/auth/logout`. It loads the active `app_user` row on every request and checks the token's `session_version` against it, so a role change, deactivation or logout applies at once.
 - `requireRole` checks the role from that row, never from the token or the client.
 - Bodies and queries are parsed with strict Zod schemas: any key the route does not expect is a `400`. This is how a client-sent `userId` or `approvedBy` is refused.
 - The browser origin allowed to send the cookie is `CORS_ORIGIN` (default `http://localhost:5173`).
@@ -78,7 +80,7 @@ One envelope, defined in [contracts/errors.md](../contracts/errors.md):
 |---|---|---|---|
 | `GET /health` | Public | Built (`feature/backend-application-layer`) | `{ "status": "ok" }` |
 | `POST /api/auth/login` | Public | Built (`feature/backend-application-layer`) | Body `{ username, password }`. Username ignores case and spaces. Sets the session cookie, returns `{ user }`. `401 INVALID_CREDENTIALS`, `403 ACCOUNT_INACTIVE` |
-| `POST /api/auth/logout` | Session | Built (`feature/backend-application-layer`) | Clears the cookie. `204` |
+| `POST /api/auth/logout` | Public | Built (`fix/logout`) | Revokes the session on the server (if the cookie holds a valid token) and clears the cookie. Always `204`, also without a session |
 | `GET /api/me` | Session | Built (`feature/backend-application-layer`) | `{ user }`. Role comes from the database |
 | `POST /api/auth/signup/lookup` | Public | Built (`feature/backend-student-workflow`) | Body `{ university_id }`. Returns `{ university_id, cohort_year }`. `404 STUDENT_NOT_FOUND`, `409 ALREADY_LINKED` |
 | `POST /api/auth/signup` | Public | Built (`feature/backend-student-workflow`) | Body `{ university_id, username, password }`. Username 3-64 of `a-z 0-9 . _ -`; password 8-128. Creates the student account, signs in, `201 { user }`. `404`, `409 ALREADY_LINKED`, `409 USERNAME_TAKEN` |
@@ -93,6 +95,24 @@ One envelope, defined in [contracts/errors.md](../contracts/errors.md):
 | `GET /api/admin/data-gaps/summary` | Admin | Built (`feature/backend-admin-reference`) | `{ total, open, resolved, open_by_severity, by_category, affected_bylaws, linked_import_issues, last_updated_at }`. `open_by_severity` and `linked_import_issues` are null |
 | `GET /api/admin/data-gaps` | Admin | Built (`feature/backend-admin-reference`) | `data_gap` rows plus `gap_code` (`GAP-001`), `severity` (null), `bylaw_scope`, `import_issue_count` (null). List query plus `status`, `category`, `severity`, `affected_entity`; default sort `id` |
 | `GET /api/admin/data-gaps/:id` | Admin | Built (`feature/backend-admin-reference`) | One gap plus `import_issues: []`. `404 NOT_FOUND` for an unknown id |
+| `GET /api/admin/bylaws/summary` | Admin | Built (`feature/backend-admin-bylaws`) | `{ total, active, cross_bylaw_merge_allowed: false, by_bylaw: [{ bylaw_id, code, course_count, program_count, track_count, credit_limit_count, grade_scale_id, grade_letter_count, standing_band_count, plan_template_count, student_count }] }` |
+| `GET /api/admin/bylaws` | Admin | Built (`feature/backend-admin-bylaws`) | Bylaw rows plus `cohort_from`, `cohort_to` (until the next dated bylaw starts), `pass_grade` (the letter whose band starts at the pass percentage), `credit_caps`, `counts`. List query plus `status`; default sort `effective_from_cohort` |
+| `GET /api/admin/bylaws/:id` | Admin | Built (`feature/backend-admin-bylaws`) | List row plus `programs`, `tracks`, `standing_bands` |
+| `POST /api/admin/bylaws` | Admin | Built (`feature/backend-admin-bylaws`) | Body: `code` (2-32 of `a-z 0-9 _`), `name`, `description?`, `graduation_credits`, `training_credits_excluded_from_gpa?`, `pass_percentage` (0-100), `final_exam_min_percentage?`, `status?` (`draft` default, `active`, `retired`), `effective_from_cohort` (1990-2100), `source_reference`. `201` with the detail. `409 BYLAW_CODE_TAKEN`. Audited |
+| `PATCH /api/admin/bylaws/:id` | Admin | Built (`feature/backend-admin-bylaws`) | Any create field. The `code` cannot change (400). Returns the detail. Audited with the before/after of each changed field |
+| `DELETE /api/admin/bylaws/:id` | Admin | Built (`feature/backend-admin-bylaws`) | `204`. `409 BYLAW_IN_USE` with `details.related` while any row refers to the bylaw (retire it instead). Audited |
+| `GET /api/admin/dashboard` | Admin | Built | Users by role, courses by bylaw, open gaps by severity and category, a status row per reference area. `last_import` is null |
+| `GET/POST /api/admin/users`, `PATCH /api/admin/users/:id` | Admin | Built | Staff accounts only. Create returns a one-time `temporary_password` (only its hash is stored). No self-deactivation or own role change (409). Deactivation ends that user's sessions |
+| `GET /api/admin/terms[/summary\|/:id]`, `POST`, `PATCH /:id` | Admin | Built | Calendar fields `status`, `starts_on`, `ends_on`, `registration_locked`. One active term; closed means locked; a used term keeps its year and type (409 `TERM_IN_USE`) |
+| `POST/PATCH/DELETE /api/admin/credit-limits[/:id]`, `POST /reorder` | Admin | Built | One priority per bylaw (409 `PRIORITY_TAKEN`); reorder lists every rule once; a rule a stored forecast used cannot be removed |
+| `POST /api/admin/data-gaps`, `PATCH /:id` | Admin | Built | `severity` and `bylaw_scope` are admin-set; resolving needs notes |
+| `GET /api/admin/courses[/summary\|/requisites\|/:id]`, `POST`, `PATCH /:id`, `POST/DELETE /:id/requisites[/:requisiteId]` | Admin | Built | Components replaced as a list; codes upper case and unique per bylaw; a course never changes bylaw; a rule must point inside the course's bylaw. `department` is null, the catalog freeze is not enforced |
+| `GET /api/admin/grade-scales[/summary\|/:id]`, `PATCH /:id`, `PUT /:id/entries` | Admin | Built | Replacing letters checks points 0-4, bands 0-100, no duplicates, no overlaps. Audited as a warning (grade points feed the CGPA) |
+| `GET /api/admin/programs[/summary\|/:id]`, `POST`, `PATCH /:id`, `POST /:id/tracks`, `GET /api/admin/tracks`, `PATCH /api/admin/tracks/:id` | Admin | Built | Track `status` (active/inactive/planned) and `description`. `degree` and the credit split are null |
+| `GET /api/admin/study-plans[/summary\|/:id]`, `POST/PATCH/DELETE /:id/slots[/:slotId]`, `GET /api/admin/elective-pools` | Admin | Built | One course or one pool per slot, from the plan's bylaw; positions unique per term (409 `SLOT_POSITION_TAKEN`). Status comes from the gap register |
+| `GET /api/admin/audit[/summary\|/:id\|/export]` | Admin | Built | The audit log, filters, related events, CSV export (formula-safe, itself logged) |
+| `GET /api/admin/university-data/summary`, `/registrations[/:id]` | Admin | Built | Registrations are the real enrollments with a data check (`unresolved_result`, `label_mismatch`) |
+| `GET /api/admin/university-data/snapshots`, `/faculty`, `GET /api/admin/imports[/summary]` | Admin | Built | No tables or data: empty lists, zero counts. `POST` snapshots and imports answer `501 NOT_AVAILABLE` (imports run with `npm run db:import`) |
 | `POST /api/forecast-runs` | Coordinator | Planned, Ayman | Starts one baseline run. Body in [forecast-io.md](forecast-io.md) |
 | `GET /api/forecast-runs?termId=` | Coordinator | Planned, Ayman | Runs for one target term |
 | `GET /api/forecast-runs/:runId/courses` | Coordinator | Planned, Ayman | Dashboard rows for one run |
@@ -184,6 +204,12 @@ Response (same shape as a list item):
 
 `full_name` falls back to the username. `display_id` is the student's university ID (null for staff). `bylaw_scope` is the student's bylaw code, `systemwide` for admins, `both` for other staff.
 
+### Admin changes are audited
+
+Every admin write is saved in the same transaction as an `audit_event` row. Sign-ins, failed sign-ins (with the username typed, as warnings) and sign-outs are logged too. Each entry has: who (user id, username, name and role copied in), what (`action` such as `bylaw.updated`, `category`), which record (`entity_type`, `entity_id`, `entity_label`), the before/after of each changed field (`details`), the masked IP (`10.20.x.x`) and a request id. Nothing is written without its audit entry.
+
+Re-running `npm run db:seed` overwrites the seeded columns of reference tables (for example a bylaw's name or pass percentage) with the seed values. Columns the seeds do not write (`bylaw.status`, `bylaw.effective_from_cohort`) keep their admin values.
+
 ### Admin reference reads: what is real and what is null
 
 Every value comes from the database. A field the database has no source for is null or empty, never filled in:
@@ -231,7 +257,6 @@ Python does not compute `p`, headcount, eligibility, sections or approval.
 - Stored explanation rows.
 - Student dashboard, expected offerings and my-courses routes: the frontend mocks propose them, but they need the forecast engine. They are added here when that work starts.
 - Decision history: needs a table that keeps every save.
-- Admin routes other than the reads listed above, including every admin write. Most other admin pages need columns or tables that do not exist yet.
 - SSO, password-reset email, refresh tokens.
 - API versioning, GraphQL, WebSockets, a message queue, Redis.
 - Registration write-back, timetable, room scheduling, petitions, internship workflow.
