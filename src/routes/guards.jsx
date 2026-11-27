@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigate, Outlet, useLocation, useSearchParams } from "react-router";
 import { PageLoader } from "@/components/common/PageLoader";
 import { postLoginPath } from "@/features/auth/redirect";
@@ -8,8 +9,14 @@ import { PATHS } from "./paths";
 
 /** Signed-in only. Remembers where the user was going so login can send them back. */
 export function RequireAuth() {
-  const { status } = useAuth();
+  const { status, refresh } = useAuth();
   const location = useLocation();
+
+  // Ask the server again on every page change, so a session ended elsewhere (another tab,
+  // a password change, an expired cookie) sends the user to login instead of into the app.
+  useEffect(() => {
+    if (status === "authenticated") refresh();
+  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (status === "loading") return <PageLoader fullScreen />;
   if (status === "anonymous") {
