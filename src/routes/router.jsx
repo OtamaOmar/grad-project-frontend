@@ -5,10 +5,12 @@ import { ROLES } from "@/config/roles";
 import { PublicLayout } from "@/layouts/PublicLayout";
 import { RootLayout } from "@/layouts/RootLayout";
 import NotFoundPage from "@/pages/errors/NotFoundPage";
+import SessionExpiredPage from "@/pages/errors/SessionExpiredPage";
 import { adminRoutes } from "./adminRoutes";
 import { advisorRoutes } from "./advisorRoutes";
 import { coordinatorRoutes } from "./coordinatorRoutes";
 import { GuestOnly, RequireAuth, RoleLayout, SharedLayout } from "./guards";
+import { PATHS } from "./paths";
 import { guestRoutes, publicRoutes } from "./publicRoutes";
 import { sharedRoutes } from "./sharedRoutes";
 import { studentRoutes } from "./studentRoutes";
@@ -25,6 +27,7 @@ import { studentRoutes } from "./studentRoutes";
  *   │  ├─ RoleLayout(student)     ─ /student/*
  *   │  ├─ RoleLayout(advisor)     ─ /advisor/*
  *   │  └─ SharedLayout            ─ notifications, help, profile
+ *   ├─ session-expired ─ 401 after a session ends   (anyone)
  *   └─ * ─ 404
  */
 export const router = createBrowserRouter([
@@ -48,6 +51,8 @@ export const router = createBrowserRouter([
           { element: <SharedLayout />, children: sharedRoutes },
         ],
       },
+      // Not lazy: it must show at once when a session ends, with no code left to download.
+      { path: PATHS.sessionExpired, element: <SessionExpiredPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

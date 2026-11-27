@@ -80,7 +80,6 @@
   },
   "errors": {
     "network": "Could not reach the server. Check your connection.",
-    "session": "Your session has expired. Please sign in again.",
     "labels": {
       "address": "Address",
       "signedInAs": "Signed in as",

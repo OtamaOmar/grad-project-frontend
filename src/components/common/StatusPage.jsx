@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router";
 import nuLogo from "@/assets/nu-logo.png";
 import { useTranslation } from "react-i18next";
 import { Button, ErrorEntry } from "@/components/ui";
@@ -27,9 +27,14 @@ export function StatusPage({ kind, message, onRetry, standalone = false }) {
   const title = t(`errors.kinds.${kind}.title`);
   useDocumentTitle(title);
 
-  const here = `${location.pathname}${location.search}`;
+  // On the session-expired page the address that failed comes in ?redirect= (same-app
+  // paths only, never another site).
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get("redirect");
+  const from = redirect?.startsWith("/") && !redirect.startsWith("//") ? redirect : null;
+  const here = from ?? `${location.pathname}${location.search}`;
   const home = user ? ROLE_HOME[user.role] : PATHS.landing;
-  const rows = [[t("errors.labels.address"), location.pathname]];
+  const rows = [[t("errors.labels.address"), from ? from.split("?")[0] : location.pathname]];
   if (user) rows.push([t("errors.labels.signedInAs"), t(`roles.${user.role}`, user.role)]);
 
   const retry = onRetry ?? (() => window.location.reload());

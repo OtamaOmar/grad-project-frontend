@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { env } from "@/config/env";
 import { useTheme } from "@/hooks/useTheme";
-import { useToast } from "@/hooks/useToast";
 import { PATHS } from "@/routes/paths";
 import { authApi } from "@/services/api/auth";
 import { setUnauthorizedHandler } from "@/services/queryClient";
@@ -38,9 +37,21 @@ function clearUserData(queryClient) {
 export function AuthProvider({ children }) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const toast = useToast();
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const { setTheme } = useTheme();
+
+  // The session ended while the user was inside the app (expired cookie, signed out in
+  // another tab, password changed elsewhere): show the 401 page, whose Sign in button
+  // brings them back to where they were. Signed-out visitors never get here.
+  // The 401 page clears the user itself once it is on screen (clearSession below). Cleared
+  // earlier, the signed-in page still on screen during the route change would send the
+  // user to the login page instead.
+  const endSession = () => {
+    if (!queryClient.getQueryData(SESSION_QUERY_KEY)) return;
+    if (window.location.pathname === PATHS.sessionExpired) return; // several 401s at once
+    const here = `${window.location.pathname}${window.location.search}`;
+    navigate(`${PATHS.sessionExpired}?redirect=${encodeURIComponent(here)}`, { replace: true });
+  };
 
   const session = useQuery({
     queryKey: SESSION_QUERY_KEY,
@@ -49,7 +60,15 @@ export function AuthProvider({ children }) {
         const { user } = await authApi.me();
         return toSessionUser(user);
       } catch (error) {
-        if (error.isUnauthorized) return null; // signed out is a normal state, not an error
+        if (error.isUnauthorized) {
+          const previous = queryClient.getQueryData(SESSION_QUERY_KEY);
+          // Someone was signed in a moment ago: keep them until the 401 page clears them.
+          if (previous) {
+            endSession();
+            return previous;
+          }
+          return null; // signed out is a normal state, not an error
+        }
         throw error;
       }
     },
@@ -96,16 +115,11 @@ export function AuthProvider({ children }) {
     window.location.replace(PATHS.login);
   }, [queryClient]);
 
-  // Any request that comes back 401 mid-session means the cookie expired.
+  // Any other request that comes back 401 mid-session means the same thing.
   useEffect(() => {
-    setUnauthorizedHandler(() => {
-      if (!queryClient.getQueryData(SESSION_QUERY_KEY)) return;
-      clearUserData(queryClient);
-      toast.info(t("errors.session"));
-      navigate(PATHS.login, { replace: true });
-    });
+    setUnauthorizedHandler(endSession);
     return () => setUnauthorizedHandler(null);
-  }, [queryClient, navigate, toast, t]);
+  });
 
   const value = useMemo(
     () => ({
@@ -114,6 +128,7 @@ export function AuthProvider({ children }) {
       signIn,
       signOut,
       refresh: () => queryClient.invalidateQueries({ queryKey: SESSION_QUERY_KEY }),
+      clearSession: () => clearUserData(queryClient),
     }),
     [user, status, signIn, signOut, queryClient],
   );

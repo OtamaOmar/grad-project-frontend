@@ -8,6 +8,7 @@ import { AuthContext } from "@/features/auth/AuthContext";
  *   signIn(credentials: { username: string, password: string }): Promise<object>,
  *   signOut(): Promise<void>,
  *   refresh(): Promise<void>,
+ *   clearSession(): void,
  * }}
  */
 export function useAuth() {
