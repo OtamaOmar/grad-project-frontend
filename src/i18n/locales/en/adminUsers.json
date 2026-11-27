@@ -65,5 +65,13 @@
     "activated": "{{name}} was reactivated."
   },
   "policyTitle": "Departmental separation of concerns",
-  "policyBody": "Administrative accounts operate on reference data (bylaws, grade bounds, course catalog). Offering decisions remain with coordinator identities."
+  "policyBody": "Administrative accounts operate on reference data (bylaws, grade bounds, course catalog). Offering decisions remain with coordinator identities.",
+  "tempPassword": {
+    "title": "Account created for {{name}}",
+    "body": "Give this temporary password to {{username}}. They sign in with it.",
+    "copy": "Copy password",
+    "copied": "Copied",
+    "done": "Done",
+    "warning": "This password is shown only once. It is not stored anywhere you can read it again."
+  }
 }
