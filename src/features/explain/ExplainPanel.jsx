@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { Badge, Icon, IconButton } from "@/components/ui";
+import { Badge, Icon, IconButton, Skeleton } from "@/components/ui";
 import { askExplanation, EXPLAIN_QUESTION_MAX } from "@/services/api/explanations";
 import { cn } from "@/utils/cn";
 
@@ -112,10 +112,12 @@ export function ExplainPanel({ role, onClose, className }) {
         )}
 
         {mutation.isPending && (
-          <p role="status" className="flex items-center gap-2 text-body-sm text-primary">
-            <span className="size-2 animate-pulse rounded-full bg-primary" />
-            {t("thinking")}
-          </p>
+          <div role="status" aria-busy="true" className="flex max-w-[85%] flex-col gap-2">
+            <span className="sr-only">{t("thinking")}</span>
+            <Skeleton className="h-4 w-11/12" />
+            <Skeleton className="h-4 w-4/5" />
+            <Skeleton className="h-4 w-2/3" />
+          </div>
         )}
         <div ref={endRef} />
       </div>

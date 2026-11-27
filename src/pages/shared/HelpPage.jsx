@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Badge, Button, EmptyState, Icon, Spinner } from "@/components/ui";
+import { Badge, Button, EmptyState, Icon, Skeleton } from "@/components/ui";
 import { useAuth } from "@/hooks/useAuth";
 import { useHelp } from "@/features/help/useHelp";
 import { cn } from "@/utils/cn";
@@ -351,8 +351,10 @@ export default function HelpPage() {
           </div>
 
           {isLoading ? (
-            <div className="flex items-center justify-center py-12">
-              <Spinner size="lg" />
+            <div className="flex flex-col gap-3 py-2" aria-busy="true">
+              {Array.from({ length: 5 }, (_, i) => (
+                <Skeleton key={i} className="h-14 w-full" />
+              ))}
             </div>
           ) : filteredFaqs.length === 0 ? (
             <EmptyState

@@ -324,7 +324,7 @@ export default function NotificationsPage() {
               {t(`notifications:roles.${role}.card1`)}
             </span>
             <span className="mt-0.5 font-serif text-headline-md font-semibold text-on-surface">
-              {isLoading ? "..." : stats.unread}
+              {isLoading ? <Skeleton className="h-7 w-10" /> : stats.unread}
             </span>
           </div>
           <div className="grid size-9 place-items-center rounded-lg bg-secondary-container text-on-secondary-container">
@@ -339,7 +339,7 @@ export default function NotificationsPage() {
               {t(`notifications:roles.${role}.card2`)}
             </span>
             <span className="mt-0.5 font-serif text-headline-md font-semibold text-on-surface">
-              {isLoading ? "..." : stats.actionRequired}
+              {isLoading ? <Skeleton className="h-7 w-10" /> : stats.actionRequired}
             </span>
           </div>
           <div className="grid size-9 place-items-center rounded-lg bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400">
@@ -354,7 +354,7 @@ export default function NotificationsPage() {
               {t(`notifications:roles.${role}.card3`)}
             </span>
             <span className="mt-0.5 font-serif text-headline-md font-semibold text-on-surface">
-              {isLoading ? "..." : stats.thirdStat}
+              {isLoading ? <Skeleton className="h-7 w-10" /> : stats.thirdStat}
             </span>
           </div>
           <div className="grid size-9 place-items-center rounded-lg bg-secondary-container text-on-secondary-container">

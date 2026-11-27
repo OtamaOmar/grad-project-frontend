@@ -45,10 +45,7 @@ export default function ForecastRunDetailsPage() {
   return (
     <div className="coordinator-dashboard forecast-run-details-page">
       {query.isPending ? (
-        <section className="fdr-loading" aria-label="Loading forecast run">
-          <h1>Loading forecast run</h1>
-          <PageLoader />
-        </section>
+        <PageLoader />
       ) : query.isError ? (
         <RunState title="Unable to load this sample run">
           <p role="alert">The local sample data could not be loaded.</p>
