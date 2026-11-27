@@ -33,7 +33,7 @@ export function AccountMenu({ user, role, onSignOut }) {
         <button
           type="button"
           aria-label={t("account")}
-          className="flex items-center gap-2 rounded-full p-0.5 transition-colors hover:bg-surface-container-high"
+          className="pressable flex items-center gap-2 rounded-full p-0.5 hover:bg-surface-container-high"
           {...props}
         >
           <Avatar

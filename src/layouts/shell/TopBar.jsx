@@ -47,17 +47,21 @@ export function TopBar({ role, user, onOpenMenu, onSignOut, unreadCount = 0 }) {
         <button
           type="button"
           onClick={openChat}
-          className="flex h-10 items-center gap-1.5 rounded-md px-2.5 text-label-lg text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface"
+          className="pressable group flex h-10 items-center gap-1.5 rounded-md px-2.5 text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
           title={t("nav:aiChat", { defaultValue: "AI Chat" })}
           aria-label={t("nav:aiChat", { defaultValue: "AI Chat" })}
         >
-          <Icon name="auto_awesome" size={20} className="text-primary" />
+          <Icon
+            name="auto_awesome"
+            size={20}
+            className="text-primary transition-transform duration-300 ease-[var(--ease-out)] group-hover:rotate-12 group-hover:scale-110"
+          />
           <span className="hidden sm:inline">{t("nav:aiChat", { defaultValue: "AI Chat" })}</span>
         </button>
 
         <NavLink
           to={PATHS.help}
-          className="hidden h-10 items-center gap-1.5 rounded-md px-2.5 text-label-lg text-on-surface-variant transition-colors hover:bg-surface-container-high hover:text-on-surface md:flex"
+          className="pressable hidden h-10 items-center gap-1.5 rounded-md px-2.5 text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface md:flex"
         >
           <Icon name="help" size={20} />
           {t("nav:help")}

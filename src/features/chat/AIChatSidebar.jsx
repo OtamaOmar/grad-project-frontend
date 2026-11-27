@@ -42,7 +42,7 @@ export function AIChatSidebar({ role }) {
         onClick={closeChat}
         aria-hidden="true"
         className={cn(
-          "absolute inset-0 bg-inverse-surface/40 backdrop-blur-xs transition-opacity duration-300 ease-in-out",
+          "absolute inset-0 bg-inverse-surface/40 backdrop-blur-xs transition-opacity duration-300 ease-[var(--ease-out)]",
           isOpen ? "opacity-100" : "opacity-0",
         )}
       />
@@ -55,8 +55,10 @@ export function AIChatSidebar({ role }) {
         aria-label="AI Chat"
         className={cn(
           "absolute inset-y-0 end-0 flex h-full w-full max-w-[24rem] sm:max-w-[26rem] flex-col border-s border-outline-variant bg-surface-container-lowest text-on-surface shadow-overlay",
-          "transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "ltr:translate-x-full rtl:-translate-x-full",
+          "transition-transform ease-[var(--ease-drawer)] will-change-transform",
+          isOpen
+            ? "translate-x-0 duration-[380ms]"
+            : "duration-[260ms] ltr:translate-x-full rtl:-translate-x-full",
         )}
       >
         <ExplainPanel role={role} onClose={closeChat} />
