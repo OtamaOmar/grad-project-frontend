@@ -15,8 +15,11 @@ import { SESSION_QUERY_KEY, toSessionUser } from "./session";
 // response, the session entry, the remembered username, session storage and the mock
 // session. Language and theme stay: they are settings of this device, not of the user.
 function clearUserData(queryClient) {
-  queryClient.clear();
+  // The session entry is set to null, never removed: AuthProvider watches that entry, and
+  // removing it (queryClient.clear()) would leave the screen on the old user.
+  queryClient.cancelQueries({ queryKey: SESSION_QUERY_KEY });
   queryClient.setQueryData(SESSION_QUERY_KEY, null);
+  queryClient.removeQueries({ predicate: (query) => query.queryKey[0] !== SESSION_QUERY_KEY[0] });
   try {
     localStorage.removeItem("acops_remember_email");
     sessionStorage.clear();
@@ -79,7 +82,7 @@ export function AuthProvider({ children }) {
   );
 
   // Logs out: the server revokes the session and deletes the cookie, then everything this
-  // browser kept about the user is removed and the user lands on the public landing page.
+  // browser kept about the user is removed and the user lands on the login page.
   // The local cleanup runs even if the server cannot be reached.
   const signOut = useCallback(async () => {
     try {
@@ -88,15 +91,16 @@ export function AuthProvider({ children }) {
       // Still clear everything below: a failed request must not leave the user signed in here.
     }
     clearUserData(queryClient);
-    navigate(PATHS.landing, { replace: true });
-  }, [queryClient, navigate]);
+    // A full page load, not a router navigation: nothing of the old session survives in
+    // memory, and the app starts again by asking the server who is signed in (nobody).
+    window.location.replace(PATHS.login);
+  }, [queryClient]);
 
   // Any request that comes back 401 mid-session means the cookie expired.
   useEffect(() => {
     setUnauthorizedHandler(() => {
       if (!queryClient.getQueryData(SESSION_QUERY_KEY)) return;
-      queryClient.clear();
-      queryClient.setQueryData(SESSION_QUERY_KEY, null);
+      clearUserData(queryClient);
       toast.info(t("errors.session"));
       navigate(PATHS.login, { replace: true });
     });
