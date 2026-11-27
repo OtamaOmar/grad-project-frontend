@@ -34,7 +34,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "moreActions": "More actions",
-    "clearFilters": "Clear filters"
+    "clearFilters": "Clear filters",
+    "signIn": "Sign in"
   },
   "states": {
     "loading": "Loading…",
@@ -78,14 +79,55 @@
     "rowsPerPage": "Rows per page"
   },
   "errors": {
-    "notFoundTitle": "Page not found",
-    "notFoundBody": "The page you are looking for does not exist or was moved.",
-    "forbiddenTitle": "Access denied",
-    "forbiddenBody": "Your role does not have access to this page.",
-    "unexpectedTitle": "Unexpected error",
-    "unexpectedBody": "The page failed to load. Try again, or go back to your home page.",
     "network": "Could not reach the server. Check your connection.",
-    "session": "Your session has expired. Please sign in again."
+    "session": "Your session has expired. Please sign in again.",
+    "labels": {
+      "address": "Address",
+      "signedInAs": "Signed in as",
+      "prerequisite": "Prerequisite"
+    },
+    "kinds": {
+      "badRequest": {
+        "title": "The request was not accepted",
+        "body": "Some of the details sent were missing or not valid. Go back, check them and try again.",
+        "prerequisite": "Details that pass the checks"
+      },
+      "unauthorized": {
+        "title": "Sign in to continue",
+        "body": "You are not signed in, or your session has ended. Sign in again and you will come back to this page.",
+        "prerequisite": "An active sign-in"
+      },
+      "forbidden": {
+        "title": "Your role can't open this page",
+        "body": "This page belongs to another role. Go to your own home page, or ask an admin if you need access.",
+        "prerequisite": "The role this page is for"
+      },
+      "notFound": {
+        "title": "This page isn't in the catalogue",
+        "body": "The address may be mistyped, or the page has moved. Check the link or start again from your home page.",
+        "prerequisite": "A link that still exists"
+      },
+      "tooMany": {
+        "title": "Too many attempts",
+        "body": "Wait a few minutes, then try again.",
+        "prerequisite": "A short wait"
+      },
+      "server": {
+        "title": "The server couldn't finish this",
+        "body": "Something failed on the ACOPS server, not on your side. Try again in a moment.",
+        "prerequisite": "Nothing from you"
+      },
+      "offline": {
+        "title": "Can't reach ACOPS",
+        "body": "Your device can't connect to the server. Check your connection, then try again.",
+        "prerequisite": "A connection to the server"
+      },
+      "crash": {
+        "title": "This page stopped working",
+        "body": "Something in the page failed while loading. Reloading usually fixes it.",
+        "prerequisite": "A fresh reload"
+      }
+    }
   },
   "placeholder": {
     "title": "Page under construction",

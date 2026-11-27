@@ -8,6 +8,8 @@ export { ConfirmDialog, Dialog } from "./Dialog";
 export { Drawer } from "./Drawer";
 export { DropdownMenu } from "./DropdownMenu";
 export { EmptyState } from "./EmptyState";
+export { ErrorEntry } from "./ErrorEntry";
+export { ERROR_KINDS, errorKindOf } from "./errorKinds";
 export { ErrorState } from "./ErrorState";
 export { Checkbox, Field, Input, SearchInput, Select, Switch, Textarea } from "./Field";
 export { Icon } from "./Icon";

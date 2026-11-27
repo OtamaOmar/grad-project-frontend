@@ -211,3 +211,16 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Error pages: the digits of the code rise in once, one after another. */
+@keyframes error-digit-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.25em);
+  }
+}
+
+.error-digit {
+  display: inline-block;
+  animation: error-digit-rise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
