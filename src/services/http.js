@@ -67,26 +67,11 @@ async function networkRequest(method, path, { query, body, signal } = {}) {
   return data;
 }
 
-// Admin paths the backend already serves. They always use the real API, even with mocks
-// on: their mock handlers are deleted. When every admin page is real, this becomes "/admin".
-// Sign-in stays switchable (VITE_REAL_API_PATHS=/auth,/me) so mock-only work still runs
-// without a backend; the admin pages need the real sign-in.
-const BUILT_ON_BACKEND = [
-  "/admin/users",
-  "/admin/credit-limits",
-  "/admin/data-gaps",
-  "/admin/bylaws",
-  "/admin/terms",
-  "/admin/courses",
-  "/admin/grade-scales",
-  "/admin/programs",
-  "/admin/tracks",
-  "/admin/study-plans",
-  "/admin/elective-pools",
-  "/admin/audit",
-  "/admin/university-data",
-  "/admin/imports",
-];
+// Paths the backend serves for every page that uses them. They always use the real API,
+// even with mocks on (their mock handlers are deleted). Sign-in stays switchable
+// (VITE_REAL_API_PATHS=/auth,/me) so mock-only work still runs without a backend; the admin
+// pages need the real sign-in.
+const BUILT_ON_BACKEND = ["/admin"];
 
 // True when this path should use the real backend even though mocks are on.
 // "/admin/users" matches "/admin/users" and "/admin/users/summary", not "/admin/users-x".
