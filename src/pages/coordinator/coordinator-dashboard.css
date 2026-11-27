@@ -233,7 +233,11 @@
   box-shadow: 0 1px 2px #10182808;
   transition:
     background 0.15s,
-    border-color 0.15s;
+    border-color 0.15s,
+    transform 160ms var(--ease-out);
+}
+.cd-button:active:not(:disabled) {
+  transform: scale(0.97);
 }
 .cd-button:hover {
   background: var(--cd-container);
