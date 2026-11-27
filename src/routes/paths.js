@@ -9,6 +9,7 @@ export const PATHS = Object.freeze({
   signUp: "/signup",
   forgotPassword: "/forgot-password",
   resetPassword: "/reset-password",
+  sessionExpired: "/session-expired",
 
   // Shared (any signed-in role)
   notifications: "/notifications",
