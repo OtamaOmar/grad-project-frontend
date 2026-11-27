@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import { Alert, Icon } from "@/components/ui";
+import { Alert, Icon, Skeleton } from "@/components/ui";
 import { PATHS } from "@/routes/paths";
 import { authApi } from "@/services/api/auth";
 
@@ -182,11 +182,12 @@ export function ForgotPasswordForm() {
     // 2a. Token Verifying Loader
     if (verifyingToken) {
       return (
-        <div className="flex flex-col items-center justify-center py-10 text-center">
-          <span className="size-8 animate-spin rounded-full border-2 border-[#123B70]/20 border-t-[#123B70] dark:border-blue-400/20 dark:border-t-blue-400" />
-          <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-            Verifying security token...
-          </p>
+        <div role="status" aria-busy="true" className="flex flex-col gap-3 py-6">
+          <span className="sr-only">Verifying security token...</span>
+          <Skeleton className="h-5 w-2/3" />
+          <Skeleton className="h-11 w-full" />
+          <Skeleton className="h-11 w-full" />
+          <Skeleton className="h-11 w-1/2" />
         </div>
       );
     }
