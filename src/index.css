@@ -203,12 +203,288 @@
   }
 }
 
+/* ───────────────────────── Motion system ─────────────────────────
+ * Tokens mirror src/motion/tokens.js. Enter/exit: --ease-out. On-screen movement:
+ * --ease-in-out. Sheets: --ease-drawer. Never ease-in. Only transform and opacity move.
+ */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 160ms;
+  --dur-micro: 180ms;
+  --dur-small: 240ms;
+  --dur-entrance: 420ms;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise, 10px));
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/*
+ * Route entrance. Every signed-in page renders  .route-stage > page root > sections,
+ * so the sections rise in as one wave whenever a new page mounts. The header leads and
+ * travels furthest; later sections travel less and the gaps shrink (wave, not queue).
+ * CSS (not JS) so it stays smooth on the compositor while the next page's data loads.
+ * `backwards` fill: no transform is left behind, so sticky/fixed children behave after.
+ * Content that replaces a skeleton is new DOM, so it rises in the same way.
+ */
+.route-stage > * > *,
+.stagger-in > * {
+  animation: rise-in var(--dur-entrance) var(--ease-out) backwards;
+  --rise: 6px;
+  animation-delay: 150ms;
+}
+.route-stage > * > :nth-child(1),
+.stagger-in > :nth-child(1) {
+  --rise: 12px;
+  animation-delay: 0ms;
+}
+.route-stage > * > :nth-child(2),
+.stagger-in > :nth-child(2) {
+  --rise: 10px;
+  animation-delay: 50ms;
+}
+.route-stage > * > :nth-child(3),
+.stagger-in > :nth-child(3) {
+  --rise: 8px;
+  animation-delay: 90ms;
+}
+.route-stage > * > :nth-child(4),
+.stagger-in > :nth-child(4) {
+  animation-delay: 120ms;
+}
+.route-stage > * > :nth-child(5),
+.stagger-in > :nth-child(5) {
+  animation-delay: 140ms;
+}
+
+/* Public pages without their own GSAP intro get one gentle fade. */
+.public-stage > * {
+  animation: fade-in 360ms var(--ease-out) backwards;
+}
+
+@layer components {
+  /* Native <dialog> surfaces (Dialog, Drawer). The panel is animated by Motion
+ * (src/motion/useModalPresence.js); the backdrop pseudo-element fades here. */
+  .ui-modal::backdrop {
+    transition: opacity var(--dur-small) var(--ease-out);
+  }
+  .ui-modal[open]::backdrop {
+    opacity: 1;
+    @starting-style {
+      opacity: 0;
+    }
+  }
+  .ui-modal[data-closing]::backdrop {
+    opacity: 0;
+    transition-duration: 160ms;
+  }
+
+  /* Page-owned native dialogs (coordinator sample pages): same entrance as Dialog. */
+  .cd-dialog[open] {
+    animation: modal-in 280ms var(--ease-out);
+  }
+
+  /* Page-local popovers (filter listboxes). Origin is set where they are used. */
+  .popover-in {
+    animation: pop-in 150ms var(--ease-out);
+  }
+
+  /* Pressable feedback: buttons scale down while pressed so the UI feels like it heard you. */
+  .pressable {
+    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+    transition-duration: var(--dur-press);
+    transition-timing-function: var(--ease-out);
+  }
+  .pressable:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  /* Clickable cards: a small lift on real hover devices only (no sticky hover on touch). */
+  .lift {
+    transition:
+      transform var(--dur-small) var(--ease-out),
+      box-shadow var(--dur-small) var(--ease-out),
+      border-color var(--dur-small) var(--ease-out),
+      background-color var(--dur-small) var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .lift:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-overlay);
+    }
+  }
+  .lift:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  /* Skeleton: a light sweep instead of a blink, so loading reads as progress. */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-surface-container-lowest) 55%, transparent),
+      transparent
+    );
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+  .dark .skeleton::after {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-surface-bright) 45%, transparent),
+      transparent
+    );
+  }
+  :dir(rtl) .skeleton::after {
+    transform: translateX(100%);
+    animation-direction: reverse;
+  }
+
+  /* Data bars grow once from their baseline when they first appear. */
+  .grow-x {
+    transform-origin: left center;
+    animation: grow-x 700ms var(--ease-out) backwards;
+  }
+  :dir(rtl) .grow-x {
+    transform-origin: right center;
+  }
+  .grow-y {
+    transform-origin: center bottom;
+    animation: grow-y 700ms var(--ease-out) backwards;
+  }
+
+  /* Content swapped by a filter (tab, select): a quick fade so the change registers,
+ * without making a frequently used control feel slow. */
+  .fade-swap {
+    animation: fade-in 180ms var(--ease-out);
+  }
+
+  /* SVG progress rings draw from zero once. */
+  @keyframes ring-draw {
+    from {
+      stroke-dasharray: 0 100;
+    }
+  }
+  .ring-draw {
+    animation: ring-draw 900ms var(--ease-out) 150ms backwards;
+  }
+
+  /* Multi-step flows: each new step rises in as the previous one is replaced. */
+  .step-in {
+    animation: rise-in 320ms var(--ease-out);
+    --rise: 10px;
+  }
+
+  /* A completed action's check mark lands with a small overshoot (rare, so it may delight). */
+  @keyframes success-pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+  .success-pop,
+  .icon-pop {
+    animation: success-pop 520ms var(--ease-out) 120ms backwards;
+  }
+
+  /* Inline validation and status messages slide in a few pixels so the change is noticed. */
+  .message-in {
+    animation: rise-in 200ms var(--ease-out);
+    --rise: -3px;
+  }
+}
+
+/*
+ * Reduced motion: fewer and gentler, not zero. Movement goes; short fades stay.
+ * Staggers collapse (no delays) so nothing waits to appear.
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .route-stage > * > *,
+  .stagger-in > *,
+  .public-stage > * {
+    animation-name: fade-in !important;
+    animation-duration: 180ms !important;
+  }
+  .ui-modal::backdrop {
+    transition-duration: 150ms !important;
+  }
+  .skeleton::after {
+    display: none;
+  }
+  .pressable:active:not(:disabled),
+  .lift:hover,
+  .lift:active {
+    transform: none;
   }
 }
 
