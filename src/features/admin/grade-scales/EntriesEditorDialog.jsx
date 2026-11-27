@@ -29,7 +29,7 @@ const toDraft = (entry) => ({
  * Edits every letter of one scale (the API replaces the whole set). Per-row server errors
  * come from error.details.entries[index]; overlapping bands from details.overlaps.
  */
-export function EntriesEditorDialog({ scale, onClose, onSubmit, submitting, error }) {
+export function EntriesEditorDialog({ open = true, scale, onClose, onSubmit, submitting, error }) {
   const { t } = useTranslation(["adminGradeScales", "adminCreditLimits", "common"]);
   const [rows, setRows] = useState(() => scale.entries.map(toDraft));
   const [verified, setVerified] = useState(false);
@@ -72,7 +72,7 @@ export function EntriesEditorDialog({ scale, onClose, onSubmit, submitting, erro
 
   return (
     <Dialog
-      open
+      open={open}
       onClose={onClose}
       size="lg"
       title={t("editor.title", { name: bylawName(t, scale.bylaw_code) })}

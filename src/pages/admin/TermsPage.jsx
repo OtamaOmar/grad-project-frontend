@@ -34,6 +34,7 @@ import {
 } from "@/features/admin/terms/useTerms";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { cn } from "@/utils/cn";
 import { formatDate, formatNumber } from "@/utils/format";
 
@@ -537,17 +538,19 @@ export default function TermsPage() {
         </Card>
       </div>
 
-      {dialog && (
-        <TermFormDialog
-          key={dialog.term?.id ?? "new"}
-          open
-          term={dialog.term}
-          onClose={closeDialog}
-          onSubmit={submitDialog}
-          submitting={createTerm.isPending || updateTerm.isPending}
-          error={createTerm.error ?? updateTerm.error}
-        />
-      )}
+      <ModalSlot value={dialog}>
+        {(dialog, open) => (
+          <TermFormDialog
+            key={dialog.term?.id ?? "new"}
+            open={open}
+            term={dialog.term}
+            onClose={closeDialog}
+            onSubmit={submitDialog}
+            submitting={createTerm.isPending || updateTerm.isPending}
+            error={createTerm.error ?? updateTerm.error}
+          />
+        )}
+      </ModalSlot>
     </div>
   );
 }

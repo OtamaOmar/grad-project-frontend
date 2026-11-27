@@ -32,6 +32,7 @@ import {
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatDate, formatNumber } from "@/utils/format";
 
 const COMPONENT_FILTERS = ["lecture", "tutorial", "lab", "none"];
@@ -456,24 +457,30 @@ export default function CoursesPage() {
         onOpenCourse={setDetailId}
       />
 
-      {form && (
-        <CourseFormDialog
-          key={form.courseId ?? "new"}
-          courseId={form.courseId}
-          bylaws={bylaws}
-          defaultBylawId={selectedBylaw}
-          onClose={() => setForm(null)}
-        />
-      )}
+      <ModalSlot value={form}>
+        {(form, open) => (
+          <CourseFormDialog
+            open={open}
+            key={form.courseId ?? "new"}
+            courseId={form.courseId}
+            bylaws={bylaws}
+            defaultBylawId={selectedBylaw}
+            onClose={() => setForm(null)}
+          />
+        )}
+      </ModalSlot>
 
-      {requisiteFor && (
-        <RequisiteFormDialog
-          course={requisiteFor.course}
-          bylaws={bylaws}
-          defaultBylawId={selectedBylaw}
-          onClose={() => setRequisiteFor(null)}
-        />
-      )}
+      <ModalSlot value={requisiteFor}>
+        {(requisiteFor, open) => (
+          <RequisiteFormDialog
+            open={open}
+            course={requisiteFor.course}
+            bylaws={bylaws}
+            defaultBylawId={selectedBylaw}
+            onClose={() => setRequisiteFor(null)}
+          />
+        )}
+      </ModalSlot>
     </div>
   );
 }

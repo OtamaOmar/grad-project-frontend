@@ -13,6 +13,7 @@ const FIELDS = ["kind", "version_label", "file_name"];
  * version for its kind. Grades and quotas are never edited here.
  */
 export function SnapshotFormDialog({
+  open = true,
   defaultKind = "faculty_roster",
   dataLock,
   onClose,
@@ -61,7 +62,7 @@ export function SnapshotFormDialog({
 
   return (
     <Dialog
-      open
+      open={open}
       onClose={onClose}
       title={t("snapshotForm.title")}
       description={t("snapshotForm.description")}

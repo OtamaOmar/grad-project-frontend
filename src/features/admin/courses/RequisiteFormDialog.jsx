@@ -15,7 +15,13 @@ const TARGET_FIELD = { course: "required_course_id", standing: "standing_band_id
  * (opened from the detail drawer); without it the admin picks bylaw + course first.
  * Same group = AND (all required); a new group = an alternative path (OR).
  */
-export function RequisiteFormDialog({ course: fixedCourse, bylaws, defaultBylawId, onClose }) {
+export function RequisiteFormDialog({
+  open = true,
+  course: fixedCourse,
+  bylaws,
+  defaultBylawId,
+  onClose,
+}) {
   const { t } = useTranslation(["adminCourses", "common"]);
   const toast = useToast();
   const addRequisite = useAddRequisite();
@@ -118,7 +124,7 @@ export function RequisiteFormDialog({ course: fixedCourse, bylaws, defaultBylawI
 
   return (
     <Dialog
-      open
+      open={open}
       onClose={onClose}
       title={t("requisiteForm.title")}
       description={

@@ -12,7 +12,7 @@ const REQUIRED = ["program_id", "code", "name", "source_reference"];
  * Create (no `track`) or edit a specialization track. A track belongs to one program for
  * life, so the program picker is only shown when creating.
  */
-export function TrackFormDialog({ track, programs, defaultProgramId, onClose }) {
+export function TrackFormDialog({ open = true, track, programs, defaultProgramId, onClose }) {
   const { t } = useTranslation(["adminPrograms", "common"]);
   const toast = useToast();
   const editing = Boolean(track);
@@ -66,7 +66,7 @@ export function TrackFormDialog({ track, programs, defaultProgramId, onClose }) 
 
   return (
     <Dialog
-      open
+      open={open}
       onClose={onClose}
       title={editing ? t("trackForm.editTitle") : t("trackForm.createTitle")}
       description={

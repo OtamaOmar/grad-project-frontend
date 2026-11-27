@@ -18,6 +18,7 @@ import {
 } from "@/features/admin/imports/useImports";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { PATHS } from "@/routes/paths";
 
 export default function ImportsPage() {
@@ -143,15 +144,17 @@ export default function ImportsPage() {
         />
       )}
 
-      {uploading && (
-        <UploadDialog
-          open
-          onClose={closeUpload}
-          onSubmit={submitUpload}
-          submitting={upload.isPending}
-          error={upload.error}
-        />
-      )}
+      <ModalSlot value={uploading}>
+        {(uploading, open) => (
+          <UploadDialog
+            open={open}
+            onClose={closeUpload}
+            onSubmit={submitUpload}
+            submitting={upload.isPending}
+            error={upload.error}
+          />
+        )}
+      </ModalSlot>
     </div>
   );
 }

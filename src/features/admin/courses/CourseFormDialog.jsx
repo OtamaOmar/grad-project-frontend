@@ -23,14 +23,21 @@ const FLAGS = ["counts_toward_degree", "counts_in_gpa", "counts_toward_registrat
  * Create (no `courseId`) or edit a course, including its weekly components.
  * Editing loads the course detail first so the components editor starts from stored rows.
  */
-export function CourseFormDialog({ courseId, bylaws, defaultBylawId, onClose, onSaved }) {
+export function CourseFormDialog({
+  open = true,
+  courseId,
+  bylaws,
+  defaultBylawId,
+  onClose,
+  onSaved,
+}) {
   const { t } = useTranslation(["adminCourses", "common"]);
   const editing = Boolean(courseId);
   const detail = useCourse(courseId);
 
   if (editing && !detail.data) {
     return (
-      <Dialog open onClose={onClose} title={t("form.editTitle")} size="lg">
+      <Dialog open={open} onClose={onClose} title={t("form.editTitle")} size="lg">
         {detail.isError ? (
           <ErrorState error={detail.error} onRetry={detail.refetch} />
         ) : (
@@ -46,6 +53,7 @@ export function CourseFormDialog({ courseId, bylaws, defaultBylawId, onClose, on
 
   return (
     <CourseForm
+      open={open}
       course={detail.data}
       bylaws={bylaws}
       defaultBylawId={defaultBylawId}
@@ -74,7 +82,7 @@ function initialComponents(course) {
   );
 }
 
-function CourseForm({ course, bylaws, defaultBylawId, onClose, onSaved }) {
+function CourseForm({ open, course, bylaws, defaultBylawId, onClose, onSaved }) {
   const { t } = useTranslation(["adminCourses", "common"]);
   const toast = useToast();
   const editing = Boolean(course);
@@ -173,7 +181,7 @@ function CourseForm({ course, bylaws, defaultBylawId, onClose, onSaved }) {
 
   return (
     <Dialog
-      open
+      open={open}
       onClose={onClose}
       size="lg"
       title={editing ? t("form.editTitle") : t("form.createTitle")}
