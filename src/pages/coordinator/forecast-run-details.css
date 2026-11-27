@@ -521,14 +521,6 @@
 .fdr-state code {
   overflow-wrap: anywhere;
 }
-.fdr-loading {
-  padding: 30px;
-  min-height: 60vh;
-  text-align: center;
-}
-.fdr-loading h1 {
-  font-size: 20px;
-}
 .fdr-dialog > p,
 .fdr-dialog form > p,
 .fdr-rules {
