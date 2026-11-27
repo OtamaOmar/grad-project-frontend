@@ -51,7 +51,7 @@ function GapDetail({ gap, onClose }) {
   const toast = useToast();
   const update = useUpdateDataGap();
   const [values, setValues] = useState({
-    severity: gap.severity,
+    severity: gap.severity ?? "",
     source_reference: gap.source_reference ?? "",
     notes: gap.notes ?? "",
   });
@@ -67,7 +67,7 @@ function GapDetail({ gap, onClose }) {
     update.mutate(
       {
         id: gap.id,
-        severity: values.severity,
+        severity: values.severity || undefined,
         source_reference: values.source_reference.trim() || null,
         notes: values.notes.trim() || null,
         ...extra,
@@ -97,7 +97,11 @@ function GapDetail({ gap, onClose }) {
           <Badge tone={STATUS_TONE[gap.status]} dot>
             {t(`status.${gap.status}`)}
           </Badge>
-          <Badge tone={SEVERITY_TONE[gap.severity]}>{t(`severity.${gap.severity}`)}</Badge>
+          {gap.severity ? (
+            <Badge tone={SEVERITY_TONE[gap.severity]}>{t(`severity.${gap.severity}`)}</Badge>
+          ) : (
+            <span className="text-on-surface-variant">—</span>
+          )}
           {gap.bylaw_scope.map((code) => (
             <Badge key={code} tone="outline">
               {t(`scope.${code}`)}
@@ -196,10 +200,14 @@ function GapDetail({ gap, onClose }) {
                 {...props}
                 value={values.severity}
                 onChange={set("severity")}
-                options={GAP_SEVERITIES.map((code) => ({
-                  value: code,
-                  label: t(`severity.${code}`),
-                }))}
+                // "—" while the gap has no severity, so the box does not pretend it is High.
+                options={[
+                  ...(values.severity ? [] : [{ value: "", label: "—" }]),
+                  ...GAP_SEVERITIES.map((code) => ({
+                    value: code,
+                    label: t(`severity.${code}`),
+                  })),
+                ]}
               />
             )}
           </Field>
