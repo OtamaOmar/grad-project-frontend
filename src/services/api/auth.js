@@ -6,6 +6,8 @@ export const authApi = {
   logout: () => http.post("/auth/logout"),
   me: () => http.get("/me"),
   saveOnboarding: (preferences) => http.patch("/me/onboarding", preferences),
+  changePassword: ({ current_password, new_password }) =>
+    http.patch("/me/password", { current_password, new_password }),
   lookupUniversityId: (universityId) =>
     http.post("/auth/signup/lookup", { university_id: universityId }),
   signUp: ({ universityId, username, password }) =>

@@ -55,6 +55,22 @@ export default [
     },
   },
   {
+    method: "PATCH",
+    path: "/me/password",
+    // Mirrors PATCH /api/me/password: a wrong current password is a 400 on that field.
+    // shortcut: every mock account shares MOCK_PASSWORD, so the new one is not stored;
+    // the real backend stores it.
+    handler: ({ body }) => {
+      const user = requireRole();
+      if (body?.current_password !== MOCK_PASSWORD) {
+        throw mockError(400, "VALIDATION_FAILED", "The current password is not right.", {
+          fields: { current_password: "incorrect" },
+        });
+      }
+      return { user: toMe(user) };
+    },
+  },
+  {
     method: "POST",
     path: "/auth/signup/lookup",
     handler: ({ body }) => {
