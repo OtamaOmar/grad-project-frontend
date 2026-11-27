@@ -150,7 +150,10 @@ export function LoginForm() {
             />
           </div>
           {fieldErrors.email && (
-            <p id="email-error" className="flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400">
+            <p
+              id="email-error"
+              className="flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400"
+            >
               <Icon name="error" size={13} />
               <span>{fieldErrors.email}</span>
             </p>
@@ -202,7 +205,10 @@ export function LoginForm() {
             </button>
           </div>
           {fieldErrors.password && (
-            <p id="password-error" className="flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400">
+            <p
+              id="password-error"
+              className="flex items-center gap-1 text-[11px] text-red-600 dark:text-red-400"
+            >
               <Icon name="error" size={13} />
               <span>{fieldErrors.password}</span>
             </p>
@@ -264,7 +270,10 @@ export function LoginForm() {
           <div className="mt-2 sm:mt-2.5 rounded-xl border border-slate-200/90 dark:border-slate-700/70 bg-slate-50/80 dark:bg-slate-800/50 p-2 sm:p-2.5 text-start transition-colors shadow-2xs">
             <div className="flex items-center justify-between pb-1 sm:pb-1.5 mb-1.5 border-b border-slate-200/80 dark:border-slate-700/60">
               <div className="flex items-center gap-1.5">
-                <span className="size-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" aria-hidden="true" />
+                <span
+                  className="size-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse"
+                  aria-hidden="true"
+                />
                 <p className="text-[10px] sm:text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
                   {t("demoAccounts")}
                 </p>

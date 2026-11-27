@@ -313,7 +313,10 @@ export function ForgotPasswordForm() {
               </button>
             </div>
             {passwordErrors.newPassword && (
-              <p id="new-password-error" className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400">
+              <p
+                id="new-password-error"
+                className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400"
+              >
                 <Icon name="error" size={15} />
                 <span>{passwordErrors.newPassword}</span>
               </p>
@@ -348,7 +351,9 @@ export function ForgotPasswordForm() {
                   }
                 }}
                 aria-invalid={passwordErrors.confirmPassword ? true : undefined}
-                aria-describedby={passwordErrors.confirmPassword ? "confirm-password-error" : undefined}
+                aria-describedby={
+                  passwordErrors.confirmPassword ? "confirm-password-error" : undefined
+                }
                 className={`h-11 w-full rounded-lg border bg-white dark:bg-slate-800/80 ps-11 pe-11 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors focus:border-[#123B70] dark:focus:border-blue-400 focus:ring-2 focus:ring-[#123B70]/15 dark:focus:ring-blue-400/20 focus:outline-none ${
                   passwordErrors.confirmPassword
                     ? "border-red-500 focus:border-red-500 focus:ring-red-100 dark:focus:ring-red-950/40"
@@ -365,7 +370,10 @@ export function ForgotPasswordForm() {
               </button>
             </div>
             {passwordErrors.confirmPassword && (
-              <p id="confirm-password-error" className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400">
+              <p
+                id="confirm-password-error"
+                className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400"
+              >
                 <Icon name="error" size={15} />
                 <span>{passwordErrors.confirmPassword}</span>
               </p>
@@ -381,9 +389,15 @@ export function ForgotPasswordForm() {
               <Icon
                 name={hasMinLength ? "check_circle" : "circle"}
                 size={13}
-                className={hasMinLength ? "text-emerald-600 dark:text-emerald-400" : "text-slate-300 dark:text-slate-600"}
+                className={
+                  hasMinLength
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-slate-300 dark:text-slate-600"
+                }
               />
-              <span className={hasMinLength ? "text-slate-800 dark:text-slate-200 font-medium" : ""}>
+              <span
+                className={hasMinLength ? "text-slate-800 dark:text-slate-200 font-medium" : ""}
+              >
                 {t("reqMinLength")}
               </span>
             </div>
@@ -391,9 +405,17 @@ export function ForgotPasswordForm() {
               <Icon
                 name={hasLettersAndNumbers ? "check_circle" : "circle"}
                 size={13}
-                className={hasLettersAndNumbers ? "text-emerald-600 dark:text-emerald-400" : "text-slate-300 dark:text-slate-600"}
+                className={
+                  hasLettersAndNumbers
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-slate-300 dark:text-slate-600"
+                }
               />
-              <span className={hasLettersAndNumbers ? "text-slate-800 dark:text-slate-200 font-medium" : ""}>
+              <span
+                className={
+                  hasLettersAndNumbers ? "text-slate-800 dark:text-slate-200 font-medium" : ""
+                }
+              >
                 {t("reqLettersNumbers")}
               </span>
             </div>
@@ -502,7 +524,10 @@ export function ForgotPasswordForm() {
             />
           </div>
           {emailError && (
-            <p id="forgot-email-error" className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400">
+            <p
+              id="forgot-email-error"
+              className="flex items-center gap-1 text-xs text-red-600 dark:text-red-400"
+            >
               <Icon name="error" size={15} />
               <span>{emailError}</span>
             </p>
