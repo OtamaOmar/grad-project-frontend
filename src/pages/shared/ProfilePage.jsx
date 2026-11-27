@@ -1,11 +1,10 @@
 import { useId, useMemo, useState } from "react";
-import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Avatar, Badge, Button, Card, Icon } from "@/components/ui";
 import { useAuth } from "@/hooks/useAuth";
 import { useTheme } from "@/hooks/useTheme";
 import { useToast } from "@/hooks/useToast";
-import { PATHS } from "@/routes/paths";
+import { ChangePasswordDialog } from "@/features/auth/ChangePasswordDialog";
 import { authApi } from "@/services/api/auth";
 import { cn } from "@/utils/cn";
 
@@ -21,6 +20,7 @@ export default function ProfilePage() {
   const [fullNameDraft, setFullNameDraft] = useState(null);
   const [phoneDraft, setPhoneDraft] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [passwordOpen, setPasswordOpen] = useState(false);
 
   const fullName = fullNameDraft ?? user?.displayName ?? "";
   const phone = phoneDraft ?? user?.phone ?? "+20 100 123 4567";
@@ -624,10 +624,10 @@ export default function ProfilePage() {
 
             <div className="flex flex-wrap items-center gap-3">
               <Button
-                as={Link}
-                to={PATHS.forgotPassword}
+                type="button"
                 variant="secondary"
                 icon="lock_reset"
+                onClick={() => setPasswordOpen(true)}
               >
                 {t("actions.changePassword")}
               </Button>
@@ -661,6 +661,7 @@ export default function ProfilePage() {
           </div>
         </div>
       </Card>
+      <ChangePasswordDialog open={passwordOpen} onClose={() => setPasswordOpen(false)} />
     </div>
   );
 }

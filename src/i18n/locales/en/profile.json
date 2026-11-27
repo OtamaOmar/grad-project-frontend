@@ -107,6 +107,20 @@
     "signOut": "Sign out",
     "successToast": "Profile and preferences updated successfully.",
     "errorToast": "Failed to update profile. Please verify your inputs."
+  },
+  "password": {
+    "title": "Change password",
+    "description": "Your other signed-in devices are signed out when you change it.",
+    "current": "Current password",
+    "new": "New password",
+    "newHint": "At least 8 characters.",
+    "confirm": "Repeat the new password",
+    "submit": "Change password",
+    "changed": "Your password was changed.",
+    "required": "Enter your current password.",
+    "tooShort": "Use at least 8 characters.",
+    "sameAsCurrent": "Choose a password different from the current one.",
+    "mismatch": "The two new passwords do not match.",
+    "incorrect": "The current password is not right."
   }
 }
-
