@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import * as m from "motion/react-m";
 import {
   Badge,
   Button,
@@ -19,6 +20,7 @@ import {
 } from "@/features/notifications/useNotifications";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/useToast";
+import { SPRING } from "@/motion/tokens";
 import { cn } from "@/utils/cn";
 import { formatRelativeTime } from "@/utils/format";
 
@@ -127,9 +129,7 @@ function getLocalizedNotification(item, t) {
   if (!item) return { title: "", body: "" };
   let slug = NOTIFICATION_KEY_MAP[item.title];
   if (!slug && item.title === "Welcome to the CS planning system") {
-    slug = item.body?.includes("Help")
-      ? "welcome_cs_planning_help"
-      : "welcome_cs_planning_account";
+    slug = item.body?.includes("Help") ? "welcome_cs_planning_help" : "welcome_cs_planning_account";
   }
   if (slug) {
     const locTitle = t(`notifications:items.${slug}.title`, { defaultValue: item.title });
@@ -176,8 +176,10 @@ export default function NotificationsPage() {
       thirdStat = dataGaps > 0 ? "99.4%" : "100%";
       thirdStatIcon = "verified";
     } else if (role === "coordinator") {
-      const conflicts = allItems.filter((i) =>
-        i.title.toLowerCase().includes("conflict") || (i.body && i.body.toLowerCase().includes("conflict")),
+      const conflicts = allItems.filter(
+        (i) =>
+          i.title.toLowerCase().includes("conflict") ||
+          (i.body && i.body.toLowerCase().includes("conflict")),
       ).length;
       thirdStat = String(conflicts);
       thirdStatIcon = "rule";
@@ -187,7 +189,9 @@ export default function NotificationsPage() {
       thirdStatIcon = "assignment_ind";
     } else {
       // student
-      const courseUpdates = allItems.filter((i) => i.type === "offering_update" || i.type === "course_update").length;
+      const courseUpdates = allItems.filter(
+        (i) => i.type === "offering_update" || i.type === "course_update",
+      ).length;
       thirdStat = String(courseUpdates);
       thirdStatIcon = "school";
     }
@@ -206,7 +210,11 @@ export default function NotificationsPage() {
       // Filter tab
       if (activeFilter === "unread" && item.is_read) return false;
       if (activeFilter === "read" && !item.is_read) return false;
-      if (activeFilter === "action_required" && item.severity !== "action_required" && item.severity !== "warning") {
+      if (
+        activeFilter === "action_required" &&
+        item.severity !== "action_required" &&
+        item.severity !== "warning"
+      ) {
         return false;
       }
 
@@ -259,7 +267,6 @@ export default function NotificationsPage() {
       toast.error(t("common:error", "An error occurred"));
     }
   };
-
 
   const handleItemClick = (item) => {
     if (!item.is_read) {
@@ -385,12 +392,20 @@ export default function NotificationsPage() {
                   type="button"
                   onClick={() => setActiveFilter(tab)}
                   className={cn(
-                    "rounded-md px-2.5 py-1 text-xs transition-colors",
+                    "relative isolate rounded-md px-2.5 py-1 text-xs transition-colors duration-150",
                     activeFilter === tab
-                      ? "bg-surface-container-lowest font-semibold text-on-surface shadow-xs"
+                      ? "font-semibold text-on-surface"
                       : "text-on-surface-variant hover:text-on-surface",
                   )}
                 >
+                  {activeFilter === tab && (
+                    <m.span
+                      layoutId="notifications-filter-pill"
+                      aria-hidden="true"
+                      transition={SPRING.indicator}
+                      className="absolute inset-0 -z-10 rounded-md bg-surface-container-lowest shadow-xs"
+                    />
+                  )}
                   {t(`notifications:filters.${tab}`)}
                 </button>
               ))}
@@ -408,7 +423,7 @@ export default function NotificationsPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("notifications:searchPlaceholder")}
-                className="h-7 w-36 rounded-md border border-outline-variant/60 bg-surface-container-lowest ps-7 pe-2 text-xs text-on-surface placeholder:text-on-surface-variant/70 focus:w-48 focus:border-primary focus:outline-none sm:w-44"
+                className="h-7 w-36 rounded-md border border-outline-variant/60 bg-surface-container-lowest ps-7 pe-2 text-xs text-on-surface placeholder:text-on-surface-variant/70 transition-[width,border-color] duration-200 ease-[var(--ease-out)] focus:w-48 focus:border-primary focus:outline-none sm:w-44"
               />
               {searchQuery && (
                 <button
@@ -471,7 +486,7 @@ export default function NotificationsPage() {
             />
           </div>
         ) : (
-          <div className="divide-y divide-outline-variant/40">
+          <div key={activeFilter} className="fade-swap divide-y divide-outline-variant/40">
             {filteredItems.map((item) => {
               const visuals = getNotificationVisuals(item);
               const actionLabel = getActionLabel(item, t);
@@ -489,10 +504,7 @@ export default function NotificationsPage() {
                   {/* Category icon */}
                   <div className="shrink-0 pt-0.5">
                     <div
-                      className={cn(
-                        "grid size-7 place-items-center rounded-lg",
-                        visuals.bgClass,
-                      )}
+                      className={cn("grid size-7 place-items-center rounded-lg", visuals.bgClass)}
                     >
                       <Icon name={visuals.icon} size={17} />
                     </div>
@@ -511,7 +523,10 @@ export default function NotificationsPage() {
                             className="size-2 rounded-full bg-primary-container"
                           />
                         )}
-                        <Badge tone={visuals.badgeTone} className="h-5 px-1.5 text-xs font-semibold">
+                        <Badge
+                          tone={visuals.badgeTone}
+                          className="h-5 px-1.5 text-xs font-semibold"
+                        >
                           {t(`notifications:status.${visuals.statusBadge}`)}
                         </Badge>
                       </div>
@@ -620,61 +635,60 @@ export default function NotificationsPage() {
         onClose={() => setSelectedNotification(null)}
         title={t("notifications:details.title")}
       >
-        {selectedNotification && (() => {
-          const { title: locTitle, body: locBody } = getLocalizedNotification(
-            selectedNotification,
-            t,
-          );
-          return (
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-serif text-headline-sm font-semibold text-on-surface">
-                  {locTitle}
-                </h3>
-                <p className="mt-1 text-body-xs text-on-surface-variant">
-                  {formatRelativeTime(selectedNotification.created_at)}
-                </p>
-              </div>
-
-              <p className="text-body-md leading-relaxed text-on-surface">
-                {locBody}
-              </p>
-
-              {selectedNotification.params && (
-                <div className="rounded-lg border border-outline-variant/60 bg-surface-container-low p-3">
-                  <span className="text-label-sm font-semibold text-on-surface">
-                    {t("notifications:details.parameters")}:
-                  </span>
-                  <pre className="mt-1 font-mono text-body-xs text-on-surface-variant">
-                    {JSON.stringify(selectedNotification.params, null, 2)}
-                  </pre>
+        {selectedNotification &&
+          (() => {
+            const { title: locTitle, body: locBody } = getLocalizedNotification(
+              selectedNotification,
+              t,
+            );
+            return (
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-serif text-headline-sm font-semibold text-on-surface">
+                    {locTitle}
+                  </h3>
+                  <p className="mt-1 text-body-xs text-on-surface-variant">
+                    {formatRelativeTime(selectedNotification.created_at)}
+                  </p>
                 </div>
-              )}
 
-              <div className="flex justify-end gap-2 pt-2">
-                <Button
-                  variant="outlined"
-                  size="sm"
-                  onClick={() => setSelectedNotification(null)}
-                >
-                  {t("notifications:details.close")}
-                </Button>
-                {selectedNotification.link && (
-                  <Button
-                    size="sm"
-                    onClick={() => {
-                      const link = selectedNotification.link;
-                      setSelectedNotification(null);
-                      navigate(link);
-                    }}
-                  >
-                    {t("notifications:details.action")}
-                  </Button>
+                <p className="text-body-md leading-relaxed text-on-surface">{locBody}</p>
+
+                {selectedNotification.params && (
+                  <div className="rounded-lg border border-outline-variant/60 bg-surface-container-low p-3">
+                    <span className="text-label-sm font-semibold text-on-surface">
+                      {t("notifications:details.parameters")}:
+                    </span>
+                    <pre className="mt-1 font-mono text-body-xs text-on-surface-variant">
+                      {JSON.stringify(selectedNotification.params, null, 2)}
+                    </pre>
+                  </div>
                 )}
+
+                <div className="flex justify-end gap-2 pt-2">
+                  <Button
+                    variant="outlined"
+                    size="sm"
+                    onClick={() => setSelectedNotification(null)}
+                  >
+                    {t("notifications:details.close")}
+                  </Button>
+                  {selectedNotification.link && (
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        const link = selectedNotification.link;
+                        setSelectedNotification(null);
+                        navigate(link);
+                      }}
+                    >
+                      {t("notifications:details.action")}
+                    </Button>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })()}
+            );
+          })()}
       </Dialog>
 
       {/* Notification Preferences Dialog */}

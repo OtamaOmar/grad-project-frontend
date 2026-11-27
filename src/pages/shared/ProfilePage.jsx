@@ -37,7 +37,9 @@ export default function ProfilePage() {
     }
     return {
       label: t("fields.staffCode"),
-      value: user?.staffCode || (role === "admin" ? "ADM-002" : role === "coordinator" ? "8841-CS" : "FAC-104"),
+      value:
+        user?.staffCode ||
+        (role === "admin" ? "ADM-002" : role === "coordinator" ? "8841-CS" : "FAC-104"),
     };
   }, [role, user, t]);
 
@@ -124,9 +126,7 @@ export default function ProfilePage() {
           <h1 className="font-serif text-headline-xl font-semibold text-on-surface">
             {t("meta.title")}
           </h1>
-          <p className="mt-1 text-body-md text-on-surface-variant">
-            {t("meta.subtitle")}
-          </p>
+          <p className="mt-1 text-body-md text-on-surface-variant">{t("meta.subtitle")}</p>
         </div>
 
         {/* Nile Single Sign-On Badge */}
@@ -136,9 +136,7 @@ export default function ProfilePage() {
             <span className="text-label-sm font-semibold text-on-surface">
               {t("meta.ssoActive")}
             </span>
-            <span className="text-body-xs text-on-surface-variant">
-              {t("meta.ssoSync")}
-            </span>
+            <span className="text-body-xs text-on-surface-variant">{t("meta.ssoSync")}</span>
           </div>
         </div>
       </div>
@@ -162,9 +160,7 @@ export default function ProfilePage() {
                 <h2 className="truncate font-serif text-headline-md font-semibold text-on-surface">
                   {fullName || user?.displayName || "Nile User"}
                 </h2>
-                <Badge tone={roleBadgeTone}>
-                  {role.charAt(0).toUpperCase() + role.slice(1)}
-                </Badge>
+                <Badge tone={roleBadgeTone}>{role.charAt(0).toUpperCase() + role.slice(1)}</Badge>
                 <Badge tone="neutral">{academicTag}</Badge>
               </div>
               <p className="mt-0.5 truncate text-body-sm text-on-surface-variant">
@@ -194,9 +190,7 @@ export default function ProfilePage() {
                   className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
                 />
               </div>
-              <p className="text-body-xs text-on-surface-variant">
-                {t("fields.fullNameHint")}
-              </p>
+              <p className="text-body-xs text-on-surface-variant">{t("fields.fullNameHint")}</p>
             </div>
 
             {/* University Email (Read-only) */}
@@ -218,9 +212,7 @@ export default function ProfilePage() {
                   className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
                 />
               </div>
-              <p className="text-body-xs text-on-surface-variant">
-                {t("fields.emailHint")}
-              </p>
+              <p className="text-body-xs text-on-surface-variant">{t("fields.emailHint")}</p>
             </div>
 
             {/* Contact Phone Number */}
@@ -242,9 +234,7 @@ export default function ProfilePage() {
                   className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
                 />
               </div>
-              <p className="text-body-xs text-on-surface-variant">
-                {t("fields.phoneHint")}
-              </p>
+              <p className="text-body-xs text-on-surface-variant">{t("fields.phoneHint")}</p>
             </div>
 
             {/* Institutional Identifier (Read-only) */}
@@ -266,9 +256,7 @@ export default function ProfilePage() {
                   className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
                 />
               </div>
-              <p className="text-body-xs text-on-surface-variant">
-                {t("fields.identifierHint")}
-              </p>
+              <p className="text-body-xs text-on-surface-variant">{t("fields.identifierHint")}</p>
             </div>
 
             {/* Academic Department (Read-only) */}
@@ -290,9 +278,7 @@ export default function ProfilePage() {
                   className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
                 />
               </div>
-              <p className="text-body-xs text-on-surface-variant">
-                {t("identity.faculty")}
-              </p>
+              <p className="text-body-xs text-on-surface-variant">{t("identity.faculty")}</p>
             </div>
           </div>
 
@@ -329,7 +315,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => handleLanguageSelect("en")}
                 className={cn(
-                  "flex items-center justify-between rounded-lg border p-4 text-start transition-all",
+                  "pressable flex items-center justify-between rounded-lg border p-4 text-start",
                   currentLang === "en"
                     ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary"
                     : "border-outline-variant bg-surface-container-low hover:border-outline",
@@ -367,7 +353,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => handleLanguageSelect("ar")}
                 className={cn(
-                  "flex items-center justify-between rounded-lg border p-4 text-start transition-all",
+                  "pressable flex items-center justify-between rounded-lg border p-4 text-start",
                   currentLang === "ar"
                     ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary"
                     : "border-outline-variant bg-surface-container-low hover:border-outline",
@@ -413,7 +399,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => handleThemeSelect("light")}
                 className={cn(
-                  "flex flex-col rounded-lg border p-4 text-start transition-all",
+                  "pressable flex flex-col rounded-lg border p-4 text-start",
                   theme === "light"
                     ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary"
                     : "border-outline-variant bg-surface-container-low hover:border-outline",
@@ -438,7 +424,10 @@ export default function ProfilePage() {
                 <div className="mt-3 flex items-center gap-2 border-t border-outline-variant/60 pt-2">
                   <div className="flex items-center gap-1.5">
                     <span className="size-4 rounded bg-[#021F94]" title="Primary #021F94" />
-                    <span className="size-4 rounded border border-outline-variant bg-[#F5F2F3]" title="Surface Canvas #F5F2F3" />
+                    <span
+                      className="size-4 rounded border border-outline-variant bg-[#F5F2F3]"
+                      title="Surface Canvas #F5F2F3"
+                    />
                   </div>
                   <span className="ms-auto font-mono text-body-xs text-on-surface-variant">
                     #021F94 / #F5F2F3
@@ -451,7 +440,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => handleThemeSelect("dark")}
                 className={cn(
-                  "flex flex-col rounded-lg border p-4 text-start transition-all",
+                  "pressable flex flex-col rounded-lg border p-4 text-start",
                   theme === "dark"
                     ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary"
                     : "border-outline-variant bg-surface-container-low hover:border-outline",
@@ -496,24 +485,44 @@ export default function ProfilePage() {
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.student.standing")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-success">{t("roles.student.standingVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.student.standing")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-success">
+                      {t("roles.student.standingVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.student.cohort")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.student.cohortVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.student.cohort")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.student.cohortVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.student.creditHours")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.student.creditHoursVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.student.creditHours")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.student.creditHoursVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.student.program")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.student.programVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.student.program")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.student.programVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3 sm:col-span-2">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.student.path")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.student.pathVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.student.path")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.student.pathVal")}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -527,20 +536,36 @@ export default function ProfilePage() {
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.coordinator.scope")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.coordinator.scopeVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.coordinator.scope")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.coordinator.scopeVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.coordinator.load")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.coordinator.loadVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.coordinator.load")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.coordinator.loadVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3 sm:col-span-2">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.coordinator.supervision")}</div>
-                    <div className="mt-0.5 font-mono text-label-md font-semibold text-primary">{t("roles.coordinator.supervisionVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.coordinator.supervision")}
+                    </div>
+                    <div className="mt-0.5 font-mono text-label-md font-semibold text-primary">
+                      {t("roles.coordinator.supervisionVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3 sm:col-span-2">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.coordinator.committee")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.coordinator.committeeVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.coordinator.committee")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.coordinator.committeeVal")}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -554,20 +579,36 @@ export default function ProfilePage() {
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.advisor.caseload")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.advisor.caseloadVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.advisor.caseload")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.advisor.caseloadVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.advisor.unit")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.advisor.unitVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.advisor.unit")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.advisor.unitVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.advisor.office")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.advisor.officeVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.advisor.office")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.advisor.officeVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.advisor.hours")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.advisor.hoursVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.advisor.hours")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.advisor.hoursVal")}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -581,20 +622,36 @@ export default function ProfilePage() {
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.admin.level")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-error">{t("roles.admin.levelVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.admin.level")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-error">
+                      {t("roles.admin.levelVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.admin.audit")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.admin.auditVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.admin.audit")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.admin.auditVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3 sm:col-span-2">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.admin.scope")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.admin.scopeVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.admin.scope")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.admin.scopeVal")}
+                    </div>
                   </div>
                   <div className="rounded-lg border border-outline-variant/60 bg-surface-container-lowest p-3 sm:col-span-2">
-                    <div className="text-body-xs text-on-surface-variant">{t("roles.admin.bylawAdmin")}</div>
-                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">{t("roles.admin.bylawAdminVal")}</div>
+                    <div className="text-body-xs text-on-surface-variant">
+                      {t("roles.admin.bylawAdmin")}
+                    </div>
+                    <div className="mt-0.5 text-label-md font-semibold text-on-surface">
+                      {t("roles.admin.bylawAdminVal")}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -604,20 +661,10 @@ export default function ProfilePage() {
           {/* 6. Form Actions Footer */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-outline-variant/70 pt-5">
             <div className="flex flex-wrap items-center gap-3">
-              <Button
-                type="submit"
-                variant="primary"
-                icon="save"
-                loading={isSaving}
-              >
+              <Button type="submit" variant="primary" icon="save" loading={isSaving}>
                 {isSaving ? t("actions.saving") : t("actions.save")}
               </Button>
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={handleReset}
-                disabled={isSaving}
-              >
+              <Button type="button" variant="secondary" onClick={handleReset} disabled={isSaving}>
                 {t("actions.cancel")}
               </Button>
             </div>
@@ -652,12 +699,8 @@ export default function ProfilePage() {
             <Icon name="policy" size={22} />
           </div>
           <div className="space-y-1">
-            <h3 className="text-label-md font-semibold text-on-surface">
-              {t("compliance.title")}
-            </h3>
-            <p className="text-body-sm text-on-surface-variant">
-              {t("compliance.text")}
-            </p>
+            <h3 className="text-label-md font-semibold text-on-surface">{t("compliance.title")}</h3>
+            <p className="text-body-sm text-on-surface-variant">{t("compliance.text")}</p>
           </div>
         </div>
       </Card>
