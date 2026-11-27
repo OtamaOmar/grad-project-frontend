@@ -1,17 +1,22 @@
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/components/ui";
 import { ForgotPasswordForm } from "@/features/auth/ForgotPasswordForm";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PreferenceControls } from "@/layouts/shell/PreferenceControls";
+import { useAuthIntro } from "@/motion/useAuthIntro";
 import nuLogo from "@/assets/nu-logo.png";
 import nuCampus from "@/assets/nu-campus.jpg";
 
 export default function ForgotPasswordPage() {
   const { t } = useTranslation(["auth", "common"]);
   useDocumentTitle(`${t("branding.acops")} - ${t("forgotPasswordTitle")}`);
+  const scope = useRef(null);
+  useAuthIntro(scope);
 
   return (
     <div
+      ref={scope}
       className="relative flex min-h-dvh w-full items-center justify-center p-3 sm:p-5 md:p-8 lg:p-10 overflow-x-hidden bg-cover bg-center bg-no-repeat transition-colors"
       style={{ backgroundImage: `url(${nuCampus})` }}
     >
@@ -27,7 +32,10 @@ export default function ForgotPasswordPage() {
       </div>
 
       {/* Main Container */}
-      <main className="relative z-10 w-full max-w-[1080px] xl:max-w-[1140px] rounded-2xl sm:rounded-3xl shadow-[0_25px_60px_-15px_rgba(15,46,86,0.28)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border border-white/85 dark:border-slate-800/80 overflow-hidden bg-white dark:bg-[#0f172a] grid grid-cols-1 md:grid-cols-12 min-h-[600px] md:min-h-[640px] my-auto transition-colors">
+      <main
+        data-intro="card"
+        className="relative z-10 w-full max-w-[1080px] xl:max-w-[1140px] rounded-2xl sm:rounded-3xl shadow-[0_25px_60px_-15px_rgba(15,46,86,0.28)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border border-white/85 dark:border-slate-800/80 overflow-hidden bg-white dark:bg-[#0f172a] grid grid-cols-1 md:grid-cols-12 min-h-[600px] md:min-h-[640px] my-auto transition-colors"
+      >
         {/* Left Section — ACOPS Branding */}
         <section
           className="relative md:col-span-5 flex flex-col justify-between p-6 sm:p-8 lg:p-10 text-white bg-cover bg-center overflow-hidden"
@@ -40,7 +48,7 @@ export default function ForgotPasswordPage() {
           />
 
           {/* Branding Content */}
-          <div className="relative z-10 flex flex-col">
+          <div data-intro="brand" className="relative z-10 flex flex-col">
             {/* White University Logo */}
             <div className="flex items-center">
               <img
@@ -67,7 +75,10 @@ export default function ForgotPasswordPage() {
               </div>
 
               {/* Thin Accent Divider */}
-              <div className="my-5 h-[1.5px] w-12 rounded-full bg-blue-300/40" />
+              <div
+                data-intro="divider"
+                className="my-5 h-[1.5px] w-12 rounded-full bg-blue-300/40"
+              />
 
               {/* Slogan */}
               <p className="text-base lg:text-lg font-semibold text-white leading-snug">
@@ -78,7 +89,7 @@ export default function ForgotPasswordPage() {
             {/* Feature Highlights */}
             <div className="mt-7 lg:mt-8 space-y-4">
               {/* Feature 1 */}
-              <div className="flex items-start gap-3">
+              <div data-intro="feature" className="flex items-start gap-3">
                 <div className="flex size-9.5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-300/30 text-white shadow-xs">
                   <Icon name="calendar_month" size={19} />
                 </div>
@@ -93,7 +104,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               {/* Feature 2 */}
-              <div className="flex items-start gap-3">
+              <div data-intro="feature" className="flex items-start gap-3">
                 <div className="flex size-9.5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-300/30 text-white shadow-xs">
                   <Icon name="trending_up" size={19} />
                 </div>
@@ -108,7 +119,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               {/* Feature 3 */}
-              <div className="flex items-start gap-3">
+              <div data-intro="feature" className="flex items-start gap-3">
                 <div className="flex size-9.5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-300/30 text-white shadow-xs">
                   <Icon name="group" size={19} />
                 </div>
@@ -132,7 +143,7 @@ export default function ForgotPasswordPage() {
 
         {/* Right Section — Form Panel */}
         <section className="md:col-span-7 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-12 bg-white dark:bg-[#0f172a] transition-colors">
-          <div className="mx-auto w-full max-w-[390px] xl:max-w-[410px]">
+          <div data-intro="panel" className="mx-auto w-full max-w-[390px] xl:max-w-[410px]">
             {/* University Identity */}
             <div className="text-center">
               <img

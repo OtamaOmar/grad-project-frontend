@@ -150,8 +150,8 @@ export function ForgotPasswordForm() {
   // ==========================================
   if (step === "success") {
     return (
-      <div className="flex flex-col items-center text-center pt-2">
-        <div className="flex size-14 items-center justify-center rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 shadow-xs mb-4">
+      <div className="step-in flex flex-col items-center text-center pt-2">
+        <div className="success-pop flex size-14 items-center justify-center rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 shadow-xs mb-4">
           <Icon name="check_circle" size={32} />
         </div>
 
@@ -182,7 +182,7 @@ export function ForgotPasswordForm() {
     // 2a. Token Verifying Loader
     if (verifyingToken) {
       return (
-        <div role="status" aria-busy="true" className="flex flex-col gap-3 py-6">
+        <div role="status" aria-busy="true" className="step-in flex flex-col gap-3 py-6">
           <span className="sr-only">Verifying security token...</span>
           <Skeleton className="h-5 w-2/3" />
           <Skeleton className="h-11 w-full" />
@@ -195,7 +195,7 @@ export function ForgotPasswordForm() {
     // 2b. Invalid or Expired Token State
     if (!tokenValid) {
       return (
-        <div className="flex flex-col items-center text-center pt-2">
+        <div className="step-in flex flex-col items-center text-center pt-2">
           <div className="flex size-14 items-center justify-center rounded-2xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-600 dark:text-amber-400 shadow-xs mb-4">
             <Icon name="link_off" size={32} />
           </div>
@@ -231,7 +231,7 @@ export function ForgotPasswordForm() {
 
     // 2c. Valid Token: Enter New Password
     return (
-      <div>
+      <div className="step-in">
         {/* Reset Password Heading */}
         <div className="mt-5 mb-4 text-start">
           <h2 className="text-2xl sm:text-2.5xl font-bold text-[#123B70] dark:text-white tracking-tight transition-colors">
@@ -466,7 +466,7 @@ export function ForgotPasswordForm() {
   // Render: Step 1 — Request Reset Link Form
   // ==========================================
   return (
-    <div>
+    <div className="step-in">
       {/* Forgot Password Heading */}
       <div className="mt-5 mb-4 text-start">
         <h2 className="text-2xl sm:text-2.5xl font-bold text-[#123B70] dark:text-white tracking-tight transition-colors">

@@ -1,17 +1,22 @@
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/components/ui";
 import { LoginForm } from "@/features/auth/LoginForm";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PreferenceControls } from "@/layouts/shell/PreferenceControls";
+import { useAuthIntro } from "@/motion/useAuthIntro";
 import nuLogo from "@/assets/nu-logo.png";
 import nuCampus from "@/assets/nu-campus.jpg";
 
 export default function LoginPage() {
   const { t } = useTranslation(["auth", "common"]);
   useDocumentTitle(`${t("branding.acops")} - ${t("signInTitle")}`);
+  const scope = useRef(null);
+  useAuthIntro(scope);
 
   return (
     <div
+      ref={scope}
       className="relative h-screen h-dvh w-full overflow-hidden flex items-center justify-center p-2 sm:p-3 md:p-4 lg:p-6 bg-cover bg-center bg-no-repeat transition-colors box-border"
       style={{ backgroundImage: `url(${nuCampus})` }}
     >
@@ -27,7 +32,10 @@ export default function LoginPage() {
       </div>
 
       {/* Main Login Container */}
-      <main className="relative z-10 w-full max-w-[1040px] xl:max-w-[1100px] max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-1.5rem)] md:max-h-[calc(100dvh-2rem)] rounded-2xl sm:rounded-3xl shadow-[0_25px_60px_-15px_rgba(15,46,86,0.28)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border border-white/85 dark:border-slate-800/80 overflow-hidden bg-white dark:bg-[#0f172a] grid grid-cols-1 md:grid-cols-12 min-h-0 my-auto transition-colors">
+      <main
+        data-intro="card"
+        className="relative z-10 w-full max-w-[1040px] xl:max-w-[1100px] max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-1.5rem)] md:max-h-[calc(100dvh-2rem)] rounded-2xl sm:rounded-3xl shadow-[0_25px_60px_-15px_rgba(15,46,86,0.28)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border border-white/85 dark:border-slate-800/80 overflow-hidden bg-white dark:bg-[#0f172a] grid grid-cols-1 md:grid-cols-12 min-h-0 my-auto transition-colors"
+      >
         {/* Left Section — ACOPS Branding */}
         <section
           className="relative hidden md:flex md:col-span-5 flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-7 text-white bg-cover bg-center overflow-hidden min-h-0"
@@ -40,7 +48,7 @@ export default function LoginPage() {
           />
 
           {/* Branding Content */}
-          <div className="relative z-10 flex flex-col min-h-0 justify-between">
+          <div data-intro="brand" className="relative z-10 flex flex-col min-h-0 justify-between">
             {/* White University Logo */}
             <div className="flex items-center">
               <img
@@ -67,7 +75,10 @@ export default function LoginPage() {
               </div>
 
               {/* Thin Accent Divider */}
-              <div className="my-3 sm:my-4 h-[1.5px] w-10 sm:w-12 rounded-full bg-blue-300/40" />
+              <div
+                data-intro="divider"
+                className="my-3 sm:my-4 h-[1.5px] w-10 sm:w-12 rounded-full bg-blue-300/40"
+              />
 
               {/* Slogan */}
               <p className="text-sm sm:text-base lg:text-lg font-semibold text-white leading-snug">
@@ -78,7 +89,7 @@ export default function LoginPage() {
             {/* Feature Highlights */}
             <div className="mt-4 lg:mt-5 space-y-2.5 sm:space-y-3">
               {/* Feature 1 */}
-              <div className="flex items-start gap-2.5 sm:gap-3">
+              <div data-intro="feature" className="flex items-start gap-2.5 sm:gap-3">
                 <div className="flex size-7.5 sm:size-8.5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-300/30 text-white shadow-xs">
                   <Icon name="calendar_month" size={17} />
                 </div>
@@ -93,7 +104,7 @@ export default function LoginPage() {
               </div>
 
               {/* Feature 2 */}
-              <div className="flex items-start gap-2.5 sm:gap-3">
+              <div data-intro="feature" className="flex items-start gap-2.5 sm:gap-3">
                 <div className="flex size-7.5 sm:size-8.5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-300/30 text-white shadow-xs">
                   <Icon name="trending_up" size={17} />
                 </div>
@@ -108,7 +119,7 @@ export default function LoginPage() {
               </div>
 
               {/* Feature 3 */}
-              <div className="flex items-start gap-2.5 sm:gap-3">
+              <div data-intro="feature" className="flex items-start gap-2.5 sm:gap-3">
                 <div className="flex size-7.5 sm:size-8.5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-300/30 text-white shadow-xs">
                   <Icon name="group" size={17} />
                 </div>
@@ -132,7 +143,7 @@ export default function LoginPage() {
 
         {/* Right Section — Login Form */}
         <section className="col-span-1 md:col-span-7 flex flex-col justify-center p-3.5 sm:p-5 md:p-6 lg:p-7 xl:p-8 bg-white dark:bg-[#0f172a] transition-colors min-h-0 overflow-y-auto md:overflow-visible">
-          <div className="mx-auto w-full max-w-[380px] xl:max-w-[400px]">
+          <div data-intro="panel" className="mx-auto w-full max-w-[380px] xl:max-w-[400px]">
             {/* University Identity */}
             <div className="text-center">
               <img

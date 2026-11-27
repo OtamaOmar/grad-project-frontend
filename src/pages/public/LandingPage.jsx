@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Badge, Button, Dialog, Icon } from "@/components/ui";
@@ -6,6 +6,7 @@ import { ROLE_HOME } from "@/config/roles";
 import { useAuth } from "@/hooks/useAuth";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PreferenceControls } from "@/layouts/shell/PreferenceControls";
+import { gsap, MEDIA, ScrollTrigger, useGSAP } from "@/motion/gsap";
 import { PATHS } from "@/routes/paths";
 import nuLogo from "@/assets/nu-logo.png";
 
@@ -45,6 +46,69 @@ export default function LandingPage() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   const rows = t("matrix.rows", { returnObjects: true }) || [];
+  const scope = useRef(null);
+
+  // Intro: one timeline so the header, headline, preview table and its status chips read
+  // as a single gesture. The headline leads and travels furthest; table rows overlap in a
+  // shrinking stagger; status chips land last, as the rows settle. Role cards reveal as
+  // they scroll into view, and the hero drifts slightly slower than the page on desktop.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add({ ok: MEDIA.motionOk, desktop: MEDIA.desktop }, (ctx) => {
+        if (!ctx.conditions.ok) return;
+        const tl = gsap.timeline({ defaults: { ease: "expo.out", duration: 0.8 } });
+        tl.from("[data-intro=header]", { autoAlpha: 0, y: -10, duration: 0.5 })
+          .from("[data-intro=badge]", { autoAlpha: 0, duration: 0.5 }, 0.1)
+          .from("[data-intro=title]", { autoAlpha: 0, y: 26 }, 0.12)
+          .from("[data-intro=desc]", { autoAlpha: 0, y: 14 }, 0.24)
+          .from("[data-intro=matrix-head]", { autoAlpha: 0, y: 10, duration: 0.6 }, 0.36)
+          .from("[data-intro=matrix]", { autoAlpha: 0, y: 18 }, 0.4)
+          .from(
+            "[data-intro=row]",
+            { autoAlpha: 0, y: 8, duration: 0.6, stagger: { each: 0.06, ease: "power1.in" } },
+            0.5,
+          )
+          .from(
+            "[data-intro=status]",
+            { autoAlpha: 0, scale: 0.85, duration: 0.45, ease: "back.out(2)", stagger: 0.05 },
+            ">-0.35",
+          );
+
+        const cards = gsap.utils.toArray("[data-reveal]");
+        gsap.set(cards, { autoAlpha: 0, y: 24 });
+        ScrollTrigger.batch(cards, {
+          start: "top 92%",
+          once: true,
+          onEnter: (batch) =>
+            gsap.to(batch, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: { each: 0.08, ease: "power1.in" },
+              delay: tl.isActive() ? 0.6 : 0,
+              clearProps: "transform",
+            }),
+        });
+
+        if (ctx.conditions.desktop) {
+          // Position only, never opacity: the hero is often still fully on screen.
+          gsap.to("[data-parallax]", {
+            y: 36,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "[data-parallax]",
+              start: "top 15%",
+              end: "bottom top",
+              scrub: 0.6,
+            },
+          });
+        }
+      });
+      return () => mm.revert();
+    },
+    { scope },
+  );
 
   const handleRoleAction = (roleKey) => {
     if (user && user.role === roleKey) {
@@ -55,9 +119,15 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden flex flex-col justify-between bg-[#f9f9ff] dark:bg-[#080D1F] text-[#141b2c] dark:text-[#F5F7FF] transition-colors selection:bg-[#021F94]/20 dark:selection:bg-[#6B8CFF]/30">
+    <div
+      ref={scope}
+      className="min-h-screen w-full overflow-x-hidden flex flex-col justify-between bg-[#f9f9ff] dark:bg-[#080D1F] text-[#141b2c] dark:text-[#F5F7FF] transition-colors selection:bg-[#021F94]/20 dark:selection:bg-[#6B8CFF]/30"
+    >
       {/* Full-Width Top Header */}
-      <header className="sticky top-0 z-30 w-full border-b border-[#D0D5DD] dark:border-[#293451] bg-white/95 dark:bg-[#10172D]/95 backdrop-blur-md transition-colors shadow-2xs">
+      <header
+        data-intro="header"
+        className="sticky top-0 z-30 w-full border-b border-[#D0D5DD] dark:border-[#293451] bg-white/95 dark:bg-[#10172D]/95 backdrop-blur-md transition-colors shadow-2xs"
+      >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-4">
           {/* University & Faculty Branding */}
           <div className="flex items-center gap-3 min-w-0">
@@ -87,7 +157,7 @@ export default function LandingPage() {
                 </Badge>
                 <Link
                   to={ROLE_HOME[user.role] ?? PATHS.login}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-[#021F94] hover:bg-[#1436C4] dark:bg-[#6B8CFF] dark:hover:bg-[#8DA5FF] px-3.5 py-1.5 text-xs sm:text-label-md font-semibold text-white dark:text-[#07102E] transition-colors shadow-xs"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-[#021F94] hover:bg-[#1436C4] dark:bg-[#6B8CFF] dark:hover:bg-[#8DA5FF] px-3.5 py-1.5 text-xs sm:text-label-md font-semibold text-white dark:text-[#07102E] pressable shadow-xs"
                 >
                   <Icon name="dashboard" size={16} />
                   <span>{t("actions.goToDashboard")}</span>
@@ -97,14 +167,14 @@ export default function LandingPage() {
               <div className="flex items-center gap-2">
                 <Link
                   to={PATHS.login}
-                  className="rounded-lg border border-[#D0D5DD] dark:border-[#293451] px-3.5 py-1.5 text-xs sm:text-label-md font-semibold text-[#101828] dark:text-[#F5F7FF] transition-colors hover:bg-[#F0EEF0] dark:hover:bg-[#171F3A]"
+                  className="rounded-lg border border-[#D0D5DD] dark:border-[#293451] px-3.5 py-1.5 text-xs sm:text-label-md font-semibold text-[#101828] dark:text-[#F5F7FF] pressable hover:bg-[#F0EEF0] dark:hover:bg-[#171F3A]"
                 >
                   {t("actions.signIn")}
                 </Link>
                 <button
                   type="button"
                   onClick={() => setContactModalOpen(true)}
-                  className="rounded-lg bg-[#021F94] hover:bg-[#1436C4] dark:bg-[#6B8CFF] dark:hover:bg-[#8DA5FF] px-3.5 py-1.5 text-xs sm:text-label-md font-semibold text-white dark:text-[#07102E] transition-colors shadow-xs"
+                  className="rounded-lg bg-[#021F94] hover:bg-[#1436C4] dark:bg-[#6B8CFF] dark:hover:bg-[#8DA5FF] px-3.5 py-1.5 text-xs sm:text-label-md font-semibold text-white dark:text-[#07102E] pressable shadow-xs"
                 >
                   {t("actions.createAccount")}
                 </button>
@@ -118,14 +188,23 @@ export default function LandingPage() {
       <main className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 flex-1 flex flex-col gap-8 lg:gap-10">
         {/* Hero Section */}
         <section className="w-full">
-          <div className="max-w-4xl">
-            <div className="mb-2 font-body-xs text-xs font-semibold uppercase tracking-wider text-[#475467] dark:text-[#B8C0D9]">
+          <div data-parallax className="max-w-4xl">
+            <div
+              data-intro="badge"
+              className="mb-2 font-body-xs text-xs font-semibold uppercase tracking-wider text-[#475467] dark:text-[#B8C0D9]"
+            >
               {t("hero.badge")}
             </div>
-            <h1 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold tracking-tight text-[#101828] dark:text-[#F5F7FF] leading-tight">
+            <h1
+              data-intro="title"
+              className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold tracking-tight text-[#101828] dark:text-[#F5F7FF] leading-tight"
+            >
               {t("hero.headline")}
             </h1>
-            <p className="font-body-md text-sm sm:text-base md:text-lg text-[#475467] dark:text-[#B8C0D9] leading-relaxed">
+            <p
+              data-intro="desc"
+              className="font-body-md text-sm sm:text-base md:text-lg text-[#475467] dark:text-[#B8C0D9] leading-relaxed"
+            >
               {t("hero.description")}
             </p>
           </div>
@@ -133,7 +212,10 @@ export default function LandingPage() {
 
         {/* Academic Planning Preview (Preliminary Load Matrix) */}
         <section className="w-full" aria-label={t("matrix.title")}>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <div
+            data-intro="matrix-head"
+            className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3"
+          >
             <div className="flex items-center gap-2.5">
               <span className="font-label-md text-sm sm:text-base font-semibold text-[#101828] dark:text-[#F5F7FF]">
                 {t("matrix.title")}
@@ -147,7 +229,10 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="w-full overflow-x-auto rounded-xl border border-[#D0D5DD] dark:border-[#293451] bg-white dark:bg-[#10172D] shadow-xs">
+          <div
+            data-intro="matrix"
+            className="w-full overflow-x-auto rounded-xl border border-[#D0D5DD] dark:border-[#293451] bg-white dark:bg-[#10172D] shadow-xs"
+          >
             <table className="w-full text-start border-collapse">
               <thead className="bg-[#F0EEF0] dark:bg-[#171F3A]">
                 <tr className="border-b border-[#D0D5DD] dark:border-[#293451]">
@@ -176,6 +261,7 @@ export default function LandingPage() {
                   rows.map((row, idx) => (
                     <tr
                       key={idx}
+                      data-intro="row"
                       className="transition-colors duration-150 hover:bg-[#F0EEF0]/60 dark:hover:bg-[#171F3A]/60"
                     >
                       <td className="py-2.5 sm:py-3 px-3.5 sm:px-4 whitespace-nowrap">
@@ -200,17 +286,26 @@ export default function LandingPage() {
                       </td>
                       <td className="py-2.5 sm:py-3 px-3.5 sm:px-4 text-end whitespace-nowrap">
                         {row.status === "clear" && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-[#067647] bg-[#E7F6EF] border border-[#A6F4C5] dark:border-transparent dark:text-[#42E09A] dark:bg-[#00331E]">
+                          <span
+                            data-intro="status"
+                            className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-[#067647] bg-[#E7F6EF] border border-[#A6F4C5] dark:border-transparent dark:text-[#42E09A] dark:bg-[#00331E]"
+                          >
                             {t("matrix.statuses.clear")}
                           </span>
                         )}
                         {row.status === "pendingAudit" && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-[#B54708] bg-[#FFF6E8] border border-[#FEDF89] dark:border-transparent dark:text-[#FFB74D] dark:bg-[#3E2723]/60">
+                          <span
+                            data-intro="status"
+                            className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-[#B54708] bg-[#FFF6E8] border border-[#FEDF89] dark:border-transparent dark:text-[#FFB74D] dark:bg-[#3E2723]/60"
+                          >
                             {t("matrix.statuses.pendingAudit")}
                           </span>
                         )}
                         {row.status === "prereqFlag" && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-[#B42318] bg-[#FDECEC] border border-[#FECDCA] dark:border-transparent dark:text-[#FF8A80] dark:bg-[#4E1014]/60">
+                          <span
+                            data-intro="status"
+                            className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-[#B42318] bg-[#FDECEC] border border-[#FECDCA] dark:border-transparent dark:text-[#FF8A80] dark:bg-[#4E1014]/60"
+                          >
                             {t("matrix.statuses.prereqFlag")}
                           </span>
                         )}
@@ -237,11 +332,12 @@ export default function LandingPage() {
             {ROLE_CARDS.map(({ key, icon }) => (
               <div
                 key={key}
-                className="flex flex-col justify-between rounded-xl border border-[#D0D5DD] dark:border-[#293451] bg-white dark:bg-[#10172D] p-4 sm:p-5 transition-all duration-150 hover:border-[#021F94]/30 dark:hover:border-[#6B8CFF]/50 hover:shadow-sm"
+                data-reveal
+                className="lift group flex flex-col justify-between rounded-xl border border-[#D0D5DD] dark:border-[#293451] bg-white dark:bg-[#10172D] p-4 sm:p-5 hover:border-[#021F94]/30 dark:hover:border-[#6B8CFF]/50"
               >
                 <div>
                   <div className="mb-3 flex items-center justify-between">
-                    <span className="grid size-8 place-items-center rounded-lg bg-slate-100 dark:bg-[#171F3A] border border-[#D0D5DD] dark:border-[#293451] text-[#021F94] dark:text-[#6B8CFF]">
+                    <span className="grid size-8 place-items-center rounded-lg bg-slate-100 dark:bg-[#171F3A] border border-[#D0D5DD] dark:border-[#293451] text-[#021F94] dark:text-[#6B8CFF] transition-transform duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:scale-105">
                       <Icon name={icon} size={18} />
                     </span>
                     <span className="text-[11px] font-semibold text-[#475467] dark:text-[#B8C0D9] uppercase tracking-wider">
@@ -260,10 +356,12 @@ export default function LandingPage() {
                   <button
                     type="button"
                     onClick={() => handleRoleAction(key)}
-                    className="inline-flex w-full items-center justify-between rounded-lg bg-slate-50 dark:bg-[#171F3A] border border-[#D0D5DD] dark:border-[#293451] px-3 py-1.5 text-xs font-semibold text-[#021F94] dark:text-[#6B8CFF] transition-colors hover:bg-[#021F94] hover:text-white dark:hover:bg-[#6B8CFF] dark:hover:text-[#07102E]"
+                    className="pressable group/cta inline-flex w-full items-center justify-between rounded-lg bg-slate-50 dark:bg-[#171F3A] border border-[#D0D5DD] dark:border-[#293451] px-3 py-1.5 text-xs font-semibold text-[#021F94] dark:text-[#6B8CFF] hover:bg-[#021F94] hover:text-white dark:hover:bg-[#6B8CFF] dark:hover:text-[#07102E]"
                   >
                     <span>{t(`roles.${key}.action`)}</span>
-                    <Icon name="arrow_forward" size={14} flipRtl />
+                    <span className="inline-flex transition-transform duration-200 ease-[var(--ease-out)] group-hover/cta:translate-x-0.5 rtl:group-hover/cta:-translate-x-0.5">
+                      <Icon name="arrow_forward" size={14} flipRtl />
+                    </span>
                   </button>
                 </div>
               </div>
@@ -295,11 +393,7 @@ export default function LandingPage() {
               <Icon name="mail" size={16} className="me-1.5" />
               <span>{t("contactModal.email")}</span>
             </a>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => setContactModalOpen(false)}
-            >
+            <Button variant="secondary" size="sm" onClick={() => setContactModalOpen(false)}>
               {t("contactModal.close")}
             </Button>
           </div>
@@ -313,19 +407,11 @@ export default function LandingPage() {
               <span>{t("branding")}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Icon
-                name="location_on"
-                size={16}
-                className="text-slate-400 dark:text-slate-500"
-              />
+              <Icon name="location_on" size={16} className="text-slate-400 dark:text-slate-500" />
               <span>{t("contactModal.office")}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Icon
-                name="email"
-                size={16}
-                className="text-slate-400 dark:text-slate-500"
-              />
+              <Icon name="email" size={16} className="text-slate-400 dark:text-slate-500" />
               <span>{t("contactModal.email")}</span>
             </div>
           </div>
