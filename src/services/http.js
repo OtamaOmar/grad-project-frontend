@@ -26,6 +26,23 @@ async function parseBody(response) {
   return type.includes("application/json") ? response.json() : response.text();
 }
 
+// The API lists field problems as details: [{ path, message, code? }]. Forms read them as
+// details.fields: { field: code }, so the list is turned into that map here (the list
+// stays as details.issues). With one problem, its own message is the more useful text.
+function fieldIssues(envelope) {
+  if (!Array.isArray(envelope.details)) {
+    return { details: envelope.details, message: envelope.message };
+  }
+  const issues = envelope.details;
+  return {
+    details: {
+      issues,
+      fields: Object.fromEntries(issues.map((issue) => [issue.path, issue.code ?? "invalid"])),
+    },
+    message: issues.length === 1 ? issues[0].message : envelope.message,
+  };
+}
+
 async function networkRequest(method, path, { query, body, signal } = {}) {
   let response;
   try {
@@ -44,20 +61,27 @@ async function networkRequest(method, path, { query, body, signal } = {}) {
   const data = await parseBody(response);
   if (!response.ok) {
     const envelope = data?.error ?? data ?? {};
-    throw new ApiError({
-      status: response.status,
-      code: envelope.code,
-      message: envelope.message,
-      details: envelope.details,
-    });
+    const { details, message } = fieldIssues(envelope);
+    throw new ApiError({ status: response.status, code: envelope.code, message, details });
   }
   return data;
 }
 
+// Admin paths the backend already serves. They always use the real API, even with mocks
+// on: their mock handlers are deleted. When every admin page is real, this becomes "/admin".
+// Sign-in stays switchable (VITE_REAL_API_PATHS=/auth,/me) so mock-only work still runs
+// without a backend; the admin pages need the real sign-in.
+const BUILT_ON_BACKEND = [
+  "/admin/users",
+  "/admin/credit-limits",
+  "/admin/data-gaps",
+  "/admin/bylaws",
+];
+
 // True when this path should use the real backend even though mocks are on.
 // "/admin/users" matches "/admin/users" and "/admin/users/summary", not "/admin/users-x".
 const usesRealApi = (path) =>
-  env.realApiPaths.some(
+  [...BUILT_ON_BACKEND, ...env.realApiPaths].some(
     (prefix) => path === prefix || path.startsWith(`${prefix}/`) || path.startsWith(`${prefix}?`),
   );
 
