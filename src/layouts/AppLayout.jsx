@@ -71,7 +71,7 @@ export function AppLayout({ role, user, onSignOut, children }) {
           tabIndex={-1}
           className="min-w-0 flex-1 px-4 py-6 focus:outline-none sm:px-6 lg:py-8"
         >
-          <div className="mx-auto max-w-[90rem]">{children ?? <Outlet />}</div>
+          <div className="route-stage mx-auto max-w-[90rem]">{children ?? <Outlet />}</div>
         </main>
       </div>
 

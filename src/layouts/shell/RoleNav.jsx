@@ -1,6 +1,8 @@
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
+import * as m from "motion/react-m";
 import { Icon } from "@/components/ui";
+import { SPRING } from "@/motion/tokens";
 import { cn } from "@/utils/cn";
 
 /**
@@ -22,7 +24,7 @@ export function RoleNav({ items, variant = "tabs", onNavigate }) {
                 onClick={onNavigate}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-3 rounded-md px-3 py-2.5 text-label-lg transition-colors",
+                    "pressable flex items-center gap-3 rounded-md px-3 py-2.5 text-label-lg",
                     isActive
                       ? "bg-primary-fixed font-semibold text-on-primary-fixed"
                       : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface",
@@ -49,14 +51,32 @@ export function RoleNav({ items, variant = "tabs", onNavigate }) {
               end={item.end}
               className={({ isActive }) =>
                 cn(
-                  "-mb-px block border-b-2 pt-2.5 pb-2 text-label-lg whitespace-nowrap transition-colors",
+                  "group relative -mb-px block pt-2.5 pb-2 text-label-lg whitespace-nowrap transition-colors duration-150",
                   isActive
-                    ? "border-primary font-semibold text-primary"
-                    : "border-transparent text-on-surface-variant hover:border-outline-variant hover:text-on-surface",
+                    ? "font-semibold text-primary"
+                    : "text-on-surface-variant hover:text-on-surface",
                 )
               }
             >
-              {t(item.label)}
+              {({ isActive }) => (
+                <>
+                  {t(item.label)}
+                  {/* The underline travels to the new tab instead of blinking between them. */}
+                  {isActive ? (
+                    <m.span
+                      layoutId="role-nav-underline"
+                      aria-hidden="true"
+                      transition={SPRING.indicator}
+                      className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-primary"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 -bottom-px h-0.5 origin-center scale-x-0 rounded-full bg-outline-variant transition-transform duration-200 ease-[var(--ease-out)] group-hover:scale-x-100"
+                    />
+                  )}
+                </>
+              )}
             </NavLink>
           </li>
         ))}

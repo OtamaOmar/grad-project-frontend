@@ -86,7 +86,7 @@ export function GapCategoryMeters({ query, children }) {
                       className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-surface-container-high"
                     >
                       <div
-                        className="h-full rounded-full bg-primary-container"
+                        className="grow-x h-full rounded-full bg-primary-container"
                         style={{ width: `${percent}%` }}
                       />
                     </div>

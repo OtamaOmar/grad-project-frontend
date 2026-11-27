@@ -20,6 +20,7 @@ import { SnapshotsSection } from "@/features/admin/university-data/SnapshotsSect
 import { useUniversityDataSummary } from "@/features/admin/university-data/useUniversityData";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useListParams } from "@/hooks/useListParams";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatDate, formatNumber } from "@/utils/format";
 
 // Each tab keeps its own filters in the URL; switching tabs clears the others.
@@ -221,13 +222,16 @@ export default function UniversityDataPage() {
         {t("policyBody")}
       </Alert>
 
-      {creating && (
-        <SnapshotFormDialog
-          defaultKind={view === "registrations" ? "registration" : "faculty_roster"}
-          dataLock={lock}
-          onClose={() => setCreating(false)}
-        />
-      )}
+      <ModalSlot value={creating}>
+        {(creating, open) => (
+          <SnapshotFormDialog
+            open={open}
+            defaultKind={view === "registrations" ? "registration" : "faculty_roster"}
+            dataLock={lock}
+            onClose={() => setCreating(false)}
+          />
+        )}
+      </ModalSlot>
     </div>
   );
 }

@@ -282,7 +282,7 @@ export default function StudentDashboardPage() {
   // Loading Skeleton State
   if (isLoading && !dashboardData && !academicData) {
     return (
-      <div className="flex flex-col gap-6 w-full animate-pulse" aria-busy="true">
+      <div className="flex flex-col gap-6 w-full" aria-busy="true">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2">
           <div className="space-y-2">
             <Skeleton className="h-4 w-48" />
@@ -680,7 +680,7 @@ export default function StudentDashboardPage() {
               {/* Progress Bar Track */}
               <div className="w-full bg-[#F0EEF0] h-3 rounded-full overflow-hidden flex">
                 <div
-                  className="bg-[#3D4F8C] h-full rounded-full transition-all duration-500"
+                  className="grow-x bg-[#3D4F8C] h-full rounded-full transition-all duration-500"
                   style={{
                     width: `${Math.min(100, Math.max(0, summaryMetrics.progressPercent))}%`,
                   }}
@@ -763,7 +763,7 @@ export default function StudentDashboardPage() {
                       strokeWidth="3.8"
                     />
                     <path
-                      className="text-[#3D4F8C]"
+                      className="ring-draw text-[#3D4F8C]"
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                       fill="none"
                       stroke="currentColor"
@@ -799,7 +799,7 @@ export default function StudentDashboardPage() {
                     <div className="w-full bg-[#F0EEF0] h-2 rounded-full overflow-hidden">
                       <div
                         className={cn(
-                          "h-full rounded-full transition-all duration-500",
+                          "grow-x h-full rounded-full transition-all duration-500",
                           domain.colorClass || "bg-primary",
                         )}
                         style={{ width: `${Math.min(100, Math.max(0, domain.percent))}%` }}
@@ -953,7 +953,7 @@ export default function StudentDashboardPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
             <div className="flex items-center gap-2">
               <span className="text-label-sm text-on-surface-variant">
                 {t("expectedOfferings.filterCohort", { defaultValue: "Filter cohort:" })}
@@ -1208,7 +1208,7 @@ export default function StudentDashboardPage() {
           {/* Action 1: Academic Data */}
           <div
             onClick={() => navigate(PATHS.student.academicData)}
-            className="p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low transition-all cursor-pointer group flex flex-col justify-between"
+            className="lift p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low cursor-pointer group flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="size-10 rounded-lg bg-surface-container grid place-items-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
@@ -1235,7 +1235,7 @@ export default function StudentDashboardPage() {
           {/* Action 2: My Courses */}
           <div
             onClick={() => navigate(PATHS.student.myCourses)}
-            className="p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low transition-all cursor-pointer group flex flex-col justify-between"
+            className="lift p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low cursor-pointer group flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="size-10 rounded-lg bg-surface-container grid place-items-center text-[#3D4F8C] group-hover:bg-[#3D4F8C] group-hover:text-on-primary transition-colors">
@@ -1262,7 +1262,7 @@ export default function StudentDashboardPage() {
           {/* Action 3: Expected Offerings */}
           <div
             onClick={() => navigate(PATHS.student.expectedOfferings)}
-            className="p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low transition-all cursor-pointer group flex flex-col justify-between"
+            className="lift p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low cursor-pointer group flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="size-10 rounded-lg bg-surface-container grid place-items-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
@@ -1289,7 +1289,7 @@ export default function StudentDashboardPage() {
           {/* Action 4: Notifications & Advising */}
           <div
             onClick={() => navigate(PATHS.notifications)}
-            className="p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low transition-all cursor-pointer group flex flex-col justify-between"
+            className="lift p-4 rounded-xl border border-outline-variant/70 hover:border-primary/50 hover:bg-surface-container-low cursor-pointer group flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="size-10 rounded-lg bg-surface-container grid place-items-center text-[#B54708] group-hover:bg-[#B54708] group-hover:text-on-primary transition-colors">

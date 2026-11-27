@@ -44,7 +44,7 @@ export function Pagination({ page, pageSize, total, onPageChange, className }) {
               aria-current={item === page ? "page" : undefined}
               onClick={() => onPageChange(item)}
               className={cn(
-                "size-8 rounded-md text-label-md font-semibold transition-colors max-sm:hidden",
+                "pressable size-8 rounded-md text-label-md font-semibold max-sm:hidden",
                 item === page
                   ? "bg-primary text-on-primary"
                   : "text-on-surface hover:bg-surface-container-high",

@@ -384,7 +384,7 @@ export default function AcademicDataPage() {
               {/* Progress Bar with Student Accent surface-tint */}
               <div className="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
                 <div
-                  className="h-full bg-surface-tint rounded-full transition-all duration-500"
+                  className="grow-x h-full bg-surface-tint rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(100, Math.max(0, standingMetrics.progressPercent))}%` }}
                 />
               </div>

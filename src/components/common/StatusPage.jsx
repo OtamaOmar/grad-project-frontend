@@ -45,7 +45,7 @@ export function StatusPage({ kind, message, onRetry, standalone = false }) {
       <div className="grid w-full max-w-5xl items-center gap-12 md:grid-cols-2 md:gap-16">
         <ErrorEntry kind={kind} rows={rows} stacked />
 
-        <div className="max-w-prose">
+        <div className="stagger-in max-w-prose">
           <h1 className="font-serif text-display font-semibold text-on-surface">{title}</h1>
           <p className="mt-4 text-body-lg text-on-surface-variant">
             {message || t(`errors.kinds.${kind}.body`)}

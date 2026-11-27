@@ -332,7 +332,7 @@ export default function MyCoursesPage() {
           </div>
           <div className="w-full bg-surface-container-highest rounded-full h-1.5 mt-3 overflow-hidden">
             <div
-              className="bg-primary h-1.5 rounded-full transition-all duration-500"
+              className="grow-x bg-primary h-1.5 rounded-full transition-all duration-500"
               style={{ width: `${Math.min(100, Math.max(0, summaryMetrics.percentage))}%` }}
             />
           </div>
@@ -475,7 +475,7 @@ export default function MyCoursesPage() {
               {termMenuOpen && (
                 <div
                   role="listbox"
-                  className="absolute left-0 mt-1.5 w-60 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 animate-in fade-in zoom-in-95 duration-100"
+                  className="absolute left-0 mt-1.5 w-60 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 popover-in origin-top-left rtl:origin-top-right"
                 >
                   <div className="px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-secondary">
                     {t("controls.filterByTerm", { defaultValue: "Filter by Term" })}
@@ -545,7 +545,7 @@ export default function MyCoursesPage() {
               {statusMenuOpen && (
                 <div
                   role="listbox"
-                  className="absolute left-0 mt-1.5 w-52 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 animate-in fade-in zoom-in-95 duration-100"
+                  className="absolute left-0 mt-1.5 w-52 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 popover-in origin-top-left rtl:origin-top-right"
                 >
                   <div className="px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-secondary">
                     {t("controls.filterByStatus", { defaultValue: "Filter by Status" })}
@@ -652,7 +652,10 @@ export default function MyCoursesPage() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-surface-container text-body-sm text-on-surface">
+              <tbody
+                key={`${termFilter}-${statusFilter}`}
+                className="fade-swap divide-y divide-surface-container text-body-sm text-on-surface"
+              >
                 {filteredCourses.map((course) => {
                   const isExpected = course.plan_status === "this_term";
                   const termDisplay = `${course.plan_term_type ? course.plan_term_type.charAt(0).toUpperCase() + course.plan_term_type.slice(1) : ""} Year ${course.plan_study_year}`;

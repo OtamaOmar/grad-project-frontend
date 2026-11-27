@@ -4,7 +4,7 @@ export function Skeleton({ className }) {
   return (
     <span
       aria-hidden="true"
-      className={cn("block animate-pulse rounded-md bg-surface-container-high", className)}
+      className={cn("skeleton block rounded-md bg-surface-container-high", className)}
     />
   );
 }

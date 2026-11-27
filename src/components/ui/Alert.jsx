@@ -24,7 +24,11 @@ export function Alert({ tone = "info", icon, title, actions, className, children
   return (
     <div
       role={tone === "danger" ? "alert" : "note"}
-      className={cn("flex gap-3 rounded-lg border p-4 text-body-sm", style.box, className)}
+      className={cn(
+        "message-in flex gap-3 rounded-lg border p-4 text-body-sm",
+        style.box,
+        className,
+      )}
     >
       <Icon name={icon ?? style.icon} size={20} className="mt-0.5" />
       <div className="min-w-0 flex-1">

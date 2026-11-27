@@ -19,7 +19,10 @@ export function ProgressBar({ value, max = 100, tone = "primary", label, classNa
       className={cn("h-2 w-full overflow-hidden rounded-full bg-surface-container-high", className)}
     >
       <div
-        className={cn("h-full rounded-full transition-[width]", TONES[tone])}
+        className={cn(
+          "grow-x h-full rounded-full transition-[width] duration-500 ease-[var(--ease-out)]",
+          TONES[tone],
+        )}
         style={{ width: `${percent}%` }}
       />
     </div>

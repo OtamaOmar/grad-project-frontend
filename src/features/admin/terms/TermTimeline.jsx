@@ -51,7 +51,7 @@ export function TermTimeline({ terms }) {
           return (
             <span
               key={term.id}
-              className={cn("absolute inset-y-0 rounded-full", TYPE_SWATCH[term.term_type])}
+              className={cn("grow-x absolute inset-y-0 rounded-full", TYPE_SWATCH[term.term_type])}
               style={{ insetInlineStart: `${from}%`, width: `${width}%` }}
             />
           );

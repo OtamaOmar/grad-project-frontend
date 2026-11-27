@@ -35,6 +35,7 @@ import {
 } from "@/features/admin/credit-limits/useCreditLimits";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { PATHS } from "@/routes/paths";
 import { cn } from "@/utils/cn";
 import { formatNumber } from "@/utils/format";
@@ -536,20 +537,22 @@ export default function CreditLimitsPage() {
         </Card>
       </div>
 
-      {dialog && (
-        <CreditLimitFormDialog
-          key={dialog.rule?.id ?? "new"}
-          open
-          rule={dialog.rule}
-          bylaws={bylaws}
-          defaultBylawId={selected?.bylaw_id}
-          nextPriority={nextPriority}
-          onClose={closeDialog}
-          onSubmit={submitDialog}
-          submitting={createRule.isPending || updateRule.isPending}
-          error={createRule.error ?? updateRule.error}
-        />
-      )}
+      <ModalSlot value={dialog}>
+        {(dialog, open) => (
+          <CreditLimitFormDialog
+            key={dialog.rule?.id ?? "new"}
+            open={open}
+            rule={dialog.rule}
+            bylaws={bylaws}
+            defaultBylawId={selected?.bylaw_id}
+            nextPriority={nextPriority}
+            onClose={closeDialog}
+            onSubmit={submitDialog}
+            submitting={createRule.isPending || updateRule.isPending}
+            error={createRule.error ?? updateRule.error}
+          />
+        )}
+      </ModalSlot>
 
       <ConfirmDialog
         open={Boolean(deleting)}

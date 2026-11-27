@@ -1,8 +1,12 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence, useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
 import { Badge, Button, EmptyState, Icon, Skeleton } from "@/components/ui";
 import { useAuth } from "@/hooks/useAuth";
 import { useHelp } from "@/features/help/useHelp";
+import { useScrollReveal } from "@/motion/gsap";
+import { EASE, SPRING } from "@/motion/tokens";
 import { cn } from "@/utils/cn";
 
 export default function HelpPage() {
@@ -16,6 +20,10 @@ export default function HelpPage() {
 
   // Fetch help content from the mock API / backend
   const { data, isLoading } = useHelp();
+  const scope = useRef(null);
+  const reduceMotion = useReducedMotion();
+  // Static guidance cards fade up as they scroll into view (read-once content).
+  useScrollReveal(scope, "[data-reveal]", [isLoading]);
 
   const role = data?.role || currentRole;
   const version = data?.version || "Version 4.8.2-rev";
@@ -92,7 +100,7 @@ export default function HelpPage() {
     filteredFaqs.length > 0 && filteredFaqs.every((f) => expandedFaqs.has(f.id));
 
   return (
-    <div className="mx-auto w-full max-w-4xl space-y-8 pb-16">
+    <div ref={scope} className="mx-auto w-full max-w-4xl space-y-8 pb-16">
       {/* 1. Top System Context Strip */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant/30 pb-3">
         <div className="flex items-center gap-3">
@@ -110,7 +118,10 @@ export default function HelpPage() {
             {version}
           </Badge>
           <Badge tone="primary" className="text-label-sm px-2.5 py-0.5 font-semibold">
-            {t("common:activeSession", { defaultValue: i18n.language === "ar" ? "الفصل الحالي" : "Active Session" })}: {activeTerm}
+            {t("common:activeSession", {
+              defaultValue: i18n.language === "ar" ? "الفصل الحالي" : "Active Session",
+            })}
+            : {activeTerm}
           </Badge>
           <Badge tone="secondary" className="capitalize text-label-sm px-2.5 py-0.5">
             {t(`common:roles.${role}`, { defaultValue: role })}
@@ -123,9 +134,7 @@ export default function HelpPage() {
         <h1 className="font-serif text-headline-lg font-semibold tracking-tight text-on-surface sm:text-headline-xl">
           {t("title")}
         </h1>
-        <p className="mt-1.5 text-body-md text-on-surface-variant sm:text-body-lg">
-          {subtitle}
-        </p>
+        <p className="mt-1.5 text-body-md text-on-surface-variant sm:text-body-lg">{subtitle}</p>
       </div>
 
       {/* 3. Search and Category Filter Toolbar */}
@@ -168,12 +177,20 @@ export default function HelpPage() {
                   aria-selected={isActive}
                   onClick={() => setSelectedCategory(cat)}
                   className={cn(
-                    "rounded-full px-3.5 py-1 text-label-sm font-medium transition-all",
+                    "pressable relative isolate rounded-full border px-3.5 py-1 text-label-sm font-medium",
                     isActive
-                      ? "bg-primary text-on-primary shadow-xs"
-                      : "bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-outline-variant/40",
+                      ? "border-transparent text-on-primary"
+                      : "border-outline-variant/40 bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface",
                   )}
                 >
+                  {isActive && (
+                    <m.span
+                      layoutId="help-category-pill"
+                      aria-hidden="true"
+                      transition={SPRING.indicator}
+                      className="absolute inset-0 -z-10 rounded-full bg-primary shadow-xs"
+                    />
+                  )}
                   {t(`categories.${cat}`, { defaultValue: cat })}
                 </button>
               );
@@ -228,7 +245,8 @@ export default function HelpPage() {
                 return (
                   <div
                     key={pillar.id}
-                    className="flex flex-col justify-between rounded-lg border border-outline-variant/30 bg-surface-container-low/60 p-5 transition-all hover:border-outline-variant hover:bg-surface-container-low"
+                    data-reveal
+                    className="flex flex-col justify-between rounded-lg border border-outline-variant/30 bg-surface-container-low/60 p-5 transition-colors hover:border-outline-variant hover:bg-surface-container-low"
                   >
                     <div>
                       <div className="mb-3 flex items-center gap-2 text-primary">
@@ -283,6 +301,7 @@ export default function HelpPage() {
                 return (
                   <div
                     key={st.step}
+                    data-reveal
                     className={cn(
                       "flex flex-col justify-between rounded-lg p-4 text-center transition-all",
                       st.isHighlight
@@ -294,7 +313,9 @@ export default function HelpPage() {
                       <span
                         className={cn(
                           "block text-label-sm font-bold uppercase tracking-wider",
-                          st.isHighlight ? "text-primary-fixed opacity-95" : "text-on-surface-variant",
+                          st.isHighlight
+                            ? "text-primary-fixed opacity-95"
+                            : "text-on-surface-variant",
                         )}
                       >
                         {stepTitle}
@@ -396,23 +417,34 @@ export default function HelpPage() {
                         {faq.question}
                       </span>
                       <Icon
-                        name={isExpanded ? "expand_less" : "expand_more"}
+                        name="expand_more"
                         size={20}
                         className={cn(
-                          "shrink-0 text-on-surface-variant transition-transform duration-200",
-                          isExpanded && "text-primary",
+                          "shrink-0 text-on-surface-variant transition-transform duration-300 ease-[var(--ease-out)]",
+                          isExpanded && "rotate-180 text-primary",
                         )}
                       />
                     </button>
 
-                    {isExpanded && (
-                      <div
-                        id={`faq-answer-${faq.id}`}
-                        className="border-t border-outline-variant/20 px-4 pb-4 pt-3 text-body-sm leading-relaxed text-on-surface-variant"
-                      >
-                        {faq.answer}
-                      </div>
-                    )}
+                    {/* Height + fade together, one timing family: the answer opens as one
+                        object. initial={false} keeps pre-expanded answers still on load. */}
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <m.div
+                          key="answer"
+                          id={`faq-answer-${faq.id}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.28, ease: EASE.out }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-t border-outline-variant/20 px-4 pb-4 pt-3 text-body-sm leading-relaxed text-on-surface-variant">
+                            {faq.answer}
+                          </div>
+                        </m.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}

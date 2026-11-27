@@ -673,7 +673,7 @@ export default function ExpectedOfferingsPage() {
             {termMenuOpen && (
               <div
                 role="listbox"
-                className="absolute left-0 sm:right-0 sm:left-auto top-full mt-2 w-80 rounded-2xl border border-outline-variant/70 bg-surface-container-lowest p-2 shadow-overlay z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                className="absolute left-0 sm:right-0 sm:left-auto top-full mt-2 w-80 rounded-2xl border border-outline-variant/70 bg-surface-container-lowest p-2 shadow-overlay z-50 popover-in origin-top"
               >
                 <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-secondary border-b border-outline-variant/30">
                   Select Planning Horizon
@@ -921,7 +921,7 @@ export default function ExpectedOfferingsPage() {
               {eligibilityMenuOpen && (
                 <div
                   role="listbox"
-                  className="absolute left-0 mt-1.5 w-60 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 animate-in fade-in zoom-in-95 duration-100"
+                  className="absolute left-0 mt-1.5 w-60 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-1.5 shadow-overlay z-50 popover-in origin-top-left rtl:origin-top-right"
                 >
                   <div className="px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-secondary">
                     {t("controls.filterByEligibility", { defaultValue: "Filter by Eligibility" })}
@@ -1039,7 +1039,10 @@ export default function ExpectedOfferingsPage() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-surface-container text-body-sm text-on-surface">
+              <tbody
+                key={`${selectedTerm}-${tabFilter}-${eligibilityFilter}`}
+                className="fade-swap divide-y divide-surface-container text-body-sm text-on-surface"
+              >
                 {filteredOfferings.map((course) => {
                   const isApproved = course.decision_status === "open";
                   const isUnderReview = course.decision_status === "not_decided";
@@ -1237,7 +1240,7 @@ export default function ExpectedOfferingsPage() {
               setActiveCardModal("capacity");
             }
           }}
-          className="bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 shadow-sm flex flex-col justify-between cursor-pointer transition-all hover:border-primary/50 hover:shadow-md group focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="lift bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 shadow-sm flex flex-col justify-between cursor-pointer  hover:border-primary/50 hover:shadow-md group focus:outline-none focus:ring-2 focus:ring-primary/20"
         >
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -1266,7 +1269,7 @@ export default function ExpectedOfferingsPage() {
                   </div>
                   <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all duration-500 ${
+                      className={`grow-x h-full rounded-full transition-all duration-500 ${
                         c.decision_status === "open" ? "bg-[#067647]" : "bg-primary"
                       }`}
                       style={{ width: `${c.capacity_pct}%` }}
@@ -1303,7 +1306,7 @@ export default function ExpectedOfferingsPage() {
               setActiveCardModal("progression");
             }
           }}
-          className="bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 shadow-sm flex flex-col justify-between cursor-pointer transition-all hover:border-primary/50 hover:shadow-md group focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="lift bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 shadow-sm flex flex-col justify-between cursor-pointer  hover:border-primary/50 hover:shadow-md group focus:outline-none focus:ring-2 focus:ring-primary/20"
         >
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -1369,7 +1372,7 @@ export default function ExpectedOfferingsPage() {
               setActiveCardModal("protocol");
             }
           }}
-          className="bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 shadow-sm flex flex-col justify-between cursor-pointer transition-all hover:border-primary/50 hover:shadow-md group focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="lift bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 shadow-sm flex flex-col justify-between cursor-pointer  hover:border-primary/50 hover:shadow-md group focus:outline-none focus:ring-2 focus:ring-primary/20"
         >
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -1617,7 +1620,7 @@ export default function ExpectedOfferingsPage() {
                             <div className="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
                               <div
                                 className={cn(
-                                  "h-full rounded-full transition-all",
+                                  "grow-x h-full rounded-full transition-all",
                                   c.statusType === "warning" ? "bg-[#B54708]" : c.statusType === "optimal" ? "bg-[#067647]" : "bg-primary"
                                 )}
                                 style={{ width: `${Math.min(100, c.utilization)}%` }}

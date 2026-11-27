@@ -28,6 +28,7 @@ import {
 } from "@/features/admin/programs/usePrograms";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useListParams } from "@/hooks/useListParams";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatNumber } from "@/utils/format";
 
 export default function ProgramsPage() {
@@ -367,25 +368,31 @@ export default function ProgramsPage() {
         </div>
       </Card>
 
-      {programForm && (
-        <ProgramFormDialog
-          key={programForm.program?.id ?? "new"}
-          program={programForm.program}
-          bylaws={charters}
-          defaultBylawId={selectedBylaw}
-          onClose={() => setProgramForm(null)}
-        />
-      )}
+      <ModalSlot value={programForm}>
+        {(programForm, open) => (
+          <ProgramFormDialog
+            open={open}
+            key={programForm.program?.id ?? "new"}
+            program={programForm.program}
+            bylaws={charters}
+            defaultBylawId={selectedBylaw}
+            onClose={() => setProgramForm(null)}
+          />
+        )}
+      </ModalSlot>
 
-      {trackForm && (
-        <TrackFormDialog
-          key={trackForm.track?.id ?? `new-${trackForm.programId ?? ""}`}
-          track={trackForm.track}
-          programs={programOptions.data ?? []}
-          defaultProgramId={trackForm.programId}
-          onClose={() => setTrackForm(null)}
-        />
-      )}
+      <ModalSlot value={trackForm}>
+        {(trackForm, open) => (
+          <TrackFormDialog
+            open={open}
+            key={trackForm.track?.id ?? `new-${trackForm.programId ?? ""}`}
+            track={trackForm.track}
+            programs={programOptions.data ?? []}
+            defaultProgramId={trackForm.programId}
+            onClose={() => setTrackForm(null)}
+          />
+        )}
+      </ModalSlot>
     </div>
   );
 }

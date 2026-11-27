@@ -25,6 +25,7 @@ import {
 } from "@/features/admin/bylaws/useBylaws";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatNumber } from "@/utils/format";
 
 const STATUS_FILTERS = ["all", "active", "draft", "retired"];
@@ -229,17 +230,19 @@ export default function BylawsPage() {
         />
       )}
 
-      {dialog && (
-        <BylawFormDialog
-          key={dialog.bylaw?.id ?? "new"}
-          open
-          bylaw={dialog.bylaw}
-          onClose={closeDialog}
-          onSubmit={submitDialog}
-          submitting={createBylaw.isPending || updateBylaw.isPending}
-          error={createBylaw.error ?? updateBylaw.error}
-        />
-      )}
+      <ModalSlot value={dialog}>
+        {(dialog, open) => (
+          <BylawFormDialog
+            key={dialog.bylaw?.id ?? "new"}
+            open={open}
+            bylaw={dialog.bylaw}
+            onClose={closeDialog}
+            onSubmit={submitDialog}
+            submitting={createBylaw.isPending || updateBylaw.isPending}
+            error={createBylaw.error ?? updateBylaw.error}
+          />
+        )}
+      </ModalSlot>
 
       <BylawDetailDrawer
         bylawId={detailId}

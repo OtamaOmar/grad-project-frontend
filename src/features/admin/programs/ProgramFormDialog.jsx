@@ -8,7 +8,7 @@ import { useCreateProgram, useUpdateProgram } from "./usePrograms";
 const FIELDS = ["bylaw_id", "code", "name", "source_reference"];
 
 /** Create (no `program`) or edit a degree program. The bylaw is fixed after creation. */
-export function ProgramFormDialog({ program, bylaws, defaultBylawId, onClose }) {
+export function ProgramFormDialog({ open = true, program, bylaws, defaultBylawId, onClose }) {
   const { t } = useTranslation(["adminPrograms", "common"]);
   const toast = useToast();
   const editing = Boolean(program);
@@ -54,7 +54,7 @@ export function ProgramFormDialog({ program, bylaws, defaultBylawId, onClose }) 
 
   return (
     <Dialog
-      open
+      open={open}
       onClose={onClose}
       title={editing ? t("programForm.editTitle") : t("programForm.createTitle")}
       description={editing ? program.name : t("programForm.createDescription")}

@@ -747,7 +747,7 @@ Authority: Faculty of Computing, Nile University
               {/* Progress Visual Bar */}
               <div className="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
                 <div
-                  className="h-full bg-primary-container rounded-full transition-all duration-500"
+                  className="grow-x h-full bg-primary-container rounded-full transition-all duration-500"
                   style={{ width: `${utilizationPct}%` }}
                 />
               </div>

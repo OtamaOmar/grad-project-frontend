@@ -4,7 +4,7 @@ import { Icon } from "./Icon";
 
 const CONTROL =
   "w-full rounded-md border border-outline-variant bg-surface-container-lowest text-body-md text-on-surface " +
-  "placeholder:text-on-surface-variant/70 transition-colors hover:border-outline " +
+  "placeholder:text-on-surface-variant/70 transition-[color,background-color,border-color,box-shadow] duration-150 ease-[var(--ease-out)] hover:border-outline " +
   "focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 " +
   "disabled:cursor-not-allowed disabled:opacity-60 aria-[invalid=true]:border-error";
 
@@ -41,7 +41,7 @@ export function Field({ label, hint, error, required, className, children }) {
         </p>
       )}
       {error && (
-        <p id={errorId} className="flex items-center gap-1 text-body-sm text-error">
+        <p id={errorId} className="message-in flex items-center gap-1 text-body-sm text-error">
           <Icon name="error" size={16} />
           {error}
         </p>
@@ -126,9 +126,9 @@ export function Switch({ label, checked, onChange, disabled, className }) {
       <span
         aria-hidden="true"
         className={cn(
-          "relative h-6 w-10 rounded-full bg-surface-container-highest transition-colors",
+          "relative h-6 w-10 rounded-full bg-surface-container-highest transition-colors duration-200",
           "peer-checked:bg-primary peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary",
-          "after:absolute after:top-1 after:start-1 after:size-4 after:rounded-full after:bg-surface-container-lowest after:transition-transform",
+          "after:absolute after:top-1 after:start-1 after:size-4 after:rounded-full after:bg-surface-container-lowest after:shadow-sm after:transition-transform after:duration-200 after:ease-[var(--ease-out)]",
           "peer-checked:after:translate-x-4 rtl:peer-checked:after:-translate-x-4",
         )}
       />

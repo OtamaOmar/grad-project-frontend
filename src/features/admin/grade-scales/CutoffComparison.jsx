@@ -97,7 +97,7 @@ export function CutoffComparison({ summary }) {
                     className="block h-2 rounded-full bg-surface-container-high"
                   >
                     <span
-                      className={cn("block h-full rounded-full", BAR_TONES[i])}
+                      className={cn("grow-x block h-full rounded-full", BAR_TONES[i])}
                       style={{ width: `${Number(value.min_percentage)}%` }}
                     />
                   </span>

@@ -71,7 +71,7 @@ export function CreditCeilingChart({ rules, loading, bylawLabel }) {
                         <span className="absolute inset-y-0 start-0 w-full rounded-sm border border-dashed border-warning bg-warning-container/50" />
                       ) : (
                         <span
-                          className={cn("absolute inset-y-0 start-0 rounded-sm", style.bar)}
+                          className={cn("grow-x absolute inset-y-0 start-0 rounded-sm", style.bar)}
                           style={{ width: position(rule.max_credits) }}
                         />
                       )}

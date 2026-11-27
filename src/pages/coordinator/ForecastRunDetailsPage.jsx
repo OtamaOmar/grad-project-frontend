@@ -5,6 +5,7 @@ import { CoordinatorIcon as Icon } from "@/components/common/CoordinatorIcon";
 import { PageLoader } from "@/components/common/PageLoader";
 import { ThemeContext } from "@/features/preferences/ThemeContext";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { gsap, MEDIA, useGSAP } from "@/motion/gsap";
 import { PATHS } from "@/routes/paths";
 import "./coordinator-dashboard.css";
 import "./forecast-runs.css";
@@ -79,6 +80,34 @@ function RunDetailsContent({ run }) {
   const [modal, setModal] = useState({ kind: "parameters" });
   const [draftSections, setDraftSections] = useState(1);
   const dialog = useRef(null);
+  const workspace = useRef(null);
+
+  // Charts explain themselves once: the sparkline draws left to right, its fill fades in
+  // under it, and the demand bars rise from the baseline in a short wave, after the page
+  // sections have arrived. Reduced motion: shown at their final state.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MEDIA.motionOk, () => {
+        const tl = gsap.timeline({ delay: 0.25, defaults: { ease: "expo.out" } });
+        tl.from(".fdr-sparkline path:last-child", { drawSVG: "0%", duration: 1.1, ease: "power2.inOut" })
+          .from(".fdr-sparkline path:first-child", { autoAlpha: 0, duration: 0.6 }, "-=0.5")
+          .from(
+            ".fdr-distribution i",
+            {
+              scaleY: 0,
+              transformOrigin: "50% 100%",
+              duration: 0.8,
+              stagger: { each: 0.07, ease: "power1.in" },
+              clearProps: "transform",
+            },
+            0.1,
+          );
+      });
+      return () => mm.revert();
+    },
+    { scope: workspace },
+  );
   const incomplete = run.courses.filter((course) => course.audit === "Incomplete").length;
   const unresolved = run.courses.filter((course) => course.conflicts > 0).length;
   const matching = run.courses.filter(
@@ -138,7 +167,7 @@ function RunDetailsContent({ run }) {
   }
   return (
     <>
-      <div className="cd-workspace">
+      <div ref={workspace} className="cd-workspace">
         <div className="cd-content fdr-content">
           <div className="fdr-calibration">
             <Icon name="info" />
@@ -570,7 +599,7 @@ function RunDetailsContent({ run }) {
         </div>
         <ExplainRail run={run} />
       </div>
-      <dialog ref={dialog} className="cd-dialog fdr-dialog" aria-labelledby="fdr-dialog-title">
+      <dialog ref={dialog} className="ui-modal cd-dialog fdr-dialog" aria-labelledby="fdr-dialog-title">
         <div className="cd-dialog-heading">
           <span className="cd-badge cd-audit">Sample run · {run.id}</span>
           <button

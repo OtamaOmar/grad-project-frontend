@@ -22,6 +22,7 @@ import {
   useUpdateGradeScale,
 } from "@/features/admin/grade-scales/useGradeScales";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatNumber } from "@/utils/format";
 
 const LIST_PARAMS = { sort: "effective_from_cohort", page_size: 50 };
@@ -229,16 +230,19 @@ export default function GradeScalesPage() {
 
       {s && <CutoffComparison summary={s} />}
 
-      {editing && (
-        <EntriesEditorDialog
-          key={editing.id}
-          scale={editing}
-          onClose={closeEditor}
-          onSubmit={saveEntries}
-          submitting={replaceEntries.isPending}
-          error={replaceEntries.error}
-        />
-      )}
+      <ModalSlot value={editing}>
+        {(editing, open) => (
+          <EntriesEditorDialog
+            open={open}
+            key={editing.id}
+            scale={editing}
+            onClose={closeEditor}
+            onSubmit={saveEntries}
+            submitting={replaceEntries.isPending}
+            error={replaceEntries.error}
+          />
+        )}
+      </ModalSlot>
     </div>
   );
 }

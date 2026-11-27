@@ -31,6 +31,7 @@ import {
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { cn } from "@/utils/cn";
 import { formatNumber } from "@/utils/format";
 
@@ -593,19 +594,21 @@ export default function StudyPlansPage() {
         {t("policyBody")}
       </Alert>
 
-      {dialog && p && (
-        <SlotFormDialog
-          key={dialog.slot?.id ?? "new"}
-          open
-          template={p}
-          slot={dialog.slot}
-          defaults={dialog.defaults}
-          onClose={closeDialog}
-          onSubmit={submitDialog}
-          submitting={createSlot.isPending || updateSlot.isPending}
-          error={createSlot.error ?? updateSlot.error}
-        />
-      )}
+      <ModalSlot value={p ? dialog : null}>
+        {(dialog, open) => (
+          <SlotFormDialog
+            key={dialog.slot?.id ?? "new"}
+            open={open}
+            template={p}
+            slot={dialog.slot}
+            defaults={dialog.defaults}
+            onClose={closeDialog}
+            onSubmit={submitDialog}
+            submitting={createSlot.isPending || updateSlot.isPending}
+            error={createSlot.error ?? updateSlot.error}
+          />
+        )}
+      </ModalSlot>
 
       <ConfirmDialog
         open={Boolean(removing)}

@@ -29,6 +29,7 @@ import {
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatDate, formatNumber } from "@/utils/format";
 
 const ROLE_TONE = {
@@ -300,7 +301,7 @@ export default function UsersPage() {
                 className="border-t border-outline-variant/70"
               />
             )}
-    </>
+          </>
         )}
       </Card>
 
@@ -308,17 +309,19 @@ export default function UsersPage() {
         {t("policyBody")}
       </Alert>
 
-      {dialog && (
-        <UserFormDialog
-          key={dialog.user?.id ?? "new"}
-          open
-          user={dialog.user}
-          onClose={closeDialog}
-          onSubmit={submitDialog}
-          submitting={createUser.isPending || updateUser.isPending}
-          error={createUser.error ?? updateUser.error}
-        />
-      )}
+      <ModalSlot value={dialog}>
+        {(dialog, open) => (
+          <UserFormDialog
+            key={dialog.user?.id ?? "new"}
+            open={open}
+            user={dialog.user}
+            onClose={closeDialog}
+            onSubmit={submitDialog}
+            submitting={createUser.isPending || updateUser.isPending}
+            error={createUser.error ?? updateUser.error}
+          />
+        )}
+      </ModalSlot>
 
       <ConfirmDialog
         open={Boolean(confirmUser)}

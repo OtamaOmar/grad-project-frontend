@@ -35,6 +35,7 @@ import {
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useListParams } from "@/hooks/useListParams";
 import { useToast } from "@/hooks/useToast";
+import { ModalSlot } from "@/motion/ModalSlot";
 import { formatDate, formatNumber } from "@/utils/format";
 
 export default function DataGapsPage() {
@@ -411,15 +412,17 @@ export default function DataGapsPage() {
         </Card>
       </div>
 
-      {creating && (
-        <DataGapFormDialog
-          open
-          onClose={closeCreate}
-          onSubmit={submitCreate}
-          submitting={createGap.isPending}
-          error={createGap.error}
-        />
-      )}
+      <ModalSlot value={creating}>
+        {(creating, open) => (
+          <DataGapFormDialog
+            open={open}
+            onClose={closeCreate}
+            onSubmit={submitCreate}
+            submitting={createGap.isPending}
+            error={createGap.error}
+          />
+        )}
+      </ModalSlot>
 
       <DataGapDrawer gapId={openGapId} onClose={() => openGap(null)} />
     </div>
@@ -459,9 +462,9 @@ function CategoryBreakdown({ rows, label }) {
               className="mt-1 flex h-2 overflow-hidden rounded-full bg-surface-container-high"
               aria-hidden="true"
             >
-              <div className="h-full bg-warning" style={{ width: `${(row.open / max) * 100}%` }} />
+              <div className="grow-x h-full bg-warning" style={{ width: `${(row.open / max) * 100}%` }} />
               <div
-                className="h-full bg-success"
+                className="grow-x h-full bg-success"
                 style={{ width: `${(row.resolved / max) * 100}%` }}
               />
             </div>

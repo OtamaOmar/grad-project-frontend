@@ -18,7 +18,7 @@ function BandMeter({ entry, passPercentage, label }) {
       className="relative mt-1.5 block h-2 w-full max-w-40 rounded-full bg-surface-container-high"
     >
       <span
-        className={cn("absolute inset-y-0 rounded-full", style.bar)}
+        className={cn("grow-x absolute inset-y-0 rounded-full", style.bar)}
         style={{ insetInlineStart: `${min}%`, width: `${Math.max(max - min, 1)}%` }}
       />
       {passPercentage !== null && (
