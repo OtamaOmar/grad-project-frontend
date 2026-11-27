@@ -101,9 +101,15 @@ export default function UniversityDataPage() {
             label={t("stats.year")}
             icon="calendar_today"
             loading={summary.isPending}
-            value={s && t("stats.yearValue", { years: academicYearLabel(s.active_term) })}
-            hint={
+            // No term is marked active until an admin sets one on the Terms page.
+            value={
               s &&
+              (s.active_term
+                ? t("stats.yearValue", { years: academicYearLabel(s.active_term) })
+                : "—")
+            }
+            hint={
+              s?.active_term &&
               t("stats.yearHint", {
                 term: termLabel(t, s.active_term),
                 status: t(`term.status.${s.active_term.status}`, {
