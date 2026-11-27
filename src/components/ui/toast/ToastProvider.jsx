@@ -1,5 +1,8 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
+import { toast as toastMotion } from "@/motion/variants";
 import { cn } from "@/utils/cn";
 import { IconButton } from "../Button";
 import { Icon } from "../Icon";
@@ -49,25 +52,29 @@ export function ToastProvider({ children }) {
         aria-live="polite"
         className="pointer-events-none fixed inset-x-4 bottom-4 z-[60] flex flex-col items-center gap-2 sm:inset-x-auto sm:end-4 sm:items-end"
       >
-        {toasts.map((toast) => {
-          const tone = TONES[toast.tone];
-          return (
-            <div
-              key={toast.id}
-              role={toast.tone === "danger" ? "alert" : "status"}
-              className="pointer-events-auto flex w-full max-w-sm items-center gap-3 rounded-lg border border-outline-variant bg-surface-container-lowest py-2 ps-4 pe-2 text-body-md text-on-surface shadow-overlay"
-            >
-              <Icon name={tone.icon} size={20} className={cn(tone.className)} />
-              <p className="flex-1">{toast.message}</p>
-              <IconButton
-                icon="close"
-                size="sm"
-                label={t("actions.close")}
-                onClick={() => dismiss(toast.id)}
-              />
-            </div>
-          );
-        })}
+        <AnimatePresence initial={false} mode="popLayout">
+          {toasts.map((toast) => {
+            const tone = TONES[toast.tone];
+            return (
+              <m.div
+                layout
+                {...toastMotion}
+                key={toast.id}
+                role={toast.tone === "danger" ? "alert" : "status"}
+                className="pointer-events-auto flex w-full max-w-sm items-center gap-3 rounded-lg border border-outline-variant bg-surface-container-lowest py-2 ps-4 pe-2 text-body-md text-on-surface shadow-overlay"
+              >
+                <Icon name={tone.icon} size={20} className={cn(tone.className)} />
+                <p className="flex-1">{toast.message}</p>
+                <IconButton
+                  icon="close"
+                  size="sm"
+                  label={t("actions.close")}
+                  onClick={() => dismiss(toast.id)}
+                />
+              </m.div>
+            );
+          })}
+        </AnimatePresence>
       </div>
     </ToastContext.Provider>
   );
