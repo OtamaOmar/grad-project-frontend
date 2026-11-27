@@ -953,7 +953,7 @@ export default function StudentDashboardPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
             <div className="flex items-center gap-2">
               <span className="text-label-sm text-on-surface-variant">
                 {t("expectedOfferings.filterCohort", { defaultValue: "Filter cohort:" })}
