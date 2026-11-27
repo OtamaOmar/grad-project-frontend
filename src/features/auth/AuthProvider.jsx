@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { env } from "@/config/env";
 import { useTheme } from "@/hooks/useTheme";
@@ -37,6 +37,13 @@ function clearUserData(queryClient) {
 export function AuthProvider({ children }) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const location = useLocation();
+  // The address as of the last route change. A layout effect updates it before any page's
+  // effects run, so a session check started by the new page already sees the new address.
+  const locationRef = useRef(location);
+  useLayoutEffect(() => {
+    locationRef.current = location;
+  });
   const { i18n } = useTranslation();
   const { setTheme } = useTheme();
 
@@ -48,8 +55,9 @@ export function AuthProvider({ children }) {
   // user to the login page instead.
   const endSession = () => {
     if (!queryClient.getQueryData(SESSION_QUERY_KEY)) return;
-    if (window.location.pathname === PATHS.sessionExpired) return; // several 401s at once
-    const here = `${window.location.pathname}${window.location.search}`;
+    const { pathname, search } = locationRef.current;
+    if (pathname === PATHS.sessionExpired) return; // several 401s at once
+    const here = `${pathname}${search}`;
     navigate(`${PATHS.sessionExpired}?redirect=${encodeURIComponent(here)}`, { replace: true });
   };
 
