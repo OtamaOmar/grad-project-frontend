@@ -81,6 +81,8 @@ const BUILT_ON_BACKEND = [
   "/admin/grade-scales",
   "/admin/programs",
   "/admin/tracks",
+  "/admin/study-plans",
+  "/admin/elective-pools",
 ];
 
 // True when this path should use the real backend even though mocks are on.

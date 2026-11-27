@@ -251,7 +251,7 @@ export default function StudyPlansPage() {
           </Badge>
         ) : (
           <Badge tone="warning" dot>
-            {t("status.has_gaps", { value: formatNumber(row.unreadable_region_count) })}
+            {t("status.has_gaps", { value: formatNumber(row.data_gap_ids.length) })}
           </Badge>
         ),
     },
