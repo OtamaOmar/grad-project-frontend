@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { env } from "@/config/env";
 import { useTheme } from "@/hooks/useTheme";
 import { useToast } from "@/hooks/useToast";
 import { PATHS } from "@/routes/paths";
@@ -9,6 +10,21 @@ import { authApi } from "@/services/api/auth";
 import { setUnauthorizedHandler } from "@/services/queryClient";
 import { AuthContext } from "./AuthContext";
 import { SESSION_QUERY_KEY, toSessionUser } from "./session";
+
+// Removes everything the browser holds about the signed-in user: every cached API
+// response, the session entry, the remembered username, session storage and the mock
+// session. Language and theme stay: they are settings of this device, not of the user.
+function clearUserData(queryClient) {
+  queryClient.clear();
+  queryClient.setQueryData(SESSION_QUERY_KEY, null);
+  try {
+    localStorage.removeItem("acops_remember_email");
+    sessionStorage.clear();
+  } catch {
+    // Storage can be blocked (private mode); there is nothing stored to clear then.
+  }
+  if (env.useMocks) import("@/mocks/session").then(({ setSessionUser }) => setSessionUser(null));
+}
 
 /**
  * Session state for the whole app. The real session is the httpOnly cookie set by
@@ -62,15 +78,17 @@ export function AuthProvider({ children }) {
     [queryClient, applyPreferences],
   );
 
+  // Logs out: the server revokes the session and deletes the cookie, then everything this
+  // browser kept about the user is removed and the user lands on the public landing page.
+  // The local cleanup runs even if the server cannot be reached.
   const signOut = useCallback(async () => {
     try {
       await authApi.logout();
-    } finally {
-      // Drop every cached response so the next user never sees this user's data.
-      queryClient.clear();
-      queryClient.setQueryData(SESSION_QUERY_KEY, null);
-      navigate(PATHS.login, { replace: true });
+    } catch {
+      // Still clear everything below: a failed request must not leave the user signed in here.
     }
+    clearUserData(queryClient);
+    navigate(PATHS.landing, { replace: true });
   }, [queryClient, navigate]);
 
   // Any request that comes back 401 mid-session means the cookie expired.
