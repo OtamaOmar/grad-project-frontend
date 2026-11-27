@@ -43,7 +43,7 @@ export function Button({
       disabled={isButton ? disabled || loading : undefined}
       aria-busy={loading || undefined}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-md font-semibold whitespace-nowrap transition-colors",
+        "pressable inline-flex shrink-0 items-center justify-center rounded-md font-semibold whitespace-nowrap",
         "disabled:pointer-events-none disabled:opacity-50",
         VARIANTS[variant],
         SIZES[size],
@@ -70,7 +70,7 @@ export function IconButton({ icon, label, size = "md", className, filled, ...pro
       aria-label={label}
       title={label}
       className={cn(
-        "inline-grid shrink-0 place-items-center rounded-md text-on-surface-variant transition-colors",
+        "pressable inline-grid shrink-0 place-items-center rounded-md text-on-surface-variant",
         "hover:bg-surface-container-high hover:text-on-surface disabled:opacity-50",
         size === "sm" ? "size-8" : "size-10",
         className,

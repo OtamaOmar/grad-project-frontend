@@ -104,7 +104,9 @@ export function DataTable({
                 key={getRowId(row)}
                 onClick={onRowClick ? () => onRowClick(row) : undefined}
                 className={cn(
-                  "transition-colors hover:bg-surface-container-low/60",
+                  // New rows (first load, next page, filter) fade in together; no stagger on
+                  // a surface used this often, and reordering never re-animates.
+                  "fade-swap transition-colors hover:bg-surface-container-low/60",
                   onRowClick && "cursor-pointer",
                 )}
               >
