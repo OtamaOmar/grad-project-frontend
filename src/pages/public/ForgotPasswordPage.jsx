@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/components/ui";
+import { AcopsMark } from "@/components/common/AcopsMark";
 import { ForgotPasswordForm } from "@/features/auth/ForgotPasswordForm";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PreferenceControls } from "@/layouts/shell/PreferenceControls";
@@ -62,7 +63,7 @@ export default function ForgotPasswordPage() {
             <div className="mt-8 lg:mt-10">
               <div className="flex items-center gap-3">
                 <div className="flex size-11 items-center justify-center rounded-xl bg-white/10 border border-white/15 text-white shadow-inner shrink-0">
-                  <Icon name="school" size={28} />
+                  <AcopsMark className="size-7" />
                 </div>
                 <div>
                   <h1 className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white leading-none">
