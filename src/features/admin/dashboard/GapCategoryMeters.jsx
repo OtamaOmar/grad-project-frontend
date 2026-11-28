@@ -3,10 +3,9 @@ import { Link } from "react-router";
 import { Badge, Card, CardHeader, EmptyState, ErrorState, Skeleton } from "@/components/ui";
 import { PATHS } from "@/routes/paths";
 import { formatNumber } from "@/utils/format";
+import { SEVERITY_TONE } from "@/features/admin/data-gaps/constants";
 
 const MAX_CATEGORIES = 5;
-
-const SEVERITY_TONE = { high: "danger", medium: "warning", low: "neutral" };
 
 /** "Open gaps by category": one bar meter per category, scaled to the total open gaps. */
 export function GapCategoryMeters({ query, children }) {
@@ -66,9 +65,12 @@ export function GapCategoryMeters({ query, children }) {
                         <span className="truncate text-body-lg font-medium text-on-surface group-hover:text-primary">
                           {label}
                         </span>
-                        <Badge tone={SEVERITY_TONE[row.top_severity]}>
-                          {t(`adminDataGaps:severity.${row.top_severity}`)}
-                        </Badge>
+                        {/* Most gaps have no severity yet; no badge rather than a raw key. */}
+                        {row.top_severity && (
+                          <Badge tone={SEVERITY_TONE[row.top_severity]}>
+                            {t(`adminDataGaps:severity.${row.top_severity}`)}
+                          </Badge>
+                        )}
                       </span>
                       <span className="shrink-0 text-label-lg font-semibold text-primary">
                         {t("gaps.count", {
