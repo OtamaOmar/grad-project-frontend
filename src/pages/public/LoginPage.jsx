@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/components/ui";
+import { AcopsMark } from "@/components/common/AcopsMark";
 import { LoginForm } from "@/features/auth/LoginForm";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { PreferenceControls } from "@/layouts/shell/PreferenceControls";
@@ -62,7 +63,7 @@ export default function LoginPage() {
             <div className="mt-4 lg:mt-6">
               <div className="flex items-center gap-2.5 sm:gap-3">
                 <div className="flex size-9 sm:size-10 items-center justify-center rounded-xl bg-white/10 border border-white/15 text-white shadow-inner shrink-0">
-                  <Icon name="school" size={24} />
+                  <AcopsMark className="size-6" />
                 </div>
                 <div>
                   <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white leading-none">
